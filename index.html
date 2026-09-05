@@ -28,7 +28,7 @@ header{background:var(--bar);border-bottom:1px solid var(--line)}.tabs{height:42
 </div>
 </header>
 <div id="menu" class="panel hidden">
-<button onclick="showFavorites()">⭐ Favoritos</button><button onclick="showHistory()">🕘 Histórico</button><button onclick="showDownloads()">📥 Downloads</button><button onclick="showSettings()">⚙️ Configurações</button><button onclick="toggleTheme()">🌙 Modo escuro/claro</button>
+<button onclick="showFavorites()">⭐ Favoritos</button><button onclick="showHistory()">🕘 Histórico</button><button onclick="showDownloads()">📥 Downloads</button><button onclick="openAI()">🤖 IternetWorld AI</button><button onclick="showSettings()">⚙️ Configurações</button><button onclick="toggleTheme()">🌙 Modo escuro/claro</button>
 </div>
 <main class="page" id="page"></main>
 <div id="overlay" class="overlay hidden" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modal-head"><h2 id="modalTitle"></h2><button class="x" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div>
@@ -65,7 +65,7 @@ function showTab(){let t=tabs[active];if(t?.url&&t.url.startsWith("search:"))sea
 function navigate(e){e.preventDefault();let v=$("address").value.trim();if(!v)return;if(isURL(v))openExternal(makeURL(v));else searchWeb(v)}
 function homeSearch(e){e.preventDefault();let v=$("homeInput").value.trim();if(v)searchWeb(v)}
 function openExternal(url,record=true){let t=tabs[active];if(!t)return;t.url=url;t.title=url.replace(/^https?:\/\//i,"").split("/")[0]||"Página";$("address").value=url;renderTabs();if(record){visits.unshift({title:t.title,url,time:Date.now()});visits=visits.slice(0,300);save()}window.open(url,"_blank","noopener,noreferrer")}
-function goHome(){let t=tabs[active];if(t){t.url="";t.title="Nova aba"}$("address").value="";renderTabs();$("page").innerHTML=`<section class="home"><div class="home-content"><div class="logo">IternetWorld</div><div class="tag">Pesquisa e navegação num só lugar.</div><form class="search" onsubmit="homeSearch(event)"><input id="homeInput" placeholder="Pesquisar qualquer coisa..." autofocus><button>Pesquisar</button></form><div class="quick"><button onclick="searchWeb('YouTube')">▶️ YouTube</button><button onclick="searchWeb('Google')">Google</button><button onclick="searchWeb('GitHub')">GitHub</button><button onclick="searchWeb('Minecraft')">Minecraft</button></div><div class="info">Pesquisas de sites conhecidos abrem o site correto. Outras pesquisas mostram resultados dentro do IternetWorld.</div></div></section>`}
+function goHome(){let t=tabs[active];if(t){t.url="";t.title="Nova aba"}$("address").value="";renderTabs();$("page").innerHTML=`<section class="home"><div class="home-content"><div class="logo">IternetWorld</div><div class="tag">Pesquisa e navegação num só lugar.</div><form class="search" onsubmit="homeSearch(event)"><input id="homeInput" placeholder="Pesquisar qualquer coisa..." autofocus><button>Pesquisar</button></form><div class="quick"><button onclick="searchWeb('YouTube')">▶️ YouTube</button><button onclick="searchWeb('Google')">Google</button><button onclick="searchWeb('GitHub')">GitHub</button><button onclick="searchWeb('Minecraft')">Minecraft</button><button onclick="openChatGPT()">🤖 Perguntar ao IternetWorld</button></div><div class="info">Pesquisas de sites conhecidos abrem o site correto. Outras pesquisas mostram resultados dentro do IternetWorld.</div></div></section>`}
 function goBack(){history.back()}function goForward(){history.forward()}function reloadPage(){location.reload()}
 function addFavorite(){let t=tabs[active];if(!t?.url||t.url.startsWith("search:")){alert("Abre um site primeiro.");return}if(favorites.some(x=>x.url===t.url)){alert("Já está nos favoritos.");return}favorites.unshift({title:t.title,url:t.url});save();alert("⭐ Adicionado aos favoritos!")}
 function toggleMenu(){$("menu").classList.toggle("hidden")}
@@ -105,6 +105,14 @@ function showDownloads(){toggleMenu();let h=downloads.length?downloads.map(x=>`<
 function showSettings(){toggleMenu();openModal("Configurações",`<div class="grid"><div class="setting"><label>Nome</label><b>IternetWorld</b></div><div class="setting"><label>Cor principal</label><input type="color" value="${esc(settings.accent||"#2563eb")}" onchange="settings.accent=this.value;setAccent();save()"></div><div class="setting"><label>Tema</label><button class="primary" onclick="toggleTheme();closeModal()">Alternar tema</button></div><div class="setting"><label>Dados</label><button class="danger" onclick="clearAllData()">Apagar favoritos e histórico</button></div></div>`)}
 function clearAllData(){if(confirm("Apagar favoritos e histórico?")){favorites=[];visits=[];save();closeModal()}}
 if(localStorage.getItem("iw_theme")==="light")document.body.classList.add("light");setAccent();createTab();
+function openChatGPT(){
+  window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+}
+function openAI(){
+  window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+}
 </script>
 </body>
 </html>
+
+

@@ -64,8 +64,44 @@ function closeTab(i){tabs.splice(i,1);if(!tabs.length){createTab();return}if(act
 function showTab(){let t=tabs[active];if(t?.url&&t.url.startsWith("search:"))searchWeb(t.url.slice(7),false);else if(t?.url)$("address").value=t.url;else goHome()}
 function navigate(e){e.preventDefault();let v=$("address").value.trim();if(!v)return;if(isURL(v))openExternal(makeURL(v));else searchWeb(v)}
 function homeSearch(e){e.preventDefault();let v=$("homeInput").value.trim();if(v)searchWeb(v)}
-function openExternal(url,record=true){let t=tabs[active];if(!t)return;t.url=url;t.title=url.replace(/^https?:\/\//i,"").split("/")[0]||"Página";$("address").value=url;renderTabs();if(record){visits.unshift({title:t.title,url,time:Date.now()});visits=visits.slice(0,300);save()}window.open(url,"_blank","noopener,noreferrer")}
-function goHome(){let t=tabs[active];if(t){t.url="";t.title="Nova aba"}$("address").value="";renderTabs();$("page").innerHTML=`<section class="home"><div class="home-content"><div class="logo">IternetWorld</div><div class="tag">Pesquisa e navegação num só lugar.</div><form class="search" onsubmit="homeSearch(event)"><input id="homeInput" placeholder="Pesquisar qualquer coisa..." autofocus><button>Pesquisar</button></form><div class="quick"><button onclick="searchWeb('YouTube')">▶️ YouTube</button><button onclick="searchWeb('Google')">Google</button><button onclick="searchWeb('GitHub')">GitHub</button><button onclick="searchWeb('Minecraft')">Minecraft</button><button onclick="openChatGPT()">🤖 Perguntar ao IternetWorld</button></div><div class="info">Pesquisas de sites conhecidos abrem o site correto. Outras pesquisas mostram resultados dentro do IternetWorld.</div></div></section>`}
+function openExternal(url,record=true){
+  const host=new URL(url).hostname.replace(/^www\./,"");
+  // Cria uma nova aba do IternetWorld em vez de abrir uma aba do Chrome.
+  tabs.push({title:host||"Página",url:url});
+  active=tabs.length-1;
+  renderTabs();
+  $("address").value=url;
+
+  const canEmbed=["youtube.com","google.com","github.com","facebook.com","instagram.com","tiktok.com","twitch.tv","reddit.com"].some(d=>host===d||host.endsWith("."+d));
+
+  if(record){
+    visits.unshift({title:host||"Página",url,time:Date.now()});
+    visits=visits.slice(0,300);
+    save();
+  }
+
+  // Muitos sites bloqueiam iframe. Nesse caso mostramos a página de aviso
+  // dentro da aba do IternetWorld, com um botão para abrir o site.
+  $("page").innerHTML=`<div class="results" style="max-width:none;padding:0;height:100%;display:flex;flex-direction:column">
+    <div style="padding:12px 18px;border-bottom:1px solid var(--line);background:var(--card)">
+      <b>🌐 ${esc(host||"Página")}</b>
+    </div>
+    <iframe src="${esc(url)}" style="border:0;flex:1;width:100%;background:white"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      referrerpolicy="no-referrer-when-downgrade"
+      onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')"></iframe>
+    <div class="hidden" style="padding:30px;text-align:center">
+      <h2>Este site não permite ser mostrado dentro de outro site.</h2>
+      <p style="color:var(--muted)">O IternetWorld não consegue ultrapassar essa proteção.</p>
+      <button class="primary" onclick="window.open('${esc(url)}','_blank','noopener,noreferrer')">Abrir no Chrome</button>
+    </div>
+  </div>`;
+
+  if(!canEmbed){
+    // Não impedir a tentativa; alguns domínios permitem iframe.
+  }
+}
+function goHome(){let t=tabs[active];if(t){t.url="";t.title="Nova aba"}$("address").value="";renderTabs();$("page").innerHTML=`<section class="home"><div class="home-content"><div class="logo">IternetWorld</div><div class="tag">Pesquisa e navegação num só lugar.</div><form class="search" onsubmit="homeSearch(event)"><input id="homeInput" placeholder="Pesquisar qualquer coisa..." autofocus><button>Pesquisar</button></form><div class="quick"><button onclick="searchWeb('YouTube')">▶️ YouTube</button><button onclick="searchWeb('Google')">Google</button><button onclick="searchWeb('GitHub')">GitHub</button><button onclick="searchWeb('Minecraft')">Minecraft</button></div><div class="info">Pesquisas de sites conhecidos abrem o site correto. Outras pesquisas mostram resultados dentro do IternetWorld.</div></div></section>`}
 function goBack(){history.back()}function goForward(){history.forward()}function reloadPage(){location.reload()}
 function addFavorite(){let t=tabs[active];if(!t?.url||t.url.startsWith("search:")){alert("Abre um site primeiro.");return}if(favorites.some(x=>x.url===t.url)){alert("Já está nos favoritos.");return}favorites.unshift({title:t.title,url:t.url});save();alert("⭐ Adicionado aos favoritos!")}
 function toggleMenu(){$("menu").classList.toggle("hidden")}
@@ -105,14 +141,9 @@ function showDownloads(){toggleMenu();let h=downloads.length?downloads.map(x=>`<
 function showSettings(){toggleMenu();openModal("Configurações",`<div class="grid"><div class="setting"><label>Nome</label><b>IternetWorld</b></div><div class="setting"><label>Cor principal</label><input type="color" value="${esc(settings.accent||"#2563eb")}" onchange="settings.accent=this.value;setAccent();save()"></div><div class="setting"><label>Tema</label><button class="primary" onclick="toggleTheme();closeModal()">Alternar tema</button></div><div class="setting"><label>Dados</label><button class="danger" onclick="clearAllData()">Apagar favoritos e histórico</button></div></div>`)}
 function clearAllData(){if(confirm("Apagar favoritos e histórico?")){favorites=[];visits=[];save();closeModal()}}
 if(localStorage.getItem("iw_theme")==="light")document.body.classList.add("light");setAccent();createTab();
-function openChatGPT(){
-  window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
-}
 function openAI(){
-  window.open("https://chatgpt.com/", "_blank", "noopener,noreferrer");
+  window.open("https://chatgpt.com/","_blank","noopener,noreferrer");
 }
 </script>
 </body>
 </html>
-
-

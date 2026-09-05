@@ -2,1227 +2,147 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#2563eb">
 <title>IternetWorld</title>
-
 <style>
-:root{
-  --bg:#0f172a;
-  --bar:#172033;
-  --card:#1e293b;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-  --line:#334155;
-  --blue:#2563eb;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  height:100vh;
-  overflow:hidden;
-}
-
-body.light{
-  --bg:#f1f5f9;
-  --bar:#ffffff;
-  --card:#ffffff;
-  --text:#172033;
-  --muted:#64748b;
-  --line:#cbd5e1;
-}
-
-header{
-  background:var(--bar);
-  border-bottom:1px solid var(--line);
-}
-
-.tabs{
-  height:42px;
-  display:flex;
-  gap:5px;
-  align-items:end;
-  padding:5px 8px 0;
-  overflow-x:auto;
-}
-
-.tab{
-  height:37px;
-  min-width:145px;
-  max-width:230px;
-  padding:0 9px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  background:#253147;
-  color:var(--muted);
-  border-radius:9px 9px 0 0;
-  cursor:pointer;
-}
-
-.light .tab{
-  background:#e2e8f0;
-}
-
-.tab.active{
-  background:var(--card);
-  color:var(--text);
-}
-
-.tab span{
-  flex:1;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.tab button{
-  background:none;
-  border:0;
-  color:inherit;
-  font-size:17px;
-  cursor:pointer;
-}
-
-.add{
-  height:34px;
-  border:0;
-  background:none;
-  color:var(--text);
-  font-size:25px;
-  cursor:pointer;
-}
-
-.toolbar{
-  height:65px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:10px;
-}
-
-.tool{
-  width:39px;
-  height:39px;
-  border:0;
-  border-radius:9px;
-  background:var(--card);
-  color:var(--text);
-  font-size:19px;
-  cursor:pointer;
-}
-
-.address{
-  height:42px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex:1;
-  background:#f8fafc;
-  border-radius:22px;
-  padding-left:14px;
-}
-
-.address input{
-  border:0;
-  outline:0;
-  background:transparent;
-  color:#172033;
-  font-size:15px;
-  flex:1;
-}
-
-.address button{
-  border:0;
-  background:var(--blue);
-  color:white;
-  border-radius:18px;
-  padding:8px 15px;
-  margin-right:5px;
-  cursor:pointer;
-}
-
-.page{
-  height:calc(100vh - 107px);
-  overflow:auto;
-}
-
-.home{
-  min-height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-}
-
-.content{
-  width:min(720px,92%);
-}
-
-.logo{
-  font-size:64px;
-  font-weight:800;
-  letter-spacing:-4px;
-}
-
-.subtitle{
-  color:var(--muted);
-  font-size:17px;
-  margin:8px 0 28px;
-}
-
-.search{
-  display:flex;
-  background:white;
-  border-radius:28px;
-  padding:5px;
-  box-shadow:0 8px 30px #0002;
-}
-
-.search input{
-  flex:1;
-  border:0;
-  outline:0;
-  padding:13px 17px;
-  font-size:16px;
-}
-
-.search button{
-  border:0;
-  border-radius:23px;
-  background:var(--blue);
-  color:white;
-  padding:0 20px;
-  cursor:pointer;
-}
-
-.shortcuts{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
-.shortcut{
-  border:1px solid var(--line);
-  background:var(--card);
-  color:var(--text);
-  padding:10px 16px;
-  border-radius:20px;
-  cursor:pointer;
-}
-
-.menu{
-  position:absolute;
-  z-index:10;
-  right:10px;
-  top:104px;
-  width:205px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:7px;
-  box-shadow:0 15px 40px #0008;
-}
-
-.menu button{
-  width:100%;
-  padding:12px;
-  border:0;
-  background:none;
-  color:var(--text);
-  text-align:left;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-.menu button:hover{
-  background:#64748b33;
-}
-
-.hidden{
-  display:none!important;
-}
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:#0009;
-  z-index:30;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.box{
-  width:min(720px,92%);
-  max-height:78vh;
-  overflow:auto;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:20px;
-}
-
-.head{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.head button{
-  border:0;
-  background:none;
-  color:var(--text);
-  font-size:28px;
-  cursor:pointer;
-}
-
-.item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.item a{
-  color:#60a5fa;
-  text-decoration:none;
-  flex:1;
-}
-
-.item small{
-  color:var(--muted);
-}
-
-.item button,
-.clear{
-  border:0;
-  background:#475569;
-  color:white;
-  border-radius:7px;
-  padding:7px 10px;
-  cursor:pointer;
-}
-
-.notice{
-  margin-top:22px;
-  color:var(--muted);
-  font-size:13px;
-}
+:root{--bg:#0b1120;--bar:#111a2b;--card:#182338;--text:#f8fafc;--muted:#94a3b8;--line:#2c3a52;--accent:#2563eb;--home1:#0b1120;--home2:#172554}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+body{overflow:hidden}button,input{font:inherit}button{cursor:pointer}
+body.light{--bg:#eef2f7;--bar:#fff;--card:#fff;--text:#172033;--muted:#64748b;--line:#cbd5e1;--home1:#eef2f7;--home2:#dbeafe}
+header{background:var(--bar);border-bottom:1px solid var(--line)}
+.tabs{height:42px;display:flex;align-items:end;gap:5px;padding:5px 8px 0;overflow:auto}
+.tab{height:37px;min-width:145px;max-width:240px;display:flex;align-items:center;gap:7px;padding:0 10px;background:#1e2a40;color:var(--muted);border-radius:9px 9px 0 0}
+body.light .tab{background:#e2e8f0}.tab.active{background:var(--card);color:var(--text)}.tab-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.tab-close,.add-tab{border:0;background:transparent;color:inherit}.tab-close{font-size:17px}.add-tab{font-size:25px;height:35px;padding:0 12px}
+.toolbar{height:64px;display:flex;align-items:center;gap:7px;padding:10px}
+.tool{width:38px;height:38px;border:0;border-radius:9px;background:var(--card);color:var(--text);font-size:18px}
+.address{height:40px;display:flex;align-items:center;gap:8px;flex:1;min-width:100px;background:#f8fafc;border-radius:22px;padding:0 5px 0 13px}
+.address input{border:0;outline:0;background:transparent;color:#172033;min-width:0;flex:1}.go{border:0;background:var(--accent);color:white;border-radius:18px;padding:8px 16px}
+.page{height:calc(100vh - 106px);overflow:auto}
+.home{min-height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:35px 15px;background:radial-gradient(circle at top,var(--home2),var(--home1) 60%)}
+.home-content{width:min(850px,95%)}.logo{font-size:clamp(42px,8vw,78px);font-weight:900;letter-spacing:-5px}.tag{color:var(--muted);font-size:18px;margin:10px 0 30px}
+.search{max-width:700px;margin:auto;display:flex;background:#fff;border-radius:30px;padding:6px;box-shadow:0 12px 40px #0003}.search input{border:0;outline:0;flex:1;padding:13px 18px;color:#172033;min-width:0}.search button{border:0;background:var(--accent);color:#fff;border-radius:24px;padding:0 22px}
+.quick{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0}.quick button,.card-btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 16px;border-radius:20px}
+.info{color:var(--muted);font-size:13px}.panel{position:fixed;z-index:20;right:10px;top:102px;width:230px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:7px;box-shadow:0 18px 50px #0008}.panel button{width:100%;padding:12px;border:0;background:transparent;color:var(--text);text-align:left;border-radius:8px}.panel button:hover{background:#64748b25}
+.overlay{position:fixed;inset:0;background:#0008;z-index:50;display:flex;align-items:center;justify-content:center;padding:15px}.modal{width:min(850px,100%);max-height:88vh;overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.modal-head{display:flex;align-items:center;justify-content:space-between}.modal-head h2{margin:0 0 15px}.x{border:0;background:none;color:var(--text);font-size:28px}
+.item{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}.item a{flex:1;color:#60a5fa;text-decoration:none;overflow:hidden;text-overflow:ellipsis}.item small{color:var(--muted)}
+.danger,.primary{border:0;border-radius:8px;padding:9px 12px;color:#fff}.danger{background:#dc2626}.primary{background:var(--accent)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.setting{padding:15px;border:1px solid var(--line);border-radius:12px}.setting label{display:block;margin-bottom:8px;color:var(--muted)}.setting input[type=color]{width:100%;height:40px;border:0}.empty{color:var(--muted);padding:20px 0}
+.results{padding:28px max(18px,5vw);max-width:1000px;margin:auto}.results-top{display:flex;gap:10px;margin-bottom:20px}.results-top input{flex:1;padding:12px 15px;border:1px solid var(--line);border-radius:22px;background:var(--card);color:var(--text);outline:none}.result{padding:18px 0;border-bottom:1px solid var(--line)}.result-title{font-size:20px;color:#60a5fa;text-decoration:none}.result-url{font-size:12px;color:#22c55e;margin:5px 0}.result-text{color:var(--muted);line-height:1.5}.result-actions{margin-top:10px;display:flex;gap:8px}.result-actions button{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:7px;padding:7px 10px}.loading{text-align:center;padding:40px;color:var(--muted)}.error{padding:20px;border:1px solid #ef4444;border-radius:10px;color:#fca5a5}
+.hidden{display:none!important}
+@media(max-width:650px){.toolbar{gap:4px;padding:7px}.tool{width:34px;height:34px}.address{height:37px}.go{padding:7px 11px}.tab{min-width:125px}.logo{letter-spacing:-3px}.tag{font-size:15px}.search button{padding:0 15px}}
 </style>
 </head>
-
 <body>
-
 <header>
-
-  <div class="tabs" id="tabs"></div>
-
-  <div class="toolbar">
-
-    <button class="tool" onclick="goBack()">←</button>
-
-    <button class="tool" onclick="goForward()">→</button>
-
-    <button class="tool" onclick="reloadPage()">↻</button>
-
-    <button class="tool" onclick="goHome()">⌂</button>
-
-    <form class="address" onsubmit="navigate(event)">
-
-      <span>🔒</span>
-
-      <input
-        id="address"
-        placeholder="Pesquisar ou escrever um endereço"
-        autocomplete="off"
-      >
-
-      <button>Ir</button>
-
-    </form>
-
-    <button
-      class="tool"
-      onclick="addFavorite()"
-      title="Favorito"
-    >
-      ☆
-    </button>
-
-    <button
-      class="tool"
-      onclick="toggleMenu()"
-    >
-      ☰
-    </button>
-
-  </div>
-
+<div class="tabs" id="tabs"></div>
+<div class="toolbar">
+<button class="tool" title="Voltar" onclick="goBack()">←</button>
+<button class="tool" title="Avançar" onclick="goForward()">→</button>
+<button class="tool" title="Recarregar" onclick="reloadPage()">↻</button>
+<button class="tool" title="Início" onclick="goHome()">⌂</button>
+<form class="address" onsubmit="navigate(event)">
+<span>🔎</span><input id="address" placeholder="Pesquisar na internet..." autocomplete="off">
+<button class="go">Ir</button>
+</form>
+<button class="tool" title="Favorito" onclick="addFavorite()">☆</button>
+<button class="tool" title="Menu" onclick="toggleMenu()">☰</button>
+</div>
 </header>
 
-<div id="menu" class="menu hidden">
-
-  <button onclick="showFavorites()">
-    ⭐ Favoritos
-  </button>
-
-  <button onclick="showHistory()">
-    🕘 Histórico
-  </button>
-
-  <button onclick="toggleDarkMode()">
-    🌙 Modo escuro/claro
-  </button>
-
+<div id="menu" class="panel hidden">
+<button onclick="showFavorites()">⭐ Favoritos</button>
+<button onclick="showHistory()">🕘 Histórico</button>
+<button onclick="showDownloads()">📥 Downloads</button>
+<button onclick="showSettings()">⚙️ Configurações</button>
+<button onclick="toggleTheme()">🌙 Modo escuro/claro</button>
 </div>
 
-<main
-  class="page"
-  id="page"
-></main>
+<main class="page" id="page"></main>
 
-<div
-  id="modal"
-  class="modal hidden"
->
-
-  <div class="box">
-
-    <div class="head">
-
-      <h2 id="modalTitle">
-        IternetWorld
-      </h2>
-
-      <button onclick="closeModal()">
-        ×
-      </button>
-
-    </div>
-
-    <div id="modalContent"></div>
-
-  </div>
-
+<div id="overlay" class="overlay hidden" onclick="if(event.target===this)closeModal()">
+<div class="modal">
+<div class="modal-head"><h2 id="modalTitle"></h2><button class="x" onclick="closeModal()">×</button></div>
+<div id="modalBody"></div>
+</div>
 </div>
 
 <script>
+const $=id=>document.getElementById(id);
+let tabs=[],active=0;
+let favorites=JSON.parse(localStorage.getItem("iw_favorites")||"[]");
+let visits=JSON.parse(localStorage.getItem("iw_history")||"[]");
+let downloads=JSON.parse(localStorage.getItem("iw_downloads")||"[]");
+let settings=JSON.parse(localStorage.getItem("iw_settings")||'{"accent":"#2563eb"}');
 
-let tabs = [];
+function save(){localStorage.setItem("iw_favorites",JSON.stringify(favorites));localStorage.setItem("iw_history",JSON.stringify(visits));localStorage.setItem("iw_downloads",JSON.stringify(downloads));localStorage.setItem("iw_settings",JSON.stringify(settings))}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function setAccent(){document.documentElement.style.setProperty("--accent",settings.accent||"#2563eb")}
+function isURL(v){return /^https?:\/\//i.test(v)||/^[\w.-]+\.[a-z]{2,}(\/.*)?$/i.test(v.trim())}
+function makeURL(v){v=v.trim();if(!v)return"";if(/^https?:\/\//i.test(v))return v;if(/^[\w.-]+\.[a-z]{2,}(\/.*)?$/i.test(v))return"https://"+v;return""}
 
-let activeTab = 0;
+function createTab(){tabs.push({title:"Nova aba",url:""});active=tabs.length-1;renderTabs();goHome()}
+function renderTabs(){let c=$("tabs");c.innerHTML="";tabs.forEach((t,i)=>{let d=document.createElement("div");d.className="tab "+(i===active?"active":"");d.innerHTML=`<span class="tab-title">${esc(t.title)}</span><button class="tab-close">×</button>`;d.onclick=e=>{if(e.target.classList.contains("tab-close"))closeTab(i);else{active=i;renderTabs();showTab()}};c.appendChild(d)});let b=document.createElement("button");b.className="add-tab";b.textContent="+";b.onclick=createTab;c.appendChild(b)}
+function closeTab(i){tabs.splice(i,1);if(!tabs.length){createTab();return}if(active>=tabs.length)active=tabs.length-1;renderTabs();showTab()}
+function showTab(){let t=tabs[active];if(t?.url)$("address").value=t.url;else goHome()}
 
-let historyList =
-  JSON.parse(
-    localStorage.getItem(
-      "iw_history"
-    ) || "[]"
-  );
+function navigate(e){e.preventDefault();let v=$("address").value.trim();if(!v)return;if(isURL(v)){openExternal(makeURL(v))}else searchWeb(v)}
+function homeSearch(e){e.preventDefault();let v=$("homeInput").value.trim();if(v)searchWeb(v)}
 
-let favorites =
-  JSON.parse(
-    localStorage.getItem(
-      "iw_favorites"
-    ) || "[]"
-  );
-
-
-function saveData(){
-
-  localStorage.setItem(
-    "iw_history",
-    JSON.stringify(historyList)
-  );
-
-  localStorage.setItem(
-    "iw_favorites",
-    JSON.stringify(favorites)
-  );
-
+function openExternal(url,record=true){
+ let t=tabs[active];if(!t)return;
+ t.url=url;t.title=url.replace(/^https?:\/\//i,"").split("/")[0]||"Página";
+ $("address").value=url;renderTabs();
+ if(record){visits.unshift({title:t.title,url,time:Date.now()});visits=visits.slice(0,300);save()}
+ window.open(url,"_blank","noopener,noreferrer");
 }
 
-
-function escapeHTML(text){
-
-  return String(text || "")
-    .replace(
-      /[&<>"']/g,
-      character => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#039;"
-      }[character])
-    );
-
+/* Pesquisa dentro do IternetWorld usando a API pública da Wikipédia. */
+async function searchWeb(query){
+ let t=tabs[active];if(t){t.url="search:"+query;t.title=query}
+ $("address").value=query;renderTabs();
+ $("page").innerHTML=`<div class="results"><div class="results-top"><input id="resultsInput" value="${esc(query)}"><button class="primary" onclick="searchFromResults()">Pesquisar</button></div><div class="loading">🔎 A pesquisar por <b>${esc(query)}</b>...</div></div>`;
+ try{
+   const api="https://pt.wikipedia.org/w/api.php?action=query&list=search&srsearch="+encodeURIComponent(query)+"&utf8=1&format=json&origin=*&srlimit=12";
+   const response=await fetch(api);
+   if(!response.ok)throw new Error("Falha na pesquisa");
+   const data=await response.json();
+   const results=data.query?.search||[];
+   let html=`<div class="results"><div class="results-top"><input id="resultsInput" value="${esc(query)}" onkeydown="if(event.key==='Enter')searchFromResults()"><button class="primary" onclick="searchFromResults()">Pesquisar</button></div>`;
+   html+=`<p class="result-url">Resultados da Wikipédia para: ${esc(query)}</p>`;
+   if(!results.length)html+=`<div class="empty">Não encontrei resultados. Experimenta outra pesquisa ou escreve um endereço como youtube.com.</div>`;
+   results.forEach(r=>{
+     const title=r.title;
+     const url="https://pt.wikipedia.org/wiki/"+encodeURIComponent(title.replace(/ /g,"_"));
+     const text=(r.snippet||"").replace(/<[^>]*>/g,"");
+     html+=`<article class="result"><a class="result-title" href="#" onclick="openExternal('${url.replace(/'/g,"%27")}')">${esc(title)}</a><div class="result-url">${esc(url)}</div><div class="result-text">${esc(text)}...</div><div class="result-actions"><button onclick="openExternal('${url.replace(/'/g,"%27")}')">Abrir</button><button onclick="saveResult('${encodeURIComponent(title)}','${encodeURIComponent(url)}')">⭐ Favorito</button></div></article>`;
+   });
+   html+=`</div>`;
+   $("page").innerHTML=html;
+   visits.unshift({title:"Pesquisa: "+query,url:"search:"+query,time:Date.now()});visits=visits.slice(0,300);save();
+ }catch(err){
+   $("page").innerHTML=`<div class="results"><div class="results-top"><input id="resultsInput" value="${esc(query)}"><button class="primary" onclick="searchFromResults()">Pesquisar</button></div><div class="error">Não foi possível obter os resultados agora. Verifica a ligação à internet e tenta novamente.</div></div>`;
+ }
 }
-
-
-function makeURL(value){
-
-  value = value.trim();
-
-  if(!value){
-    return "";
-  }
-
-  if(
-    /^https?:\/\//i.test(value)
-  ){
-
-    return value;
-
-  }
-
-  if(
-    /^[\w.-]+\.[a-z]{2,}(\/.*)?$/i
-      .test(value)
-  ){
-
-    return "https://" + value;
-
-  }
-
-  return (
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(value)
-  );
-
-}
-
-
-function renderTabs(){
-
-  const container =
-    document.getElementById(
-      "tabs"
-    );
-
-  container.innerHTML = "";
-
-  tabs.forEach(
-    (tab,index) => {
-
-      const element =
-        document.createElement(
-          "div"
-        );
-
-      element.className =
-        "tab " +
-        (
-          index === activeTab
-            ? "active"
-            : ""
-        );
-
-      element.innerHTML = `
-
-        <span>
-          ${escapeHTML(tab.title)}
-        </span>
-
-        <button>
-          ×
-        </button>
-
-      `;
-
-      element.onclick =
-        event => {
-
-          if(
-            event.target.tagName ===
-            "BUTTON"
-          ){
-
-            closeTab(index);
-
-            return;
-          }
-
-          activeTab = index;
-
-          renderTabs();
-
-          showTab();
-
-        };
-
-      container.appendChild(
-        element
-      );
-
-    }
-  );
-
-
-  const newButton =
-    document.createElement(
-      "button"
-    );
-
-  newButton.className = "add";
-
-  newButton.textContent = "+";
-
-  newButton.onclick =
-    () => createTab();
-
-  container.appendChild(
-    newButton
-  );
-
-}
-
-
-function createTab(url=""){
-
-  tabs.push({
-
-    title:"Nova aba",
-
-    url:""
-
-  });
-
-  activeTab =
-    tabs.length - 1;
-
-  renderTabs();
-
-  if(url){
-
-    openURL(url);
-
-  }else{
-
-    goHome();
-
-  }
-
-}
-
-
-function closeTab(index){
-
-  tabs.splice(
-    index,
-    1
-  );
-
-  if(
-    tabs.length === 0
-  ){
-
-    createTab();
-
-    return;
-
-  }
-
-  if(
-    activeTab >= tabs.length
-  ){
-
-    activeTab =
-      tabs.length - 1;
-
-  }
-
-  renderTabs();
-
-  showTab();
-
-}
-
-
-function showTab(){
-
-  const tab =
-    tabs[activeTab];
-
-  if(!tab){
-
-    return;
-
-  }
-
-  if(tab.url){
-
-    document.getElementById(
-      "address"
-    ).value =
-      tab.url;
-
-  }else{
-
-    goHome();
-
-  }
-
-}
-
-
-function openURL(url){
-
-  const tab =
-    tabs[activeTab];
-
-  if(!tab){
-
-    return;
-
-  }
-
-  tab.url = url;
-
-  tab.title =
-    url
-      .replace(
-        /^https?:\/\//i,
-        ""
-      )
-      .split("/")[0] ||
-    "Página";
-
-  document.getElementById(
-    "address"
-  ).value = url;
-
-  renderTabs();
-
-
-  historyList.unshift({
-
-    title:tab.title,
-
-    url:url,
-
-    time:Date.now()
-
-  });
-
-
-  historyList =
-    historyList.slice(
-      0,
-      300
-    );
-
-  saveData();
-
-
-  /*
-    O GitHub Pages não permite
-    transformar este HTML num
-    navegador de sistema.
-
-    Por isso os sites externos
-    são abertos numa nova aba.
-  */
-
-  window.open(
-    url,
-    "_blank",
-    "noopener,noreferrer"
-  );
-
-}
-
-
-function navigate(event){
-
-  event.preventDefault();
-
-  const value =
-    document.getElementById(
-      "address"
-    ).value;
-
-  const url =
-    makeURL(value);
-
-  if(url){
-
-    openURL(url);
-
-  }
-
-}
-
-
-function homeSearch(event){
-
-  event.preventDefault();
-
-  const value =
-    document.getElementById(
-      "homeInput"
-    ).value;
-
-  const url =
-    makeURL(value);
-
-  if(url){
-
-    openURL(url);
-
-  }
-
-}
-
-
-function goHome(){
-
-  const tab =
-    tabs[activeTab];
-
-  if(tab){
-
-    tab.url = "";
-
-    tab.title =
-      "Nova aba";
-
-  }
-
-  document.getElementById(
-    "address"
-  ).value = "";
-
-  renderTabs();
-
-
-  document.getElementById(
-    "page"
-  ).innerHTML = `
-
-    <section class="home">
-
-      <div class="content">
-
-        <div class="logo">
-          IternetWorld
-        </div>
-
-        <div class="subtitle">
-          O teu navegador web simples,
-          moderno e personalizável.
-        </div>
-
-        <form
-          class="search"
-          onsubmit="homeSearch(event)"
-        >
-
-          <input
-            id="homeInput"
-            placeholder="Pesquisar na internet..."
-          >
-
-          <button>
-            Pesquisar
-          </button>
-
-        </form>
-
-        <div class="shortcuts">
-
-          <button
-            class="shortcut"
-            onclick="openURL(
-              'https://www.google.com'
-            )"
-          >
-            Google
-          </button>
-
-          <button
-            class="shortcut"
-            onclick="openURL(
-              'https://www.youtube.com'
-            )"
-          >
-            YouTube
-          </button>
-
-          <button
-            class="shortcut"
-            onclick="openURL(
-              'https://www.wikipedia.org'
-            )"
-          >
-            Wikipedia
-          </button>
-
-          <button
-            class="shortcut"
-            onclick="openURL(
-              'https://github.com'
-            )"
-          >
-            GitHub
-          </button>
-
-        </div>
-
-        <div class="notice">
-
-          Os sites externos são abertos
-          numa nova aba.
-
-        </div>
-
-      </div>
-
-    </section>
-
-  `;
-
-}
-
-
-function goBack(){
-
-  history.back();
-
-}
-
-
-function goForward(){
-
-  history.forward();
-
-}
-
-
-function reloadPage(){
-
-  location.reload();
-
-}
-
-
-function addFavorite(){
-
-  const tab =
-    tabs[activeTab];
-
-  if(
-    !tab ||
-    !tab.url
-  ){
-
-    alert(
-      "Abre um site primeiro."
-    );
-
-    return;
-
-  }
-
-
-  if(
-    !favorites.some(
-      item =>
-        item.url === tab.url
-    )
-  ){
-
-    favorites.unshift({
-
-      title:tab.title,
-
-      url:tab.url
-
-    });
-
-    saveData();
-
-    alert(
-      "⭐ Adicionado aos favoritos!"
-    );
-
-  }else{
-
-    alert(
-      "Este site já está nos favoritos."
-    );
-
-  }
-
-}
-
-
-function toggleMenu(){
-
-  document.getElementById(
-    "menu"
-  ).classList.toggle(
-    "hidden"
-  );
-
-}
-
-
-function toggleDarkMode(){
-
-  document.body.classList.toggle(
-    "light"
-  );
-
-  localStorage.setItem(
-    "iw_theme",
-    document.body.classList.contains(
-      "light"
-    )
-      ? "light"
-      : "dark"
-  );
-
-  toggleMenu();
-
-}
-
-
-function openModal(
-  title,
-  content
-){
-
-  document.getElementById(
-    "modalTitle"
-  ).textContent =
-    title;
-
-  document.getElementById(
-    "modalContent"
-  ).innerHTML =
-    content;
-
-  document.getElementById(
-    "modal"
-  ).classList.remove(
-    "hidden"
-  );
-
-}
-
-
-function closeModal(){
-
-  document.getElementById(
-    "modal"
-  ).classList.add(
-    "hidden"
-  );
-
-}
-
-
-function showFavorites(){
-
-  toggleMenu();
-
-
-  const content =
-    favorites.length
-
-      ?
-
-        favorites
-          .map(
-            (item,index) => `
-
-              <div class="item">
-
-                <a
-                  href="#"
-                  onclick="
-                    openFavorite(${index})
-                  "
-                >
-                  ${escapeHTML(
-                    item.title
-                  )}
-                </a>
-
-                <button
-                  onclick="
-                    removeFavorite(${index})
-                  "
-                >
-                  ×
-                </button>
-
-              </div>
-
-            `
-          )
-          .join("")
-
-      :
-
-        "<p>Nenhum favorito ainda.</p>";
-
-
-  openModal(
-    "⭐ Favoritos",
-    content
-  );
-
-}
-
-
-function openFavorite(index){
-
-  const item =
-    favorites[index];
-
-  closeModal();
-
-  openURL(
-    item.url
-  );
-
-}
-
-
-function removeFavorite(index){
-
-  favorites.splice(
-    index,
-    1
-  );
-
-  saveData();
-
-  showFavorites();
-
-}
-
-
-function showHistory(){
-
-  toggleMenu();
-
-
-  let content = "";
-
-
-  if(historyList.length){
-
-    content = `
-
-      <button
-        class="clear"
-        onclick="clearHistory()"
-      >
-        Limpar histórico
-      </button>
-
-    `;
-
-
-    content +=
-      historyList
-        .map(
-          (item,index) => `
-
-            <div class="item">
-
-              <a
-                href="#"
-                onclick="
-                  openHistory(${index})
-                "
-              >
-                ${escapeHTML(
-                  item.title
-                )}
-              </a>
-
-              <small>
-                ${new Date(
-                  item.time
-                ).toLocaleString()}
-              </small>
-
-            </div>
-
-          `
-        )
-        .join("");
-
-  }else{
-
-    content =
-      "<p>Nenhum histórico.</p>";
-
-  }
-
-
-  openModal(
-    "🕘 Histórico",
-    content
-  );
-
-}
-
-
-function openHistory(index){
-
-  const item =
-    historyList[index];
-
-  closeModal();
-
-  openURL(
-    item.url
-  );
-
-}
-
-
-function clearHistory(){
-
-  historyList = [];
-
-  saveData();
-
-  showHistory();
-
-}
-
-
-if(
-  localStorage.getItem(
-    "iw_theme"
-  ) === "light"
-){
-
-  document.body.classList.add(
-    "light"
-  );
-
-}
-
-
-createTab();
-
+function searchFromResults(){let q=$("resultsInput").value.trim();if(q)searchWeb(q)}
+function saveResult(title,url){title=decodeURIComponent(title);url=decodeURIComponent(url);if(!favorites.some(x=>x.url===url)){favorites.unshift({title,url});save();alert("⭐ Adicionado aos favoritos!")}else alert("Já está nos favoritos.")}
+
+function goHome(){let t=tabs[active];if(t){t.url="";t.title="Nova aba"}$("address").value="";renderTabs();$("page").innerHTML=`<section class="home"><div class="home-content"><div class="logo">IternetWorld</div><div class="tag">Pesquisa diretamente no IternetWorld.</div><form class="search" onsubmit="homeSearch(event)"><input id="homeInput" placeholder="Pesquisar qualquer coisa..." autofocus><button>Pesquisar</button></form><div class="quick"><button onclick="searchWeb('YouTube')">YouTube</button><button onclick="searchWeb('Minecraft')">Minecraft</button><button onclick="searchWeb('Portugal')">Portugal</button><button onclick="searchWeb('Tecnologia')">Tecnologia</button></div><div class="info">Os resultados aparecem aqui dentro. Para abrir um site, escreve o endereço, por exemplo: youtube.com</div></div></section>`}
+function goBack(){history.back()}function goForward(){history.forward()}function reloadPage(){location.reload()}
+function addFavorite(){let t=tabs[active];if(!t?.url||t.url.startsWith("search:")){alert("Abre um site primeiro.");return}if(favorites.some(x=>x.url===t.url)){alert("Este site já está nos favoritos.");return}favorites.unshift({title:t.title,url:t.url});save();alert("⭐ Adicionado aos favoritos!")}
+function toggleMenu(){$("menu").classList.toggle("hidden")}
+function toggleTheme(){document.body.classList.toggle("light");localStorage.setItem("iw_theme",document.body.classList.contains("light")?"light":"dark");toggleMenu()}
+function openModal(title,body){$("modalTitle").textContent=title;$("modalBody").innerHTML=body;$("overlay").classList.remove("hidden")}
+function closeModal(){$("overlay").classList.add("hidden")}
+function showFavorites(){toggleMenu();let h=favorites.length?favorites.map((x,i)=>`<div class="item"><a href="#" onclick="openFav(${i})">⭐ ${esc(x.title)}</a><button class="danger" onclick="removeFav(${i})">×</button></div>`).join(""):"<div class=empty>Nenhum favorito ainda.</div>";openModal("Favoritos",h)}
+function openFav(i){closeModal();openExternal(favorites[i].url)}function removeFav(i){favorites.splice(i,1);save();showFavorites()}
+function showHistory(){toggleMenu();let h=visits.length?`<button class="danger" onclick="clearHistory()">Limpar histórico</button>`+visits.map((x,i)=>`<div class="item"><a href="#" onclick="openVisit(${i})">${esc(x.title)}</a><small>${new Date(x.time).toLocaleString()}</small></div>`).join(""):"<div class=empty>Nenhum histórico.</div>";openModal("Histórico",h)}
+function openVisit(i){closeModal();visits[i].url.startsWith("search:")?searchWeb(visits[i].url.slice(7)):openExternal(visits[i].url)}function clearHistory(){visits=[];save();showHistory()}
+function showDownloads(){toggleMenu();let h=downloads.length?downloads.map(x=>`<div class="item"><span>📄</span><a href="${esc(x.url)}" target="_blank">${esc(x.name)}</a></div>`).join(""):"<div class=empty>Os downloads iniciados pelo site aparecerão aqui.</div>";openModal("Downloads",h)}
+function showSettings(){toggleMenu();openModal("Configurações",`<div class="grid"><div class="setting"><label>Nome</label><b>IternetWorld</b></div><div class="setting"><label>Cor principal</label><input type="color" value="${esc(settings.accent||"#2563eb")}" onchange="settings.accent=this.value;setAccent();save()"></div><div class="setting"><label>Tema</label><button class="primary" onclick="toggleTheme();closeModal()">Alternar tema</button></div><div class="setting"><label>Dados</label><button class="danger" onclick="clearAllData()">Apagar favoritos e histórico</button></div></div>`)}
+function clearAllData(){if(confirm("Apagar favoritos e histórico?")){favorites=[];visits=[];save();closeModal()}}
+if(localStorage.getItem("iw_theme")==="light")document.body.classList.add("light");setAccent();createTab();
 </script>
-
 </body>
 </html>

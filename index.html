@@ -2,1663 +2,2088 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>IternetWorld</title>
 
 <style>
-:root{
-  --bg:#0b1120;
-  --bar:#111a2b;
-  --card:#182338;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-  --line:#2c3a52;
-  --accent:#2563eb;
+*{
+    box-sizing:border-box;
 }
-
-*{box-sizing:border-box}
 
 html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+    margin:0;
+    width:100%;
+    height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow:hidden;
 }
 
-body{overflow:hidden}
+/* =========================
+   TEMAS
+========================= */
 
-body.light{
-  --bg:#eef2f7;
-  --bar:#ffffff;
-  --card:#ffffff;
-  --text:#172033;
-  --muted:#64748b;
-  --line:#cbd5e1;
+:root{
+    --fundo:#151515;
+    --barra:#1e1e1e;
+    --botao:#303030;
+    --texto:#ffffff;
+    --azul:#00bfff;
+    --pagina:#ffffff;
+    --textoPagina:#222222;
+    --cartao:#f4f4f4;
 }
 
-button,input{
-  font:inherit;
+body.claro{
+    --fundo:#eeeeee;
+    --barra:#f5f5f5;
+    --botao:#dddddd;
+    --texto:#111111;
+    --pagina:#ffffff;
+    --textoPagina:#222222;
+    --cartao:#f1f1f1;
 }
 
-button{
-  cursor:pointer;
+body.verde{
+    --azul:#20d070;
 }
 
-header{
-  background:var(--bar);
-  border-bottom:1px solid var(--line);
+body.roxo{
+    --azul:#a855f7;
 }
+
+body.vermelho{
+    --azul:#ff4444;
+}
+
+/* =========================
+   BROWSER
+========================= */
+
+.browser{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:var(--fundo);
+}
+
+/* =========================
+   ABAS
+========================= */
 
 .tabs{
-  height:42px;
-  display:flex;
-  align-items:end;
-  gap:5px;
-  padding:5px 8px 0;
-  overflow:auto;
+    height:60px;
+    display:flex;
+    align-items:end;
+    padding:0 10px;
+    gap:5px;
+    background:#171717;
+    flex-shrink:0;
 }
 
 .tab{
-  height:37px;
-  min-width:145px;
-  max-width:240px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:0 10px;
-  background:#1e2a40;
-  color:var(--muted);
-  border-radius:9px 9px 0 0;
+    height:44px;
+    min-width:180px;
+    max-width:280px;
+    background:#292929;
+    color:#fff;
+    border-radius:12px 12px 0 0;
+    display:flex;
+    align-items:center;
+    padding:0 13px;
+    cursor:pointer;
+    gap:9px;
+    user-select:none;
 }
 
 .tab.active{
-  background:var(--card);
-  color:var(--text);
+    background:#3c3c3c;
 }
 
 .tab-title{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  flex:1;
+    flex:1;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 
-.tab-close{
-  border:0;
-  background:transparent;
-  color:inherit;
-  font-size:17px;
+.close-tab{
+    font-weight:bold;
+    font-size:17px;
 }
 
-.add-tab{
-  border:0;
-  background:transparent;
-  color:var(--text);
-  font-size:25px;
-  height:35px;
-  padding:0 12px;
+.new-tab{
+    color:#fff;
+    font-size:28px;
+    padding:0 12px 7px;
+    cursor:pointer;
 }
+
+/* =========================
+   TOOLBAR
+========================= */
 
 .toolbar{
-  height:64px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:10px;
-}
-
-.tool{
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:9px;
-  background:var(--card);
-  color:var(--text);
-  font-size:18px;
-}
-
-.address{
-  height:40px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex:1;
-  background:#f8fafc;
-  border-radius:22px;
-  padding:0 5px 0 13px;
-}
-
-.address input{
-  border:0;
-  outline:0;
-  background:transparent;
-  color:#172033;
-  min-width:0;
-  flex:1;
-}
-
-.go{
-  border:0;
-  background:var(--accent);
-  color:white;
-  border-radius:18px;
-  padding:8px 16px;
-}
-
-.page{
-  height:calc(100vh - 106px);
-  overflow:auto;
-}
-
-.home{
-  min-height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:35px 15px;
-  background:radial-gradient(circle at top,#172554,var(--bg) 60%);
-}
-
-.home-content{
-  width:min(850px,95%);
+    height:58px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    background:var(--barra);
+    flex-shrink:0;
 }
 
 .logo{
-  font-size:clamp(42px,8vw,78px);
-  font-weight:900;
-  letter-spacing:-5px;
+    color:var(--azul);
+    font-size:20px;
+    font-weight:bold;
+    white-space:nowrap;
+    margin-right:3px;
 }
 
-.tag{
-  color:var(--muted);
-  font-size:18px;
-  margin:10px 0 30px;
+.toolbar button{
+    border:0;
+    background:var(--botao);
+    color:var(--texto);
+    height:40px;
+    min-width:42px;
+    border-radius:11px;
+    font-size:18px;
+    cursor:pointer;
 }
 
-.search{
-  max-width:700px;
-  margin:auto;
-  display:flex;
-  background:white;
-  border-radius:30px;
-  padding:6px;
-  box-shadow:0 12px 40px #0003;
+.toolbar button:hover{
+    filter:brightness(1.2);
 }
 
-.search input{
-  border:0;
-  outline:0;
-  flex:1;
-  padding:13px 18px;
-  color:#172033;
-  min-width:0;
+.address{
+    flex:1;
+    height:40px;
+    border:none;
+    outline:none;
+    border-radius:22px;
+    background:#303030;
+    color:#fff;
+    padding:0 18px;
+    font-size:15px;
 }
 
-.search button{
-  border:0;
-  background:var(--accent);
-  color:white;
-  border-radius:24px;
-  padding:0 22px;
+.go{
+    padding:0 18px;
 }
 
-.quick{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:22px 0;
+/* =========================
+   PERSONALIZAÇÃO
+========================= */
+
+.custom-box{
+    position:relative;
 }
 
-.quick button{
-  border:1px solid var(--line);
-  background:var(--card);
-  color:var(--text);
-  padding:10px 16px;
-  border-radius:20px;
+.custom-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:48px;
+    width:240px;
+    background:#252525;
+    border-radius:14px;
+    padding:15px;
+    box-shadow:0 10px 35px #0009;
+    z-index:99999;
 }
 
-.info{
-  color:var(--muted);
-  font-size:13px;
+.custom-menu.show{
+    display:block;
 }
 
-.panel{
-  position:fixed;
-  z-index:20;
-  right:10px;
-  top:102px;
-  width:240px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:7px;
-  box-shadow:0 18px 50px #0008;
+.custom-menu h3{
+    margin:0 0 12px;
+    color:#fff;
 }
 
-.panel button{
-  width:100%;
-  padding:12px;
-  border:0;
-  background:transparent;
-  color:var(--text);
-  text-align:left;
-  border-radius:8px;
+.custom-menu button{
+    width:100%;
+    margin:4px 0;
+    height:38px;
+    text-align:left;
+    padding-left:12px;
 }
 
-.panel button:hover{
-  background:#64748b25;
+/* =========================
+   PÁGINAS
+========================= */
+
+.pages{
+    flex:1;
+    position:relative;
+    background:var(--pagina);
+    min-height:0;
 }
 
-.overlay{
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:50;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:15px;
+.page{
+    position:absolute;
+    inset:0;
+    display:none;
+    background:var(--pagina);
+    overflow:hidden;
 }
 
-.modal{
-  width:min(850px,100%);
-  max-height:88vh;
-  overflow:auto;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:20px;
+.page.active{
+    display:block;
 }
 
-.modal-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+/* =========================
+   HOME
+========================= */
+
+.home{
+    width:100%;
+    height:100%;
+    overflow:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:70px;
+    background:var(--pagina);
+    color:var(--textoPagina);
 }
 
-.modal-head h2{
-  margin:0 0 15px;
+.home h1{
+    font-size:46px;
+    margin:10px;
+    color:var(--azul);
 }
 
-.x{
-  border:0;
-  background:none;
-  color:var(--text);
-  font-size:28px;
+.home p{
+    color:#666;
 }
 
-.item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  border-bottom:1px solid var(--line);
-  padding:12px 0;
+.search-box{
+    width:min(720px,85%);
+    height:55px;
+    border:2px solid #ddd;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    padding:5px 8px 5px 20px;
+    margin-top:20px;
+    background:white;
 }
 
-.item a{
-  flex:1;
-  color:#60a5fa;
-  text-decoration:none;
-  overflow:hidden;
-  text-overflow:ellipsis;
+.search-box input{
+    flex:1;
+    height:100%;
+    border:none;
+    outline:none;
+    font-size:18px;
+    color:#222;
 }
 
-.item small{
-  color:var(--muted);
+.search-box button{
+    height:43px;
+    width:43px;
+    border:none;
+    border-radius:50%;
+    background:var(--azul);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
 }
 
-.danger,
-.primary{
-  border:0;
-  border-radius:8px;
-  padding:9px 12px;
-  color:white;
+.shortcuts{
+    display:flex;
+    gap:15px;
+    margin-top:35px;
+    flex-wrap:wrap;
+    justify-content:center;
 }
 
-.danger{
-  background:#dc2626;
+.shortcut{
+    width:140px;
+    padding:18px;
+    border-radius:14px;
+    background:var(--cartao);
+    text-align:center;
+    cursor:pointer;
+    color:#222;
+    font-size:16px;
 }
 
-.primary{
-  background:var(--accent);
+.shortcut:hover{
+    transform:translateY(-2px);
+    background:#ddd;
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
+/* =========================
+   RESULTADOS
+========================= */
+
+.search-page{
+    width:100%;
+    height:100%;
+    overflow:auto;
+    background:white;
+    color:#222;
 }
 
-.setting{
-  padding:15px;
-  border:1px solid var(--line);
-  border-radius:12px;
+.search-header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:white;
+    border-bottom:1px solid #ddd;
+    padding:22px 7%;
 }
 
-.setting label{
-  display:block;
-  margin-bottom:8px;
-  color:var(--muted);
+.search-bar{
+    width:min(800px,100%);
+    height:52px;
+    border:1px solid #ccc;
+    border-radius:28px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    margin:auto;
 }
 
-.setting input[type=color]{
-  width:100%;
-  height:40px;
-  border:0;
+.search-bar input{
+    flex:1;
+    height:100%;
+    border:0;
+    outline:0;
+    padding:0 20px;
+    font-size:17px;
 }
 
-.results{
-  padding:28px max(18px,5vw);
-  max-width:1000px;
-  margin:auto;
+.search-bar button{
+    width:55px;
+    height:100%;
+    border:0;
+    background:var(--azul);
+    color:white;
+    font-size:21px;
+    cursor:pointer;
 }
 
-.results-top{
-  display:flex;
-  gap:10px;
-  margin-bottom:20px;
+.results-container{
+    width:min(900px,88%);
+    margin:0 auto;
+    padding:20px 0 60px;
 }
 
-.results-top input{
-  flex:1;
-  padding:12px 15px;
-  border:1px solid var(--line);
-  border-radius:22px;
-  background:var(--card);
-  color:var(--text);
-  outline:none;
+.results-info{
+    color:#555;
+    padding:5px 0 15px;
+    border-bottom:1px solid #ddd;
 }
 
 .result{
-  padding:18px 0;
-  border-bottom:1px solid var(--line);
+    padding:22px 8px;
+    border-bottom:1px solid #eee;
 }
 
-.result-title{
-  font-size:20px;
-  color:#60a5fa;
-  text-decoration:none;
+.result:hover{
+    background:#fafafa;
+}
+
+.result h2{
+    margin:0 0 7px;
+    font-size:20px;
+    font-weight:500;
+}
+
+.result h2 a{
+    color:#0758c9;
+    text-decoration:none;
+}
+
+.result h2 a:hover{
+    text-decoration:underline;
 }
 
 .result-url{
-  font-size:12px;
-  color:#22c55e;
-  margin:5px 0;
+    color:#16833b;
+    font-size:14px;
+    margin-bottom:7px;
+    word-break:break-all;
 }
 
-.result-text{
-  color:var(--muted);
-  line-height:1.5;
+.result-description{
+    color:#444;
+    line-height:1.5;
 }
 
-.result-actions{
-  margin-top:10px;
-  display:flex;
-  gap:8px;
+.no-results{
+    margin:70px auto;
+    max-width:700px;
+    padding:45px;
+    background:#f4f4f4;
+    border-radius:18px;
+    text-align:center;
 }
 
-.result-actions button{
-  border:1px solid var(--line);
-  background:var(--card);
-  color:var(--text);
-  padding:7px 10px;
-  border-radius:7px;
+.no-results h2{
+    color:#e33;
 }
 
-.site-icon{
-  font-size:28px;
+/* =========================
+   WEBVIEW
+========================= */
+
+.webview-container{
+    position:absolute;
+    inset:0;
+    background:white;
 }
 
-.hidden{
-  display:none!important;
+webview{
+    width:100%;
+    height:100%;
+    border:0;
 }
 
-.ai-box{
-  text-align:center;
-  padding:30px;
+/* =========================
+   LOADING
+========================= */
+
+.loading{
+    padding:45px;
+    text-align:center;
+    color:#555;
+    font-size:18px;
 }
 
-.ai-box h1{
-  font-size:40px;
+/* =========================
+   DARK SEARCH
+========================= */
+
+body:not(.claro) .search-page{
+    background:#fff;
 }
 
-.ai-box p{
-  color:var(--muted);
-}
-
-.ai-button{
-  display:inline-block;
-  padding:13px 22px;
-  border-radius:25px;
-  background:var(--accent);
-  color:white;
-  text-decoration:none;
-}
-
-@media(max-width:650px){
-  .toolbar{
-    gap:4px;
-    padding:7px;
-  }
-
-  .tool{
-    width:34px;
-    height:34px;
-  }
-
-  .address{
-    height:37px;
-  }
-
-  .tab{
-    min-width:125px;
-  }
-
-  .logo{
-    letter-spacing:-3px;
-  }
-
-  .search button{
-    padding:0 15px;
-  }
-}
 </style>
 </head>
 
 <body>
 
-<header>
+<div class="browser">
 
-<div class="tabs" id="tabs"></div>
+    <!-- =====================
+         ABAS
+    ====================== -->
 
-<div class="toolbar">
+    <div class="tabs" id="tabs"></div>
 
-<button class="tool" onclick="goBack()">←</button>
-<button class="tool" onclick="goForward()">→</button>
-<button class="tool" onclick="reloadPage()">↻</button>
-<button class="tool" onclick="goHome()">⌂</button>
 
-<form class="address" onsubmit="navigate(event)">
-<span>🔎</span>
-<input id="address" placeholder="Pesquisar ou escrever um endereço">
-<button class="go">Ir</button>
-</form>
+    <!-- =====================
+         BARRA
+    ====================== -->
 
-<button class="tool" onclick="addFavorite()">☆</button>
-<button class="tool" onclick="toggleMenu()">☰</button>
+    <div class="toolbar">
+
+        <div class="logo">
+            🌐 IternetWorld
+        </div>
+
+        <button onclick="goBack()" title="Voltar">
+            ←
+        </button>
+
+        <button onclick="goForward()" title="Avançar">
+            →
+        </button>
+
+        <button onclick="goHome()" title="Página inicial">
+            🏠
+        </button>
+
+        <button onclick="reloadPage()" title="Atualizar">
+            ↻
+        </button>
+
+        <input
+            id="address"
+            class="address"
+            type="text"
+            placeholder="Pesquisar ou escrever um endereço"
+            onkeydown="addressKey(event)"
+        >
+
+        <button class="go" onclick="goAddress()">
+            Ir
+        </button>
+
+        <div class="custom-box">
+
+            <button
+                onclick="toggleCustomization()"
+                title="Personalizar"
+            >
+                🎨
+            </button>
+
+            <div
+                class="custom-menu"
+                id="customMenu"
+            >
+
+                <h3>🎨 Personalizar</h3>
+
+                <button onclick="setTheme('escuro')">
+                    🌙 Modo escuro
+                </button>
+
+                <button onclick="setTheme('claro')">
+                    ☀️ Modo claro
+                </button>
+
+                <button onclick="setTheme('azul')">
+                    🔵 Azul
+                </button>
+
+                <button onclick="setTheme('verde')">
+                    🟢 Verde
+                </button>
+
+                <button onclick="setTheme('roxo')">
+                    🟣 Roxo
+                </button>
+
+                <button onclick="setTheme('vermelho')">
+                    🔴 Vermelho
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         PÁGINAS
+    ====================== -->
+
+    <div
+        class="pages"
+        id="pages"
+    ></div>
 
 </div>
 
-</header>
-
-<div id="menu" class="panel hidden">
-
-<button onclick="showAI()">🤖 IternetWorld AI</button>
-<button onclick="showFavorites()">⭐ Favoritos</button>
-<button onclick="showHistory()">🕘 Histórico</button>
-<button onclick="showDownloads()">📥 Downloads</button>
-<button onclick="showSettings()">⚙️ Configurações</button>
-<button onclick="toggleTheme()">🌙 Modo escuro/claro</button>
-
-</div>
-
-<main class="page" id="page"></main>
-
-<div id="overlay" class="overlay hidden">
-
-<div class="modal">
-
-<div class="modal-head">
-
-<h2 id="modalTitle"></h2>
-
-<button class="x" onclick="closeModal()">×</button>
-
-</div>
-
-<div id="modalBody"></div>
-
-</div>
-
-</div>
 
 <script>
 
-let tabs=[];
-let active=0;
+/* ==================================================
+   IPC ELECTRON
+================================================== */
 
-let favorites=
-JSON.parse(localStorage.getItem("iw_favorites")||"[]");
+const { ipcRenderer } = require("electron");
 
-let visits=
-JSON.parse(localStorage.getItem("iw_history")||"[]");
 
-let downloads=
-JSON.parse(localStorage.getItem("iw_downloads")||"[]");
+/* ==================================================
+   VARIÁVEIS
+================================================== */
 
-let settings=
-JSON.parse(
-localStorage.getItem("iw_settings")
-||'{"accent":"#2563eb"}'
+let tabs = [];
+let activeTab = null;
+let tabCounter = 0;
+
+
+/* ==================================================
+   CRIAR ABA
+================================================== */
+
+function createTab(title = "Nova aba", url = "") {
+
+    tabCounter++;
+
+    const id = "tab-" + tabCounter;
+
+    const tab = {
+
+        id,
+
+        title,
+
+        url,
+
+        history: [],
+
+        historyIndex: -1
+
+    };
+
+    tabs.push(tab);
+
+    activeTab = id;
+
+    renderTabs();
+    renderPages();
+
+    updateAddress();
+
+    if (url) {
+
+        loadUrl(url, true);
+
+    }
+
+}
+
+
+/* ==================================================
+   OBTER ABA ATIVA
+================================================== */
+
+function getActiveTab() {
+
+    return tabs.find(
+        tab => tab.id === activeTab
+    );
+
+}
+
+
+/* ==================================================
+   ABAS
+================================================== */
+
+function renderTabs() {
+
+    const tabsElement =
+        document.getElementById("tabs");
+
+    tabsElement.innerHTML = "";
+
+    tabs.forEach(tab => {
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "tab " +
+            (tab.id === activeTab
+                ? "active"
+                : "");
+
+        div.innerHTML = `
+            <span>🌐</span>
+            <span class="tab-title">
+                ${escapeHtml(tab.title)}
+            </span>
+            <span
+                class="close-tab"
+                onclick="closeTab(event,'${tab.id}')"
+            >
+                ×
+            </span>
+        `;
+
+        div.onclick = function(event) {
+
+            if (
+                !event.target.classList.contains(
+                    "close-tab"
+                )
+            ) {
+
+                activateTab(tab.id);
+
+            }
+
+        };
+
+        tabsElement.appendChild(div);
+
+    });
+
+
+    const plus =
+        document.createElement("div");
+
+    plus.className = "new-tab";
+
+    plus.textContent = "+";
+
+    plus.title = "Nova aba";
+
+    plus.onclick = () => createTab();
+
+    tabsElement.appendChild(plus);
+
+}
+
+
+/* ==================================================
+   PÁGINAS
+================================================== */
+
+function renderPages() {
+
+    const pages =
+        document.getElementById("pages");
+
+    pages.innerHTML = "";
+
+    tabs.forEach(tab => {
+
+        const page =
+            document.createElement("div");
+
+        page.className =
+            "page " +
+            (tab.id === activeTab
+                ? "active"
+                : "");
+
+        page.id =
+            "page-" + tab.id;
+
+        page.innerHTML = createHomeHTML(tab.id);
+
+        pages.appendChild(page);
+
+    });
+
+}
+
+
+/* ==================================================
+   HOME HTML
+================================================== */
+
+function createHomeHTML(id) {
+
+    return `
+
+        <div class="home">
+
+            <h1>🌐 IternetWorld</h1>
+
+            <p>
+                Pesquise na Internet com o DuckDuckGo
+            </p>
+
+            <div class="search-box">
+
+                <input
+                    id="search-${id}"
+                    type="text"
+                    placeholder="Pesquisar na Internet..."
+                    onkeydown="searchKey(event)"
+                >
+
+                <button
+                    onclick="searchFromHome()"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+
+            <div class="shortcuts">
+
+                <div
+                    class="shortcut"
+                    onclick="searchText('YouTube')"
+                >
+                    ▶️<br>
+                    YouTube
+                </div>
+
+                <div
+                    class="shortcut"
+                    onclick="searchText('Minecraft')"
+                >
+                    ⛏️<br>
+                    Minecraft
+                </div>
+
+                <div
+                    class="shortcut"
+                    onclick="searchText('Google')"
+                >
+                    🔎<br>
+                    Google
+                </div>
+
+                <div
+                    class="shortcut"
+                    onclick="searchText('Notícias')"
+                >
+                    📰<br>
+                    Notícias
+                </div>
+
+            </div>
+
+
+            <a
+                class="download-app"
+                href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld%20Setup%201.0.0.exe"
+                target="_blank"
+                rel="noopener"
+            >
+                ⬇️ Download IternetWorld para Windows
+            </a>
+
+            <div class="download-info">
+                Versão 1.0.0 · Windows
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ==================================================
+   ATIVAR ABA
+================================================== */
+
+function activateTab(id) {
+
+    activeTab = id;
+
+    renderTabs();
+
+    renderPages();
+
+    updateAddress();
+
+    const tab = getActiveTab();
+
+    if (tab && tab.url) {
+
+        showCurrentTab();
+
+    }
+
+    setTimeout(() => {
+
+        const input =
+            document.getElementById(
+                "search-" + id
+            );
+
+        if (input) {
+
+            input.focus();
+
+        }
+
+    }, 50);
+
+}
+
+
+/* ==================================================
+   FECHAR ABA
+================================================== */
+
+function closeTab(event, id) {
+
+    event.stopPropagation();
+
+    const index =
+        tabs.findIndex(
+            tab => tab.id === id
+        );
+
+    tabs =
+        tabs.filter(
+            tab => tab.id !== id
+        );
+
+    if (tabs.length === 0) {
+
+        createTab();
+
+        return;
+
+    }
+
+    if (activeTab === id) {
+
+        const newIndex =
+            Math.max(
+                0,
+                index - 1
+            );
+
+        activeTab =
+            tabs[newIndex].id;
+
+    }
+
+    renderTabs();
+    renderPages();
+
+    updateAddress();
+
+}
+
+
+/* ==================================================
+   PESQUISA
+================================================== */
+
+function searchKey(event) {
+
+    if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        searchText(
+            event.target.value
+        );
+
+    }
+
+}
+
+
+function searchFromHome() {
+
+    const input =
+        document.getElementById(
+            "search-" + activeTab
+        );
+
+    if (input) {
+
+        searchText(input.value);
+
+    }
+
+}
+
+
+async function searchText(text) {
+
+    text = String(text).trim();
+
+    if (!text) return;
+
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.title =
+        "DuckDuckGo: " + text;
+
+    tab.url =
+        "https://duckduckgo.com/?q=" +
+        encodeURIComponent(text);
+
+    tab.history =
+        tab.history.slice(
+            0,
+            tab.historyIndex + 1
+        );
+
+    tab.history.push(tab.url);
+
+    tab.historyIndex++;
+
+
+    renderTabs();
+
+    updateAddress();
+
+
+    await showDuckResults(text);
+
+}
+
+
+/* ==================================================
+   MOSTRAR RESULTADOS DUCKDUCKGO
+================================================== */
+
+async function showDuckResults(text) {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    const page =
+        document.getElementById(
+            "page-" + tab.id
+        );
+
+    if (!page) return;
+
+
+    page.innerHTML = `
+
+        <div class="search-page">
+
+            <div class="search-header">
+
+                <div class="search-bar">
+
+                    <input
+                        id="result-search"
+                        value="${escapeAttribute(text)}"
+                        onkeydown="resultSearchKey(event)"
+                    >
+
+                    <button
+                        onclick="searchResultPage()"
+                    >
+                        🔍
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="results-container"
+                id="results-container"
+            >
+
+                <div class="loading">
+                    🔎 A pesquisar no DuckDuckGo...
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+
+    try {
+
+        const resposta =
+            await ipcRenderer.invoke(
+                "pesquisar-internet",
+                text
+            );
+
+
+        console.log(
+            "Resposta do main.js:",
+            resposta
+        );
+
+
+        if (
+            resposta &&
+            resposta.sucesso &&
+            Array.isArray(resposta.resultados) &&
+            resposta.resultados.length > 0
+        ) {
+
+            renderResults(
+                resposta.resultados
+            );
+
+        } else {
+
+            /*
+              Se o parser do main.js não
+              encontrar resultados, usamos
+              o próprio DuckDuckGo dentro
+              da aba.
+            */
+
+            showDuckWebview(text);
+
+        }
+
+    } catch (erro) {
+
+        console.error(
+            "Erro IPC:",
+            erro
+        );
+
+        showDuckWebview(text);
+
+    }
+
+}
+
+
+/* ==================================================
+   RESULTADOS
+================================================== */
+
+function renderResults(resultados) {
+
+    const container =
+        document.getElementById(
+            "results-container"
+        );
+
+    if (!container) return;
+
+
+    container.innerHTML = `
+
+        <div class="results-info">
+            🦆 Resultados pesquisados pelo
+            <strong>DuckDuckGo</strong>
+        </div>
+
+    `;
+
+
+    resultados.forEach(resultado => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "result";
+
+
+        const titulo =
+            escapeHtml(
+                resultado.titulo ||
+                "Resultado"
+            );
+
+        const url =
+            escapeAttribute(
+                resultado.url || ""
+            );
+
+        const descricao =
+            escapeHtml(
+                resultado.descricao ||
+                "Sem descrição disponível."
+            );
+
+
+        div.innerHTML = `
+
+            <h2>
+
+                <a
+                    href="#"
+                    onclick="openResult(event, '${url}')"
+                >
+                    ${titulo}
+                </a>
+
+            </h2>
+
+            <div class="result-url">
+                ${escapeHtml(
+                    resultado.url || ""
+                )}
+            </div>
+
+            <div class="result-description">
+                ${descricao}
+            </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* ==================================================
+   ABRIR RESULTADO DENTRO DA ABA
+================================================== */
+
+function openResult(event, url) {
+
+    event.preventDefault();
+
+    if (!url) return;
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.url = url;
+
+    tab.title =
+        getTitleFromUrl(url);
+
+
+    tab.history =
+        tab.history.slice(
+            0,
+            tab.historyIndex + 1
+        );
+
+    tab.history.push(url);
+
+    tab.historyIndex++;
+
+
+    renderTabs();
+
+    updateAddress();
+
+
+    showWebview(url);
+
+}
+
+
+/* ==================================================
+   WEBVIEW
+================================================== */
+
+function showWebview(url) {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    const page =
+        document.getElementById(
+            "page-" + tab.id
+        );
+
+    if (!page) return;
+
+
+    page.innerHTML = `
+
+        <div class="webview-container">
+
+            <webview
+                id="webview-${tab.id}"
+                src="${escapeAttribute(url)}"
+                allowpopups
+                partition="persist:internetworld"
+            ></webview>
+
+        </div>
+
+    `;
+
+
+    const webview =
+        document.getElementById(
+            "webview-" + tab.id
+        );
+
+
+    if (webview) {
+
+        webview.addEventListener(
+            "did-navigate",
+            () => {
+
+                try {
+
+                    const atual =
+                        webview.getURL();
+
+                    if (atual) {
+
+                        tab.url = atual;
+
+                        document
+                            .getElementById(
+                                "address"
+                            )
+                            .value = atual;
+
+                    }
+
+                } catch(e) {}
+
+            }
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   FALLBACK DUCKDUCKGO
+================================================== */
+
+function showDuckWebview(text) {
+
+    const url =
+        "https://html.duckduckgo.com/html/?q=" +
+        encodeURIComponent(text);
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.url =
+        "https://duckduckgo.com/?q=" +
+        encodeURIComponent(text);
+
+
+    tab.title =
+        "DuckDuckGo: " + text;
+
+
+    renderTabs();
+
+    updateAddress();
+
+
+    showWebview(url);
+
+}
+
+
+/* ==================================================
+   PESQUISA DENTRO DOS RESULTADOS
+================================================== */
+
+function resultSearchKey(event) {
+
+    if (event.key === "Enter") {
+
+        searchResultPage();
+
+    }
+
+}
+
+
+function searchResultPage() {
+
+    const input =
+        document.getElementById(
+            "result-search"
+        );
+
+    if (input) {
+
+        searchText(
+            input.value
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   ENDEREÇO
+================================================== */
+
+function addressKey(event) {
+
+    if (event.key === "Enter") {
+
+        goAddress();
+
+    }
+
+}
+
+
+function goAddress() {
+
+    const input =
+        document.getElementById(
+            "address"
+        );
+
+    let value =
+        input.value.trim();
+
+    if (!value) return;
+
+
+    /*
+       URL completa
+    */
+
+    if (
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+    ) {
+
+        const tab =
+            getActiveTab();
+
+        tab.url = value;
+
+        tab.title =
+            getTitleFromUrl(value);
+
+        tab.history =
+            tab.history.slice(
+                0,
+                tab.historyIndex + 1
+            );
+
+        tab.history.push(value);
+
+        tab.historyIndex++;
+
+
+        renderTabs();
+
+        showWebview(value);
+
+        return;
+
+    }
+
+
+    /*
+       YouTube
+    */
+
+    if (
+        value.toLowerCase() ===
+        "youtube"
+        ||
+        value.toLowerCase() ===
+        "youtube.com"
+    ) {
+
+        goAddressUrl(
+            "https://www.youtube.com/"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Caso contrário pesquisa
+    */
+
+    searchText(value);
+
+}
+
+
+/* ==================================================
+   ABRIR URL
+================================================== */
+
+function goAddressUrl(url) {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.url = url;
+
+    tab.title =
+        getTitleFromUrl(url);
+
+
+    tab.history =
+        tab.history.slice(
+            0,
+            tab.historyIndex + 1
+        );
+
+    tab.history.push(url);
+
+    tab.historyIndex++;
+
+
+    renderTabs();
+
+    updateAddress();
+
+    showWebview(url);
+
+}
+
+
+/* ==================================================
+   LOAD URL
+================================================== */
+
+function loadUrl(url, addHistory = true) {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.url = url;
+
+    tab.title =
+        getTitleFromUrl(url);
+
+
+    if (addHistory) {
+
+        tab.history =
+            tab.history.slice(
+                0,
+                tab.historyIndex + 1
+            );
+
+        tab.history.push(url);
+
+        tab.historyIndex++;
+
+    }
+
+
+    renderTabs();
+
+    updateAddress();
+
+
+    if (
+        url.includes(
+            "duckduckgo.com"
+        )
+    ) {
+
+        const pesquisa =
+            getSearchFromUrl(url);
+
+        if (pesquisa) {
+
+            showDuckResults(
+                pesquisa
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    showWebview(url);
+
+}
+
+
+/* ==================================================
+   MOSTRAR ABA ATUAL
+================================================== */
+
+function showCurrentTab() {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    if (
+        tab.url &&
+        tab.url.includes(
+            "duckduckgo.com"
+        )
+    ) {
+
+        const pesquisa =
+            getSearchFromUrl(
+                tab.url
+            );
+
+        if (pesquisa) {
+
+            showDuckResults(
+                pesquisa
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (tab.url) {
+
+        showWebview(
+            tab.url
+        );
+
+    } else {
+
+        renderPages();
+
+    }
+
+}
+
+
+/* ==================================================
+   EXTRAIR PESQUISA DO URL
+================================================== */
+
+function getSearchFromUrl(url) {
+
+    try {
+
+        const u =
+            new URL(url);
+
+        return (
+            u.searchParams.get("q") ||
+            ""
+        );
+
+    } catch {
+
+        return "";
+
+    }
+
+}
+
+
+/* ==================================================
+   HOME
+================================================== */
+
+function goHome() {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    tab.url = "";
+
+    tab.title =
+        "Nova aba";
+
+
+    renderTabs();
+
+    renderPages();
+
+    updateAddress();
+
+}
+
+
+/* ==================================================
+   VOLTAR
+================================================== */
+
+function goBack() {
+
+    const tab =
+        getActiveTab();
+
+    if (
+        !tab ||
+        tab.historyIndex <= 0
+    ) return;
+
+
+    tab.historyIndex--;
+
+    const url =
+        tab.history[
+            tab.historyIndex
+        ];
+
+
+    tab.url = url;
+
+    tab.title =
+        getTitleFromUrl(url);
+
+
+    renderTabs();
+
+    updateAddress();
+
+    showCurrentTab();
+
+}
+
+
+/* ==================================================
+   AVANÇAR
+================================================== */
+
+function goForward() {
+
+    const tab =
+        getActiveTab();
+
+    if (
+        !tab ||
+        tab.historyIndex >=
+        tab.history.length - 1
+    ) return;
+
+
+    tab.historyIndex++;
+
+    const url =
+        tab.history[
+            tab.historyIndex
+        ];
+
+
+    tab.url = url;
+
+    tab.title =
+        getTitleFromUrl(url);
+
+
+    renderTabs();
+
+    updateAddress();
+
+    showCurrentTab();
+
+}
+
+
+/* ==================================================
+   ATUALIZAR
+================================================== */
+
+function reloadPage() {
+
+    const tab =
+        getActiveTab();
+
+    if (!tab) return;
+
+
+    if (
+        tab.url &&
+        tab.url.includes(
+            "duckduckgo.com"
+        )
+    ) {
+
+        const pesquisa =
+            getSearchFromUrl(
+                tab.url
+            );
+
+        if (pesquisa) {
+
+            showDuckResults(
+                pesquisa
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    if (tab.url) {
+
+        showWebview(
+            tab.url
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   ATUALIZAR BARRA
+================================================== */
+
+function updateAddress() {
+
+    const input =
+        document.getElementById(
+            "address"
+        );
+
+    const tab =
+        getActiveTab();
+
+    if (!input) return;
+
+    input.value =
+        tab && tab.url
+            ? tab.url
+            : "IternetWorld://";
+
+}
+
+
+/* ==================================================
+   PERSONALIZAÇÃO
+================================================== */
+
+function toggleCustomization() {
+
+    document
+        .getElementById(
+            "customMenu"
+        )
+        .classList.toggle(
+            "show"
+        );
+
+}
+
+
+function setTheme(theme) {
+
+    document.body.classList.remove(
+        "claro",
+        "verde",
+        "roxo",
+        "vermelho"
+    );
+
+
+    if (theme === "claro") {
+
+        document.body.classList.add(
+            "claro"
+        );
+
+    }
+
+
+    if (theme === "verde") {
+
+        document.body.classList.add(
+            "verde"
+        );
+
+    }
+
+
+    if (theme === "roxo") {
+
+        document.body.classList.add(
+            "roxo"
+        );
+
+    }
+
+
+    if (theme === "vermelho") {
+
+        document.body.classList.add(
+            "vermelho"
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "IternetWorldTheme",
+        theme
+    );
+
+}
+
+
+/* ==================================================
+   FECHAR MENU
+================================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const box =
+            document.querySelector(
+                ".custom-box"
+            );
+
+        if (
+            box &&
+            !box.contains(
+                event.target
+            )
+        ) {
+
+            document
+                .getElementById(
+                    "customMenu"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+        }
+
+    }
 );
 
-const sites=[
 
-{
-name:"YouTube",
-keys:["youtube","youtube.com"],
-url:"https://www.youtube.com/",
-desc:"Vídeos, música, transmissões e entretenimento."
-},
+/* ==================================================
+   CTRL + L
+================================================== */
 
-{
-name:"Google",
-keys:["google","google.com"],
-url:"https://www.google.com/",
-desc:"Motor de pesquisa e serviços da Google."
-},
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-{
-name:"GitHub",
-keys:["github","github.com"],
-url:"https://github.com/",
-desc:"Plataforma para código e projetos."
-},
+        if (
+            event.ctrlKey &&
+            event.key.toLowerCase() === "l"
+        ) {
 
-{
-name:"Facebook",
-keys:["facebook","facebook.com"],
-url:"https://www.facebook.com/",
-desc:"Rede social."
-},
+            event.preventDefault();
 
-{
-name:"Instagram",
-keys:["instagram","instagram.com"],
-url:"https://www.instagram.com/",
-desc:"Fotos, vídeos e mensagens."
-},
+            const address =
+                document.getElementById(
+                    "address"
+                );
 
-{
-name:"TikTok",
-keys:["tiktok","tiktok.com"],
-url:"https://www.tiktok.com/",
-desc:"Vídeos curtos."
-},
+            address.focus();
 
-{
-name:"Wikipedia",
-keys:["wikipedia","wikipedia.org"],
-url:"https://pt.wikipedia.org/",
-desc:"Enciclopédia livre."
-},
+            address.select();
 
-{
-name:"Twitch",
-keys:["twitch","twitch.tv"],
-url:"https://www.twitch.tv/",
-desc:"Transmissões ao vivo."
-}
+        }
 
-];
-
-function save(){
-
-localStorage.setItem(
-"iw_favorites",
-JSON.stringify(favorites)
+    }
 );
 
-localStorage.setItem(
-"iw_history",
-JSON.stringify(visits)
+
+/* ==================================================
+   SEGURANÇA
+================================================== */
+
+function escapeHtml(text) {
+
+    return String(text)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+function escapeAttribute(text) {
+
+    return escapeHtml(text);
+
+}
+
+
+/* ==================================================
+   TÍTULO
+================================================== */
+
+function getTitleFromUrl(url) {
+
+    try {
+
+        const u =
+            new URL(url);
+
+        if (
+            u.hostname.includes(
+                "duckduckgo"
+            )
+        ) {
+
+            return "DuckDuckGo";
+
+        }
+
+
+        if (
+            u.hostname.includes(
+                "youtube"
+            )
+        ) {
+
+            return "YouTube";
+
+        }
+
+
+        return u.hostname.replace(
+            "www.",
+            ""
+        );
+
+    } catch {
+
+        return "Nova aba";
+
+    }
+
+}
+
+
+/* ==================================================
+   TEMA GUARDADO
+================================================== */
+
+const savedTheme =
+    localStorage.getItem(
+        "IternetWorldTheme"
+    );
+
+
+if (savedTheme) {
+
+    setTheme(
+        savedTheme
+    );
+
+}
+
+
+/* ==================================================
+   INICIAR
+================================================== */
+
+createTab(
+    "Nova aba"
 );
-
-localStorage.setItem(
-"iw_downloads",
-JSON.stringify(downloads)
-);
-
-localStorage.setItem(
-"iw_settings",
-JSON.stringify(settings)
-);
-
-}
-
-function esc(s){
-
-return String(s??"").replace(
-/[&<>"']/g,
-c=>({
-"&":"&amp;",
-"<":"&lt;",
-">":"&gt;",
-'"':"&quot;",
-"'":"&#039;"
-}[c])
-);
-
-}
-
-function setAccent(){
-
-document.documentElement.style.setProperty(
-"--accent",
-settings.accent||"#2563eb"
-);
-
-}
-
-function isURL(v){
-
-return /^https?:\/\//i.test(v)
-||
-/^[\w.-]+\.[a-z]{2,}(\/.*)?$/i.test(v.trim());
-
-}
-
-function makeURL(v){
-
-v=v.trim();
-
-if(/^https?:\/\//i.test(v))
-return v;
-
-if(/^[\w.-]+\.[a-z]{2,}(\/.*)?$/i.test(v))
-return "https://"+v;
-
-return "";
-
-}
-
-function createTab(){
-
-tabs.push({
-title:"Nova aba",
-url:""
-});
-
-active=tabs.length-1;
-
-renderTabs();
-
-goHome();
-
-}
-
-function renderTabs(){
-
-let c=document.getElementById("tabs");
-
-c.innerHTML="";
-
-tabs.forEach((t,i)=>{
-
-let d=document.createElement("div");
-
-d.className=
-"tab "+(i===active?"active":"");
-
-d.innerHTML=`
-
-<span class="tab-title">
-${esc(t.title)}
-</span>
-
-<button class="tab-close">×</button>
-`;
-
-d.onclick=e=>{
-
-if(e.target.classList.contains("tab-close")){
-
-closeTab(i);
-
-}else{
-
-active=i;
-renderTabs();
-showTab();
-
-}
-
-};
-
-c.appendChild(d);
-
-});
-
-let b=document.createElement("button");
-
-b.className="add-tab";
-
-b.textContent="+";
-
-b.onclick=createTab;
-
-c.appendChild(b);
-
-}
-
-function closeTab(i){
-
-tabs.splice(i,1);
-
-if(!tabs.length){
-
-createTab();
-return;
-
-}
-
-if(active>=tabs.length)
-active=tabs.length-1;
-
-renderTabs();
-
-showTab();
-
-}
-
-function showTab(){
-
-let t=tabs[active];
-
-if(!t)
-return;
-
-if(t.url&&t.url.startsWith("search:")){
-
-searchWeb(
-t.url.slice(7),
-false
-);
-
-}else if(t.url){
-
-document.getElementById("address").value=t.url;
-
-}else{
-
-goHome();
-
-}
-
-}
-
-function navigate(e){
-
-e.preventDefault();
-
-let v=
-document.getElementById("address")
-.value.trim();
-
-if(!v)
-return;
-
-if(isURL(v)){
-
-openSite(makeURL(v));
-
-}else{
-
-searchWeb(v);
-
-}
-
-}
-
-function homeSearch(e){
-
-e.preventDefault();
-
-let v=
-document.getElementById("homeInput")
-.value.trim();
-
-if(v)
-searchWeb(v);
-
-}
-
-function openSite(url,record=true){
-
-let host;
-
-try{
-
-host=
-new URL(url)
-.hostname
-.replace(/^www\./,"");
-
-}catch{
-
-host="Página";
-
-}
-
-let t=tabs[active];
-
-if(!t)
-return;
-
-t.url=url;
-t.title=host||"Página";
-
-document.getElementById("address").value=url;
-
-renderTabs();
-
-if(record){
-
-visits.unshift({
-
-title:t.title,
-
-url:url,
-
-time:Date.now()
-
-});
-
-visits=
-visits.slice(0,300);
-
-save();
-
-}
-
-/*
-
-IMPORTANTE:
-
-No usamos window.open().
-
-O site fica dentro da aba do IternetWorld.
-
-Alguns sites, como YouTube, podem bloquear
-iframe por segurança. Nesse caso mostramos
-uma mensagem.
-
-*/
-
-document.getElementById("page").innerHTML=`
-
-<div style="
-height:100%;
-display:flex;
-flex-direction:column;
-background:white;
-">
-
-<div style="
-padding:10px 15px;
-background:#f1f5f9;
-border-bottom:1px solid #cbd5e1;
-color:#172033;
-">
-
-🌐 ${esc(host)}
-
-</div>
-
-<iframe
-src="${esc(url)}"
-style="
-border:0;
-width:100%;
-flex:1;
-background:white;
-"
-allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
-></iframe>
-
-</div>
-
-`;
-
-}
-
-function goHome(){
-
-let t=tabs[active];
-
-if(t){
-
-t.url="";
-t.title="Nova aba";
-
-}
-
-document.getElementById("address").value="";
-
-renderTabs();
-
-document.getElementById("page").innerHTML=`
-
-<section class="home">
-
-<div class="home-content">
-
-<div class="logo">
-IternetWorld
-</div>
-
-<div class="tag">
-Pesquisa e navegação num só lugar.
-</div>
-
-<form
-class="search"
-onsubmit="homeSearch(event)"
->
-
-<input
-id="homeInput"
-placeholder="Pesquisar qualquer coisa..."
-autofocus
->
-
-<button>
-Pesquisar
-</button>
-
-</form>
-
-<div class="quick">
-
-<button onclick="searchWeb('YouTube')">
-▶️ YouTube
-</button>
-
-<button onclick="searchWeb('Google')">
-Google
-</button>
-
-<button onclick="searchWeb('GitHub')">
-GitHub
-</button>
-
-<button onclick="searchWeb('Minecraft')">
-Minecraft
-</button>
-
-<button onclick="showAI()">
-🤖 IternetWorld AI
-</button>
-
-</div>
-
-<div class="info">
-
-O IternetWorld tem abas, favoritos,
-histórico, modo escuro e muito mais.
-
-</div>
-
-</div>
-
-</section>
-
-`;
-
-}
-
-function searchWeb(query,record=true){
-
-query=query.trim();
-
-let t=tabs[active];
-
-if(t){
-
-t.url="search:"+query;
-t.title=query;
-
-}
-
-document.getElementById("address").value=query;
-
-renderTabs();
-
-let q=query.toLowerCase();
-
-let known=
-sites.find(
-s=>s.keys.some(
-k=>q===k||q.includes(k)
-)
-);
-
-if(known){
-
-renderKnownResults(
-query,
-known
-);
-
-if(record){
-
-visits.unshift({
-
-title:"Pesquisa: "+query,
-
-url:"search:"+query,
-
-time:Date.now()
-
-});
-
-visits=
-visits.slice(0,300);
-
-save();
-
-}
-
-return;
-
-}
-
-document.getElementById("page").innerHTML=`
-
-<div class="results">
-
-<div class="results-top">
-
-<input
-id="resultsInput"
-value="${esc(query)}"
-onkeydown="
-if(event.key==='Enter')
-searchFromResults()
-"
->
-
-<button
-class="primary"
-onclick="searchFromResults()"
->
-
-Pesquisar
-
-</button>
-
-</div>
-
-<div class="result">
-
-<div class="site-icon">
-🔎
-</div>
-
-<h2>
-Pesquisa: ${esc(query)}
-</h2>
-
-<p class="result-text">
-
-Não encontrámos um site conhecido.
-Podes escrever diretamente um endereço,
-por exemplo:
-
-<b>youtube.com</b>
-
-</p>
-
-</div>
-
-</div>
-
-`;
-
-}
-
-function renderKnownResults(query,s){
-
-document.getElementById("page").innerHTML=`
-
-<div class="results">
-
-<div class="results-top">
-
-<input
-id="resultsInput"
-value="${esc(query)}"
-onkeydown="
-if(event.key==='Enter')
-searchFromResults()
-"
->
-
-<button
-class="primary"
-onclick="searchFromResults()"
->
-
-Pesquisar
-
-</button>
-
-</div>
-
-<article class="result">
-
-<div class="site-icon">
-🌐
-</div>
-
-<a
-class="result-title"
-href="#"
-onclick="
-openSite('${s.url}');
-return false;
-"
->
-
-${esc(s.name)}
-
-</a>
-
-<div class="result-url">
-${esc(s.url)}
-</div>
-
-<div class="result-text">
-
-${esc(s.desc)}
-
-</div>
-
-<div class="result-actions">
-
-<button
-onclick="openSite('${s.url}')"
->
-
-Abrir ${esc(s.name)}
-
-</button>
-
-<button
-onclick="
-saveResult(
-'${encodeURIComponent(s.name)}',
-'${encodeURIComponent(s.url)}'
-)
-"
->
-
-⭐ Favorito
-
-</button>
-
-</div>
-
-</article>
-
-</div>
-
-`;
-
-}
-
-function searchFromResults(){
-
-let q=
-document.getElementById("resultsInput")
-.value.trim();
-
-if(q)
-searchWeb(q);
-
-}
-
-function saveResult(title,url){
-
-title=decodeURIComponent(title);
-
-url=decodeURIComponent(url);
-
-if(!favorites.some(x=>x.url===url)){
-
-favorites.unshift({
-title,
-url
-});
-
-save();
-
-alert("⭐ Adicionado aos favoritos!");
-
-}else{
-
-alert("Já está nos favoritos.");
-
-}
-
-}
-
-function addFavorite(){
-
-let t=tabs[active];
-
-if(!t?.url||
-t.url.startsWith("search:")){
-
-alert(
-"Abre um site primeiro."
-);
-
-return;
-
-}
-
-if(
-favorites.some(
-x=>x.url===t.url
-)
-){
-
-alert(
-"Já está nos favoritos."
-);
-
-return;
-
-}
-
-favorites.unshift({
-
-title:t.title,
-
-url:t.url
-
-});
-
-save();
-
-alert(
-"⭐ Adicionado aos favoritos!"
-);
-
-}
-
-function toggleMenu(){
-
-document
-.getElementById("menu")
-.classList.toggle("hidden");
-
-}
-
-function toggleTheme(){
-
-document.body
-.classList.toggle("light");
-
-localStorage.setItem(
-"iw_theme",
-document.body.classList.contains("light")
-?"light"
-:"dark"
-);
-
-toggleMenu();
-
-}
-
-function openModal(title,body){
-
-document.getElementById("modalTitle")
-.textContent=title;
-
-document.getElementById("modalBody")
-.innerHTML=body;
-
-document.getElementById("overlay")
-.classList.remove("hidden");
-
-}
-
-function closeModal(){
-
-document.getElementById("overlay")
-.classList.add("hidden");
-
-}
-
-function showAI(){
-
-toggleMenu();
-
-openModal(
-
-"IternetWorld AI",
-
-`
-
-<div class="ai-box">
-
-<h1>🤖</h1>
-
-<h2>
-IternetWorld AI
-</h2>
-
-<p>
-Usa a IA para fazer perguntas,
-aprender, criar ideias e muito mais.
-</p>
-
-<a
-class="ai-button"
-href="https://chatgpt.com/"
-target="_blank"
-rel="noopener noreferrer"
->
-
-Abrir IternetWorld AI
-
-</a>
-
-</div>
-
-`
-
-);
-
-}
-
-function showFavorites(){
-
-toggleMenu();
-
-let h=
-
-favorites.length
-
-?
-
-favorites.map(
-(x,i)=>`
-
-<div class="item">
-
-<a
-href="#"
-onclick="
-openSite('${esc(x.url)}');
-closeModal();
-return false;
-"
->
-
-⭐ ${esc(x.title)}
-
-</a>
-
-<button
-class="danger"
-onclick="
-favorites.splice(${i},1);
-save();
-showFavorites();
-"
->
-
-×
-
-</button>
-
-</div>
-
-`
-).join("")
-
-:
-
-"<div class='empty'>Nenhum favorito ainda.</div>";
-
-openModal(
-"Favoritos",
-h
-);
-
-}
-
-function showHistory(){
-
-toggleMenu();
-
-let h=
-
-visits.length
-
-?
-
-`
-
-<button
-class="danger"
-onclick="
-visits=[];
-save();
-showHistory();
-"
->
-
-Limpar histórico
-
-</button>
-
-`
-
-+
-
-visits.map(
-(x,i)=>`
-
-<div class="item">
-
-<a
-href="#"
-onclick="
-openSite('${esc(x.url)}');
-closeModal();
-return false;
-"
->
-
-${esc(x.title)}
-
-</a>
-
-<small>
-${new Date(x.time).toLocaleString()}
-</small>
-
-</div>
-
-`
-).join("")
-
-:
-
-"<div class='empty'>Nenhum histórico.</div>";
-
-openModal(
-"Histórico",
-h
-);
-
-}
-
-function showDownloads(){
-
-toggleMenu();
-
-let h=
-
-downloads.length
-
-?
-
-downloads.map(
-x=>`
-
-<div class="item">
-
-📄
-
-${esc(x.name)}
-
-</div>
-
-`
-).join("")
-
-:
-
-"<div class='empty'>Nenhum download.</div>";
-
-openModal(
-"Downloads",
-h
-);
-
-}
-
-function showSettings(){
-
-toggleMenu();
-
-openModal(
-
-"Configurações",
-
-`
-
-<div class="grid">
-
-<div class="setting">
-
-<label>
-Nome do navegador
-</label>
-
-<b>
-IternetWorld
-</b>
-
-</div>
-
-<div class="setting">
-
-<label>
-Cor principal
-</label>
-
-<input
-type="color"
-value="${esc(settings.accent)}"
-onchange="
-settings.accent=this.value;
-setAccent();
-save();
-"
->
-
-</div>
-
-<div class="setting">
-
-<label>
-Tema
-</label>
-
-<button
-class="primary"
-onclick="
-toggleTheme();
-closeModal();
-"
->
-
-Alternar tema
-
-</button>
-
-</div>
-
-<div class="setting">
-
-<label>
-Dados
-</label>
-
-<button
-class="danger"
-onclick="
-favorites=[];
-visits=[];
-save();
-closeModal();
-"
->
-
-Apagar favoritos e histórico
-
-</button>
-
-</div>
-
-</div>
-
-`
-
-);
-
-}
-
-function goBack(){
-
-history.back();
-
-}
-
-function goForward(){
-
-history.forward();
-
-}
-
-function reloadPage(){
-
-location.reload();
-
-}
-
-if(
-localStorage.getItem("iw_theme")
-==="light"
-){
-
-document.body.classList.add("light");
-
-}
-
-setAccent();
-
-createTab();
 
 </script>
 

@@ -438,7 +438,8 @@ body.vermelho{
     background:white;
 }
 
-webview{
+webview,
+.webview-container iframe{
     width:100%;
     height:100%;
     border:0;
@@ -580,7 +581,7 @@ body:not(.claro) .search-page{
    IPC ELECTRON
 ================================================== */
 
-const { ipcRenderer } = require("electron");
+// GitHub Pages: código web, sem Electron.
 
 
 /* ==================================================
@@ -821,7 +822,6 @@ function createHomeHTML(id) {
 
             </div>
 
-
             <a
                 class="download-app"
                 href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld%20Setup%201.0.0.exe"
@@ -1011,110 +1011,47 @@ async function searchText(text) {
 
 async function showDuckResults(text) {
 
-    const tab =
-        getActiveTab();
-
+    const tab = getActiveTab();
     if (!tab) return;
 
-
-    const page =
-        document.getElementById(
-            "page-" + tab.id
-        );
-
+    const page = document.getElementById("page-" + tab.id);
     if (!page) return;
 
+    const q = encodeURIComponent(text);
 
     page.innerHTML = `
-
         <div class="search-page">
-
             <div class="search-header">
-
                 <div class="search-bar">
-
                     <input
                         id="result-search"
                         value="${escapeAttribute(text)}"
                         onkeydown="resultSearchKey(event)"
                     >
+                    <button onclick="searchResultPage()">🔍</button>
+                </div>
+            </div>
 
-                    <button
-                        onclick="searchResultPage()"
+            <div class="results-container">
+                <div class="web-search-card">
+                    <div class="web-search-icon">🦆</div>
+                    <h2>Pesquisar no DuckDuckGo</h2>
+                    <p>
+                        Os resultados do DuckDuckGo não podem ser incorporados
+                        diretamente nesta página do GitHub Pages.
+                    </p>
+                    <a
+                        class="duck-button"
+                        href="https://duckduckgo.com/?q=${q}"
+                        target="_blank"
+                        rel="noopener"
                     >
-                        🔍
-                    </button>
-
+                        🔎 Abrir resultados no DuckDuckGo
+                    </a>
                 </div>
-
             </div>
-
-
-            <div
-                class="results-container"
-                id="results-container"
-            >
-
-                <div class="loading">
-                    🔎 A pesquisar no DuckDuckGo...
-                </div>
-
-            </div>
-
         </div>
     `;
-
-
-    try {
-
-        const resposta =
-            await ipcRenderer.invoke(
-                "pesquisar-internet",
-                text
-            );
-
-
-        console.log(
-            "Resposta do main.js:",
-            resposta
-        );
-
-
-        if (
-            resposta &&
-            resposta.sucesso &&
-            Array.isArray(resposta.resultados) &&
-            resposta.resultados.length > 0
-        ) {
-
-            renderResults(
-                resposta.resultados
-            );
-
-        } else {
-
-            /*
-              Se o parser do main.js não
-              encontrar resultados, usamos
-              o próprio DuckDuckGo dentro
-              da aba.
-            */
-
-            showDuckWebview(text);
-
-        }
-
-    } catch (erro) {
-
-        console.error(
-            "Erro IPC:",
-            erro
-        );
-
-        showDuckWebview(text);
-
-    }
-
 }
 
 
@@ -1250,72 +1187,21 @@ function openResult(event, url) {
 
 function showWebview(url) {
 
-    const tab =
-        getActiveTab();
-
+    const tab = getActiveTab();
     if (!tab) return;
 
-
-    const page =
-        document.getElementById(
-            "page-" + tab.id
-        );
-
+    const page = document.getElementById("page-" + tab.id);
     if (!page) return;
 
-
     page.innerHTML = `
-
         <div class="webview-container">
-
-            <webview
-                id="webview-${tab.id}"
+            <iframe
                 src="${escapeAttribute(url)}"
-                allowpopups
-                partition="persist:internetworld"
-            ></webview>
-
+                title="IternetWorld"
+                allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
+            ></iframe>
         </div>
-
     `;
-
-
-    const webview =
-        document.getElementById(
-            "webview-" + tab.id
-        );
-
-
-    if (webview) {
-
-        webview.addEventListener(
-            "did-navigate",
-            () => {
-
-                try {
-
-                    const atual =
-                        webview.getURL();
-
-                    if (atual) {
-
-                        tab.url = atual;
-
-                        document
-                            .getElementById(
-                                "address"
-                            )
-                            .value = atual;
-
-                    }
-
-                } catch(e) {}
-
-            }
-        );
-
-    }
-
 }
 
 
@@ -1324,33 +1210,7 @@ function showWebview(url) {
 ================================================== */
 
 function showDuckWebview(text) {
-
-    const url =
-        "https://html.duckduckgo.com/html/?q=" +
-        encodeURIComponent(text);
-
-    const tab =
-        getActiveTab();
-
-    if (!tab) return;
-
-
-    tab.url =
-        "https://duckduckgo.com/?q=" +
-        encodeURIComponent(text);
-
-
-    tab.title =
-        "DuckDuckGo: " + text;
-
-
-    renderTabs();
-
-    updateAddress();
-
-
-    showWebview(url);
-
+    showDuckResults(text);
 }
 
 

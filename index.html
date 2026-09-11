@@ -1,441 +1,1234 @@
-
 <!doctype html>
+
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>IternetWorld</title>
 
 <style>
 *{
-  box-sizing:border-box;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 :root{
-  --bg:#0b1120;
-  --bar:#111a2b;
-  --card:#182338;
-  --text:#f8fafc;
-  --muted:#94a3b8;
-  --line:#2c3a52;
-  --accent:#2563eb;
+    --bg:#0b1120;
+    --bar:#111a2b;
+    --card:#182338;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --line:#2c3a52;
+    --accent:#2563eb;
 }
 
 body.light{
-  --bg:#eef2f7;
-  --bar:#ffffff;
-  --card:#ffffff;
-  --text:#172033;
-  --muted:#64748b;
-  --line:#cbd5e1;
+    --bg:#eef2f7;
+    --bar:#ffffff;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --line:#cbd5e1;
 }
 
-html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
-  font-family:Arial,Segoe UI,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    height:100vh;
+    overflow:hidden;
 }
 
-button,
-input{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-#app{
-  width:100%;
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-}
-
-/* TABS */
-
+/* ABAS */
 #tabs{
-  height:46px;
-  background:var(--bar);
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:5px;
-  padding:5px 7px;
-  overflow-x:auto;
+    height:42px;
+    background:var(--bar);
+    display:flex;
+    align-items:flex-end;
+    padding:6px 8px 0;
+    gap:5px;
+    border-bottom:1px solid var(--line);
 }
 
 .tab{
-  height:36px;
-  min-width:145px;
-  max-width:220px;
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:0 8px 0 12px;
-  border-radius:9px;
-  color:var(--muted);
-  background:transparent;
-  border:1px solid transparent;
-}
-
-.tab:hover{
-  background:var(--card);
-  color:var(--text);
+    height:36px;
+    min-width:150px;
+    max-width:230px;
+    padding:0 12px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-bottom:none;
+    border-radius:9px 9px 0 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    cursor:pointer;
+    color:var(--muted);
 }
 
 .tab.active{
-  background:var(--card);
-  color:var(--text);
-  border-color:var(--line);
+    background:var(--bg);
+    color:var(--text);
 }
 
-.tabTitle{
-  flex:1;
-  overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  text-align:left;
+.tab-title{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 
-.tabClose{
-  width:25px;
-  height:25px;
-  border:0;
-  border-radius:6px;
-  background:transparent;
-  color:var(--muted);
+.tab-close{
+    margin-left:10px;
+    font-size:16px;
+    opacity:.7;
 }
 
-.tabClose:hover{
-  background:rgba(127,127,127,.2);
-  color:var(--text);
+.tab-close:hover{
+    opacity:1;
 }
 
-.newTab{
-  width:36px;
-  height:36px;
-  flex:none;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:var(--card);
-  color:var(--text);
-  font-size:20px;
+.new-tab{
+    width:36px;
+    height:34px;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    font-size:24px;
+    cursor:pointer;
 }
 
 /* BARRA */
-
-#toolbar{
-  height:58px;
-  flex:none;
-  background:var(--bar);
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  gap:7px;
-  padding:8px 10px;
-}
-
-.logo{
-  font-size:17px;
-  font-weight:bold;
-  margin:0 6px 0 4px;
-  white-space:nowrap;
-}
-
-.logo b{
-  color:var(--accent);
+.toolbar{
+    height:58px;
+    background:var(--bar);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 10px;
 }
 
 .tool{
-  width:36px;
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:var(--card);
-  color:var(--text);
+    width:38px;
+    height:38px;
+    border:0;
+    border-radius:8px;
+    background:transparent;
+    color:var(--text);
+    font-size:18px;
+    cursor:pointer;
 }
 
 .tool:hover{
-  border-color:var(--accent);
+    background:var(--card);
 }
 
-#addressForm{
-  flex:1;
-  min-width:100px;
-  display:flex;
-  gap:6px;
+.address-wrap{
+    flex:1;
+    display:flex;
+    align-items:center;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:9px;
+    overflow:hidden;
 }
 
-#address{
-  width:100%;
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:var(--card);
-  color:var(--text);
-  outline:none;
-  padding:0 13px;
+.address-wrap input{
+    flex:1;
+    height:40px;
+    border:0;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    padding:0 14px;
+    font-size:14px;
 }
 
-#address:focus{
-  border-color:var(--accent);
+.address-wrap button{
+    height:40px;
+    border:0;
+    background:var(--accent);
+    color:white;
+    padding:0 18px;
+    cursor:pointer;
 }
 
-.go{
-  height:36px;
-  border:0;
-  border-radius:9px;
-  padding:0 15px;
-  background:var(--accent);
-  color:white;
-  font-weight:bold;
-}
-
-#loginButton{
-  height:36px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:var(--card);
-  color:var(--text);
-  padding:0 12px;
-  white-space:nowrap;
+.logo-small{
+    font-weight:bold;
+    color:var(--accent);
+    margin-right:5px;
 }
 
 /* PÁGINA */
-
 #page{
-  flex:1;
-  overflow:auto;
-  background:var(--bg);
+    height:calc(100vh - 100px);
+    overflow:auto;
+    background:var(--bg);
 }
 
-/* HOME */
-
+/* INÍCIO */
 .home{
-  min-height:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:30px 15px;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
 }
 
-.homeLogo{
-  font-size:64px;
-  font-weight:900;
-  letter-spacing:-3px;
-  margin-bottom:5px;
+.home-logo{
+    font-size:58px;
+    font-weight:800;
+    letter-spacing:-3px;
+    color:var(--text);
 }
 
-.homeLogo b{
-  color:var(--accent);
+.home-logo span{
+    color:var(--accent);
 }
 
-.homeText{
-  color:var(--muted);
-  margin-bottom:25px;
+.home-subtitle{
+    color:var(--muted);
+    margin-top:8px;
+    margin-bottom:28px;
+    font-size:16px;
 }
 
-.homeSearch{
-  width:min(700px,95%);
-  display:flex;
-  gap:7px;
+.search-box{
+    width:min(700px,90%);
+    height:54px;
+    display:flex;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
-.homeSearch input{
-  flex:1;
-  height:48px;
-  border:1px solid var(--line);
-  border-radius:12px;
-  background:var(--card);
-  color:var(--text);
-  padding:0 15px;
-  outline:none;
+.search-box input{
+    flex:1;
+    border:0;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    padding:0 18px;
+    font-size:16px;
 }
 
-.homeSearch input:focus{
-  border-color:var(--accent);
-}
-
-.homeSearch button{
-  height:48px;
-  border:0;
-  border-radius:12px;
-  background:var(--accent);
-  color:white;
-  padding:0 22px;
-  font-weight:bold;
+.search-box button{
+    border:0;
+    background:var(--accent);
+    color:#fff;
+    padding:0 25px;
+    cursor:pointer;
+    font-size:15px;
 }
 
 .quick{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:8px;
-  max-width:750px;
-  margin-top:20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:25px;
 }
 
-.quick button,
-.quick a{
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:var(--card);
-  color:var(--text);
-  padding:10px 14px;
-  text-decoration:none;
+.quick button{
+    background:var(--card);
+    border:1px solid var(--line);
+    color:var(--text);
+    border-radius:9px;
+    padding:10px 16px;
+    cursor:pointer;
 }
 
-.quick button:hover,
-.quick a:hover{
-  border-color:var(--accent);
+.quick button:hover{
+    border-color:var(--accent);
 }
 
-.homeInfo{
-  margin-top:20px;
-  color:var(--muted);
-  font-size:13px;
-  text-align:center;
+.info{
+    margin-top:30px;
+    color:var(--muted);
+    font-size:13px;
+}
+
+/* RESULTADOS */
+.results{
+    max-width:900px;
+    margin:auto;
+    padding:35px 20px;
+}
+
+.results h2{
+    margin-bottom:20px;
+}
+
+.result{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:17px;
+    margin-bottom:12px;
+}
+
+.result a{
+    color:#60a5fa;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.result p{
+    color:var(--muted);
+    margin-top:7px;
+    line-height:1.5;
 }
 
 /* SITE */
-
-.site{
-  height:100%;
-  display:flex;
-  flex-direction:column;
+.site-page{
+    height:100%;
+    display:flex;
+    flex-direction:column;
 }
 
-.siteHeader{
-  height:40px;
-  flex:none;
-  background:var(--card);
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  padding:0 12px;
-  color:var(--muted);
-  font-size:13px;
+.site-head{
+    height:42px;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 14px;
+    color:var(--muted);
+    font-size:13px;
 }
 
-.siteHeader strong{
-  color:var(--text);
-  margin-right:8px;
-}
-
-.frame{
-  width:100%;
-  flex:1;
-  border:0;
-  background:white;
+.site-frame{
+    width:100%;
+    flex:1;
+    border:0;
+    background:white;
 }
 
 /* MENU */
-
 #menu{
-  display:none;
-  position:fixed;
-  z-index:100;
-  right:10px;
-  top:108px;
-  width:270px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:7px;
-  box-shadow:0 20px 50px rgba(0,0,0,.4);
+    position:fixed;
+    top:105px;
+    right:12px;
+    width:260px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    padding:8px;
+    z-index:50;
+    display:none;
 }
 
-.menuButton{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:var(--text);
-  padding:12px;
-  text-align:left;
-  border-radius:8px;
+#menu.show{
+    display:block;
 }
 
-.menuButton:hover{
-  background:var(--bar);
+.menu-item{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    text-align:left;
+    padding:12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.menu-item:hover{
+    background:var(--bg);
 }
 
 /* MODAL */
-
 #overlay{
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:200;
-  background:rgba(0,0,0,.65);
-  align-items:center;
-  justify-content:center;
-  padding:15px;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+}
+
+#overlay.show{
+    display:flex;
 }
 
 .modal{
-  width:min(500px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:20px;
+    width:min(500px,92%);
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px;
 }
 
 .modal h2{
-  margin-top:0;
+    margin-bottom:15px;
+}
+
+.modal-close{
+    float:right;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    font-size:22px;
+    cursor:pointer;
 }
 
 .modal input{
-  width:100%;
-  height:42px;
-  margin:5px 0;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--bg);
-  color:var(--text);
-  padding:0 11px;
-  outline:none;
+    width:100%;
+    height:43px;
+    margin-top:9px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--bg);
+    color:var(--text);
+    padding:0 12px;
+    outline:none;
 }
 
-.modalButton{
-  height:40px;
-  border:0;
-  border-radius:8px;
-  background:var(--accent);
-  color:white;
-  padding:0 15px;
-  font-weight:bold;
-  margin-top:8px;
+.modal button.main{
+    width:100%;
+    height:43px;
+    margin-top:14px;
+    border:0;
+    border-radius:8px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
 }
 
-.closeButton{
-  height:40px;
-  border:1px solid var(--line);
-  border-radius:8px;
-  background:var(--card);
-  color:var(--text);
-  padding:0 15px;
-  margin-top:8px;
+/* LISTAS */
+.list{
+    max-height:400px;
+    overflow:auto;
 }
 
-.row{
-  padding:10px 0;
-  border-bottom:1px solid var(--line);
+.list-item{
+    padding:12px;
+    border-bottom:1px solid var(--line);
 }
 
-.small{
-  color:var(--muted);
-  font-size:12px;
-  word-break:break-all;
+.list-item strong{
+    display:block;
 }
 
+.list-item small{
+    color:var(--muted);
+}
+
+/* DOWNLOAD */
+.download-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:25px;
+    text-align:center;
+    max-width:600px;
+    margin:50px auto;
+}
+
+.download-button{
+    display:inline-block;
+    margin-top:18px;
+    background:var(--accent);
+    color:white;
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:8px;
+}
+
+/* MOBILE */
 @media(max-width:700px){
+    .tab{
+        min-width:110px;
+    }
+
+    .home-logo{
+        font-size:42px;
+    }
+
+    .toolbar{
+        gap:3px;
+    }
+
+    .tool{
+        width:32px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="tabs"></div>
+
+<div class="toolbar">
+    <button class="tool" onclick="goBack()" title="Voltar">←</button>
+    <button class="tool" onclick="goForward()" title="Avançar">→</button>
+    <button class="tool" onclick="reloadPage()" title="Recarregar">↻</button>
+    <button class="tool" onclick="goHome()" title="Início">⌂</button>
+
 ```
+<div class="address-wrap">
+    <span class="logo-small">IW</span>
+    <form style="display:flex;flex:1" onsubmit="navigate(event)">
+        <input id="address" placeholder="Pesquisar ou escrever um endereço">
+        <button type="submit">Ir</button>
+    </form>
+</div>
+
+<button class="tool" onclick="addFavorite()" title="Favoritos">★</button>
+<button class="tool" onclick="toggleMenu()" title="Menu">☰</button>
+```
+
+</div>
+
+<div id="page"></div>
+
+<div id="menu">
+
+```
+<button class="menu-item" onclick="openAI()">
+    🤖 IternetWorld AI
+</button>
+
+<button class="menu-item" onclick="showFavorites()">
+    ★ Favoritos
+</button>
+
+<button class="menu-item" onclick="showHistory()">
+    🕘 Histórico
+</button>
+
+<button class="menu-item" onclick="showDownloads()">
+    ↓ Downloads
+</button>
+
+<button class="menu-item" onclick="showSettings()">
+    ⚙ Configurações
+</button>
+
+<button class="menu-item" onclick="toggleTheme()">
+    ☀️ / 🌙 Modo claro / escuro
+</button>
+```
+
+</div>
+
+<div id="overlay">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<script>
+let tabs=[];
+let active=0;
+
+const FAVORITES="iw_favorites";
+const HISTORY="iw_history";
+const DOWNLOADS="iw_downloads";
+const SETTINGS="iw_settings";
+
+let favorites=JSON.parse(localStorage.getItem(FAVORITES)||"[]");
+let history=JSON.parse(localStorage.getItem(HISTORY)||"[]");
+let downloads=JSON.parse(localStorage.getItem(DOWNLOADS)||"[]");
+let settings=JSON.parse(
+    localStorage.getItem(SETTINGS) ||
+    '{"accent":"#2563eb"}'
+);
+
+function save(){
+    localStorage.setItem(FAVORITES,JSON.stringify(favorites));
+    localStorage.setItem(HISTORY,JSON.stringify(history.slice(0,300)));
+    localStorage.setItem(DOWNLOADS,JSON.stringify(downloads));
+    localStorage.setItem(SETTINGS,JSON.stringify(settings));
+}
+
+function esc(text){
+    return String(text).replace(/[&<>"']/g,function(c){
+        return {
+            "&":"&amp;",
+            "<":"&lt;",
+            ">":"&gt;",
+            '"':"&quot;",
+            "'":"&#039;"
+        }[c];
+    });
+}
+
+function setAccent(){
+    document.documentElement.style.setProperty(
+        "--accent",
+        settings.accent || "#2563eb"
+    );
+}
+
+setAccent();
+
+function createTab(){
+    tabs.push({
+        title:"Nova aba",
+        url:""
+    });
+
+    active=tabs.length-1;
+
+    renderTabs();
+    goHome();
+}
+
+function renderTabs(){
+
+    const box=document.getElementById("tabs");
+
+    box.innerHTML="";
+
+    tabs.forEach((tab,i)=>{
+
+        const el=document.createElement("div");
+
+        el.className="tab"+(i===active?" active":"");
+
+        el.onclick=()=>showTab(i);
+
+        el.innerHTML=`
+            <span class="tab-title">
+                ${esc(tab.title)}
+            </span>
+            <span class="tab-close"
+                  onclick="event.stopPropagation();closeTab(${i})">
+                ×
+            </span>
+        `;
+
+        box.appendChild(el);
+    });
+
+    const plus=document.createElement("button");
+
+    plus.className="new-tab";
+    plus.textContent="+";
+    plus.onclick=createTab;
+
+    box.appendChild(plus);
+}
+
+function showTab(i){
+
+    if(!tabs[i]) return;
+
+    active=i;
+
+    renderTabs();
+
+    if(tabs[i].url.startsWith("search:")){
+        searchWeb(
+            tabs[i].url.substring(7),
+            false
+        );
+        return;
+    }
+
+    if(tabs[i].url){
+        document.getElementById("address").value=tabs[i].url;
+        openSite(tabs[i].url,false);
+    }else{
+        goHome();
+    }
+}
+
+function closeTab(i){
+
+    tabs.splice(i,1);
+
+    if(tabs.length===0){
+        createTab();
+        return;
+    }
+
+    if(active>=tabs.length){
+        active=tabs.length-1;
+    }
+
+    renderTabs();
+    showTab(active);
+}
+
+function isURL(v){
+
+    return /^https?:\/\//i.test(v) ||
+           /^[a-z0-9.-]+\.[a-z]{2,}/i.test(v);
+}
+
+function makeURL(v){
+
+    if(/^https?:\/\//i.test(v)){
+        return v;
+    }
+
+    return "https://"+v;
+}
+
+function navigate(event){
+
+    event.preventDefault();
+
+    const input=document.getElementById("address");
+
+    const value=input.value.trim();
+
+    if(!value) return;
+
+    if(isURL(value)){
+        openSite(makeURL(value));
+    }else{
+        searchWeb(value);
+    }
+}
+
+const knownSites=[
+
+    {
+        key:"youtube",
+        title:"YouTube",
+        url:"https://www.youtube.com/"
+    },
+
+    {
+        key:"youtube.com",
+        title:"YouTube",
+        url:"https://www.youtube.com/"
+    },
+
+    {
+        key:"google",
+        title:"Google",
+        url:"https://www.google.com/"
+    },
+
+    {
+        key:"github",
+        title:"GitHub",
+        url:"https://github.com/"
+    },
+
+    {
+        key:"facebook",
+        title:"Facebook",
+        url:"https://www.facebook.com/"
+    },
+
+    {
+        key:"instagram",
+        title:"Instagram",
+        url:"https://www.instagram.com/"
+    },
+
+    {
+        key:"tiktok",
+        title:"TikTok",
+        url:"https://www.tiktok.com/"
+    },
+
+    {
+        key:"wikipedia",
+        title:"Wikipedia",
+        url:"https://pt.wikipedia.org/"
+    },
+
+    {
+        key:"twitch",
+        title:"Twitch",
+        url:"https://www.twitch.tv/"
+    }
+];
+
+function searchWeb(query,record=true){
+
+    query=query.trim();
+
+    if(!query) return;
+
+    tabs[active].url="search:"+query;
+    tabs[active].title=query;
+
+    document.getElementById("address").value=query;
+
+    renderTabs();
+
+    for(const site of knownSites){
+
+        if(query.toLowerCase().includes(site.key)){
+
+            openSite(site.url,record);
+
+            return;
+        }
+    }
+
+    if(record){
+
+        history.unshift({
+            title:query,
+            url:"search:"+query,
+            time:new Date().toLocaleString("pt-PT")
+        });
+
+        save();
+    }
+
+    document.getElementById("page").innerHTML=`
+
+        <div class="results">
+
+            <h2>Resultados para "${esc(query)}"</h2>
+
+            <div class="result">
+
+                <a href="https://html.duckduckgo.com/?q=${encodeURIComponent(query)}"
+                   target="_blank">
+                    Pesquisar "${esc(query)}" na Internet
+                </a>
+
+                <p>
+                    A pesquisa será aberta através do DuckDuckGo.
+                </p>
+
+            </div>
+
+            <div class="result">
+
+                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}"
+                   target="_blank">
+                    Pesquisar no Google
+                </a>
+
+                <p>
+                    Abrir resultados do Google para esta pesquisa.
+                </p>
+
+            </div>
+
+        </div>
+    `;
+}
+
+function goHome(){
+
+    tabs[active].url="";
+    tabs[active].title="Nova aba";
+
+    document.getElementById("address").value="";
+
+    renderTabs();
+
+    document.getElementById("page").innerHTML=`
+
+        <div class="home">
+
+            <div class="home-logo">
+                Iternet<span>World</span>
+            </div>
+
+            <div class="home-subtitle">
+                Pesquisa e navegação num só lugar.
+            </div>
+
+            <form class="search-box"
+                  onsubmit="homeSearch(event)">
+
+                <input id="homeInput"
+                       autocomplete="off"
+                       placeholder="Pesquisar ou escrever um endereço">
+
+                <button type="submit">
+                    Pesquisar
+                </button>
+
+            </form>
+
+            <div class="quick">
+
+                <button onclick="openSite('https://www.youtube.com/')">
+                    ▶ YouTube
+                </button>
+
+                <button onclick="openSite('https://www.google.com/')">
+                    Google
+                </button>
+
+                <button onclick="openSite('https://github.com/')">
+                    GitHub
+                </button>
+
+                <button onclick="openSite('https://www.minecraft.net/')">
+                    Minecraft
+                </button>
+
+                <button onclick="openAI()">
+                    🤖 IternetWorld AI
+                </button>
+
+            </div>
+
+            <div class="info">
+                O IternetWorld tem abas, favoritos, histórico,
+                modo escuro e muito mais.
+            </div>
+
+        </div>
+    `;
+}
+
+function homeSearch(event){
+
+    event.preventDefault();
+
+    const value=document.getElementById("homeInput").value.trim();
+
+    if(!value) return;
+
+    if(isURL(value)){
+        openSite(makeURL(value));
+    }else{
+        searchWeb(value);
+    }
+}
+
+function openSite(url,record=true){
+
+    try{
+
+        const parsed=new URL(url);
+
+        const host=parsed.hostname.replace(/^www\./,"");
+
+        tabs[active].title=host;
+        tabs[active].url=url;
+
+        document.getElementById("address").value=url;
+
+        if(record){
+
+            history.unshift({
+                title:host,
+                url:url,
+                time:new Date().toLocaleString("pt-PT")
+            });
+
+            history=history.slice(0,300);
+
+            save();
+        }
+
+        renderTabs();
+
+        document.getElementById("page").innerHTML=`
+
+            <div class="site-page">
+
+                <div class="site-head">
+                    🌐 ${esc(host)}
+                </div>
+
+                <iframe
+                    class="site-frame"
+                    src="${esc(url)}"
+                    allow="fullscreen; autoplay; encrypted-media; picture-in-picture">
+                </iframe>
+
+            </div>
+        `;
+
+    }catch(e){
+
+        searchWeb(url);
+    }
+}
+
+function goBack(){
+
+    try{
+        const frame=document.querySelector(".site-frame");
+
+        if(frame && frame.contentWindow){
+            frame.contentWindow.history.back();
+        }
+    }catch(e){}
+}
+
+function goForward(){
+
+    try{
+        const frame=document.querySelector(".site-frame");
+
+        if(frame && frame.contentWindow){
+            frame.contentWindow.history.forward();
+        }
+    }catch(e){}
+}
+
+function reloadPage(){
+
+    const frame=document.querySelector(".site-frame");
+
+    if(frame){
+        frame.src=frame.src;
+    }else{
+        showTab(active);
+    }
+}
+
+function addFavorite(){
+
+    const tab=tabs[active];
+
+    if(!tab.url){
+        alert("Abra primeiro um site.");
+        return;
+    }
+
+    if(!favorites.some(x=>x.url===tab.url)){
+
+        favorites.unshift({
+            title:tab.title,
+            url:tab.url
+        });
+
+        save();
+
+        alert("Adicionado aos favoritos.");
+    }else{
+        alert("Este site já está nos favoritos.");
+    }
+}
+
+function toggleMenu(){
+
+    document.getElementById("menu")
+        .classList.toggle("show");
+}
+
+function closeMenu(){
+
+    document.getElementById("menu")
+        .classList.remove("show");
+}
+
+function openModal(html){
+
+    closeMenu();
+
+    document.getElementById("modalContent").innerHTML=html;
+
+    document.getElementById("overlay")
+        .classList.add("show");
+}
+
+function closeModal(){
+
+    document.getElementById("overlay")
+        .classList.remove("show");
+}
+
+function showFavorites(){
+
+    let html=`
+        <h2>★ Favoritos</h2>
+        <div class="list">
+    `;
+
+    if(!favorites.length){
+
+        html+=`
+            <p style="color:var(--muted)">
+                Ainda não tens favoritos.
+            </p>
+        `;
+
+    }else{
+
+        favorites.forEach((item,i)=>{
+
+            html+=`
+                <div class="list-item">
+
+                    <strong>
+                        <a href="#"
+                           style="color:#60a5fa"
+                           onclick="event.preventDefault();closeModal();openSite('${esc(item.url)}')">
+                            ${esc(item.title)}
+                        </a>
+                    </strong>
+
+                    <small>${esc(item.url)}</small>
+
+                </div>
+            `;
+        });
+    }
+
+    html+=`</div>`;
+
+    openModal(html);
+}
+
+function showHistory(){
+
+    let html=`
+        <h2>🕘 Histórico</h2>
+        <div class="list">
+    `;
+
+    if(!history.length){
+
+        html+=`
+            <p style="color:var(--muted)">
+                O histórico está vazio.
+            </p>
+        `;
+
+    }else{
+
+        history.forEach(item=>{
+
+            html+=`
+                <div class="list-item">
+
+                    <strong>
+                        ${esc(item.title)}
+                    </strong>
+
+                    <small>
+                        ${esc(item.url)}<br>
+                        ${esc(item.time)}
+                    </small>
+
+                </div>
+            `;
+        });
+    }
+
+    html+=`</div>`;
+
+    openModal(html);
+}
+
+function showDownloads(){
+
+    openModal(`
+        <h2>↓ Downloads</h2>
+
+        <div class="download-box">
+
+            <p>
+                Baixa a versão Windows do IternetWorld.
+            </p>
+
+            <a class="download-button"
+               href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe">
+                ⬇ Download IternetWorld
+            </a>
+
+        </div>
+    `);
+}
+
+function showSettings(){
+
+    openModal(`
+
+        <h2>⚙ Configurações</h2>
+
+        <p style="color:var(--muted);margin-bottom:15px">
+            Personaliza o IternetWorld.
+        </p>
+
+        <label>
+            Cor principal
+        </label>
+
+        <input
+            type="color"
+            value="${esc(settings.accent)}"
+            onchange="changeAccent(this.value)"
+            style="height:50px;padding:3px;cursor:pointer"
+        >
+
+        <button class="main"
+                onclick="toggleTheme();closeModal()">
+            ☀️ / 🌙 Alterar tema
+        </button>
+
+    `);
+}
+
+function changeAccent(color){
+
+    settings.accent=color;
+
+    setAccent();
+
+    save();
+}
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light");
+
+    localStorage.setItem(
+        "iw_theme",
+        document.body.classList.contains("light")
+            ? "light"
+            : "dark"
+    );
+}
+
+if(localStorage.getItem("iw_theme")==="light"){
+    document.body.classList.add("light");
+}
+
+function openAI(){
+
+    closeMenu();
+
+    tabs[active].title="IternetWorld AI";
+    tabs[active].url="ai:";
+
+    renderTabs();
+
+    document.getElementById("page").innerHTML=`
+
+        <div class="home">
+
+            <div class="home-logo">
+                Iternet<span>World AI</span>
+            </div>
+
+            <div class="home-subtitle">
+                O assistente do IternetWorld.
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    id="aiInput"
+                    placeholder="Escreve uma pergunta..."
+                    onkeydown="if(event.key==='Enter')askAI()">
+
+                <button onclick="askAI()">
+                    Perguntar
+                </button>
+
+            </div>
+
+            <div id="aiAnswer"
+                 s

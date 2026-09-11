@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>IternetWorld</title>
 
 <style>
@@ -21,8 +22,8 @@
 
 body.light{
   --bg:#eef3f9;
-  --bar:#ffffff;
-  --card:#ffffff;
+  --bar:#fff;
+  --card:#fff;
   --card2:#f4f7fb;
   --text:#172033;
   --muted:#64748b;
@@ -51,27 +52,27 @@ button{cursor:pointer}
 /* ABAS */
 
 #tabs{
-  height:50px;
-  background:var(--bar);
+  height:52px;
   display:flex;
   align-items:center;
   gap:6px;
   padding:6px 8px;
+  background:var(--bar);
   border-bottom:1px solid var(--line);
   overflow-x:auto;
 }
 
 .tab{
-  height:37px;
-  min-width:150px;
+  height:39px;
+  min-width:145px;
   max-width:240px;
-  padding:0 9px 0 14px;
-  border:1px solid transparent;
-  border-radius:12px;
-  background:transparent;
   display:flex;
   align-items:center;
-  gap:9px;
+  gap:8px;
+  padding:0 8px 0 14px;
+  border:1px solid transparent;
+  border-radius:13px;
+  background:transparent;
   color:var(--muted);
   transition:.2s;
 }
@@ -85,14 +86,15 @@ button{cursor:pointer}
   color:var(--text);
   background:linear-gradient(135deg,var(--card2),var(--card));
   border-color:var(--line);
-  box-shadow:0 0 18px rgba(37,99,235,.15);
+  box-shadow:0 0 20px rgba(37,99,235,.18);
 }
 
 .tab-title{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
   flex:1;
+  min-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
   text-align:left;
 }
 
@@ -105,38 +107,38 @@ button{cursor:pointer}
 }
 
 .tab-close:hover{
-  background:rgba(127,127,127,.18);
+  background:rgba(127,127,127,.2);
   color:var(--text);
 }
 
 .newtab{
   flex:0 0 auto;
-  width:38px;
-  height:37px;
+  width:40px;
+  height:39px;
   border:1px solid var(--line);
-  border-radius:11px;
+  border-radius:12px;
   background:var(--card);
   color:var(--text);
-  font-size:21px;
+  font-size:22px;
 }
 
 /* BARRA */
 
 #toolbar{
-  height:59px;
-  background:var(--bar);
+  height:60px;
   display:flex;
   align-items:center;
   gap:8px;
   padding:8px 12px;
+  background:var(--bar);
   border-bottom:1px solid var(--line);
 }
 
 .logo-mini{
-  font-weight:800;
   font-size:17px;
-  margin-right:4px;
+  font-weight:900;
   white-space:nowrap;
+  margin-right:4px;
 }
 
 .logo-mini span{
@@ -144,12 +146,12 @@ button{cursor:pointer}
 }
 
 .tool{
-  width:36px;
-  height:36px;
+  width:37px;
+  height:37px;
   border:1px solid var(--line);
+  border-radius:10px;
   background:var(--card);
   color:var(--text);
-  border-radius:10px;
 }
 
 .tool:hover{
@@ -158,20 +160,20 @@ button{cursor:pointer}
 
 #addressForm{
   flex:1;
+  min-width:100px;
   display:flex;
   gap:7px;
-  min-width:100px;
 }
 
 #addressInput{
   width:100%;
-  height:38px;
+  height:39px;
+  padding:0 15px;
   border:1px solid var(--line);
+  border-radius:12px;
   outline:0;
   background:var(--card);
   color:var(--text);
-  border-radius:12px;
-  padding:0 15px;
 }
 
 #addressInput:focus{
@@ -180,22 +182,22 @@ button{cursor:pointer}
 }
 
 .goBtn{
-  height:38px;
+  height:39px;
+  padding:0 18px;
   border:0;
   border-radius:11px;
   background:var(--accent);
-  color:white;
-  padding:0 17px;
-  font-weight:700;
+  color:#fff;
+  font-weight:800;
 }
 
 .loginBtn{
-  height:36px;
+  height:37px;
+  padding:0 13px;
   border:1px solid var(--line);
+  border-radius:10px;
   background:var(--card);
   color:var(--text);
-  border-radius:10px;
-  padding:0 13px;
   font-weight:700;
 }
 
@@ -221,11 +223,11 @@ button{cursor:pointer}
 }
 
 .brand{
-  font-size:clamp(42px,7vw,76px);
+  font-size:clamp(44px,7vw,78px);
   font-weight:900;
   letter-spacing:-4px;
-  margin-bottom:7px;
-  text-shadow:0 0 35px rgba(37,99,235,.2);
+  margin-bottom:8px;
+  text-shadow:0 0 35px rgba(37,99,235,.22);
 }
 
 .brand span{
@@ -234,7 +236,6 @@ button{cursor:pointer}
 
 .subtitle{
   color:var(--muted);
-  font-size:16px;
   margin-bottom:28px;
 }
 
@@ -246,13 +247,13 @@ button{cursor:pointer}
 
 .searchBox input{
   flex:1;
-  height:54px;
+  height:55px;
+  padding:0 18px;
   border:1px solid var(--line);
   border-radius:16px;
+  outline:0;
   background:var(--card);
   color:var(--text);
-  padding:0 18px;
-  outline:0;
 }
 
 .searchBox input:focus{
@@ -260,12 +261,12 @@ button{cursor:pointer}
 }
 
 .searchBox button{
-  height:54px;
+  height:55px;
+  padding:0 25px;
   border:0;
   border-radius:16px;
   background:var(--accent);
-  color:white;
-  padding:0 25px;
+  color:#fff;
   font-weight:800;
 }
 
@@ -274,16 +275,16 @@ button{cursor:pointer}
   flex-wrap:wrap;
   justify-content:center;
   gap:10px;
+  max-width:850px;
   margin-top:24px;
-  max-width:800px;
 }
 
 .shortcut{
   border:1px solid var(--line);
+  border-radius:13px;
+  padding:11px 15px;
   background:var(--card);
   color:var(--text);
-  padding:11px 15px;
-  border-radius:13px;
   text-decoration:none;
 }
 
@@ -293,10 +294,64 @@ button{cursor:pointer}
 }
 
 .info{
-  color:var(--muted);
   margin-top:25px;
+  color:var(--muted);
   font-size:13px;
   text-align:center;
+}
+
+/* RESULTADOS */
+
+.results{
+  max-width:1000px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.resultsHead{
+  margin-bottom:20px;
+}
+
+.resultsHead h2{
+  margin:0 0 6px;
+}
+
+.result{
+  padding:18px;
+  margin-bottom:12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--card);
+  cursor:pointer;
+}
+
+.result:hover{
+  border-color:var(--accent);
+  transform:translateY(-1px);
+}
+
+.resultTitle{
+  color:#60a5fa;
+  font-size:18px;
+  font-weight:700;
+}
+
+.resultUrl{
+  color:#22c55e;
+  font-size:13px;
+  margin:6px 0;
+  word-break:break-all;
+}
+
+.resultDesc{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.loading{
+  padding:40px;
+  text-align:center;
+  color:var(--muted);
 }
 
 /* SITES */
@@ -308,15 +363,15 @@ button{cursor:pointer}
 }
 
 .siteBar{
-  min-height:42px;
-  padding:0 15px;
+  min-height:43px;
   display:flex;
   align-items:center;
   gap:9px;
+  padding:0 15px;
   background:var(--card);
   border-bottom:1px solid var(--line);
-  font-size:13px;
   color:var(--muted);
+  font-size:13px;
 }
 
 .siteDot{
@@ -328,10 +383,10 @@ button{cursor:pointer}
 }
 
 .siteFrame{
-  border:0;
-  flex:1;
   width:100%;
-  background:white;
+  flex:1;
+  border:0;
+  background:#fff;
 }
 
 /* MENU */
@@ -339,31 +394,15 @@ button{cursor:pointer}
 #menu{
   position:fixed;
   right:12px;
-  top:112px;
+  top:114px;
   width:290px;
+  z-index:20;
+  display:none;
+  padding:10px;
   background:var(--card);
   border:1px solid var(--line);
   border-radius:18px;
-  padding:10px;
-  z-index:20;
-  box-shadow:0 20px 60px rgba(0,0,0,.35);
-  display:none;
-}
-
-.menuItem{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:var(--text);
-  padding:12px;
-  text-align:left;
-  border-radius:11px;
-  display:flex;
-  justify-content:space-between;
-}
-
-.menuItem:hover{
-  background:var(--card2);
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 .menuTitle{
@@ -373,27 +412,43 @@ button{cursor:pointer}
   text-transform:uppercase;
 }
 
+.menuItem{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:11px;
+  display:flex;
+  justify-content:space-between;
+  background:transparent;
+  color:var(--text);
+  text-align:left;
+}
+
+.menuItem:hover{
+  background:var(--card2);
+}
+
 /* MODAL */
 
 #overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.62);
   z-index:30;
   display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
+  background:rgba(0,0,0,.65);
 }
 
 .modal{
-  width:min(460px,100%);
+  width:min(500px,100%);
   max-height:90vh;
   overflow:auto;
-  background:var(--card);
+  padding:22px;
   border:1px solid var(--line);
   border-radius:20px;
-  padding:22px;
+  background:var(--card);
   box-shadow:0 30px 80px rgba(0,0,0,.45);
 }
 
@@ -409,12 +464,12 @@ button{cursor:pointer}
   width:100%;
   height:43px;
   margin:7px 0;
+  padding:0 12px;
   border:1px solid var(--line);
+  border-radius:10px;
+  outline:0;
   background:var(--bg);
   color:var(--text);
-  border-radius:10px;
-  padding:0 12px;
-  outline:0;
 }
 
 .modalActions{
@@ -425,21 +480,21 @@ button{cursor:pointer}
 
 .primary{
   flex:1;
+  height:43px;
   border:0;
+  border-radius:10px;
   background:var(--accent);
   color:#fff;
-  border-radius:10px;
-  height:43px;
   font-weight:700;
 }
 
 .secondary{
+  min-height:40px;
+  padding:0 15px;
   border:1px solid var(--line);
+  border-radius:10px;
   background:var(--card2);
   color:var(--text);
-  border-radius:10px;
-  padding:0 15px;
-  min-height:40px;
 }
 
 .list{
@@ -449,11 +504,11 @@ button{cursor:pointer}
 }
 
 .listRow{
+  display:flex;
+  align-items:center;
+  gap:10px;
   padding:11px;
   border-bottom:1px solid var(--line);
-  display:flex;
-  gap:10px;
-  align-items:center;
 }
 
 .listRow div{
@@ -462,21 +517,32 @@ button{cursor:pointer}
 }
 
 .small{
-  font-size:12px;
   color:var(--muted);
+  font-size:12px;
 }
 
 .empty{
   padding:25px;
-  text-align:center;
   color:var(--muted);
+  text-align:center;
+}
+
+.colors{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+
+.colorBtn{
+  width:44px;
+  height:44px;
+  border:3px solid var(--line);
+  border-radius:50%;
 }
 
 @media(max-width:700px){
-  .logo-mini{
-    display:none;
-  }
-
+  .logo-mini,
   .loginBtn{
     display:none;
   }
@@ -531,11 +597,19 @@ button{cursor:pointer}
 
     <button class="tool" title="Favorito" onclick="addFavorite()">★</button>
 
-    <button class="loginBtn" id="loginButton" onclick="openLogin()">
+    <button
+      class="loginBtn"
+      id="loginButton"
+      onclick="openLogin()">
       Entrar
     </button>
 
-    <button class="tool" title="Menu" onclick="toggleMenu()">☰</button>
+    <button
+      class="tool"
+      title="Menu"
+      onclick="toggleMenu()">
+      ☰
+    </button>
 
   </div>
 
@@ -545,9 +619,7 @@ button{cursor:pointer}
 
 <div id="menu">
 
-  <div class="menuTitle">
-    IternetWorld
-  </div>
+  <div class="menuTitle">IternetWorld</div>
 
   <button class="menuItem" onclick="showFavorites()">
     ⭐ Favoritos <span>›</span>
@@ -566,22 +638,47 @@ button{cursor:pointer}
   </button>
 
   <button class="menuItem" onclick="showSettings()">
-    ⚙ Configurações <span>›</span>
+    🎨 Personalização <span>›</span>
   </button>
 
   <button class="menuItem" onclick="toggleTheme()">
-    🌙 Modo escuro/claro <span>›</span>
+    🌙 Modo claro/escuro <span>›</span>
   </button>
 
 </div>
 
 <div id="overlay">
-
   <div class="modal" id="modal"></div>
-
 </div>
 
 <script>
+
+/* =====================================================
+   ELECTRON
+===================================================== */
+
+let electronAPI=null;
+
+try{
+  if(window.require){
+    const {ipcRenderer}=window.require("electron");
+
+    electronAPI={
+      pesquisar: texto =>
+        ipcRenderer.invoke(
+          "pesquisar-internet",
+          texto
+        )
+    };
+  }
+}catch(e){
+  electronAPI=null;
+}
+
+
+/* =====================================================
+   DADOS
+===================================================== */
 
 const USERS_KEY="IternetWorldUsers";
 const CURRENT_KEY="IternetWorldCurrentUser";
@@ -593,14 +690,17 @@ const ACCENT_KEY="iw_accent";
 let tabs=[];
 let active=0;
 
-let history=
-  JSON.parse(localStorage.getItem(HIST_KEY)||"[]");
+let history=JSON.parse(
+  localStorage.getItem(HIST_KEY)||"[]"
+);
 
-let favorites=
-  JSON.parse(localStorage.getItem(FAV_KEY)||"[]");
+let favorites=JSON.parse(
+  localStorage.getItem(FAV_KEY)||"[]"
+);
 
 let accent=
-  localStorage.getItem(ACCENT_KEY)||"#2563eb";
+  localStorage.getItem(ACCENT_KEY)||
+  "#2563eb";
 
 document.documentElement.style.setProperty(
   "--accent",
@@ -608,7 +708,6 @@ document.documentElement.style.setProperty(
 );
 
 const knownSites=[
-
   ["YouTube","https://www.youtube.com/"],
   ["Google","https://www.google.com/"],
   ["GitHub","https://github.com/"],
@@ -617,11 +716,14 @@ const knownSites=[
   ["TikTok","https://www.tiktok.com/"],
   ["Wikipedia","https://pt.wikipedia.org/"],
   ["Twitch","https://www.twitch.tv/"]
-
 ];
 
-function esc(s){
 
+/* =====================================================
+   UTILIDADES
+===================================================== */
+
+function esc(s){
   return String(s??"").replace(
     /[&<>"']/g,
     m=>({
@@ -632,7 +734,6 @@ function esc(s){
       "'":"&#39;"
     }[m])
   );
-
 }
 
 function save(){
@@ -646,14 +747,16 @@ function save(){
     FAV_KEY,
     JSON.stringify(favorites)
   );
-
 }
 
 function current(){
-
   return tabs[active];
-
 }
+
+
+/* =====================================================
+   ABAS
+===================================================== */
 
 function createTab(url=""){
 
@@ -668,11 +771,11 @@ function createTab(url=""){
 
   renderTabs();
 
-  if(url)
+  if(url){
     showTab();
-  else
+  }else{
     goHome();
-
+  }
 }
 
 function renderTabs(){
@@ -685,7 +788,9 @@ function renderTabs(){
 
     const d=document.createElement("div");
 
-    d.className="tab"+(i===active?" active":"");
+    d.className=
+      "tab"+
+      (i===active?" active":"");
 
     d.onclick=()=>{
 
@@ -701,12 +806,12 @@ function renderTabs(){
 
     title.className="tab-title";
 
-    title.textContent=t.title||"Nova aba";
+    title.textContent=
+      t.title||"Nova aba";
 
     const x=document.createElement("button");
 
     x.className="tab-close";
-
     x.textContent="×";
 
     x.onclick=e=>{
@@ -726,13 +831,11 @@ function renderTabs(){
   const plus=document.createElement("button");
 
   plus.className="newtab";
-
   plus.textContent="+";
 
   plus.onclick=()=>createTab();
 
   el.appendChild(plus);
-
 }
 
 function closeTab(i){
@@ -744,60 +847,44 @@ function closeTab(i){
     createTab();
 
     return;
-
   }
 
-  if(active>=tabs.length)
+  if(active>=tabs.length){
     active=tabs.length-1;
+  }
 
   showTab();
-
   renderTabs();
-
 }
 
 function showTab(){
 
   if(!current()){
-
     createTab();
-
     return;
-
   }
 
-  if((current().url||"").startsWith("search:")){
+  const t=current();
 
-    renderDuckDuckGo(
-      current().url.slice(7)
-    );
+  if((t.url||"").startsWith("search:")){
 
-  }
+    pesquisar(t.url.slice(7));
 
-  else if(current().url){
+  }else if(t.url){
 
-    renderSite(
-      current().url,
-      false
-    );
+    renderSite(t.url,false);
 
-  }
-
-  else{
+  }else{
 
     goHome();
 
   }
-
-  document.getElementById(
-    "addressInput"
-  ).value=
-    current().url &&
-    !current().url.startsWith("search:")
-      ?current().url
-      :"";
-
 }
+
+
+/* =====================================================
+   NAVEGAÇÃO
+===================================================== */
 
 function isURL(v){
 
@@ -811,7 +898,6 @@ function makeURL(v){
   return /^https?:\/\//i.test(v)
     ?v
     :"https://"+v;
-
 }
 
 function navigate(e){
@@ -825,29 +911,36 @@ function navigate(e){
 
   if(!v)return;
 
-  if(isURL(v))
-    openSiteNewTab(makeURL(v));
-  else
+  if(isURL(v)){
+
+    openSiteNewTab(
+      makeURL(v)
+    );
+
+  }else{
+
     searchNewTab(v);
 
+  }
 }
+
+
+/* =====================================================
+   HOME
+===================================================== */
 
 function goHome(){
 
-  const t=current();
+  if(!current())return;
 
-  if(t){
-
-    t.title="Nova aba";
-    t.url="";
-
-  }
-
-  renderTabs();
+  current().title="Nova aba";
+  current().url="";
 
   document.getElementById(
     "addressInput"
   ).value="";
+
+  renderTabs();
 
   document.getElementById("page").innerHTML=`
 
@@ -863,13 +956,12 @@ function goHome(){
 
       <form
         class="searchBox"
-        onsubmit="homeSearch(event)"
-      >
+        onsubmit="homeSearch(event)">
 
         <input
           id="homeInput"
-          placeholder="Pesquisar com DuckDuckGo..."
-          autocomplete="off">
+          autocomplete="off"
+          placeholder="Pesquisar com DuckDuckGo...">
 
         <button>
           Pesquisar
@@ -880,12 +972,13 @@ function goHome(){
       <div class="shortcuts">
 
         ${knownSites.map(
-          ([n,u])=>
-          `<button
-             class="shortcut"
-             onclick="openSiteNewTab('${u}')">
-             ${n}
-           </button>`
+          ([n,u])=>`
+            <button
+              class="shortcut"
+              onclick="openSiteNewTab('${u}')">
+              ${n}
+            </button>
+          `
         ).join("")}
 
         <button
@@ -903,13 +996,13 @@ function goHome(){
       </div>
 
       <div class="info">
-        Abas · favoritos · histórico · modo escuro · personalização · IternetWorld AI
+        Abas · DuckDuckGo · favoritos · histórico ·
+        personalização · AI · downloads
       </div>
 
     </section>
 
   `;
-
 }
 
 function homeSearch(e){
@@ -921,10 +1014,15 @@ function homeSearch(e){
       "homeInput"
     ).value.trim();
 
-  if(q)
+  if(q){
     searchNewTab(q);
-
+  }
 }
+
+
+/* =====================================================
+   PESQUISA
+===================================================== */
 
 function searchNewTab(q){
 
@@ -933,80 +1031,228 @@ function searchNewTab(q){
   if(!q)return;
 
   tabs.push({
-
     title:q,
-
     url:"search:"+q,
-
     back:[],
     forward:[]
-
   });
 
   active=tabs.length-1;
 
   renderTabs();
 
-  renderDuckDuckGo(q);
-
+  pesquisar(q);
 }
 
-function renderDuckDuckGo(q){
+async function pesquisar(q){
+
+  const t=current();
+
+  if(!t)return;
+
+  t.title=q;
 
   document.getElementById(
     "addressInput"
   ).value=q;
 
-  current().title=q;
-
-  const url=
-    "https://html.duckduckgo.com/html/?q="+
-    encodeURIComponent(q);
+  renderTabs();
 
   document.getElementById("page").innerHTML=`
 
-    <div class="sitePage">
+    <div class="results">
 
-      <div class="siteBar">
-
-        <span class="siteDot"></span>
-
-        <strong>
-          DuckDuckGo
-        </strong>
-
-        <span>•</span>
-
-        <span>
-          Resultados para:
-          ${esc(q)}
-        </span>
-
+      <div class="loading">
+        🔎 A pesquisar no DuckDuckGo...
       </div>
-
-      <iframe
-        class="siteFrame"
-        src="${url}"
-        title="Resultados DuckDuckGo">
-      </iframe>
 
     </div>
 
   `;
 
+  /*
+     Electron:
+     usamos o main.js para consultar
+     DuckDuckGo sem iframe.
+  */
+
+  if(electronAPI){
+
+    try{
+
+      const resposta=
+        await electronAPI.pesquisar(q);
+
+      if(resposta.sucesso){
+
+        renderResults(
+          q,
+          resposta.resultados
+        );
+
+      }else{
+
+        renderSearchError(
+          resposta.erro
+        );
+
+      }
+
+      return;
+
+    }catch(e){
+
+      console.error(e);
+
+    }
+  }
+
+  /*
+     Navegador normal:
+     mostramos uma alternativa
+     porque alguns navegadores
+     bloqueiam o DuckDuckGo em iframe.
+  */
+
+  renderBrowserSearch(q);
 }
+
+function renderResults(q,resultados){
+
+  if(!resultados.length){
+
+    renderSearchError(
+      "O DuckDuckGo não devolveu resultados."
+    );
+
+    return;
+  }
+
+  document.getElementById("page").innerHTML=`
+
+    <div class="results">
+
+      <div class="resultsHead">
+
+        <h2>
+          Resultados DuckDuckGo
+        </h2>
+
+        <div class="small">
+          Pesquisa: ${esc(q)}
+        </div>
+
+      </div>
+
+      ${resultados.map((r,i)=>`
+
+        <div
+          class="result"
+          onclick="openSearchResult(${i})">
+
+          <div class="resultTitle">
+            ${esc(r.titulo)}
+          </div>
+
+          <div class="resultUrl">
+            ${esc(r.url)}
+          </div>
+
+          <div class="resultDesc">
+            ${esc(r.descricao)}
+          </div>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+  window.currentSearchResults=resultados;
+}
+
+function openSearchResult(i){
+
+  const r=
+    window.currentSearchResults &&
+    window.currentSearchResults[i];
+
+  if(!r)return;
+
+  openSiteNewTab(r.url);
+}
+
+function renderSearchError(msg){
+
+  document.getElementById("page").innerHTML=`
+
+    <div class="results">
+
+      <div class="result">
+
+        <h2>Não foi possível pesquisar</h2>
+
+        <p class="resultDesc">
+          ${esc(msg)}
+        </p>
+
+        <button
+          class="goBtn"
+          onclick="window.open('https://duckduckgo.com/?q=${encodeURIComponent(current().title)}','_blank')">
+          Abrir DuckDuckGo
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+function renderBrowserSearch(q){
+
+  document.getElementById("page").innerHTML=`
+
+    <div class="results">
+
+      <div class="result">
+
+        <h2>DuckDuckGo</h2>
+
+        <p class="resultDesc">
+          Para pesquisar no DuckDuckGo,
+          carrega no botão abaixo.
+        </p>
+
+        <button
+          class="goBtn"
+          onclick="openSiteNewTab(
+            'https://html.duckduckgo.com/html/?q=${encodeURIComponent(q)}'
+          )">
+          Pesquisar no DuckDuckGo
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+
+/* =====================================================
+   SITES
+===================================================== */
 
 function openSiteNewTab(url){
 
   tabs.push({
-
     title:"A carregar…",
-
     url:url,
-
     back:[],
     forward:[]
-
   });
 
   active=tabs.length-1;
@@ -1014,27 +1260,22 @@ function openSiteNewTab(url){
   renderTabs();
 
   renderSite(url,true);
-
 }
 
 function renderSite(url,record=true){
 
+  let title=url;
+
   try{
 
-    const host=
+    title=
       new URL(url)
-      .hostname
-      .replace(/^www\./,"");
+        .hostname
+        .replace(/^www\./,"");
 
-    current().title=host;
+  }catch(e){}
 
-  }
-
-  catch{
-
-    current().title=url;
-
-  }
+  current().title=title;
 
   document.getElementById(
     "addressInput"
@@ -1045,20 +1286,15 @@ function renderSite(url,record=true){
   if(record){
 
     history.unshift({
-
-      title:current().title,
-
+      title:title,
       url:url,
-
       time:new Date()
         .toLocaleString("pt-PT")
-
     });
 
     history=history.slice(0,300);
 
     save();
-
   }
 
   document.getElementById("page").innerHTML=`
@@ -1070,7 +1306,7 @@ function renderSite(url,record=true){
         <span class="siteDot"></span>
 
         <strong>
-          ${esc(current().title)}
+          ${esc(title)}
         </strong>
 
         <span>•</span>
@@ -1090,50 +1326,40 @@ function renderSite(url,record=true){
     </div>
 
   `;
-
 }
 
 function goBack(){
 
   const t=current();
 
-  if(!t)return;
+  if(!t || !t.back.length)return;
 
-  if(t.back && t.back.length){
+  t.forward.unshift(t.url);
+  t.url=t.back.shift();
 
-    t.forward.unshift(t.url);
-
-    t.url=t.back.shift();
-
-    showTab();
-
-  }
-
+  showTab();
 }
 
 function goForward(){
 
   const t=current();
 
-  if(!t)return;
+  if(!t || !t.forward.length)return;
 
-  if(t.forward && t.forward.length){
+  t.back.unshift(t.url);
+  t.url=t.forward.shift();
 
-    t.back.unshift(t.url);
-
-    t.url=t.forward.shift();
-
-    showTab();
-
-  }
-
+  showTab();
 }
 
 function reloadPage(){
-
   showTab();
-
 }
+
+
+/* =====================================================
+   FAVORITOS
+===================================================== */
 
 function addFavorite(){
 
@@ -1141,31 +1367,24 @@ function addFavorite(){
 
   if(!t || !t.url)return;
 
-  if(t.url.startsWith("search:"))
-    return;
+  if(t.url.startsWith("search:"))return;
 
   if(!favorites.some(x=>x.url===t.url)){
 
     favorites.unshift({
-
       title:t.title,
-
       url:t.url
-
     });
 
     save();
 
     alert("Adicionado aos favoritos.");
 
-  }
-
-  else{
+  }else{
 
     alert("Já está nos favoritos.");
 
   }
-
 }
 
 function showFavorites(){
@@ -1174,63 +1393,56 @@ function showFavorites(){
 
   openModal(
     "⭐ Favoritos",
-
     `
 
-    <div class="list">
+      <div class="list">
 
-      ${
-        favorites.length
+        ${
+          favorites.length
 
-        ?
+          ?favorites.map((f,i)=>`
 
-        favorites.map(
-          (f,i)=>`
+            <div class="listRow">
 
-          <div class="listRow">
+              <div>
 
-            <div>
+                <b>${esc(f.title)}</b>
 
-              <b>
-                ${esc(f.title)}
-              </b>
+                <div class="small">
+                  ${esc(f.url)}
+                </div>
 
-              <div class="small">
-                ${esc(f.url)}
               </div>
+
+              <button
+                class="secondary"
+                onclick="openSiteNewTab('${f.url}');closeModal()">
+                Abrir
+              </button>
+
+              <button
+                class="secondary"
+                onclick="removeFavorite(${i})">
+                ×
+              </button>
 
             </div>
 
-            <button
-              class="secondary"
-              onclick="openSiteNewTab('${esc(f.url)}');closeModal()">
-              Abrir
-            </button>
+          `).join("")
 
-            <button
-              class="secondary"
-              onclick="removeFavorite(${i})">
-              ×
-            </button>
+          :`
 
-          </div>
+            <div class="empty">
+              Ainda não tens favoritos.
+            </div>
 
-        `
-        ).join("")
+          `
+        }
 
-        :
-
-        `<div class="empty">
-          Ainda não tens favoritos.
-        </div>`
-
-      }
-
-    </div>
+      </div>
 
     `
   );
-
 }
 
 function removeFavorite(i){
@@ -1240,8 +1452,12 @@ function removeFavorite(i){
   save();
 
   showFavorites();
-
 }
+
+
+/* =====================================================
+   HISTÓRICO
+===================================================== */
 
 function showHistory(){
 
@@ -1249,139 +1465,260 @@ function showHistory(){
 
   openModal(
     "🕘 Histórico",
-
     `
 
-    <div class="list">
+      <div class="list">
 
-      ${
-        history.length
+        ${
+          history.length
 
-        ?
+          ?history.map(h=>`
 
-        history.map(
-          h=>`
+            <div class="listRow">
 
-          <div class="listRow">
+              <div>
 
-            <div>
+                <b>${esc(h.title)}</b>
 
-              <b>
-                ${esc(h.title)}
-              </b>
+                <div class="small">
+                  ${esc(h.time)}
+                  ·
+                  ${esc(h.url)}
+                </div>
 
-              <div class="small">
-                ${esc(h.time)}
-                ·
-                ${esc(h.url)}
               </div>
+
+              <button
+                class="secondary"
+                onclick="openSiteNewTab('${h.url}');closeModal()">
+                Abrir
+              </button>
 
             </div>
 
-            <button
-              class="secondary"
-              onclick="openSiteNewTab('${esc(h.url)}');closeModal()">
-              Abrir
-            </button>
+          `).join("")
 
-          </div>
+          :`
 
+            <div class="empty">
+              O histórico está vazio.
+            </div>
+
+          `
+        }
+
+      </div>
+
+      ${
+        history.length
+        ?`
+          <button
+            class="secondary"
+            style="margin-top:12px;width:100%"
+            onclick="history=[];save();showHistory()">
+            Limpar histórico
+          </button>
         `
-        ).join("")
-
-        :
-
-        `<div class="empty">
-          O histórico está vazio.
-        </div>`
-
+        :""
       }
-
-    </div>
-
-    ${
-      history.length
-
-      ?
-
-      `<button
-        class="secondary"
-        style="margin-top:12px;width:100%"
-        onclick="history=[];save();showHistory()">
-        Limpar histórico
-       </button>`
-
-      :""
-
-    }
 
     `
   );
-
 }
+
+
+/* =====================================================
+   DOWNLOAD
+===================================================== */
+
+const DOWNLOAD_URL=
+"https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe";
 
 function showDownloads(){
 
   closeMenu();
 
   openModal(
-
     "⬇ Downloads",
-
     `
 
-    <p>
-      Download oficial do IternetWorld:
-    </p>
+      <p>
+        Instala o IternetWorld para Windows.
+      </p>
 
-    <a
-      class="goBtn"
-      style="display:inline-flex;align-items:center;text-decoration:none"
-      href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe">
+      <a
+        href="${DOWNLOAD_URL}"
+        download
+        class="goBtn"
+        style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          text-decoration:none;
+        ">
+        ⬇ Descarregar IternetWorld
+      </a>
 
-      ⬇ Descarregar IternetWorld
-
-    </a>
+      <p class="small" style="margin-top:15px">
+        O download será guardado na pasta Transferências
+        do Windows.
+      </p>
 
     `
+  );
+}
 
+
+/* =====================================================
+   PERSONALIZAÇÃO
+===================================================== */
+
+function showSettings(){
+
+  closeMenu();
+
+  openModal(
+    "🎨 Personalização",
+    `
+
+      <p>
+        Escolhe a cor principal do IternetWorld.
+      </p>
+
+      <div class="colors">
+
+        <button
+          class="colorBtn"
+          style="background:#2563eb"
+          onclick="setAccent('#2563eb')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#7c3aed"
+          onclick="setAccent('#7c3aed')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#16a34a"
+          onclick="setAccent('#16a34a')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#dc2626"
+          onclick="setAccent('#dc2626')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#ea580c"
+          onclick="setAccent('#ea580c')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#db2777"
+          onclick="setAccent('#db2777')">
+        </button>
+
+        <button
+          class="colorBtn"
+          style="background:#0891b2"
+          onclick="setAccent('#0891b2')">
+        </button>
+
+      </div>
+
+      <div class="modalActions">
+
+        <button
+          class="secondary"
+          onclick="toggleTheme()">
+          🌙 Claro / Escuro
+        </button>
+
+      </div>
+
+    `
+  );
+}
+
+function setAccent(color){
+
+  accent=color;
+
+  localStorage.setItem(
+    ACCENT_KEY,
+    color
   );
 
+  document.documentElement.style.setProperty(
+    "--accent",
+    color
+  );
+
+  showSettings();
 }
+
+
+/* =====================================================
+   TEMA
+===================================================== */
+
+function toggleTheme(){
+
+  document.body.classList.toggle("light");
+
+  localStorage.setItem(
+    THEME_KEY,
+    document.body.classList.contains("light")
+      ?"light"
+      :"dark"
+  );
+}
+
+if(
+  localStorage.getItem(THEME_KEY)==="light"
+){
+  document.body.classList.add("light");
+}
+
+
+/* =====================================================
+   AI
+===================================================== */
 
 function openAI(){
 
   closeMenu();
 
   openModal(
-
     "🤖 IternetWorld AI",
-
     `
 
-    <p>
-      O IternetWorld AI é a área de assistência do navegador.
-    </p>
+      <p>
+        Esta é a área de assistência do IternetWorld.
+      </p>
 
-    <input
-      id="aiInput"
-      placeholder="Escreve uma pergunta...">
+      <input
+        id="aiInput"
+        placeholder="Escreve uma pergunta...">
 
-    <button
-      class="primary"
-      onclick="askAI()">
-      Perguntar
-    </button>
+      <button
+        class="primary"
+        onclick="askAI()">
+        Perguntar
+      </button>
 
-    <div
-      id="aiAnswer"
-      style="margin-top:15px">
-    </div>
+      <div
+        id="aiAnswer"
+        style="margin-top:15px">
+      </div>
 
     `
-
   );
-
 }
 
 function askAI(){
@@ -1402,12 +1739,9 @@ function askAI(){
         padding:15px;
         border:1px solid var(--line);
         border-radius:12px;
-        background:var(--card2)
-      ">
+        background:var(--card2)">
 
-      <b>
-        IternetWorld AI
-      </b>
+      <b>IternetWorld AI</b>
 
       <p>
         Recebi a tua pergunta:
@@ -1415,107 +1749,18 @@ function askAI(){
       </p>
 
       <p class="small">
-        Esta versão funciona localmente.
-        Para respostas de IA reais é necessário
-        ligar um serviço de IA/API.
+        Esta versão do AI funciona localmente.
       </p>
 
     </div>
 
   `;
-
 }
 
-function showSettings(){
 
-  closeMenu();
-
-  openModal(
-
-    "⚙ Configurações",
-
-    `
-
-    <p>
-      Personalização do IternetWorld
-    </p>
-
-    <label class="small">
-      Cor principal
-    </label>
-
-    <input
-      id="accentPicker"
-      type="color"
-      value="${esc(accent)}"
-      style="height:50px;padding:4px">
-
-    <div class="modalActions">
-
-      <button
-        class="primary"
-        onclick="applyAccent()">
-        Guardar
-      </button>
-
-      <button
-        class="secondary"
-        onclick="toggleTheme()">
-        Tema
-      </button>
-
-    </div>
-
-    `
-
-  );
-
-}
-
-function applyAccent(){
-
-  accent=
-    document.getElementById(
-      "accentPicker"
-    ).value;
-
-  localStorage.setItem(
-    ACCENT_KEY,
-    accent
-  );
-
-  document.documentElement.style.setProperty(
-    "--accent",
-    accent
-  );
-
-  closeModal();
-
-}
-
-function toggleTheme(){
-
-  document.body.classList.toggle("light");
-
-  localStorage.setItem(
-
-    THEME_KEY,
-
-    document.body.classList.contains("light")
-      ?"light"
-      :"dark"
-
-  );
-
-}
-
-if(
-  localStorage.getItem(THEME_KEY)==="light"
-){
-
-  document.body.classList.add("light");
-
-}
+/* =====================================================
+   MENU
+===================================================== */
 
 function toggleMenu(){
 
@@ -1526,7 +1771,6 @@ function toggleMenu(){
     m.style.display==="block"
       ?"none"
       :"block";
-
 }
 
 function closeMenu(){
@@ -1534,8 +1778,12 @@ function closeMenu(){
   document.getElementById(
     "menu"
   ).style.display="none";
-
 }
+
+
+/* =====================================================
+   MODAIS
+===================================================== */
 
 function openModal(title,body){
 
@@ -1562,7 +1810,6 @@ function openModal(title,body){
   document.getElementById(
     "overlay"
   ).style.display="flex";
-
 }
 
 function closeModal(){
@@ -1570,86 +1817,12 @@ function closeModal(){
   document.getElementById(
     "overlay"
   ).style.display="none";
-
 }
 
-function openLogin(){
 
-  const currentUser=
-    localStorage.getItem(
-      CURRENT_KEY
-    );
-
-  if(currentUser){
-
-    openModal(
-
-      "👤 Conta",
-
-      `
-
-      <p>
-        Estás ligado como
-        <strong>
-          ${esc(currentUser)}
-        </strong>.
-      </p>
-
-      <button
-        class="primary"
-        onclick="logout()">
-        Terminar sessão
-      </button>
-
-      `
-
-    );
-
-    return;
-
-  }
-
-  openModal(
-
-    "🔐 Entrar no IternetWorld",
-
-    `
-
-    <input
-      id="loginUser"
-      placeholder="Nome de utilizador">
-
-    <input
-      id="loginPass"
-      type="password"
-      placeholder="Palavra-passe">
-
-    <div class="modalActions">
-
-      <button
-        class="primary"
-        onclick="login()">
-        Entrar
-      </button>
-
-      <button
-        class="secondary"
-        onclick="register()">
-        Criar conta
-      </button>
-
-    </div>
-
-    <p class="small">
-      O login é opcional.
-      O navegador funciona sem conta.
-    </p>
-
-    `
-
-  );
-
-}
+/* =====================================================
+   LOGIN
+===================================================== */
 
 function getUsers(){
 
@@ -1658,7 +1831,73 @@ function getUsers(){
       USERS_KEY
     )||"[]"
   );
+}
 
+function openLogin(){
+
+  const u=
+    localStorage.getItem(
+      CURRENT_KEY
+    );
+
+  if(u){
+
+    openModal(
+      "👤 Conta",
+      `
+
+        <p>
+          Estás ligado como
+          <strong>${esc(u)}</strong>.
+        </p>
+
+        <button
+          class="primary"
+          onclick="logout()">
+          Terminar sessão
+        </button>
+
+      `
+    );
+
+    return;
+  }
+
+  openModal(
+    "🔐 Entrar no IternetWorld",
+    `
+
+      <input
+        id="loginUser"
+        placeholder="Nome de utilizador">
+
+      <input
+        id="loginPass"
+        type="password"
+        placeholder="Palavra-passe">
+
+      <div class="modalActions">
+
+        <button
+          class="primary"
+          onclick="login()">
+          Entrar
+        </button>
+
+        <button
+          class="secondary"
+          onclick="register()">
+          Criar conta
+        </button>
+
+      </div>
+
+      <p class="small">
+        O login é opcional.
+      </p>
+
+    `
+  );
 }
 
 function register(){
@@ -1680,14 +1919,15 @@ function register(){
     );
 
     return;
-
   }
 
   const users=getUsers();
 
   if(
     users.some(
-      x=>x.user.toLowerCase()===u.toLowerCase()
+      x=>
+        x.user.toLowerCase()===
+        u.toLowerCase()
     )
   ){
 
@@ -1696,7 +1936,6 @@ function register(){
     );
 
     return;
-
   }
 
   users.push({
@@ -1718,10 +1957,7 @@ function register(){
 
   closeModal();
 
-  alert(
-    "Conta criada."
-  );
-
+  alert("Conta criada.");
 }
 
 function login(){
@@ -1738,7 +1974,9 @@ function login(){
 
   const user=
     getUsers().find(
-      x=>x.user===u && x.pass===p
+      x=>
+        x.user===u &&
+        x.pass===p
     );
 
   if(!user){
@@ -1748,7 +1986,6 @@ function login(){
     );
 
     return;
-
   }
 
   localStorage.setItem(
@@ -1759,7 +1996,6 @@ function login(){
   updateLoginButton();
 
   closeModal();
-
 }
 
 function logout(){
@@ -1771,7 +2007,6 @@ function logout(){
   updateLoginButton();
 
   closeModal();
-
 }
 
 function updateLoginButton(){
@@ -1785,10 +2020,14 @@ function updateLoginButton(){
     "loginButton"
   ).textContent=
     u
-      ?("👤 "+u)
+      ?"👤 "+u
       :"Entrar";
-
 }
+
+
+/* =====================================================
+   FECHAR MENU AO CLICAR FORA
+===================================================== */
 
 document.addEventListener(
   "click",
@@ -1806,13 +2045,16 @@ document.addEventListener(
       !m.contains(e.target) &&
       !btn
     ){
-
       closeMenu();
-
     }
 
   }
 );
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
 
 updateLoginButton();
 
@@ -1822,3 +2064,4 @@ createTab();
 
 </body>
 </html>
+```

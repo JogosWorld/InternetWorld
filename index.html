@@ -1,15 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>IternetWorld</title>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
@@ -19,46 +17,117 @@ html,body{
     overflow:hidden;
 }
 
-/* =========================
-   TEMAS
-========================= */
-
 :root{
     --fundo:#151515;
     --barra:#1e1e1e;
     --botao:#303030;
-    --texto:#ffffff;
+    --texto:#fff;
     --azul:#00bfff;
-    --pagina:#ffffff;
-    --textoPagina:#222222;
+    --pagina:#fff;
+    --textoPagina:#222;
     --cartao:#f4f4f4;
 }
 
 body.claro{
-    --fundo:#eeeeee;
+    --fundo:#eee;
     --barra:#f5f5f5;
-    --botao:#dddddd;
-    --texto:#111111;
-    --pagina:#ffffff;
-    --textoPagina:#222222;
+    --botao:#ddd;
+    --texto:#111;
+    --pagina:#fff;
+    --textoPagina:#222;
     --cartao:#f1f1f1;
 }
 
-body.verde{
-    --azul:#20d070;
+body.verde{--azul:#20d070}
+body.roxo{--azul:#a855f7}
+body.vermelho{--azul:#ff4444}
+
+/* LOGIN */
+
+#loginScreen{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle at top,#073b4c 0,#101820 45%,#080808 100%);
 }
 
-body.roxo{
-    --azul:#a855f7;
+.login-card{
+    width:min(430px,92%);
+    padding:35px;
+    border-radius:24px;
+    background:#1d1d1df2;
+    box-shadow:0 20px 70px #000b;
+    color:white;
+    text-align:center;
 }
 
-body.vermelho{
-    --azul:#ff4444;
+.login-logo{
+    font-size:42px;
+    margin-bottom:5px;
 }
 
-/* =========================
-   BROWSER
-========================= */
+.login-card h1{
+    margin:0;
+    color:#00bfff;
+    font-size:32px;
+}
+
+.login-card p{
+    color:#aaa;
+    margin-bottom:25px;
+}
+
+.login-card input{
+    width:100%;
+    height:48px;
+    margin:7px 0;
+    padding:0 15px;
+    border:0;
+    outline:0;
+    border-radius:12px;
+    background:#303030;
+    color:white;
+    font-size:15px;
+}
+
+.login-card button{
+    width:100%;
+    height:48px;
+    margin-top:12px;
+    border:0;
+    border-radius:12px;
+    background:#00bfff;
+    color:white;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.login-card button:hover{
+    filter:brightness(1.15);
+}
+
+.login-switch{
+    margin-top:18px;
+    color:#aaa;
+    cursor:pointer;
+}
+
+.login-switch:hover{
+    color:#00bfff;
+}
+
+.login-error{
+    min-height:22px;
+    margin-top:10px;
+    color:#ff6666;
+}
+
+/* BROWSER */
 
 .browser{
     width:100%;
@@ -68,9 +137,7 @@ body.vermelho{
     background:var(--fundo);
 }
 
-/* =========================
-   ABAS
-========================= */
+/* ABAS */
 
 .tabs{
     height:60px;
@@ -97,9 +164,7 @@ body.vermelho{
     user-select:none;
 }
 
-.tab.active{
-    background:#3c3c3c;
-}
+.tab.active{background:#3c3c3c}
 
 .tab-title{
     flex:1;
@@ -120,9 +185,7 @@ body.vermelho{
     cursor:pointer;
 }
 
-/* =========================
-   TOOLBAR
-========================= */
+/* TOOLBAR */
 
 .toolbar{
     height:58px;
@@ -153,9 +216,7 @@ body.vermelho{
     cursor:pointer;
 }
 
-.toolbar button:hover{
-    filter:brightness(1.2);
-}
+.toolbar button:hover{filter:brightness(1.2)}
 
 .address{
     flex:1;
@@ -169,24 +230,24 @@ body.vermelho{
     font-size:15px;
 }
 
-.go{
-    padding:0 18px;
+.go{padding:0 18px}
+
+.user-button{
+    min-width:auto!important;
+    padding:0 13px;
+    font-size:14px!important;
 }
 
-/* =========================
-   PERSONALIZAÇÃO
-========================= */
+/* PERSONALIZAÇÃO */
 
-.custom-box{
-    position:relative;
-}
+.custom-box{position:relative}
 
 .custom-menu{
     display:none;
     position:absolute;
     right:0;
     top:48px;
-    width:240px;
+    width:250px;
     background:#252525;
     border-radius:14px;
     padding:15px;
@@ -194,9 +255,7 @@ body.vermelho{
     z-index:99999;
 }
 
-.custom-menu.show{
-    display:block;
-}
+.custom-menu.show{display:block}
 
 .custom-menu h3{
     margin:0 0 12px;
@@ -211,9 +270,7 @@ body.vermelho{
     padding-left:12px;
 }
 
-/* =========================
-   PÁGINAS
-========================= */
+/* PÁGINAS */
 
 .pages{
     flex:1;
@@ -230,13 +287,9 @@ body.vermelho{
     overflow:hidden;
 }
 
-.page.active{
-    display:block;
-}
+.page.active{display:block}
 
-/* =========================
-   HOME
-========================= */
+/* HOME */
 
 .home{
     width:100%;
@@ -256,9 +309,7 @@ body.vermelho{
     color:var(--azul);
 }
 
-.home p{
-    color:#666;
-}
+.home p{color:#666}
 
 .search-box{
     width:min(720px,85%);
@@ -316,9 +367,24 @@ body.vermelho{
     background:#ddd;
 }
 
-/* =========================
-   RESULTADOS
-========================= */
+.download-app{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 22px;
+    border-radius:13px;
+    background:var(--azul);
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.download-info{
+    margin-top:10px;
+    color:#777;
+    font-size:13px;
+}
+
+/* PESQUISA */
 
 .search-page{
     width:100%;
@@ -373,6 +439,26 @@ body.vermelho{
     padding:20px 0 60px;
 }
 
+.web-search-card{
+    margin:30px auto;
+    max-width:700px;
+    padding:40px;
+    text-align:center;
+    border-radius:20px;
+    background:#f4f4f4;
+}
+
+.web-search-icon{font-size:55px}
+
+.duck-button{
+    display:inline-block;
+    padding:13px 20px;
+    background:var(--azul);
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+}
+
 .results-info{
     color:#555;
     padding:5px 0 15px;
@@ -384,9 +470,7 @@ body.vermelho{
     border-bottom:1px solid #eee;
 }
 
-.result:hover{
-    background:#fafafa;
-}
+.result:hover{background:#fafafa}
 
 .result h2{
     margin:0 0 7px;
@@ -397,10 +481,6 @@ body.vermelho{
 .result h2 a{
     color:#0758c9;
     text-decoration:none;
-}
-
-.result h2 a:hover{
-    text-decoration:underline;
 }
 
 .result-url{
@@ -415,22 +495,7 @@ body.vermelho{
     line-height:1.5;
 }
 
-.no-results{
-    margin:70px auto;
-    max-width:700px;
-    padding:45px;
-    background:#f4f4f4;
-    border-radius:18px;
-    text-align:center;
-}
-
-.no-results h2{
-    color:#e33;
-}
-
-/* =========================
-   WEBVIEW
-========================= */
+/* WEBVIEW */
 
 .webview-container{
     position:absolute;
@@ -438,49 +503,111 @@ body.vermelho{
     background:white;
 }
 
-webview,
 .webview-container iframe{
     width:100%;
     height:100%;
     border:0;
 }
 
-/* =========================
-   LOADING
-========================= */
+/* PERFIL */
 
-.loading{
-    padding:45px;
+.profile-page{
+    width:100%;
+    height:100%;
+    overflow:auto;
+    padding:60px 20px;
     text-align:center;
-    color:#555;
-    font-size:18px;
+    background:var(--pagina);
+    color:var(--textoPagina);
 }
 
-/* =========================
-   DARK SEARCH
-========================= */
-
-body:not(.claro) .search-page{
-    background:#fff;
+.profile-card{
+    max-width:500px;
+    margin:auto;
+    padding:35px;
+    border-radius:20px;
+    background:var(--cartao);
 }
 
+.profile-avatar{
+    font-size:70px;
+}
+
+.profile-card button{
+    border:0;
+    padding:13px 25px;
+    border-radius:12px;
+    background:#e53935;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:800px){
+    .logo{display:none}
+    .tab{min-width:130px}
+    .user-button span{display:none}
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOGIN -->
+
+<div id="loginScreen">
+
+    <div class="login-card">
+
+        <div class="login-logo">🌐</div>
+
+        <h1>IternetWorld</h1>
+
+        <p id="loginTitle">Inicia sessão na tua conta</p>
+
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="Email"
+            autocomplete="email"
+        >
+
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Palavra-passe"
+            autocomplete="current-password"
+        >
+
+        <button onclick="loginUser()">
+            Entrar
+        </button>
+
+        <div
+            class="login-switch"
+            id="registerSwitch"
+            onclick="toggleRegister()"
+        >
+            Ainda não tens conta? Criar conta
+        </div>
+
+        <div
+            class="login-error"
+            id="loginError"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<!-- BROWSER -->
+
 <div class="browser">
 
-    <!-- =====================
-         ABAS
-    ====================== -->
-
     <div class="tabs" id="tabs"></div>
-
-
-    <!-- =====================
-         BARRA
-    ====================== -->
 
     <div class="toolbar">
 
@@ -488,21 +615,13 @@ body:not(.claro) .search-page{
             🌐 IternetWorld
         </div>
 
-        <button onclick="goBack()" title="Voltar">
-            ←
-        </button>
+        <button onclick="goBack()" title="Voltar">←</button>
 
-        <button onclick="goForward()" title="Avançar">
-            →
-        </button>
+        <button onclick="goForward()" title="Avançar">→</button>
 
-        <button onclick="goHome()" title="Página inicial">
-            🏠
-        </button>
+        <button onclick="goHome()" title="Página inicial">🏠</button>
 
-        <button onclick="reloadPage()" title="Atualizar">
-            ↻
-        </button>
+        <button onclick="reloadPage()" title="Atualizar">↻</button>
 
         <input
             id="address"
@@ -512,8 +631,15 @@ body:not(.claro) .search-page{
             onkeydown="addressKey(event)"
         >
 
-        <button class="go" onclick="goAddress()">
-            Ir
+        <button class="go" onclick="goAddress()">Ir</button>
+
+        <button
+            class="user-button"
+            onclick="showProfile()"
+            id="userButton"
+            title="A minha conta"
+        >
+            👤 <span>Conta</span>
         </button>
 
         <div class="custom-box">
@@ -525,10 +651,7 @@ body:not(.claro) .search-page{
                 🎨
             </button>
 
-            <div
-                class="custom-menu"
-                id="customMenu"
-            >
+            <div class="custom-menu" id="customMenu">
 
                 <h3>🎨 Personalizar</h3>
 
@@ -562,15 +685,7 @@ body:not(.claro) .search-page{
 
     </div>
 
-
-    <!-- =====================
-         PÁGINAS
-    ====================== -->
-
-    <div
-        class="pages"
-        id="pages"
-    ></div>
+    <div class="pages" id="pages"></div>
 
 </div>
 
@@ -578,14 +693,305 @@ body:not(.claro) .search-page{
 <script>
 
 /* ==================================================
-   IPC ELECTRON
+   CONTA
 ================================================== */
 
-// GitHub Pages: código web, sem Electron.
+let registerMode = false;
+
+function toggleRegister(){
+
+    registerMode = !registerMode;
+
+    const title =
+        document.getElementById("loginTitle");
+
+    const button =
+        document.querySelector(".login-card button");
+
+    const switchText =
+        document.getElementById("registerSwitch");
+
+    const password =
+        document.getElementById("loginPassword");
+
+    document.getElementById("loginError").textContent = "";
+
+    if(registerMode){
+
+        title.textContent = "Cria a tua conta";
+
+        button.textContent = "Criar conta";
+
+        switchText.textContent =
+            "Já tens uma conta? Iniciar sessão";
+
+        password.autocomplete = "new-password";
+
+    }else{
+
+        title.textContent =
+            "Inicia sessão na tua conta";
+
+        button.textContent = "Entrar";
+
+        switchText.textContent =
+            "Ainda não tens conta? Criar conta";
+
+        password.autocomplete =
+            "current-password";
+    }
+}
+
+
+function getUsers(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem("IternetWorldUsers") || "[]"
+        );
+
+    }catch{
+
+        return [];
+
+    }
+}
+
+
+function saveUsers(users){
+
+    localStorage.setItem(
+        "IternetWorldUsers",
+        JSON.stringify(users)
+    );
+
+}
+
+
+function loginUser(){
+
+    const email =
+        document.getElementById("loginEmail")
+        .value.trim()
+        .toLowerCase();
+
+    const password =
+        document.getElementById("loginPassword")
+        .value;
+
+    const error =
+        document.getElementById("loginError");
+
+    error.textContent = "";
+
+    if(!email || !password){
+
+        error.textContent =
+            "Preenche o email e a palavra-passe.";
+
+        return;
+    }
+
+    const users = getUsers();
+
+    if(registerMode){
+
+        if(password.length < 6){
+
+            error.textContent =
+                "A palavra-passe deve ter pelo menos 6 caracteres.";
+
+            return;
+        }
+
+        if(
+            users.some(
+                user => user.email === email
+            )
+        ){
+
+            error.textContent =
+                "Este email já tem uma conta.";
+
+            return;
+        }
+
+        users.push({
+            email:email,
+            password:password,
+            createdAt:new Date().toISOString()
+        });
+
+        saveUsers(users);
+
+        localStorage.setItem(
+            "IternetWorldCurrentUser",
+            email
+        );
+
+        enterIternetWorld();
+
+        return;
+    }
+
+    const user =
+        users.find(
+            user =>
+                user.email === email &&
+                user.password === password
+        );
+
+    if(!user){
+
+        error.textContent =
+            "Email ou palavra-passe incorretos.";
+
+        return;
+    }
+
+    localStorage.setItem(
+        "IternetWorldCurrentUser",
+        email
+    );
+
+    enterIternetWorld();
+
+}
+
+
+function enterIternetWorld(){
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display = "none";
+
+    updateUserButton();
+
+    if(!tabs.length){
+
+        createTab("Nova aba");
+
+    }
+
+}
+
+
+function updateUserButton(){
+
+    const email =
+        localStorage.getItem(
+            "IternetWorldCurrentUser"
+        );
+
+    const button =
+        document.getElementById("userButton");
+
+    if(!button) return;
+
+    if(email){
+
+        const name =
+            email.split("@")[0];
+
+        button.innerHTML =
+            "👤 <span>" +
+            escapeHtml(name) +
+            "</span>";
+
+    }
+
+}
+
+
+function showProfile(){
+
+    const email =
+        localStorage.getItem(
+            "IternetWorldCurrentUser"
+        );
+
+    if(!email) return;
+
+    const tab = getActiveTab();
+
+    if(!tab) return;
+
+    tab.title = "A minha conta";
+    tab.url = "IternetWorld://conta";
+
+    renderTabs();
+
+    updateAddress();
+
+    const page =
+        document.getElementById(
+            "page-" + tab.id
+        );
+
+    if(!page) return;
+
+    page.innerHTML = `
+
+        <div class="profile-page">
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">👤</div>
+
+                <h1>A minha conta</h1>
+
+                <p>
+                    <strong>${escapeHtml(email)}</strong>
+                </p>
+
+                <p>
+                    A tua sessão está iniciada no IternetWorld.
+                </p>
+
+                <button onclick="logoutUser()">
+                    🚪 Terminar sessão
+                </button>
+
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+function logoutUser(){
+
+    localStorage.removeItem(
+        "IternetWorldCurrentUser"
+    );
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display = "flex";
+
+    document.getElementById(
+        "loginEmail"
+    ).value = "";
+
+    document.getElementById(
+        "loginPassword"
+    ).value = "";
+
+    registerMode = false;
+
+    toggleRegister();
+
+    tabs = [];
+    activeTab = null;
+    tabCounter = 0;
+
+}
 
 
 /* ==================================================
-   VARIÁVEIS
+   VARIÁVEIS DO NAVEGADOR
 ================================================== */
 
 let tabs = [];
@@ -597,52 +1003,40 @@ let tabCounter = 0;
    CRIAR ABA
 ================================================== */
 
-function createTab(title = "Nova aba", url = "") {
+function createTab(title="Nova aba",url=""){
 
     tabCounter++;
 
-    const id = "tab-" + tabCounter;
+    const id="tab-"+tabCounter;
 
-    const tab = {
-
+    tabs.push({
         id,
-
         title,
-
         url,
+        history:[],
+        historyIndex:-1
+    });
 
-        history: [],
-
-        historyIndex: -1
-
-    };
-
-    tabs.push(tab);
-
-    activeTab = id;
+    activeTab=id;
 
     renderTabs();
     renderPages();
-
     updateAddress();
 
-    if (url) {
-
-        loadUrl(url, true);
-
+    if(url){
+        loadUrl(url,true);
     }
-
 }
 
 
 /* ==================================================
-   OBTER ABA ATIVA
+   ABA ATIVA
 ================================================== */
 
-function getActiveTab() {
+function getActiveTab(){
 
     return tabs.find(
-        tab => tab.id === activeTab
+        tab=>tab.id===activeTab
     );
 
 }
@@ -652,25 +1046,24 @@ function getActiveTab() {
    ABAS
 ================================================== */
 
-function renderTabs() {
+function renderTabs(){
 
-    const tabsElement =
+    const element =
         document.getElementById("tabs");
 
-    tabsElement.innerHTML = "";
+    element.innerHTML="";
 
-    tabs.forEach(tab => {
+    tabs.forEach(tab=>{
 
         const div =
             document.createElement("div");
 
         div.className =
             "tab " +
-            (tab.id === activeTab
-                ? "active"
-                : "");
+            (tab.id===activeTab
+                ?"active":"");
 
-        div.innerHTML = `
+        div.innerHTML=`
             <span>🌐</span>
             <span class="tab-title">
                 ${escapeHtml(tab.title)}
@@ -678,18 +1071,16 @@ function renderTabs() {
             <span
                 class="close-tab"
                 onclick="closeTab(event,'${tab.id}')"
-            >
-                ×
-            </span>
+            >×</span>
         `;
 
-        div.onclick = function(event) {
+        div.onclick=function(event){
 
-            if (
+            if(
                 !event.target.classList.contains(
                     "close-tab"
                 )
-            ) {
+            ){
 
                 activateTab(tab.id);
 
@@ -697,23 +1088,19 @@ function renderTabs() {
 
         };
 
-        tabsElement.appendChild(div);
+        element.appendChild(div);
 
     });
-
 
     const plus =
         document.createElement("div");
 
-    plus.className = "new-tab";
+    plus.className="new-tab";
+    plus.textContent="+";
+    plus.title="Nova aba";
+    plus.onclick=()=>createTab();
 
-    plus.textContent = "+";
-
-    plus.title = "Nova aba";
-
-    plus.onclick = () => createTab();
-
-    tabsElement.appendChild(plus);
+    element.appendChild(plus);
 
 }
 
@@ -722,28 +1109,27 @@ function renderTabs() {
    PÁGINAS
 ================================================== */
 
-function renderPages() {
+function renderPages(){
 
     const pages =
         document.getElementById("pages");
 
-    pages.innerHTML = "";
+    pages.innerHTML="";
 
-    tabs.forEach(tab => {
+    tabs.forEach(tab=>{
 
         const page =
             document.createElement("div");
 
         page.className =
-            "page " +
-            (tab.id === activeTab
-                ? "active"
-                : "");
+            "page "+
+            (tab.id===activeTab
+                ?"active":"");
 
-        page.id =
-            "page-" + tab.id;
+        page.id="page-"+tab.id;
 
-        page.innerHTML = createHomeHTML(tab.id);
+        page.innerHTML =
+            createHomeHTML(tab.id);
 
         pages.appendChild(page);
 
@@ -753,10 +1139,10 @@ function renderPages() {
 
 
 /* ==================================================
-   HOME HTML
+   HOME
 ================================================== */
 
-function createHomeHTML(id) {
+function createHomeHTML(id){
 
     return `
 
@@ -765,7 +1151,7 @@ function createHomeHTML(id) {
             <h1>🌐 IternetWorld</h1>
 
             <p>
-                Pesquise na Internet com o DuckDuckGo
+                Bem-vindo ao teu navegador.
             </p>
 
             <div class="search-box">
@@ -777,14 +1163,11 @@ function createHomeHTML(id) {
                     onkeydown="searchKey(event)"
                 >
 
-                <button
-                    onclick="searchFromHome()"
-                >
+                <button onclick="searchFromHome()">
                     🔍
                 </button>
 
             </div>
-
 
             <div class="shortcuts">
 
@@ -792,32 +1175,28 @@ function createHomeHTML(id) {
                     class="shortcut"
                     onclick="searchText('YouTube')"
                 >
-                    ▶️<br>
-                    YouTube
+                    ▶️<br>YouTube
                 </div>
 
                 <div
                     class="shortcut"
                     onclick="searchText('Minecraft')"
                 >
-                    ⛏️<br>
-                    Minecraft
+                    ⛏️<br>Minecraft
                 </div>
 
                 <div
                     class="shortcut"
                     onclick="searchText('Google')"
                 >
-                    🔎<br>
-                    Google
+                    🔎<br>Google
                 </div>
 
                 <div
                     class="shortcut"
                     onclick="searchText('Notícias')"
                 >
-                    📰<br>
-                    Notícias
+                    📰<br>Notícias
                 </div>
 
             </div>
@@ -838,7 +1217,6 @@ function createHomeHTML(id) {
         </div>
 
     `;
-
 }
 
 
@@ -846,38 +1224,19 @@ function createHomeHTML(id) {
    ATIVAR ABA
 ================================================== */
 
-function activateTab(id) {
+function activateTab(id){
 
-    activeTab = id;
+    activeTab=id;
 
     renderTabs();
-
     renderPages();
-
     updateAddress();
 
-    const tab = getActiveTab();
+    const tab=getActiveTab();
 
-    if (tab && tab.url) {
-
+    if(tab && tab.url){
         showCurrentTab();
-
     }
-
-    setTimeout(() => {
-
-        const input =
-            document.getElementById(
-                "search-" + id
-            );
-
-        if (input) {
-
-            input.focus();
-
-        }
-
-    }, 50);
 
 }
 
@@ -886,44 +1245,37 @@ function activateTab(id) {
    FECHAR ABA
 ================================================== */
 
-function closeTab(event, id) {
+function closeTab(event,id){
 
     event.stopPropagation();
 
     const index =
         tabs.findIndex(
-            tab => tab.id === id
+            tab=>tab.id===id
         );
 
-    tabs =
-        tabs.filter(
-            tab => tab.id !== id
-        );
+    tabs=tabs.filter(
+        tab=>tab.id!==id
+    );
 
-    if (tabs.length === 0) {
+    if(!tabs.length){
 
         createTab();
 
         return;
-
     }
 
-    if (activeTab === id) {
+    if(activeTab===id){
 
         const newIndex =
-            Math.max(
-                0,
-                index - 1
-            );
+            Math.max(0,index-1);
 
         activeTab =
             tabs[newIndex].id;
-
     }
 
     renderTabs();
     renderPages();
-
     updateAddress();
 
 }
@@ -933,9 +1285,9 @@ function closeTab(event, id) {
    PESQUISA
 ================================================== */
 
-function searchKey(event) {
+function searchKey(event){
 
-    if (event.key === "Enter") {
+    if(event.key==="Enter"){
 
         event.preventDefault();
 
@@ -948,57 +1300,48 @@ function searchKey(event) {
 }
 
 
-function searchFromHome() {
+function searchFromHome(){
 
     const input =
         document.getElementById(
-            "search-" + activeTab
+            "search-"+activeTab
         );
 
-    if (input) {
-
+    if(input){
         searchText(input.value);
-
     }
 
 }
 
 
-async function searchText(text) {
+async function searchText(text){
 
-    text = String(text).trim();
+    text=String(text).trim();
 
-    if (!text) return;
+    if(!text)return;
 
+    const tab=getActiveTab();
 
-    const tab =
-        getActiveTab();
+    if(!tab)return;
 
-    if (!tab) return;
+    tab.title="DuckDuckGo: "+text;
 
-
-    tab.title =
-        "DuckDuckGo: " + text;
-
-    tab.url =
-        "https://duckduckgo.com/?q=" +
+    tab.url=
+        "https://duckduckgo.com/?q="+
         encodeURIComponent(text);
 
-    tab.history =
+    tab.history=
         tab.history.slice(
             0,
-            tab.historyIndex + 1
+            tab.historyIndex+1
         );
 
     tab.history.push(tab.url);
 
     tab.historyIndex++;
 
-
     renderTabs();
-
     updateAddress();
-
 
     await showDuckResults(text);
 
@@ -1006,242 +1349,167 @@ async function searchText(text) {
 
 
 /* ==================================================
-   MOSTRAR RESULTADOS DUCKDUCKGO
+   DUCKDUCKGO
 ================================================== */
 
-async function showDuckResults(text) {
+async function showDuckResults(text){
 
-    const tab = getActiveTab();
-    if (!tab) return;
+    const tab=getActiveTab();
 
-    const page = document.getElementById("page-" + tab.id);
-    if (!page) return;
+    if(!tab)return;
 
-    const q = encodeURIComponent(text);
+    const page=
+        document.getElementById(
+            "page-"+tab.id
+        );
 
-    page.innerHTML = `
+    if(!page)return;
+
+    const q=encodeURIComponent(text);
+
+    page.innerHTML=`
+
         <div class="search-page">
+
             <div class="search-header">
+
                 <div class="search-bar">
+
                     <input
                         id="result-search"
                         value="${escapeAttribute(text)}"
                         onkeydown="resultSearchKey(event)"
                     >
-                    <button onclick="searchResultPage()">🔍</button>
+
+                    <button onclick="searchResultPage()">
+                        🔍
+                    </button>
+
                 </div>
+
             </div>
 
             <div class="results-container">
+
                 <div class="web-search-card">
-                    <div class="web-search-icon">🦆</div>
-                    <h2>Pesquisar no DuckDuckGo</h2>
+
+                    <div class="web-search-icon">
+                        🦆
+                    </div>
+
+                    <h2>
+                        Pesquisar no DuckDuckGo
+                    </h2>
+
                     <p>
-                        Os resultados do DuckDuckGo não podem ser incorporados
-                        diretamente nesta página do GitHub Pages.
+                        Os resultados podem ser
+                        abertos diretamente no DuckDuckGo.
                     </p>
+
                     <a
                         class="duck-button"
                         href="https://duckduckgo.com/?q=${q}"
                         target="_blank"
                         rel="noopener"
                     >
-                        🔎 Abrir resultados no DuckDuckGo
+                        🔎 Abrir resultados
                     </a>
+
                 </div>
+
             </div>
+
         </div>
     `;
-}
-
-
-/* ==================================================
-   RESULTADOS
-================================================== */
-
-function renderResults(resultados) {
-
-    const container =
-        document.getElementById(
-            "results-container"
-        );
-
-    if (!container) return;
-
-
-    container.innerHTML = `
-
-        <div class="results-info">
-            🦆 Resultados pesquisados pelo
-            <strong>DuckDuckGo</strong>
-        </div>
-
-    `;
-
-
-    resultados.forEach(resultado => {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "result";
-
-
-        const titulo =
-            escapeHtml(
-                resultado.titulo ||
-                "Resultado"
-            );
-
-        const url =
-            escapeAttribute(
-                resultado.url || ""
-            );
-
-        const descricao =
-            escapeHtml(
-                resultado.descricao ||
-                "Sem descrição disponível."
-            );
-
-
-        div.innerHTML = `
-
-            <h2>
-
-                <a
-                    href="#"
-                    onclick="openResult(event, '${url}')"
-                >
-                    ${titulo}
-                </a>
-
-            </h2>
-
-            <div class="result-url">
-                ${escapeHtml(
-                    resultado.url || ""
-                )}
-            </div>
-
-            <div class="result-description">
-                ${descricao}
-            </div>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
 
 }
 
 
 /* ==================================================
-   ABRIR RESULTADO DENTRO DA ABA
+   RESULTADO
 ================================================== */
 
-function openResult(event, url) {
+function openResult(event,url){
 
     event.preventDefault();
 
-    if (!url) return;
+    if(!url)return;
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!tab) return;
+    if(!tab)return;
 
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
 
-    tab.url = url;
-
-    tab.title =
-        getTitleFromUrl(url);
-
-
-    tab.history =
+    tab.history=
         tab.history.slice(
             0,
-            tab.historyIndex + 1
+            tab.historyIndex+1
         );
 
     tab.history.push(url);
-
     tab.historyIndex++;
 
-
     renderTabs();
-
     updateAddress();
-
 
     showWebview(url);
 
 }
 
 
-/* ==================================================
-   WEBVIEW
-================================================== */
+function showWebview(url){
 
-function showWebview(url) {
+    const tab=getActiveTab();
 
-    const tab = getActiveTab();
-    if (!tab) return;
+    if(!tab)return;
 
-    const page = document.getElementById("page-" + tab.id);
-    if (!page) return;
+    const page=
+        document.getElementById(
+            "page-"+tab.id
+        );
 
-    page.innerHTML = `
+    if(!page)return;
+
+    page.innerHTML=`
+
         <div class="webview-container">
+
             <iframe
                 src="${escapeAttribute(url)}"
                 title="IternetWorld"
                 allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
             ></iframe>
+
         </div>
     `;
+
 }
 
 
 /* ==================================================
-   FALLBACK DUCKDUCKGO
+   PESQUISA NOS RESULTADOS
 ================================================== */
 
-function showDuckWebview(text) {
-    showDuckResults(text);
-}
+function resultSearchKey(event){
 
-
-/* ==================================================
-   PESQUISA DENTRO DOS RESULTADOS
-================================================== */
-
-function resultSearchKey(event) {
-
-    if (event.key === "Enter") {
-
+    if(event.key==="Enter"){
         searchResultPage();
-
     }
 
 }
 
 
-function searchResultPage() {
+function searchResultPage(){
 
-    const input =
+    const input=
         document.getElementById(
             "result-search"
         );
 
-    if (input) {
-
-        searchText(
-            input.value
-        );
-
+    if(input){
+        searchText(input.value);
     }
 
 }
@@ -1251,128 +1519,72 @@ function searchResultPage() {
    ENDEREÇO
 ================================================== */
 
-function addressKey(event) {
+function addressKey(event){
 
-    if (event.key === "Enter") {
-
+    if(event.key==="Enter"){
         goAddress();
-
     }
 
 }
 
 
-function goAddress() {
+function goAddress(){
 
-    const input =
+    const input=
         document.getElementById(
             "address"
         );
 
-    let value =
-        input.value.trim();
+    let value=input.value.trim();
 
-    if (!value) return;
+    if(!value)return;
 
-
-    /*
-       URL completa
-    */
-
-    if (
+    if(
         value.startsWith("http://") ||
         value.startsWith("https://")
-    ) {
+    ){
 
-        const tab =
-            getActiveTab();
-
-        tab.url = value;
-
-        tab.title =
-            getTitleFromUrl(value);
-
-        tab.history =
-            tab.history.slice(
-                0,
-                tab.historyIndex + 1
-            );
-
-        tab.history.push(value);
-
-        tab.historyIndex++;
-
-
-        renderTabs();
-
-        showWebview(value);
+        goAddressUrl(value);
 
         return;
-
     }
 
-
-    /*
-       YouTube
-    */
-
-    if (
-        value.toLowerCase() ===
-        "youtube"
-        ||
-        value.toLowerCase() ===
-        "youtube.com"
-    ) {
+    if(
+        value.toLowerCase()==="youtube" ||
+        value.toLowerCase()==="youtube.com"
+    ){
 
         goAddressUrl(
             "https://www.youtube.com/"
         );
 
         return;
-
     }
-
-
-    /*
-       Caso contrário pesquisa
-    */
 
     searchText(value);
 
 }
 
 
-/* ==================================================
-   ABRIR URL
-================================================== */
+function goAddressUrl(url){
 
-function goAddressUrl(url) {
+    const tab=getActiveTab();
 
-    const tab =
-        getActiveTab();
+    if(!tab)return;
 
-    if (!tab) return;
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
 
-
-    tab.url = url;
-
-    tab.title =
-        getTitleFromUrl(url);
-
-
-    tab.history =
+    tab.history=
         tab.history.slice(
             0,
-            tab.historyIndex + 1
+            tab.historyIndex+1
         );
 
     tab.history.push(url);
-
     tab.historyIndex++;
 
-
     renderTabs();
-
     updateAddress();
 
     showWebview(url);
@@ -1384,61 +1596,30 @@ function goAddressUrl(url) {
    LOAD URL
 ================================================== */
 
-function loadUrl(url, addHistory = true) {
+function loadUrl(url,addHistory=true){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!tab) return;
+    if(!tab)return;
 
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
 
-    tab.url = url;
+    if(addHistory){
 
-    tab.title =
-        getTitleFromUrl(url);
-
-
-    if (addHistory) {
-
-        tab.history =
+        tab.history=
             tab.history.slice(
                 0,
-                tab.historyIndex + 1
+                tab.historyIndex+1
             );
 
         tab.history.push(url);
-
         tab.historyIndex++;
 
     }
 
-
     renderTabs();
-
     updateAddress();
-
-
-    if (
-        url.includes(
-            "duckduckgo.com"
-        )
-    ) {
-
-        const pesquisa =
-            getSearchFromUrl(url);
-
-        if (pesquisa) {
-
-            showDuckResults(
-                pesquisa
-            );
-
-            return;
-
-        }
-
-    }
-
 
     showWebview(url);
 
@@ -1446,49 +1627,49 @@ function loadUrl(url, addHistory = true) {
 
 
 /* ==================================================
-   MOSTRAR ABA ATUAL
+   ABA ATUAL
 ================================================== */
 
-function showCurrentTab() {
+function showCurrentTab(){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!tab) return;
+    if(!tab)return;
 
+    if(tab.url){
 
-    if (
-        tab.url &&
-        tab.url.includes(
-            "duckduckgo.com"
-        )
-    ) {
+        if(
+            tab.url.includes(
+                "IternetWorld://conta"
+            )
+        ){
 
-        const pesquisa =
-            getSearchFromUrl(
-                tab.url
-            );
-
-        if (pesquisa) {
-
-            showDuckResults(
-                pesquisa
-            );
+            showProfile();
 
             return;
+        }
+
+        if(
+            tab.url.includes(
+                "duckduckgo.com"
+            )
+        ){
+
+            const pesquisa=
+                getSearchFromUrl(tab.url);
+
+            if(pesquisa){
+
+                showDuckResults(pesquisa);
+
+                return;
+            }
 
         }
 
-    }
+        showWebview(tab.url);
 
-
-    if (tab.url) {
-
-        showWebview(
-            tab.url
-        );
-
-    } else {
+    }else{
 
         renderPages();
 
@@ -1498,22 +1679,18 @@ function showCurrentTab() {
 
 
 /* ==================================================
-   EXTRAIR PESQUISA DO URL
+   URL DE PESQUISA
 ================================================== */
 
-function getSearchFromUrl(url) {
+function getSearchFromUrl(url){
 
-    try {
+    try{
 
-        const u =
-            new URL(url);
+        const u=new URL(url);
 
-        return (
-            u.searchParams.get("q") ||
-            ""
-        );
+        return u.searchParams.get("q") || "";
 
-    } catch {
+    }catch{
 
         return "";
 
@@ -1526,24 +1703,17 @@ function getSearchFromUrl(url) {
    HOME
 ================================================== */
 
-function goHome() {
+function goHome(){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!tab) return;
+    if(!tab)return;
 
-
-    tab.url = "";
-
-    tab.title =
-        "Nova aba";
-
+    tab.url="";
+    tab.title="Nova aba";
 
     renderTabs();
-
     renderPages();
-
     updateAddress();
 
 }
@@ -1553,35 +1723,27 @@ function goHome() {
    VOLTAR
 ================================================== */
 
-function goBack() {
+function goBack(){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (
+    if(
         !tab ||
-        tab.historyIndex <= 0
-    ) return;
-
+        tab.historyIndex<=0
+    )return;
 
     tab.historyIndex--;
 
-    const url =
+    const url=
         tab.history[
             tab.historyIndex
         ];
 
-
-    tab.url = url;
-
-    tab.title =
-        getTitleFromUrl(url);
-
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
 
     renderTabs();
-
     updateAddress();
-
     showCurrentTab();
 
 }
@@ -1591,36 +1753,28 @@ function goBack() {
    AVANÇAR
 ================================================== */
 
-function goForward() {
+function goForward(){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (
+    if(
         !tab ||
-        tab.historyIndex >=
-        tab.history.length - 1
-    ) return;
-
+        tab.historyIndex>=
+        tab.history.length-1
+    )return;
 
     tab.historyIndex++;
 
-    const url =
+    const url=
         tab.history[
             tab.historyIndex
         ];
 
-
-    tab.url = url;
-
-    tab.title =
-        getTitleFromUrl(url);
-
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
 
     renderTabs();
-
     updateAddress();
-
     showCurrentTab();
 
 }
@@ -1630,67 +1784,35 @@ function goForward() {
    ATUALIZAR
 ================================================== */
 
-function reloadPage() {
+function reloadPage(){
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!tab) return;
+    if(!tab)return;
 
-
-    if (
-        tab.url &&
-        tab.url.includes(
-            "duckduckgo.com"
-        )
-    ) {
-
-        const pesquisa =
-            getSearchFromUrl(
-                tab.url
-            );
-
-        if (pesquisa) {
-
-            showDuckResults(
-                pesquisa
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    if (tab.url) {
-
-        showWebview(
-            tab.url
-        );
-
+    if(tab.url){
+        showCurrentTab();
     }
 
 }
 
 
 /* ==================================================
-   ATUALIZAR BARRA
+   BARRA
 ================================================== */
 
-function updateAddress() {
+function updateAddress(){
 
-    const input =
+    const input=
         document.getElementById(
             "address"
         );
 
-    const tab =
-        getActiveTab();
+    const tab=getActiveTab();
 
-    if (!input) return;
+    if(!input)return;
 
-    input.value =
+    input.value=
         tab && tab.url
             ? tab.url
             : "IternetWorld://";
@@ -1702,20 +1824,16 @@ function updateAddress() {
    PERSONALIZAÇÃO
 ================================================== */
 
-function toggleCustomization() {
+function toggleCustomization(){
 
     document
-        .getElementById(
-            "customMenu"
-        )
-        .classList.toggle(
-            "show"
-        );
+        .getElementById("customMenu")
+        .classList.toggle("show");
 
 }
 
 
-function setTheme(theme) {
+function setTheme(theme){
 
     document.body.classList.remove(
         "claro",
@@ -1724,42 +1842,17 @@ function setTheme(theme) {
         "vermelho"
     );
 
+    if(theme==="claro")
+        document.body.classList.add("claro");
 
-    if (theme === "claro") {
+    if(theme==="verde")
+        document.body.classList.add("verde");
 
-        document.body.classList.add(
-            "claro"
-        );
+    if(theme==="roxo")
+        document.body.classList.add("roxo");
 
-    }
-
-
-    if (theme === "verde") {
-
-        document.body.classList.add(
-            "verde"
-        );
-
-    }
-
-
-    if (theme === "roxo") {
-
-        document.body.classList.add(
-            "roxo"
-        );
-
-    }
-
-
-    if (theme === "vermelho") {
-
-        document.body.classList.add(
-            "vermelho"
-        );
-
-    }
-
+    if(theme==="vermelho")
+        document.body.classList.add("vermelho");
 
     localStorage.setItem(
         "IternetWorldTheme",
@@ -1775,27 +1868,21 @@ function setTheme(theme) {
 
 document.addEventListener(
     "click",
-    function(event) {
+    function(event){
 
-        const box =
+        const box=
             document.querySelector(
                 ".custom-box"
             );
 
-        if (
+        if(
             box &&
-            !box.contains(
-                event.target
-            )
-        ) {
+            !box.contains(event.target)
+        ){
 
             document
-                .getElementById(
-                    "customMenu"
-                )
-                .classList.remove(
-                    "show"
-                );
+                .getElementById("customMenu")
+                .classList.remove("show");
 
         }
 
@@ -1809,22 +1896,21 @@ document.addEventListener(
 
 document.addEventListener(
     "keydown",
-    function(event) {
+    function(event){
 
-        if (
+        if(
             event.ctrlKey &&
-            event.key.toLowerCase() === "l"
-        ) {
+            event.key.toLowerCase()==="l"
+        ){
 
             event.preventDefault();
 
-            const address =
+            const address=
                 document.getElementById(
                     "address"
                 );
 
             address.focus();
-
             address.select();
 
         }
@@ -1837,34 +1923,19 @@ document.addEventListener(
    SEGURANÇA
 ================================================== */
 
-function escapeHtml(text) {
+function escapeHtml(text){
 
     return String(text)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-function escapeAttribute(text) {
+function escapeAttribute(text){
 
     return escapeHtml(text);
 
@@ -1875,41 +1946,32 @@ function escapeAttribute(text) {
    TÍTULO
 ================================================== */
 
-function getTitleFromUrl(url) {
+function getTitleFromUrl(url){
 
-    try {
+    try{
 
-        const u =
-            new URL(url);
+        const u=new URL(url);
 
-        if (
+        if(
             u.hostname.includes(
                 "duckduckgo"
             )
-        ) {
-
+        )
             return "DuckDuckGo";
 
-        }
-
-
-        if (
+        if(
             u.hostname.includes(
                 "youtube"
             )
-        ) {
-
+        )
             return "YouTube";
-
-        }
-
 
         return u.hostname.replace(
             "www.",
             ""
         );
 
-    } catch {
+    }catch{
 
         return "Nova aba";
 
@@ -1922,18 +1984,13 @@ function getTitleFromUrl(url) {
    TEMA GUARDADO
 ================================================== */
 
-const savedTheme =
+const savedTheme=
     localStorage.getItem(
         "IternetWorldTheme"
     );
 
-
-if (savedTheme) {
-
-    setTheme(
-        savedTheme
-    );
-
+if(savedTheme){
+    setTheme(savedTheme);
 }
 
 
@@ -1941,11 +1998,31 @@ if (savedTheme) {
    INICIAR
 ================================================== */
 
-createTab(
-    "Nova aba"
-);
+const currentUser=
+    localStorage.getItem(
+        "IternetWorldCurrentUser"
+    );
+
+if(currentUser){
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display="none";
+
+    updateUserButton();
+
+    createTab("Nova aba");
+
+}else{
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display="flex";
+
+}
 
 </script>
 
 </body>
 </html>
+```

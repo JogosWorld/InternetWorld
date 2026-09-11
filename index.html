@@ -1,745 +1,1258 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>IternetWorld</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 html,body{
     margin:0;
     width:100%;
     height:100%;
     font-family:Arial,Helvetica,sans-serif;
-    overflow:hidden;
+    background:var(--fundo);
+    color:var(--texto);
 }
 
 :root{
     --fundo:#151515;
     --barra:#1e1e1e;
     --botao:#303030;
-    --texto:#fff;
+    --texto:#ffffff;
     --azul:#00bfff;
-    --pagina:#fff;
-    --textoPagina:#222;
+    --pagina:#ffffff;
+    --textoPagina:#222222;
     --cartao:#f4f4f4;
 }
 
 body.claro{
-    --fundo:#eee;
-    --barra:#f5f5f5;
-    --botao:#ddd;
-    --texto:#111;
-    --pagina:#fff;
-    --textoPagina:#222;
-    --cartao:#f1f1f1;
+    --fundo:#eeeeee;
+    --barra:#ffffff;
+    --botao:#dddddd;
+    --texto:#111111;
+    --pagina:#ffffff;
+    --textoPagina:#222222;
+    --cartao:#f4f4f4;
 }
 
-body.verde{--azul:#20d070}
-body.roxo{--azul:#a855f7}
-body.vermelho{--azul:#ff4444}
-
-/* LOGIN */
-
-#loginScreen{
-    position:fixed;
-    inset:0;
-    z-index:999999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-        radial-gradient(circle at top,#073b4c 0,#101820 45%,#080808 100%);
+body.verde{
+    --azul:#00d084;
 }
 
-.login-card{
-    width:min(430px,92%);
-    padding:35px;
-    border-radius:24px;
-    background:#1d1d1df2;
-    box-shadow:0 20px 70px #000b;
-    color:white;
-    text-align:center;
+body.roxo{
+    --azul:#9b59ff;
 }
 
-.login-logo{
-    font-size:42px;
-    margin-bottom:5px;
+body.vermelho{
+    --azul:#ff3b30;
 }
 
-.login-card h1{
-    margin:0;
-    color:#00bfff;
-    font-size:32px;
+button,
+input{
+    font:inherit;
 }
 
-.login-card p{
-    color:#aaa;
-    margin-bottom:25px;
-}
-
-.login-card input{
-    width:100%;
-    height:48px;
-    margin:7px 0;
-    padding:0 15px;
-    border:0;
-    outline:0;
-    border-radius:12px;
-    background:#303030;
-    color:white;
-    font-size:15px;
-}
-
-.login-card button{
-    width:100%;
-    height:48px;
-    margin-top:12px;
-    border:0;
-    border-radius:12px;
-    background:#00bfff;
-    color:white;
-    font-weight:bold;
-    font-size:16px;
+button{
     cursor:pointer;
 }
 
-.login-card button:hover{
-    filter:brightness(1.15);
-}
-
-.login-switch{
-    margin-top:18px;
-    color:#aaa;
-    cursor:pointer;
-}
-
-.login-switch:hover{
-    color:#00bfff;
-}
-
-.login-error{
-    min-height:22px;
-    margin-top:10px;
-    color:#ff6666;
-}
-
-/* BROWSER */
-
-.browser{
+#app{
     width:100%;
-    height:100vh;
+    height:100%;
     display:flex;
     flex-direction:column;
-    background:var(--fundo);
 }
 
 /* ABAS */
 
 .tabs{
-    height:60px;
+    height:42px;
     display:flex;
-    align-items:end;
-    padding:0 10px;
-    gap:5px;
-    background:#171717;
-    flex-shrink:0;
+    align-items:flex-end;
+    background:#111;
+    overflow-x:auto;
+    padding-left:6px;
 }
 
 .tab{
-    height:44px;
-    min-width:180px;
-    max-width:280px;
-    background:#292929;
-    color:#fff;
-    border-radius:12px 12px 0 0;
+    height:36px;
+    min-width:150px;
+    max-width:240px;
+    background:#252525;
+    color:#ccc;
+    margin-right:3px;
+    border-radius:9px 9px 0 0;
     display:flex;
     align-items:center;
-    padding:0 13px;
+    padding:0 10px;
+    gap:8px;
     cursor:pointer;
-    gap:9px;
-    user-select:none;
 }
 
-.tab.active{background:#3c3c3c}
+.tab.active{
+    background:var(--barra);
+    color:var(--texto);
+}
 
 .tab-title{
     flex:1;
-    overflow:hidden;
     white-space:nowrap;
+    overflow:hidden;
     text-overflow:ellipsis;
 }
 
 .close-tab{
-    font-weight:bold;
-    font-size:17px;
+    border:0;
+    background:transparent;
+    color:inherit;
+    font-size:18px;
+    padding:0;
 }
 
 .new-tab{
-    color:#fff;
-    font-size:28px;
-    padding:0 12px 7px;
-    cursor:pointer;
+    height:34px;
+    min-width:38px;
+    border:0;
+    background:transparent;
+    color:white;
+    font-size:24px;
 }
 
-/* TOOLBAR */
+/* BARRA */
 
 .toolbar{
     height:58px;
+    background:var(--barra);
     display:flex;
     align-items:center;
     gap:8px;
     padding:8px 10px;
-    background:var(--barra);
-    flex-shrink:0;
+    border-bottom:1px solid #333;
 }
 
 .logo{
     color:var(--azul);
-    font-size:20px;
+    font-size:19px;
     font-weight:bold;
     white-space:nowrap;
-    margin-right:3px;
+    margin-right:5px;
 }
 
-.toolbar button{
+.tool-btn{
+    width:38px;
+    height:38px;
     border:0;
+    border-radius:8px;
     background:var(--botao);
     color:var(--texto);
-    height:40px;
-    min-width:42px;
-    border-radius:11px;
     font-size:18px;
-    cursor:pointer;
 }
 
-.toolbar button:hover{filter:brightness(1.2)}
+.tool-btn:hover{
+    filter:brightness(1.2);
+}
 
 .address{
     flex:1;
-    height:40px;
-    border:none;
-    outline:none;
-    border-radius:22px;
-    background:#303030;
-    color:#fff;
-    padding:0 18px;
-    font-size:15px;
-}
-
-.go{padding:0 18px}
-
-.user-button{
-    min-width:auto!important;
-    padding:0 13px;
-    font-size:14px!important;
-}
-
-/* PERSONALIZAÇÃO */
-
-.custom-box{position:relative}
-
-.custom-menu{
-    display:none;
-    position:absolute;
-    right:0;
-    top:48px;
-    width:250px;
-    background:#252525;
-    border-radius:14px;
-    padding:15px;
-    box-shadow:0 10px 35px #0009;
-    z-index:99999;
-}
-
-.custom-menu.show{display:block}
-
-.custom-menu h3{
-    margin:0 0 12px;
-    color:#fff;
-}
-
-.custom-menu button{
-    width:100%;
-    margin:4px 0;
     height:38px;
-    text-align:left;
-    padding-left:12px;
+    border:1px solid #444;
+    border-radius:20px;
+    background:#111;
+    color:white;
+    padding:0 16px;
+    outline:none;
+}
+
+body.claro .address{
+    background:#f5f5f5;
+    color:#111;
+}
+
+.go-btn{
+    height:38px;
+    border:0;
+    border-radius:20px;
+    background:var(--azul);
+    color:white;
+    padding:0 18px;
+    font-weight:bold;
 }
 
 /* PÁGINAS */
 
-.pages{
+#pages{
     flex:1;
-    position:relative;
-    background:var(--pagina);
     min-height:0;
+    position:relative;
 }
 
 .page{
-    position:absolute;
-    inset:0;
-    display:none;
-    background:var(--pagina);
-    overflow:hidden;
-}
-
-.page.active{display:block}
-
-/* HOME */
-
-.home{
     width:100%;
     height:100%;
     overflow:auto;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:70px;
     background:var(--pagina);
     color:var(--textoPagina);
 }
 
-.home h1{
-    font-size:46px;
-    margin:10px;
-    color:var(--azul);
-}
-
-.home p{color:#666}
-
-.search-box{
-    width:min(720px,85%);
-    height:55px;
-    border:2px solid #ddd;
-    border-radius:30px;
+.home{
+    min-height:100%;
     display:flex;
+    flex-direction:column;
     align-items:center;
-    padding:5px 8px 5px 20px;
-    margin-top:20px;
-    background:white;
+    justify-content:center;
+    padding:30px;
+    text-align:center;
 }
 
-.search-box input{
-    flex:1;
-    height:100%;
-    border:none;
-    outline:none;
+.home h1{
+    font-size:54px;
+    margin:0 0 10px;
+    color:#111;
+}
+
+.home h1 span{
+    color:#00aeea;
+}
+
+.home p{
     font-size:18px;
-    color:#222;
+    margin:0 0 25px;
 }
 
-.search-box button{
-    height:43px;
-    width:43px;
-    border:none;
-    border-radius:50%;
-    background:var(--azul);
+.home-search{
+    width:min(700px,90%);
+    display:flex;
+    gap:8px;
+}
+
+.home-search input{
+    flex:1;
+    height:48px;
+    border:1px solid #bbb;
+    border-radius:25px;
+    padding:0 20px;
+    outline:none;
+    font-size:16px;
+}
+
+.home-search button{
+    height:48px;
+    border:0;
+    border-radius:25px;
+    padding:0 25px;
+    background:#00aeea;
     color:white;
-    font-size:20px;
-    cursor:pointer;
+    font-weight:bold;
 }
 
 .shortcuts{
     display:flex;
-    gap:15px;
-    margin-top:35px;
     flex-wrap:wrap;
     justify-content:center;
+    gap:10px;
+    margin-top:25px;
 }
 
 .shortcut{
-    width:140px;
-    padding:18px;
-    border-radius:14px;
-    background:var(--cartao);
-    text-align:center;
-    cursor:pointer;
+    border:0;
+    border-radius:10px;
+    padding:12px 18px;
+    background:#eee;
     color:#222;
-    font-size:16px;
 }
 
-.shortcut:hover{
-    transform:translateY(-2px);
-    background:#ddd;
-}
-
-.download-app{
+.download{
     display:inline-block;
-    margin-top:35px;
-    padding:15px 22px;
-    border-radius:13px;
-    background:var(--azul);
+    margin-top:30px;
+    padding:12px 20px;
+    border-radius:10px;
+    background:#222;
     color:white;
     text-decoration:none;
-    font-weight:bold;
 }
 
-.download-info{
-    margin-top:10px;
+.version{
+    margin-top:12px;
     color:#777;
     font-size:13px;
 }
 
-/* PESQUISA */
+/* RESULTADOS */
 
-.search-page{
-    width:100%;
-    height:100%;
-    overflow:auto;
-    background:white;
-    color:#222;
-}
-
-.search-header{
-    position:sticky;
-    top:0;
-    z-index:20;
-    background:white;
-    border-bottom:1px solid #ddd;
-    padding:22px 7%;
-}
-
-.search-bar{
-    width:min(800px,100%);
-    height:52px;
-    border:1px solid #ccc;
-    border-radius:28px;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
+.results{
+    padding:30px;
+    max-width:1000px;
     margin:auto;
 }
 
-.search-bar input{
-    flex:1;
-    height:100%;
-    border:0;
-    outline:0;
-    padding:0 20px;
-    font-size:17px;
-}
-
-.search-bar button{
-    width:55px;
-    height:100%;
-    border:0;
-    background:var(--azul);
-    color:white;
-    font-size:21px;
-    cursor:pointer;
-}
-
-.results-container{
-    width:min(900px,88%);
-    margin:0 auto;
-    padding:20px 0 60px;
-}
-
-.web-search-card{
-    margin:30px auto;
-    max-width:700px;
-    padding:40px;
-    text-align:center;
-    border-radius:20px;
-    background:#f4f4f4;
-}
-
-.web-search-icon{font-size:55px}
-
-.duck-button{
-    display:inline-block;
-    padding:13px 20px;
-    background:var(--azul);
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-}
-
-.results-info{
-    color:#555;
-    padding:5px 0 15px;
-    border-bottom:1px solid #ddd;
+.results h2{
+    color:#222;
 }
 
 .result{
-    padding:22px 8px;
-    border-bottom:1px solid #eee;
+    padding:18px;
+    margin:12px 0;
+    border-radius:10px;
+    background:#f5f5f5;
+    border:1px solid #ddd;
+    cursor:pointer;
 }
 
-.result:hover{background:#fafafa}
-
-.result h2{
-    margin:0 0 7px;
-    font-size:20px;
-    font-weight:500;
+.result:hover{
+    background:#eaeaea;
 }
 
-.result h2 a{
-    color:#0758c9;
-    text-decoration:none;
+.result-title{
+    color:#1769aa;
+    font-size:19px;
+    font-weight:bold;
 }
 
 .result-url{
-    color:#16833b;
-    font-size:14px;
-    margin-bottom:7px;
-    word-break:break-all;
+    color:#198754;
+    font-size:13px;
+    margin:5px 0;
 }
 
-.result-description{
+.result-desc{
     color:#444;
-    line-height:1.5;
 }
 
 /* WEBVIEW */
 
 .webview-container{
-    position:absolute;
-    inset:0;
-    background:white;
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+}
+
+.webview-header{
+    height:38px;
+    background:#eee;
+    color:#222;
+    display:flex;
+    align-items:center;
+    padding:0 12px;
+    font-size:13px;
+    border-bottom:1px solid #ccc;
 }
 
 .webview-container iframe{
     width:100%;
-    height:100%;
+    flex:1;
     border:0;
+}
+
+/* PERSONALIZAÇÃO */
+
+.customization{
+    position:absolute;
+    right:10px;
+    top:100px;
+    z-index:100;
+    background:var(--barra);
+    border:1px solid #555;
+    border-radius:12px;
+    padding:12px;
+    display:none;
+    box-shadow:0 10px 30px #0008;
+}
+
+.customization.show{
+    display:block;
+}
+
+.customization button{
+    display:block;
+    width:150px;
+    border:0;
+    border-radius:8px;
+    padding:10px;
+    margin:5px;
+    background:var(--botao);
+    color:var(--texto);
+}
+
+/* LOGIN */
+
+#loginModal{
+    position:fixed;
+    inset:0;
+    background:#0009;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+}
+
+#loginModal.show{
+    display:flex;
+}
+
+.login-box{
+    width:min(400px,90%);
+    background:white;
+    color:#222;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 20px 60px #0008;
+}
+
+.login-box h2{
+    margin-top:0;
+    text-align:center;
+}
+
+.login-box input{
+    width:100%;
+    height:45px;
+    margin:7px 0;
+    padding:0 13px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.login-main{
+    width:100%;
+    height:45px;
+    border:0;
+    border-radius:8px;
+    background:#00aeea;
+    color:white;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.login-secondary{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#008dcc;
+    padding:12px;
+}
+
+.login-close{
+    width:100%;
+    border:0;
+    background:#eee;
+    padding:10px;
+    border-radius:8px;
+}
+
+.login-message{
+    min-height:20px;
+    text-align:center;
+    color:#d00;
+    font-size:14px;
+}
+
+.user-button{
+    min-width:38px;
+    height:38px;
+    border:0;
+    border-radius:20px;
+    background:var(--azul);
+    color:white;
+    font-size:17px;
+    padding:0 12px;
 }
 
 /* PERFIL */
 
-.profile-page{
-    width:100%;
-    height:100%;
-    overflow:auto;
-    padding:60px 20px;
+.profile-box{
     text-align:center;
-    background:var(--pagina);
-    color:var(--textoPagina);
 }
 
-.profile-card{
-    max-width:500px;
-    margin:auto;
-    padding:35px;
-    border-radius:20px;
-    background:var(--cartao);
+.profile-box strong{
+    display:block;
+    font-size:20px;
+    margin:10px;
 }
 
-.profile-avatar{
-    font-size:70px;
-}
-
-.profile-card button{
+.logout{
     border:0;
-    padding:13px 25px;
-    border-radius:12px;
+    border-radius:8px;
     background:#e53935;
     color:white;
-    cursor:pointer;
-    font-weight:bold;
+    padding:10px 20px;
 }
 
-/* RESPONSIVO */
+/* MOBILE */
 
-@media(max-width:800px){
-    .logo{display:none}
-    .tab{min-width:130px}
-    .user-button span{display:none}
+@media(max-width:700px){
+    .logo{
+        display:none;
+    }
+
+    .toolbar{
+        gap:5px;
+    }
+
+    .tool-btn{
+        width:34px;
+    }
+
+    .home h1{
+        font-size:40px;
+    }
+
+    .address{
+        min-width:80px;
+    }
+
+    .go-btn{
+        padding:0 12px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
+<div id="app">
 
-<div id="loginScreen">
+    <div class="tabs" id="tabs"></div>
 
-    <div class="login-card">
+    <div class="toolbar">
 
-        <div class="login-logo">🌐</div>
+        <div class="logo">🌐 IternetWorld</div>
 
-        <h1>IternetWorld</h1>
-
-        <p id="loginTitle">Inicia sessão na tua conta</p>
-
-        <input
-            id="loginEmail"
-            type="email"
-            placeholder="Email"
-            autocomplete="email"
-        >
+        <button class="tool-btn" onclick="goBack()" title="Voltar">←</button>
+        <button class="tool-btn" onclick="goForward()" title="Avançar">→</button>
+        <button class="tool-btn" onclick="goHome()" title="Início">⌂</button>
+        <button class="tool-btn" onclick="reloadPage()" title="Recarregar">↻</button>
 
         <input
-            id="loginPassword"
-            type="password"
-            placeholder="Palavra-passe"
-            autocomplete="current-password"
+            id="address"
+            class="address"
+            placeholder="Pesquisar ou escrever um endereço"
+            onkeydown="if(event.key==='Enter') goAddress()"
         >
 
-        <button onclick="loginUser()">
-            Entrar
+        <button class="go-btn" onclick="goAddress()">Ir</button>
+
+        <button class="tool-btn" onclick="toggleCustomization()" title="Personalizar">
+            🎨
         </button>
 
-        <div
-            class="login-switch"
-            id="registerSwitch"
-            onclick="toggleRegister()"
-        >
-            Ainda não tens conta? Criar conta
-        </div>
+        <button class="user-button" onclick="openLogin()" id="userButton">
+            👤
+        </button>
 
-        <div
-            class="login-error"
-            id="loginError"
-        ></div>
+    </div>
+
+    <div id="pages"></div>
+
+    <div class="customization" id="customization">
+
+        <button onclick="setTheme('')">🌙 Escuro</button>
+        <button onclick="setTheme('claro')">☀️ Claro</button>
+        <button onclick="setTheme('')">🔵 Azul</button>
+        <button onclick="setTheme('verde')">🟢 Verde</button>
+        <button onclick="setTheme('roxo')">🟣 Roxo</button>
+        <button onclick="setTheme('vermelho')">🔴 Vermelho</button>
 
     </div>
 
 </div>
 
 
-<!-- BROWSER -->
+<!-- LOGIN OPCIONAL -->
 
-<div class="browser">
+<div id="loginModal">
 
-    <div class="tabs" id="tabs"></div>
+    <div class="login-box">
 
-    <div class="toolbar">
+        <h2 id="loginTitle">👤 Iniciar sessão</h2>
 
-        <div class="logo">
-            🌐 IternetWorld
-        </div>
+        <div id="loginForm">
 
-        <button onclick="goBack()" title="Voltar">←</button>
-
-        <button onclick="goForward()" title="Avançar">→</button>
-
-        <button onclick="goHome()" title="Página inicial">🏠</button>
-
-        <button onclick="reloadPage()" title="Atualizar">↻</button>
-
-        <input
-            id="address"
-            class="address"
-            type="text"
-            placeholder="Pesquisar ou escrever um endereço"
-            onkeydown="addressKey(event)"
-        >
-
-        <button class="go" onclick="goAddress()">Ir</button>
-
-        <button
-            class="user-button"
-            onclick="showProfile()"
-            id="userButton"
-            title="A minha conta"
-        >
-            👤 <span>Conta</span>
-        </button>
-
-        <div class="custom-box">
-
-            <button
-                onclick="toggleCustomization()"
-                title="Personalizar"
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="Email"
             >
-                🎨
+
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Palavra-passe"
+            >
+
+            <div class="login-message" id="loginMessage"></div>
+
+            <button class="login-main" onclick="loginUser()">
+                Iniciar sessão
             </button>
 
-            <div class="custom-menu" id="customMenu">
+            <button class="login-secondary" onclick="toggleRegister()">
+                Criar uma conta
+            </button>
 
-                <h3>🎨 Personalizar</h3>
-
-                <button onclick="setTheme('escuro')">
-                    🌙 Modo escuro
-                </button>
-
-                <button onclick="setTheme('claro')">
-                    ☀️ Modo claro
-                </button>
-
-                <button onclick="setTheme('azul')">
-                    🔵 Azul
-                </button>
-
-                <button onclick="setTheme('verde')">
-                    🟢 Verde
-                </button>
-
-                <button onclick="setTheme('roxo')">
-                    🟣 Roxo
-                </button>
-
-                <button onclick="setTheme('vermelho')">
-                    🔴 Vermelho
-                </button>
-
-            </div>
+            <button class="login-close" onclick="closeLogin()">
+                Fechar
+            </button>
 
         </div>
 
     </div>
-
-    <div class="pages" id="pages"></div>
 
 </div>
 
 
 <script>
 
-/* ==================================================
-   CONTA
-================================================== */
+let tabs = [];
+let activeTab = null;
+let tabCounter = 0;
 
-let registerMode = false;
 
-function toggleRegister(){
+/* =========================
+   ABAS
+========================= */
 
-    registerMode = !registerMode;
+function createTab(title="Nova aba"){
 
-    const title =
-        document.getElementById("loginTitle");
+    const id = ++tabCounter;
 
-    const button =
-        document.querySelector(".login-card button");
+    tabs.push({
+        id:id,
+        title:title,
+        url:"",
+        history:[],
+        historyIndex:-1
+    });
 
-    const switchText =
-        document.getElementById("registerSwitch");
+    activeTab=id;
 
-    const password =
-        document.getElementById("loginPassword");
+    renderTabs();
+    renderPages();
 
-    document.getElementById("loginError").textContent = "";
+    goHome();
+}
 
-    if(registerMode){
 
-        title.textContent = "Cria a tua conta";
+function getActiveTab(){
 
-        button.textContent = "Criar conta";
+    return tabs.find(t => t.id === activeTab);
+}
 
-        switchText.textContent =
-            "Já tens uma conta? Iniciar sessão";
 
-        password.autocomplete = "new-password";
+function renderTabs(){
+
+    const container=document.getElementById("tabs");
+
+    container.innerHTML="";
+
+    tabs.forEach(tab=>{
+
+        const div=document.createElement("div");
+
+        div.className="tab"+(tab.id===activeTab?" active":"");
+
+        div.onclick=()=>activateTab(tab.id);
+
+        div.innerHTML=`
+            <span class="tab-title">${escapeHtml(tab.title)}</span>
+            <button class="close-tab" onclick="event.stopPropagation();closeTab(${tab.id})">×</button>
+        `;
+
+        container.appendChild(div);
+
+    });
+
+    const newTab=document.createElement("button");
+
+    newTab.className="new-tab";
+    newTab.textContent="+";
+    newTab.onclick=()=>createTab();
+
+    container.appendChild(newTab);
+}
+
+
+function renderPages(){
+
+    const pages=document.getElementById("pages");
+
+    pages.innerHTML="";
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    const page=document.createElement("div");
+
+    page.className="page";
+    page.id="page-"+tab.id;
+
+    pages.appendChild(page);
+}
+
+
+function activateTab(id){
+
+    activeTab=id;
+
+    renderTabs();
+    renderPages();
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    if(tab.url){
+
+        if(tab.url.startsWith("search:")){
+
+            showDuckResults(tab.url.substring(7),false);
+
+        }else{
+
+            showWebview(tab.url,false);
+
+        }
 
     }else{
 
-        title.textContent =
-            "Inicia sessão na tua conta";
+        goHome();
 
-        button.textContent = "Entrar";
-
-        switchText.textContent =
-            "Ainda não tens conta? Criar conta";
-
-        password.autocomplete =
-            "current-password";
     }
+}
+
+
+function closeTab(id){
+
+    const index=tabs.findIndex(t=>t.id===id);
+
+    if(index===-1)return;
+
+    tabs.splice(index,1);
+
+    if(tabs.length===0){
+
+        createTab();
+
+        return;
+    }
+
+    if(activeTab===id){
+
+        activeTab=tabs[Math.max(0,index-1)].id;
+
+    }
+
+    renderTabs();
+    renderPages();
+
+    const tab=getActiveTab();
+
+    if(tab.url){
+
+        if(tab.url.startsWith("search:"))
+            showDuckResults(tab.url.substring(7),false);
+        else
+            showWebview(tab.url,false);
+
+    }else{
+
+        goHome();
+
+    }
+}
+
+
+/* =========================
+   PÁGINA INICIAL
+========================= */
+
+function createHomeHTML(){
+
+    return `
+
+    <div class="home">
+
+        <h1>🌐 <span>IternetWorld</span></h1>
+
+        <p>Pesquise na Internet com o DuckDuckGo</p>
+
+        <div class="home-search">
+
+            <input
+                id="homeSearch"
+                placeholder="Pesquisar na Internet..."
+                onkeydown="if(event.key==='Enter') searchFromHome()"
+            >
+
+            <button onclick="searchFromHome()">
+                Pesquisar
+            </button>
+
+        </div>
+
+        <div class="shortcuts">
+
+            <button class="shortcut" onclick="openShortcut('https://www.youtube.com/')">
+                ▶️ YouTube
+            </button>
+
+            <button class="shortcut" onclick="openShortcut('https://www.google.com/')">
+                🔎 Google
+            </button>
+
+            <button class="shortcut" onclick="openShortcut('https://www.minecraft.net/')">
+                ⛏️ Minecraft
+            </button>
+
+            <button class="shortcut" onclick="searchText('notícias')">
+                📰 Notícias
+            </button>
+
+        </div>
+
+        <a
+            class="download"
+            href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
+            target="_blank"
+        >
+            ⬇️ Download IternetWorld para Windows
+        </a>
+
+        <div class="version">
+            Versão 1.0.0 · Windows
+        </div>
+
+    </div>
+
+    `;
+}
+
+
+function goHome(){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    tab.url="";
+    tab.title="Nova aba";
+
+    renderTabs();
+    renderPages();
+
+    const page=document.getElementById("page-"+tab.id);
+
+    if(page){
+
+        page.innerHTML=createHomeHTML();
+
+    }
+
+    updateAddress("");
+
+}
+
+
+/* =========================
+   PESQUISA
+========================= */
+
+function searchFromHome(){
+
+    const input=document.getElementById("homeSearch");
+
+    if(!input)return;
+
+    searchText(input.value);
+
+}
+
+
+function searchText(text){
+
+    text=text.trim();
+
+    if(!text)return;
+
+    const tab=getActiveTab();
+
+    tab.url="search:"+text;
+    tab.title=text;
+
+    tab.history=tab.history.slice(0,tab.historyIndex+1);
+
+    tab.history.push("search:"+text);
+    tab.historyIndex=tab.history.length-1;
+
+    renderTabs();
+    renderPages();
+
+    showDuckResults(text,false);
+
+}
+
+
+function showDuckResults(query,record=true){
+
+    const page=document.getElementById("page-"+activeTab);
+
+    if(!page)return;
+
+    updateAddress(query);
+
+    const encoded=encodeURIComponent(query);
+
+    page.innerHTML=`
+
+    <div class="results">
+
+        <h2>🔎 Resultados para: ${escapeHtml(query)}</h2>
+
+        <div class="result" onclick="openResult('https://www.youtube.com/')">
+            <div class="result-title">YouTube</div>
+            <div class="result-url">youtube.com</div>
+            <div class="result-desc">Vídeos, música e entretenimento.</div>
+        </div>
+
+        <div class="result" onclick="openResult('https://www.google.com/search?q=${encoded}')">
+            <div class="result-title">Google</div>
+            <div class="result-url">google.com</div>
+            <div class="result-desc">Pesquisar na Internet.</div>
+        </div>
+
+        <div class="result" onclick="openResult('https://pt.wikipedia.org/wiki/${encoded}')">
+            <div class="result-title">Wikipedia</div>
+            <div class="result-url">pt.wikipedia.org</div>
+            <div class="result-desc">Enciclopédia livre.</div>
+        </div>
+
+        <div class="result" onclick="openResult('https://github.com/search?q=${encoded}')">
+            <div class="result-title">GitHub</div>
+            <div class="result-url">github.com</div>
+            <div class="result-desc">Projetos e código.</div>
+        </div>
+
+        <div style="margin-top:25px;text-align:center">
+            <button
+                class="go-btn"
+                onclick="openResult('https://duckduckgo.com/?q=${encoded}')"
+            >
+                Abrir mais resultados
+            </button>
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+function openResult(url){
+
+    openShortcut(url);
+
+}
+
+
+/* =========================
+   SITES
+========================= */
+
+function openShortcut(url){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
+
+    tab.history=tab.history.slice(0,tab.historyIndex+1);
+    tab.history.push(url);
+    tab.historyIndex=tab.history.length-1;
+
+    renderTabs();
+    renderPages();
+
+    showWebview(url,false);
+
+}
+
+
+function showWebview(url,record=true){
+
+    const page=document.getElementById("page-"+activeTab);
+
+    if(!page)return;
+
+    updateAddress(url);
+
+    const host=getTitleFromUrl(url);
+
+    page.innerHTML=`
+
+    <div class="webview-container">
+
+        <div class="webview-header">
+            🌐 ${escapeHtml(host)}
+        </div>
+
+        <iframe
+            src="${escapeAttribute(url)}"
+            allowfullscreen
+            allow="autoplay; encrypted-media; picture-in-picture"
+        ></iframe>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================
+   BARRA DE ENDEREÇO
+========================= */
+
+function goAddress(){
+
+    const input=document.getElementById("address");
+
+    let value=input.value.trim();
+
+    if(!value)return;
+
+    if(/^https?:\/\//i.test(value)){
+
+        loadUrl(value);
+
+        return;
+
+    }
+
+    if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value)){
+
+        loadUrl("https://"+value);
+
+        return;
+
+    }
+
+    searchText(value);
+
+}
+
+
+function loadUrl(url){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    tab.url=url;
+    tab.title=getTitleFromUrl(url);
+
+    tab.history=tab.history.slice(0,tab.historyIndex+1);
+    tab.history.push(url);
+    tab.historyIndex=tab.history.length-1;
+
+    renderTabs();
+    renderPages();
+
+    showWebview(url,false);
+
+}
+
+
+function updateAddress(value){
+
+    const input=document.getElementById("address");
+
+    if(input)
+        input.value=value;
+
+}
+
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+function goBack(){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    if(tab.historyIndex<=0)return;
+
+    tab.historyIndex--;
+
+    const url=tab.history[tab.historyIndex];
+
+    tab.url=url;
+
+    if(url.startsWith("search:")){
+
+        showDuckResults(url.substring(7),false);
+
+    }else{
+
+        showWebview(url,false);
+
+    }
+
+}
+
+
+function goForward(){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    if(tab.historyIndex>=tab.history.length-1)return;
+
+    tab.historyIndex++;
+
+    const url=tab.history[tab.historyIndex];
+
+    tab.url=url;
+
+    if(url.startsWith("search:")){
+
+        showDuckResults(url.substring(7),false);
+
+    }else{
+
+        showWebview(url,false);
+
+    }
+
+}
+
+
+function reloadPage(){
+
+    const tab=getActiveTab();
+
+    if(!tab)return;
+
+    if(tab.url){
+
+        if(tab.url.startsWith("search:"))
+            showDuckResults(tab.url.substring(7),false);
+        else
+            showWebview(tab.url,false);
+
+    }else{
+
+        goHome();
+
+    }
+
+}
+
+
+/* =========================
+   TEMAS
+========================= */
+
+function toggleCustomization(){
+
+    document
+        .getElementById("customization")
+        .classList.toggle("show");
+
+}
+
+
+function setTheme(theme){
+
+    document.body.className=theme;
+
+    localStorage.setItem("IternetWorldTheme",theme);
+
+    document
+        .getElementById("customization")
+        .classList.remove("show");
+
+}
+
+
+const savedTheme=localStorage.getItem("IternetWorldTheme");
+
+if(savedTheme!==null){
+
+    document.body.className=savedTheme;
+
+}
+
+
+/* =========================
+   LOGIN OPCIONAL
+========================= */
+
+let registerMode=false;
+
+
+function openLogin(){
+
+    const current=localStorage.getItem("IternetWorldCurrentUser");
+
+    if(current){
+
+        showProfile();
+
+    }else{
+
+        registerMode=false;
+
+        document.getElementById("loginTitle").textContent="👤 Iniciar sessão";
+        document.querySelector(".login-main").textContent="Iniciar sessão";
+        document.querySelector(".login-secondary").textContent="Criar uma conta";
+
+        document.getElementById("loginMessage").textContent="";
+
+        document.getElementById("loginModal").classList.add("show");
+
+    }
+
+}
+
+
+function closeLogin(){
+
+    document
+        .getElementById("loginModal")
+        .classList.remove("show");
+
+}
+
+
+function toggleRegister(){
+
+    registerMode=!registerMode;
+
+    document.getElementById("loginTitle").textContent=
+        registerMode ? "📝 Criar conta" : "👤 Iniciar sessão";
+
+    document.querySelector(".login-main").textContent=
+        registerMode ? "Criar conta" : "Iniciar sessão";
+
+    document.querySelector(".login-secondary").textContent=
+        registerMode ? "Já tenho uma conta" : "Criar uma conta";
+
+    document.getElementById("loginMessage").textContent="";
+
 }
 
 
@@ -751,11 +1264,12 @@ function getUsers(){
             localStorage.getItem("IternetWorldUsers") || "[]"
         );
 
-    }catch{
+    }catch(e){
 
         return [];
 
     }
+
 }
 
 
@@ -771,56 +1285,34 @@ function saveUsers(users){
 
 function loginUser(){
 
-    const email =
-        document.getElementById("loginEmail")
-        .value.trim()
-        .toLowerCase();
+    const email=document.getElementById("loginEmail").value.trim();
+    const password=document.getElementById("loginPassword").value;
 
-    const password =
-        document.getElementById("loginPassword")
-        .value;
-
-    const error =
-        document.getElementById("loginError");
-
-    error.textContent = "";
+    const message=document.getElementById("loginMessage");
 
     if(!email || !password){
 
-        error.textContent =
-            "Preenche o email e a palavra-passe.";
+        message.textContent="Preenche o email e a palavra-passe.";
 
         return;
+
     }
 
-    const users = getUsers();
+    const users=getUsers();
 
     if(registerMode){
 
-        if(password.length < 6){
+        if(users.some(u=>u.email===email)){
 
-            error.textContent =
-                "A palavra-passe deve ter pelo menos 6 caracteres.";
-
-            return;
-        }
-
-        if(
-            users.some(
-                user => user.email === email
-            )
-        ){
-
-            error.textContent =
-                "Este email já tem uma conta.";
+            message.textContent="Esta conta já existe.";
 
             return;
+
         }
 
         users.push({
             email:email,
-            password:password,
-            createdAt:new Date().toISOString()
+            password:password
         });
 
         saveUsers(users);
@@ -830,24 +1322,24 @@ function loginUser(){
             email
         );
 
-        enterIternetWorld();
+        closeLogin();
+
+        updateUserButton();
 
         return;
+
     }
 
-    const user =
-        users.find(
-            user =>
-                user.email === email &&
-                user.password === password
-        );
+    const user=users.find(
+        u=>u.email===email && u.password===password
+    );
 
     if(!user){
 
-        error.textContent =
-            "Email ou palavra-passe incorretos.";
+        message.textContent="Email ou palavra-passe incorretos.";
 
         return;
+
     }
 
     localStorage.setItem(
@@ -855,107 +1347,47 @@ function loginUser(){
         email
     );
 
-    enterIternetWorld();
-
-}
-
-
-function enterIternetWorld(){
-
-    document.getElementById(
-        "loginScreen"
-    ).style.display = "none";
+    closeLogin();
 
     updateUserButton();
-
-    if(!tabs.length){
-
-        createTab("Nova aba");
-
-    }
-
-}
-
-
-function updateUserButton(){
-
-    const email =
-        localStorage.getItem(
-            "IternetWorldCurrentUser"
-        );
-
-    const button =
-        document.getElementById("userButton");
-
-    if(!button) return;
-
-    if(email){
-
-        const name =
-            email.split("@")[0];
-
-        button.innerHTML =
-            "👤 <span>" +
-            escapeHtml(name) +
-            "</span>";
-
-    }
 
 }
 
 
 function showProfile(){
 
-    const email =
-        localStorage.getItem(
-            "IternetWorldCurrentUser"
-        );
+    const email=localStorage.getItem(
+        "IternetWorldCurrentUser"
+    );
 
-    if(!email) return;
+    if(!email)return;
 
-    const tab = getActiveTab();
+    const modal=document.getElementById("loginModal");
 
-    if(!tab) return;
+    modal.classList.add("show");
 
-    tab.title = "A minha conta";
-    tab.url = "IternetWorld://conta";
+    document.getElementById("loginTitle").textContent="👤 A tua conta";
 
-    renderTabs();
+    document.getElementById("loginForm").innerHTML=`
 
-    updateAddress();
+        <div class="profile-box">
 
-    const page =
-        document.getElementById(
-            "page-" + tab.id
-        );
+            <div>Início de sessão ativo</div>
 
-    if(!page) return;
+            <strong>${escapeHtml(email)}</strong>
 
-    page.innerHTML = `
+            <button class="logout" onclick="logoutUser()">
+                Terminar sessão
+            </button>
 
-        <div class="profile-page">
+            <br><br>
 
-            <div class="profile-card">
-
-                <div class="profile-avatar">👤</div>
-
-                <h1>A minha conta</h1>
-
-                <p>
-                    <strong>${escapeHtml(email)}</strong>
-                </p>
-
-                <p>
-                    A tua sessão está iniciada no IternetWorld.
-                </p>
-
-                <button onclick="logoutUser()">
-                    🚪 Terminar sessão
-                </button>
-
-            </div>
+            <button class="login-close" onclick="closeLogin()">
+                Fechar
+            </button>
 
         </div>
+
     `;
 
 }
@@ -967,961 +1399,37 @@ function logoutUser(){
         "IternetWorldCurrentUser"
     );
 
-    document.getElementById(
-        "loginScreen"
-    ).style.display = "flex";
-
-    document.getElementById(
-        "loginEmail"
-    ).value = "";
-
-    document.getElementById(
-        "loginPassword"
-    ).value = "";
-
-    registerMode = false;
-
-    toggleRegister();
-
-    tabs = [];
-    activeTab = null;
-    tabCounter = 0;
+    location.reload();
 
 }
 
 
-/* ==================================================
-   VARIÁVEIS DO NAVEGADOR
-================================================== */
+function updateUserButton(){
 
-let tabs = [];
-let activeTab = null;
-let tabCounter = 0;
+    const button=document.getElementById("userButton");
 
-
-/* ==================================================
-   CRIAR ABA
-================================================== */
-
-function createTab(title="Nova aba",url=""){
-
-    tabCounter++;
-
-    const id="tab-"+tabCounter;
-
-    tabs.push({
-        id,
-        title,
-        url,
-        history:[],
-        historyIndex:-1
-    });
-
-    activeTab=id;
-
-    renderTabs();
-    renderPages();
-    updateAddress();
-
-    if(url){
-        loadUrl(url,true);
-    }
-}
-
-
-/* ==================================================
-   ABA ATIVA
-================================================== */
-
-function getActiveTab(){
-
-    return tabs.find(
-        tab=>tab.id===activeTab
+    const current=localStorage.getItem(
+        "IternetWorldCurrentUser"
     );
 
-}
+    if(current){
 
-
-/* ==================================================
-   ABAS
-================================================== */
-
-function renderTabs(){
-
-    const element =
-        document.getElementById("tabs");
-
-    element.innerHTML="";
-
-    tabs.forEach(tab=>{
-
-        const div =
-            document.createElement("div");
-
-        div.className =
-            "tab " +
-            (tab.id===activeTab
-                ?"active":"");
-
-        div.innerHTML=`
-            <span>🌐</span>
-            <span class="tab-title">
-                ${escapeHtml(tab.title)}
-            </span>
-            <span
-                class="close-tab"
-                onclick="closeTab(event,'${tab.id}')"
-            >×</span>
-        `;
-
-        div.onclick=function(event){
-
-            if(
-                !event.target.classList.contains(
-                    "close-tab"
-                )
-            ){
-
-                activateTab(tab.id);
-
-            }
-
-        };
-
-        element.appendChild(div);
-
-    });
-
-    const plus =
-        document.createElement("div");
-
-    plus.className="new-tab";
-    plus.textContent="+";
-    plus.title="Nova aba";
-    plus.onclick=()=>createTab();
-
-    element.appendChild(plus);
-
-}
-
-
-/* ==================================================
-   PÁGINAS
-================================================== */
-
-function renderPages(){
-
-    const pages =
-        document.getElementById("pages");
-
-    pages.innerHTML="";
-
-    tabs.forEach(tab=>{
-
-        const page =
-            document.createElement("div");
-
-        page.className =
-            "page "+
-            (tab.id===activeTab
-                ?"active":"");
-
-        page.id="page-"+tab.id;
-
-        page.innerHTML =
-            createHomeHTML(tab.id);
-
-        pages.appendChild(page);
-
-    });
-
-}
-
-
-/* ==================================================
-   HOME
-================================================== */
-
-function createHomeHTML(id){
-
-    return `
-
-        <div class="home">
-
-            <h1>🌐 IternetWorld</h1>
-
-            <p>
-                Bem-vindo ao teu navegador.
-            </p>
-
-            <div class="search-box">
-
-                <input
-                    id="search-${id}"
-                    type="text"
-                    placeholder="Pesquisar na Internet..."
-                    onkeydown="searchKey(event)"
-                >
-
-                <button onclick="searchFromHome()">
-                    🔍
-                </button>
-
-            </div>
-
-            <div class="shortcuts">
-
-                <div
-                    class="shortcut"
-                    onclick="searchText('YouTube')"
-                >
-                    ▶️<br>YouTube
-                </div>
-
-                <div
-                    class="shortcut"
-                    onclick="searchText('Minecraft')"
-                >
-                    ⛏️<br>Minecraft
-                </div>
-
-                <div
-                    class="shortcut"
-                    onclick="searchText('Google')"
-                >
-                    🔎<br>Google
-                </div>
-
-                <div
-                    class="shortcut"
-                    onclick="searchText('Notícias')"
-                >
-                    📰<br>Notícias
-                </div>
-
-            </div>
-
-            <a
-                class="download-app"
-                href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
-                target="_blank"
-                rel="noopener"
-            >
-                ⬇️ Download IternetWorld para Windows
-            </a>
-
-            <div class="download-info">
-                Versão 1.0.0 · Windows
-            </div>
-
-        </div>
-
-    `;
-}
-
-
-/* ==================================================
-   ATIVAR ABA
-================================================== */
-
-function activateTab(id){
-
-    activeTab=id;
-
-    renderTabs();
-    renderPages();
-    updateAddress();
-
-    const tab=getActiveTab();
-
-    if(tab && tab.url){
-        showCurrentTab();
-    }
-
-}
-
-
-/* ==================================================
-   FECHAR ABA
-================================================== */
-
-function closeTab(event,id){
-
-    event.stopPropagation();
-
-    const index =
-        tabs.findIndex(
-            tab=>tab.id===id
-        );
-
-    tabs=tabs.filter(
-        tab=>tab.id!==id
-    );
-
-    if(!tabs.length){
-
-        createTab();
-
-        return;
-    }
-
-    if(activeTab===id){
-
-        const newIndex =
-            Math.max(0,index-1);
-
-        activeTab =
-            tabs[newIndex].id;
-    }
-
-    renderTabs();
-    renderPages();
-    updateAddress();
-
-}
-
-
-/* ==================================================
-   PESQUISA
-================================================== */
-
-function searchKey(event){
-
-    if(event.key==="Enter"){
-
-        event.preventDefault();
-
-        searchText(
-            event.target.value
-        );
-
-    }
-
-}
-
-
-function searchFromHome(){
-
-    const input =
-        document.getElementById(
-            "search-"+activeTab
-        );
-
-    if(input){
-        searchText(input.value);
-    }
-
-}
-
-
-async function searchText(text){
-
-    text=String(text).trim();
-
-    if(!text)return;
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.title="DuckDuckGo: "+text;
-
-    tab.url=
-        "https://duckduckgo.com/?q="+
-        encodeURIComponent(text);
-
-    tab.history=
-        tab.history.slice(
-            0,
-            tab.historyIndex+1
-        );
-
-    tab.history.push(tab.url);
-
-    tab.historyIndex++;
-
-    renderTabs();
-    updateAddress();
-
-    await showDuckResults(text);
-
-}
-
-
-/* ==================================================
-   DUCKDUCKGO
-================================================== */
-
-async function showDuckResults(text){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    const page=
-        document.getElementById(
-            "page-"+tab.id
-        );
-
-    if(!page)return;
-
-    const q=encodeURIComponent(text);
-
-    page.innerHTML=`
-
-        <div class="search-page">
-
-            <div class="search-header">
-
-                <div class="search-bar">
-
-                    <input
-                        id="result-search"
-                        value="${escapeAttribute(text)}"
-                        onkeydown="resultSearchKey(event)"
-                    >
-
-                    <button onclick="searchResultPage()">
-                        🔍
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="results-container">
-
-                <div class="web-search-card">
-
-                    <div class="web-search-icon">
-                        🦆
-                    </div>
-
-                    <h2>
-                        Pesquisar no DuckDuckGo
-                    </h2>
-
-                    <p>
-                        Os resultados podem ser
-                        abertos diretamente no DuckDuckGo.
-                    </p>
-
-                    <a
-                        class="duck-button"
-                        href="https://duckduckgo.com/?q=${q}"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        🔎 Abrir resultados
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-    `;
-
-}
-
-
-/* ==================================================
-   RESULTADO
-================================================== */
-
-function openResult(event,url){
-
-    event.preventDefault();
-
-    if(!url)return;
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    tab.history=
-        tab.history.slice(
-            0,
-            tab.historyIndex+1
-        );
-
-    tab.history.push(url);
-    tab.historyIndex++;
-
-    renderTabs();
-    updateAddress();
-
-    showWebview(url);
-
-}
-
-
-function showWebview(url){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    const page=
-        document.getElementById(
-            "page-"+tab.id
-        );
-
-    if(!page)return;
-
-    page.innerHTML=`
-
-        <div class="webview-container">
-
-            <iframe
-                src="${escapeAttribute(url)}"
-                title="IternetWorld"
-                allow="fullscreen; autoplay; encrypted-media; picture-in-picture"
-            ></iframe>
-
-        </div>
-    `;
-
-}
-
-
-/* ==================================================
-   PESQUISA NOS RESULTADOS
-================================================== */
-
-function resultSearchKey(event){
-
-    if(event.key==="Enter"){
-        searchResultPage();
-    }
-
-}
-
-
-function searchResultPage(){
-
-    const input=
-        document.getElementById(
-            "result-search"
-        );
-
-    if(input){
-        searchText(input.value);
-    }
-
-}
-
-
-/* ==================================================
-   ENDEREÇO
-================================================== */
-
-function addressKey(event){
-
-    if(event.key==="Enter"){
-        goAddress();
-    }
-
-}
-
-
-function goAddress(){
-
-    const input=
-        document.getElementById(
-            "address"
-        );
-
-    let value=input.value.trim();
-
-    if(!value)return;
-
-    if(
-        value.startsWith("http://") ||
-        value.startsWith("https://")
-    ){
-
-        goAddressUrl(value);
-
-        return;
-    }
-
-    if(
-        value.toLowerCase()==="youtube" ||
-        value.toLowerCase()==="youtube.com"
-    ){
-
-        goAddressUrl(
-            "https://www.youtube.com/"
-        );
-
-        return;
-    }
-
-    searchText(value);
-
-}
-
-
-function goAddressUrl(url){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    tab.history=
-        tab.history.slice(
-            0,
-            tab.historyIndex+1
-        );
-
-    tab.history.push(url);
-    tab.historyIndex++;
-
-    renderTabs();
-    updateAddress();
-
-    showWebview(url);
-
-}
-
-
-/* ==================================================
-   LOAD URL
-================================================== */
-
-function loadUrl(url,addHistory=true){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    if(addHistory){
-
-        tab.history=
-            tab.history.slice(
-                0,
-                tab.historyIndex+1
-            );
-
-        tab.history.push(url);
-        tab.historyIndex++;
-
-    }
-
-    renderTabs();
-    updateAddress();
-
-    showWebview(url);
-
-}
-
-
-/* ==================================================
-   ABA ATUAL
-================================================== */
-
-function showCurrentTab(){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    if(tab.url){
-
-        if(
-            tab.url.includes(
-                "IternetWorld://conta"
-            )
-        ){
-
-            showProfile();
-
-            return;
-        }
-
-        if(
-            tab.url.includes(
-                "duckduckgo.com"
-            )
-        ){
-
-            const pesquisa=
-                getSearchFromUrl(tab.url);
-
-            if(pesquisa){
-
-                showDuckResults(pesquisa);
-
-                return;
-            }
-
-        }
-
-        showWebview(tab.url);
+        button.textContent="👤";
+        button.title=current;
 
     }else{
 
-        renderPages();
+        button.textContent="👤";
+        button.title="Iniciar sessão";
 
     }
 
 }
 
 
-/* ==================================================
-   URL DE PESQUISA
-================================================== */
-
-function getSearchFromUrl(url){
-
-    try{
-
-        const u=new URL(url);
-
-        return u.searchParams.get("q") || "";
-
-    }catch{
-
-        return "";
-
-    }
-
-}
-
-
-/* ==================================================
-   HOME
-================================================== */
-
-function goHome(){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url="";
-    tab.title="Nova aba";
-
-    renderTabs();
-    renderPages();
-    updateAddress();
-
-}
-
-
-/* ==================================================
-   VOLTAR
-================================================== */
-
-function goBack(){
-
-    const tab=getActiveTab();
-
-    if(
-        !tab ||
-        tab.historyIndex<=0
-    )return;
-
-    tab.historyIndex--;
-
-    const url=
-        tab.history[
-            tab.historyIndex
-        ];
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    renderTabs();
-    updateAddress();
-    showCurrentTab();
-
-}
-
-
-/* ==================================================
-   AVANÇAR
-================================================== */
-
-function goForward(){
-
-    const tab=getActiveTab();
-
-    if(
-        !tab ||
-        tab.historyIndex>=
-        tab.history.length-1
-    )return;
-
-    tab.historyIndex++;
-
-    const url=
-        tab.history[
-            tab.historyIndex
-        ];
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    renderTabs();
-    updateAddress();
-    showCurrentTab();
-
-}
-
-
-/* ==================================================
-   ATUALIZAR
-================================================== */
-
-function reloadPage(){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    if(tab.url){
-        showCurrentTab();
-    }
-
-}
-
-
-/* ==================================================
-   BARRA
-================================================== */
-
-function updateAddress(){
-
-    const input=
-        document.getElementById(
-            "address"
-        );
-
-    const tab=getActiveTab();
-
-    if(!input)return;
-
-    input.value=
-        tab && tab.url
-            ? tab.url
-            : "IternetWorld://";
-
-}
-
-
-/* ==================================================
-   PERSONALIZAÇÃO
-================================================== */
-
-function toggleCustomization(){
-
-    document
-        .getElementById("customMenu")
-        .classList.toggle("show");
-
-}
-
-
-function setTheme(theme){
-
-    document.body.classList.remove(
-        "claro",
-        "verde",
-        "roxo",
-        "vermelho"
-    );
-
-    if(theme==="claro")
-        document.body.classList.add("claro");
-
-    if(theme==="verde")
-        document.body.classList.add("verde");
-
-    if(theme==="roxo")
-        document.body.classList.add("roxo");
-
-    if(theme==="vermelho")
-        document.body.classList.add("vermelho");
-
-    localStorage.setItem(
-        "IternetWorldTheme",
-        theme
-    );
-
-}
-
-
-/* ==================================================
-   FECHAR MENU
-================================================== */
-
-document.addEventListener(
-    "click",
-    function(event){
-
-        const box=
-            document.querySelector(
-                ".custom-box"
-            );
-
-        if(
-            box &&
-            !box.contains(event.target)
-        ){
-
-            document
-                .getElementById("customMenu")
-                .classList.remove("show");
-
-        }
-
-    }
-);
-
-
-/* ==================================================
-   CTRL + L
-================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        if(
-            event.ctrlKey &&
-            event.key.toLowerCase()==="l"
-        ){
-
-            event.preventDefault();
-
-            const address=
-                document.getElementById(
-                    "address"
-                );
-
-            address.focus();
-            address.select();
-
-        }
-
-    }
-);
-
-
-/* ==================================================
+/* =========================
    SEGURANÇA
-================================================== */
+========================= */
 
 function escapeHtml(text){
 
@@ -1937,41 +1445,25 @@ function escapeHtml(text){
 
 function escapeAttribute(text){
 
-    return escapeHtml(text);
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/"/g,"&quot;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;");
 
 }
 
-
-/* ==================================================
-   TÍTULO
-================================================== */
 
 function getTitleFromUrl(url){
 
     try{
 
-        const u=new URL(url);
+        const host=new URL(url).hostname
+            .replace(/^www\./,"");
 
-        if(
-            u.hostname.includes(
-                "duckduckgo"
-            )
-        )
-            return "DuckDuckGo";
+        return host || "Nova aba";
 
-        if(
-            u.hostname.includes(
-                "youtube"
-            )
-        )
-            return "YouTube";
-
-        return u.hostname.replace(
-            "www.",
-            ""
-        );
-
-    }catch{
+    }catch(e){
 
         return "Nova aba";
 
@@ -1980,49 +1472,57 @@ function getTitleFromUrl(url){
 }
 
 
-/* ==================================================
-   TEMA GUARDADO
-================================================== */
+/* =========================
+   CLIQUES E TECLADO
+========================= */
 
-const savedTheme=
-    localStorage.getItem(
-        "IternetWorldTheme"
-    );
+document.addEventListener("click",function(event){
 
-if(savedTheme){
-    setTheme(savedTheme);
-}
+    const menu=document.getElementById("customization");
+
+    const button=event.target.closest(".tool-btn");
+
+    if(
+        menu &&
+        !menu.contains(event.target) &&
+        !button
+    ){
+
+        menu.classList.remove("show");
+
+    }
+
+});
 
 
-/* ==================================================
-   INICIAR
-================================================== */
+document.addEventListener("keydown",function(event){
 
-const currentUser=
-    localStorage.getItem(
-        "IternetWorldCurrentUser"
-    );
+    if(
+        (event.ctrlKey || event.metaKey) &&
+        event.key.toLowerCase()==="l"
+    ){
 
-if(currentUser){
+        event.preventDefault();
 
-    document.getElementById(
-        "loginScreen"
-    ).style.display="none";
+        const address=document.getElementById("address");
 
-    updateUserButton();
+        address.focus();
+        address.select();
 
-    createTab("Nova aba");
+    }
 
-}else{
+});
 
-    document.getElementById(
-        "loginScreen"
-    ).style.display="flex";
 
-}
+/* =========================
+   INICIAR INTERNETWORLD
+========================= */
+
+updateUserButton();
+
+createTab("Nova aba");
 
 </script>
 
 </body>
 </html>
-```

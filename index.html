@@ -2,8 +2,7 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>IternetWorld</title>
 
 <style>
@@ -15,51 +14,13 @@ html,body{
     margin:0;
     width:100%;
     height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--fundo);
-    color:var(--texto);
+    font-family:Arial,sans-serif;
 }
 
-:root{
-    --fundo:#151515;
-    --barra:#1e1e1e;
-    --botao:#303030;
-    --texto:#ffffff;
-    --azul:#00bfff;
-    --pagina:#ffffff;
-    --textoPagina:#222222;
-    --cartao:#f4f4f4;
-}
-
-body.claro{
-    --fundo:#eeeeee;
-    --barra:#ffffff;
-    --botao:#dddddd;
-    --texto:#111111;
-    --pagina:#ffffff;
-    --textoPagina:#222222;
-    --cartao:#f4f4f4;
-}
-
-body.verde{
-    --azul:#00d084;
-}
-
-body.roxo{
-    --azul:#9b59ff;
-}
-
-body.vermelho{
-    --azul:#ff3b30;
-}
-
-button,
-input{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
+body{
+    background:#151515;
+    color:white;
+    overflow:hidden;
 }
 
 #app{
@@ -71,33 +32,32 @@ button{
 
 /* ABAS */
 
-.tabs{
+#tabs{
     height:42px;
+    background:#101010;
     display:flex;
     align-items:flex-end;
-    background:#111;
-    overflow-x:auto;
     padding-left:6px;
+    overflow-x:auto;
 }
 
 .tab{
     height:36px;
     min-width:150px;
-    max-width:240px;
-    background:#252525;
-    color:#ccc;
-    margin-right:3px;
+    max-width:230px;
+    background:#292929;
+    color:#ddd;
     border-radius:9px 9px 0 0;
+    margin-right:4px;
     display:flex;
     align-items:center;
     padding:0 10px;
-    gap:8px;
     cursor:pointer;
 }
 
 .tab.active{
-    background:var(--barra);
-    color:var(--texto);
+    background:#1e1e1e;
+    color:white;
 }
 
 .tab-title{
@@ -107,58 +67,58 @@ button{
     text-overflow:ellipsis;
 }
 
-.close-tab{
+.close{
+    background:none;
     border:0;
-    background:transparent;
-    color:inherit;
+    color:white;
     font-size:18px;
-    padding:0;
+    cursor:pointer;
 }
 
-.new-tab{
-    height:34px;
-    min-width:38px;
+.newtab{
+    width:42px;
+    height:35px;
+    background:none;
     border:0;
-    background:transparent;
     color:white;
-    font-size:24px;
+    font-size:25px;
+    cursor:pointer;
 }
 
 /* BARRA */
 
-.toolbar{
+#toolbar{
     height:58px;
-    background:var(--barra);
+    background:#1e1e1e;
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:8px 10px;
-    border-bottom:1px solid #333;
+    gap:7px;
+    padding:8px;
 }
 
 .logo{
-    color:var(--azul);
-    font-size:19px;
+    color:#00bfff;
     font-weight:bold;
+    font-size:18px;
     white-space:nowrap;
-    margin-right:5px;
 }
 
-.tool-btn{
+.toolbarButton{
     width:38px;
     height:38px;
     border:0;
     border-radius:8px;
-    background:var(--botao);
-    color:var(--texto);
+    background:#303030;
+    color:white;
     font-size:18px;
+    cursor:pointer;
 }
 
-.tool-btn:hover{
-    filter:brightness(1.2);
+.toolbarButton:hover{
+    background:#404040;
 }
 
-.address{
+#address{
     flex:1;
     height:38px;
     border:1px solid #444;
@@ -169,51 +129,59 @@ button{
     outline:none;
 }
 
-body.claro .address{
-    background:#f5f5f5;
-    color:#111;
-}
-
-.go-btn{
+#go{
     height:38px;
     border:0;
     border-radius:20px;
-    background:var(--azul);
+    background:#00aeea;
     color:white;
     padding:0 18px;
     font-weight:bold;
+    cursor:pointer;
+}
+
+#loginButton{
+    height:38px;
+    border:0;
+    border-radius:20px;
+    background:#00aeea;
+    color:white;
+    padding:0 14px;
+    cursor:pointer;
 }
 
 /* PÁGINAS */
 
 #pages{
     flex:1;
-    min-height:0;
     position:relative;
+    min-height:0;
 }
 
 .page{
     width:100%;
     height:100%;
+    background:white;
+    color:#222;
     overflow:auto;
-    background:var(--pagina);
-    color:var(--textoPagina);
 }
 
+/* INÍCIO */
+
 .home{
+    width:100%;
     min-height:100%;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:30px;
     text-align:center;
+    padding:30px;
 }
 
 .home h1{
-    font-size:54px;
+    font-size:52px;
     margin:0 0 10px;
-    color:#111;
 }
 
 .home h1 span{
@@ -222,33 +190,33 @@ body.claro .address{
 
 .home p{
     font-size:18px;
-    margin:0 0 25px;
 }
 
-.home-search{
+.search{
     width:min(700px,90%);
     display:flex;
     gap:8px;
+    margin-top:15px;
 }
 
-.home-search input{
+.search input{
     flex:1;
     height:48px;
     border:1px solid #bbb;
     border-radius:25px;
     padding:0 20px;
-    outline:none;
     font-size:16px;
+    outline:none;
 }
 
-.home-search button{
-    height:48px;
+.search button{
     border:0;
     border-radius:25px;
     padding:0 25px;
     background:#00aeea;
     color:white;
     font-weight:bold;
+    cursor:pointer;
 }
 
 .shortcuts{
@@ -264,21 +232,20 @@ body.claro .address{
     border-radius:10px;
     padding:12px 18px;
     background:#eee;
-    color:#222;
+    cursor:pointer;
 }
 
 .download{
-    display:inline-block;
     margin-top:30px;
     padding:12px 20px;
-    border-radius:10px;
     background:#222;
     color:white;
     text-decoration:none;
+    border-radius:10px;
 }
 
 .version{
-    margin-top:12px;
+    margin-top:10px;
     color:#777;
     font-size:13px;
 }
@@ -286,229 +253,211 @@ body.claro .address{
 /* RESULTADOS */
 
 .results{
-    padding:30px;
-    max-width:1000px;
+    max-width:900px;
     margin:auto;
-}
-
-.results h2{
-    color:#222;
+    padding:30px;
 }
 
 .result{
     padding:18px;
     margin:12px 0;
-    border-radius:10px;
-    background:#f5f5f5;
+    background:#f4f4f4;
     border:1px solid #ddd;
+    border-radius:10px;
     cursor:pointer;
 }
 
 .result:hover{
-    background:#eaeaea;
+    background:#e8e8e8;
 }
 
-.result-title{
-    color:#1769aa;
+.resultTitle{
+    color:#1670b8;
     font-size:19px;
     font-weight:bold;
 }
 
-.result-url{
+.resultUrl{
     color:#198754;
     font-size:13px;
     margin:5px 0;
 }
 
-.result-desc{
-    color:#444;
-}
-
 /* WEBVIEW */
 
-.webview-container{
+.webview{
     width:100%;
     height:100%;
     display:flex;
     flex-direction:column;
 }
 
-.webview-header{
-    height:38px;
+.webviewTop{
+    height:36px;
     background:#eee;
-    color:#222;
-    display:flex;
-    align-items:center;
-    padding:0 12px;
-    font-size:13px;
     border-bottom:1px solid #ccc;
+    padding:9px 12px;
+    font-size:13px;
 }
 
-.webview-container iframe{
-    width:100%;
+.webview iframe{
     flex:1;
+    width:100%;
     border:0;
 }
 
 /* PERSONALIZAÇÃO */
 
-.customization{
+#themes{
+    display:none;
     position:absolute;
     right:10px;
-    top:100px;
+    top:105px;
     z-index:100;
-    background:var(--barra);
+    background:#222;
     border:1px solid #555;
-    border-radius:12px;
-    padding:12px;
-    display:none;
-    box-shadow:0 10px 30px #0008;
-}
-
-.customization.show{
-    display:block;
-}
-
-.customization button{
-    display:block;
-    width:150px;
-    border:0;
-    border-radius:8px;
+    border-radius:10px;
     padding:10px;
+}
+
+#themes.show{
+    display:block;
+}
+
+#themes button{
+    display:block;
+    width:140px;
+    padding:9px;
     margin:5px;
-    background:var(--botao);
-    color:var(--texto);
+    border:0;
+    border-radius:7px;
+    cursor:pointer;
 }
 
 /* LOGIN */
 
-#loginModal{
+#login{
+    display:none;
     position:fixed;
     inset:0;
-    background:#0009;
-    display:none;
+    background:#000b;
+    z-index:9999;
     align-items:center;
     justify-content:center;
-    z-index:9999;
 }
 
-#loginModal.show{
+#login.show{
     display:flex;
 }
 
-.login-box{
-    width:min(400px,90%);
+.loginBox{
+    width:360px;
+    max-width:90%;
     background:white;
     color:#222;
-    border-radius:18px;
-    padding:28px;
-    box-shadow:0 20px 60px #0008;
+    border-radius:15px;
+    padding:25px;
 }
 
-.login-box h2{
-    margin-top:0;
+.loginBox h2{
     text-align:center;
+    margin-top:0;
 }
 
-.login-box input{
+.loginBox input{
     width:100%;
-    height:45px;
-    margin:7px 0;
-    padding:0 13px;
+    height:44px;
+    margin:6px 0;
+    padding:0 12px;
     border:1px solid #ccc;
     border-radius:8px;
 }
 
-.login-main{
+.loginBox button{
     width:100%;
-    height:45px;
+    height:43px;
+    margin-top:8px;
     border:0;
     border-radius:8px;
+    cursor:pointer;
+}
+
+.loginMain{
     background:#00aeea;
     color:white;
-    font-weight:bold;
-    margin-top:8px;
 }
 
-.login-secondary{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:#008dcc;
-    padding:12px;
-}
-
-.login-close{
-    width:100%;
-    border:0;
+.loginClose{
     background:#eee;
-    padding:10px;
-    border-radius:8px;
 }
 
-.login-message{
-    min-height:20px;
-    text-align:center;
+#loginMessage{
     color:#d00;
-    font-size:14px;
-}
-
-.user-button{
-    min-width:38px;
-    height:38px;
-    border:0;
-    border-radius:20px;
-    background:var(--azul);
-    color:white;
-    font-size:17px;
-    padding:0 12px;
-}
-
-/* PERFIL */
-
-.profile-box{
     text-align:center;
+    min-height:20px;
+    font-size:13px;
 }
 
-.profile-box strong{
-    display:block;
-    font-size:20px;
-    margin:10px;
+/* TEMAS */
+
+body.light{
+    background:#eee;
+    color:#111;
 }
 
-.logout{
-    border:0;
-    border-radius:8px;
+body.light #tabs{
+    background:#ddd;
+}
+
+body.light #toolbar{
+    background:white;
+}
+
+body.light .toolbarButton{
+    background:#ddd;
+    color:#111;
+}
+
+body.light #address{
+    background:#f4f4f4;
+    color:#111;
+}
+
+body.green #go,
+body.green #loginButton{
+    background:#00b86b;
+}
+
+body.purple #go,
+body.purple #loginButton{
+    background:#8b45ff;
+}
+
+body.red #go,
+body.red #loginButton{
     background:#e53935;
-    color:white;
-    padding:10px 20px;
 }
-
-/* MOBILE */
 
 @media(max-width:700px){
+
     .logo{
         display:none;
     }
 
-    .toolbar{
-        gap:5px;
+    #toolbar{
+        gap:4px;
     }
 
-    .tool-btn{
+    .toolbarButton{
         width:34px;
     }
 
+    #loginButton{
+        padding:0 9px;
+    }
+
     .home h1{
-        font-size:40px;
-    }
-
-    .address{
-        min-width:80px;
-    }
-
-    .go-btn{
-        padding:0 12px;
+        font-size:38px;
     }
 }
 </style>
@@ -518,31 +467,34 @@ body.claro .address{
 
 <div id="app">
 
-    <div class="tabs" id="tabs"></div>
+    <div id="tabs"></div>
 
-    <div class="toolbar">
+    <div id="toolbar">
 
         <div class="logo">🌐 IternetWorld</div>
 
-        <button class="tool-btn" onclick="goBack()" title="Voltar">←</button>
-        <button class="tool-btn" onclick="goForward()" title="Avançar">→</button>
-        <button class="tool-btn" onclick="goHome()" title="Início">⌂</button>
-        <button class="tool-btn" onclick="reloadPage()" title="Recarregar">↻</button>
+        <button class="toolbarButton" onclick="back()">←</button>
+        <button class="toolbarButton" onclick="forward()">→</button>
+        <button class="toolbarButton" onclick="home()">⌂</button>
+        <button class="toolbarButton" onclick="reload()">↻</button>
 
         <input
             id="address"
-            class="address"
             placeholder="Pesquisar ou escrever um endereço"
-            onkeydown="if(event.key==='Enter') goAddress()"
+            onkeydown="if(event.key==='Enter') navigate()"
         >
 
-        <button class="go-btn" onclick="goAddress()">Ir</button>
+        <button id="go" onclick="navigate()">Ir</button>
 
-        <button class="tool-btn" onclick="toggleCustomization()" title="Personalizar">
+        <button
+            class="toolbarButton"
+            onclick="toggleThemes()"
+            title="Personalizar"
+        >
             🎨
         </button>
 
-        <button class="user-button" onclick="openLogin()" id="userButton">
+        <button id="loginButton" onclick="openLogin()">
             👤
         </button>
 
@@ -550,14 +502,13 @@ body.claro .address{
 
     <div id="pages"></div>
 
-    <div class="customization" id="customization">
+    <div id="themes">
 
-        <button onclick="setTheme('')">🌙 Escuro</button>
-        <button onclick="setTheme('claro')">☀️ Claro</button>
-        <button onclick="setTheme('')">🔵 Azul</button>
-        <button onclick="setTheme('verde')">🟢 Verde</button>
-        <button onclick="setTheme('roxo')">🟣 Roxo</button>
-        <button onclick="setTheme('vermelho')">🔴 Vermelho</button>
+        <button onclick="theme('')">🌙 Escuro</button>
+        <button onclick="theme('light')">☀️ Claro</button>
+        <button onclick="theme('green')">🟢 Verde</button>
+        <button onclick="theme('purple')">🟣 Roxo</button>
+        <button onclick="theme('red')">🔴 Vermelho</button>
 
     </div>
 
@@ -566,41 +517,29 @@ body.claro .address{
 
 <!-- LOGIN OPCIONAL -->
 
-<div id="loginModal">
+<div id="login">
 
-    <div class="login-box">
+    <div class="loginBox">
 
-        <h2 id="loginTitle">👤 Iniciar sessão</h2>
+        <h2>👤 Iniciar sessão</h2>
 
-        <div id="loginForm">
+        <input id="email" type="email" placeholder="Email">
 
-            <input
-                id="loginEmail"
-                type="email"
-                placeholder="Email"
-            >
+        <input id="password" type="password" placeholder="Palavra-passe">
 
-            <input
-                id="loginPassword"
-                type="password"
-                placeholder="Palavra-passe"
-            >
+        <div id="loginMessage"></div>
 
-            <div class="login-message" id="loginMessage"></div>
+        <button class="loginMain" onclick="login()">
+            Iniciar sessão
+        </button>
 
-            <button class="login-main" onclick="loginUser()">
-                Iniciar sessão
-            </button>
+        <button onclick="register()">
+            Criar conta
+        </button>
 
-            <button class="login-secondary" onclick="toggleRegister()">
-                Criar uma conta
-            </button>
-
-            <button class="login-close" onclick="closeLogin()">
-                Fechar
-            </button>
-
-        </div>
+        <button class="loginClose" onclick="closeLogin()">
+            Fechar
+        </button>
 
     </div>
 
@@ -609,122 +548,105 @@ body.claro .address{
 
 <script>
 
-let tabs = [];
-let activeTab = null;
-let tabCounter = 0;
+/* =========================
+   ESTADO
+========================= */
+
+let tabs=[];
+let activeTab=0;
+let nextId=1;
 
 
 /* =========================
    ABAS
 ========================= */
 
-function createTab(title="Nova aba"){
+function newTab(){
 
-    const id = ++tabCounter;
-
-    tabs.push({
-        id:id,
-        title:title,
+    const tab={
+        id:nextId++,
+        title:"Nova aba",
         url:"",
         history:[],
-        historyIndex:-1
-    });
+        position:-1
+    };
 
-    activeTab=id;
+    tabs.push(tab);
 
-    renderTabs();
-    renderPages();
+    activeTab=tab.id;
 
-    goHome();
+    drawTabs();
+    drawPage();
+
+    home();
 }
 
 
-function getActiveTab(){
+function current(){
 
-    return tabs.find(t => t.id === activeTab);
+    return tabs.find(t=>t.id===activeTab);
+
 }
 
 
-function renderTabs(){
+function drawTabs(){
 
-    const container=document.getElementById("tabs");
+    const area=document.getElementById("tabs");
 
-    container.innerHTML="";
+    area.innerHTML="";
 
     tabs.forEach(tab=>{
 
         const div=document.createElement("div");
 
-        div.className="tab"+(tab.id===activeTab?" active":"");
+        div.className="tab";
 
-        div.onclick=()=>activateTab(tab.id);
+        if(tab.id===activeTab)
+            div.classList.add("active");
+
+        div.onclick=function(){
+
+            activeTab=tab.id;
+
+            drawTabs();
+            drawPage();
+
+            const t=current();
+
+            if(t.url){
+
+                if(t.url.startsWith("search:"))
+                    showSearch(t.url.substring(7));
+                else
+                    showWeb(t.url);
+
+            }else{
+
+                home();
+
+            }
+
+        };
 
         div.innerHTML=`
-            <span class="tab-title">${escapeHtml(tab.title)}</span>
-            <button class="close-tab" onclick="event.stopPropagation();closeTab(${tab.id})">×</button>
+            <span class="tab-title">${safe(tab.title)}</span>
+            <button class="close"
+                onclick="event.stopPropagation();closeTab(${tab.id})">
+                ×
+            </button>
         `;
 
-        container.appendChild(div);
+        area.appendChild(div);
 
     });
 
-    const newTab=document.createElement("button");
+    const plus=document.createElement("button");
 
-    newTab.className="new-tab";
-    newTab.textContent="+";
-    newTab.onclick=()=>createTab();
+    plus.className="newtab";
+    plus.textContent="+";
+    plus.onclick=newTab;
 
-    container.appendChild(newTab);
-}
-
-
-function renderPages(){
-
-    const pages=document.getElementById("pages");
-
-    pages.innerHTML="";
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    const page=document.createElement("div");
-
-    page.className="page";
-    page.id="page-"+tab.id;
-
-    pages.appendChild(page);
-}
-
-
-function activateTab(id){
-
-    activeTab=id;
-
-    renderTabs();
-    renderPages();
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    if(tab.url){
-
-        if(tab.url.startsWith("search:")){
-
-            showDuckResults(tab.url.substring(7),false);
-
-        }else{
-
-            showWebview(tab.url,false);
-
-        }
-
-    }else{
-
-        goHome();
-
-    }
+    area.appendChild(plus);
 }
 
 
@@ -732,15 +654,15 @@ function closeTab(id){
 
     const index=tabs.findIndex(t=>t.id===id);
 
-    if(index===-1)return;
+    if(index<0)return;
 
     tabs.splice(index,1);
 
     if(tabs.length===0){
 
-        createTab();
-
+        newTab();
         return;
+
     }
 
     if(activeTab===id){
@@ -749,113 +671,116 @@ function closeTab(id){
 
     }
 
-    renderTabs();
-    renderPages();
+    drawTabs();
+    drawPage();
 
-    const tab=getActiveTab();
+    const t=current();
 
-    if(tab.url){
+    if(t.url){
 
-        if(tab.url.startsWith("search:"))
-            showDuckResults(tab.url.substring(7),false);
+        if(t.url.startsWith("search:"))
+            showSearch(t.url.substring(7));
         else
-            showWebview(tab.url,false);
+            showWeb(t.url);
 
     }else{
 
-        goHome();
+        home();
 
     }
+
+}
+
+
+function drawPage(){
+
+    document.getElementById("pages").innerHTML=`
+        <div class="page" id="page"></div>
+    `;
+
 }
 
 
 /* =========================
-   PÁGINA INICIAL
+   INÍCIO
 ========================= */
 
-function createHomeHTML(){
+function home(){
 
-    return `
+    const t=current();
 
-    <div class="home">
+    t.url="";
+    t.title="Nova aba";
 
-        <h1>🌐 <span>IternetWorld</span></h1>
+    document.getElementById("address").value="";
 
-        <p>Pesquise na Internet com o DuckDuckGo</p>
+    drawTabs();
 
-        <div class="home-search">
+    const page=document.getElementById("page");
 
-            <input
-                id="homeSearch"
-                placeholder="Pesquisar na Internet..."
-                onkeydown="if(event.key==='Enter') searchFromHome()"
-            >
+    page.innerHTML=`
 
-            <button onclick="searchFromHome()">
-                Pesquisar
-            </button>
+        <div class="home">
+
+            <h1>🌐 <span>IternetWorld</span></h1>
+
+            <p>Pesquise na Internet com o DuckDuckGo</p>
+
+            <div class="search">
+
+                <input
+                    id="homeSearch"
+                    placeholder="Pesquisar na Internet..."
+                    onkeydown="if(event.key==='Enter') searchHome()"
+                >
+
+                <button onclick="searchHome()">
+                    Pesquisar
+                </button>
+
+            </div>
+
+            <div class="shortcuts">
+
+                <button
+                    class="shortcut"
+                    onclick="openUrl('https://www.youtube.com/')">
+                    ▶️ YouTube
+                </button>
+
+                <button
+                    class="shortcut"
+                    onclick="openUrl('https://www.google.com/')">
+                    🔎 Google
+                </button>
+
+                <button
+                    class="shortcut"
+                    onclick="openUrl('https://www.minecraft.net/')">
+                    ⛏️ Minecraft
+                </button>
+
+                <button
+                    class="shortcut"
+                    onclick="searchText('notícias')">
+                    📰 Notícias
+                </button>
+
+            </div>
+
+            <a
+                class="download"
+                href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
+                target="_blank">
+                ⬇️ Download IternetWorld para Windows
+            </a>
+
+            <div class="version">
+                Versão 1.0.0 · Windows
+            </div>
 
         </div>
-
-        <div class="shortcuts">
-
-            <button class="shortcut" onclick="openShortcut('https://www.youtube.com/')">
-                ▶️ YouTube
-            </button>
-
-            <button class="shortcut" onclick="openShortcut('https://www.google.com/')">
-                🔎 Google
-            </button>
-
-            <button class="shortcut" onclick="openShortcut('https://www.minecraft.net/')">
-                ⛏️ Minecraft
-            </button>
-
-            <button class="shortcut" onclick="searchText('notícias')">
-                📰 Notícias
-            </button>
-
-        </div>
-
-        <a
-            class="download"
-            href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
-            target="_blank"
-        >
-            ⬇️ Download IternetWorld para Windows
-        </a>
-
-        <div class="version">
-            Versão 1.0.0 · Windows
-        </div>
-
-    </div>
-
     `;
-}
-
-
-function goHome(){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url="";
-    tab.title="Nova aba";
-
-    renderTabs();
-    renderPages();
-
-    const page=document.getElementById("page-"+tab.id);
-
-    if(page){
-
-        page.innerHTML=createHomeHTML();
-
-    }
-
-    updateAddress("");
 
 }
 
@@ -864,13 +789,11 @@ function goHome(){
    PESQUISA
 ========================= */
 
-function searchFromHome(){
+function searchHome(){
 
-    const input=document.getElementById("homeSearch");
+    const value=document.getElementById("homeSearch").value;
 
-    if(!input)return;
-
-    searchText(input.value);
+    searchText(value);
 
 }
 
@@ -881,148 +804,118 @@ function searchText(text){
 
     if(!text)return;
 
-    const tab=getActiveTab();
+    const t=current();
 
-    tab.url="search:"+text;
-    tab.title=text;
+    t.url="search:"+text;
+    t.title=text;
 
-    tab.history=tab.history.slice(0,tab.historyIndex+1);
+    t.history=t.history.slice(0,t.position+1);
+    t.history.push(t.url);
+    t.position++;
 
-    tab.history.push("search:"+text);
-    tab.historyIndex=tab.history.length-1;
-
-    renderTabs();
-    renderPages();
-
-    showDuckResults(text,false);
+    drawTabs();
+    showSearch(text);
 
 }
 
 
-function showDuckResults(query,record=true){
+function showSearch(text){
 
-    const page=document.getElementById("page-"+activeTab);
+    document.getElementById("address").value=text;
 
-    if(!page)return;
-
-    updateAddress(query);
-
-    const encoded=encodeURIComponent(query);
+    const page=document.getElementById("page");
 
     page.innerHTML=`
 
-    <div class="results">
+        <div class="results">
 
-        <h2>🔎 Resultados para: ${escapeHtml(query)}</h2>
+            <h2>🔎 Resultados para: ${safe(text)}</h2>
 
-        <div class="result" onclick="openResult('https://www.youtube.com/')">
-            <div class="result-title">YouTube</div>
-            <div class="result-url">youtube.com</div>
-            <div class="result-desc">Vídeos, música e entretenimento.</div>
-        </div>
+            <div class="result"
+                 onclick="openUrl('https://www.youtube.com/')">
 
-        <div class="result" onclick="openResult('https://www.google.com/search?q=${encoded}')">
-            <div class="result-title">Google</div>
-            <div class="result-url">google.com</div>
-            <div class="result-desc">Pesquisar na Internet.</div>
-        </div>
+                <div class="resultTitle">
+                    YouTube
+                </div>
 
-        <div class="result" onclick="openResult('https://pt.wikipedia.org/wiki/${encoded}')">
-            <div class="result-title">Wikipedia</div>
-            <div class="result-url">pt.wikipedia.org</div>
-            <div class="result-desc">Enciclopédia livre.</div>
-        </div>
+                <div class="resultUrl">
+                    youtube.com
+                </div>
 
-        <div class="result" onclick="openResult('https://github.com/search?q=${encoded}')">
-            <div class="result-title">GitHub</div>
-            <div class="result-url">github.com</div>
-            <div class="result-desc">Projetos e código.</div>
-        </div>
+                Vídeos, música e entretenimento.
 
-        <div style="margin-top:25px;text-align:center">
+            </div>
+
+
+            <div class="result"
+                 onclick="openUrl('https://www.google.com/search?q=${encodeURIComponent(text)}')">
+
+                <div class="resultTitle">
+                    Google
+                </div>
+
+                <div class="resultUrl">
+                    google.com
+                </div>
+
+                Pesquisar na Internet.
+
+            </div>
+
+
+            <div class="result"
+                 onclick="openUrl('https://pt.wikipedia.org/wiki/${encodeURIComponent(text)}')">
+
+                <div class="resultTitle">
+                    Wikipedia
+                </div>
+
+                <div class="resultUrl">
+                    pt.wikipedia.org
+                </div>
+
+                Enciclopédia livre.
+
+            </div>
+
+
+            <div class="result"
+                 onclick="openUrl('https://github.com/search?q=${encodeURIComponent(text)}')">
+
+                <div class="resultTitle">
+                    GitHub
+                </div>
+
+                <div class="resultUrl">
+                    github.com
+                </div>
+
+                Projetos e código.
+
+            </div>
+
+
+            <br>
+
             <button
-                class="go-btn"
-                onclick="openResult('https://duckduckgo.com/?q=${encoded}')"
-            >
-                Abrir mais resultados
+                id="go"
+                onclick="openUrl('https://duckduckgo.com/?q=${encodeURIComponent(text)}')">
+
+                Mais resultados
+
             </button>
+
         </div>
-
-    </div>
-
-    `;
-
-}
-
-
-function openResult(url){
-
-    openShortcut(url);
-
-}
-
-
-/* =========================
-   SITES
-========================= */
-
-function openShortcut(url){
-
-    const tab=getActiveTab();
-
-    if(!tab)return;
-
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
-
-    tab.history=tab.history.slice(0,tab.historyIndex+1);
-    tab.history.push(url);
-    tab.historyIndex=tab.history.length-1;
-
-    renderTabs();
-    renderPages();
-
-    showWebview(url,false);
-
-}
-
-
-function showWebview(url,record=true){
-
-    const page=document.getElementById("page-"+activeTab);
-
-    if(!page)return;
-
-    updateAddress(url);
-
-    const host=getTitleFromUrl(url);
-
-    page.innerHTML=`
-
-    <div class="webview-container">
-
-        <div class="webview-header">
-            🌐 ${escapeHtml(host)}
-        </div>
-
-        <iframe
-            src="${escapeAttribute(url)}"
-            allowfullscreen
-            allow="autoplay; encrypted-media; picture-in-picture"
-        ></iframe>
-
-    </div>
-
     `;
 
 }
 
 
 /* =========================
-   BARRA DE ENDEREÇO
+   ENDEREÇO
 ========================= */
 
-function goAddress(){
+function navigate(){
 
     const input=document.getElementById("address");
 
@@ -1032,16 +925,14 @@ function goAddress(){
 
     if(/^https?:\/\//i.test(value)){
 
-        loadUrl(value);
-
+        openUrl(value);
         return;
 
     }
 
     if(/^[a-z0-9.-]+\.[a-z]{2,}$/i.test(value)){
 
-        loadUrl("https://"+value);
-
+        openUrl("https://"+value);
         return;
 
     }
@@ -1051,111 +942,122 @@ function goAddress(){
 }
 
 
-function loadUrl(url){
+function openUrl(url){
 
-    const tab=getActiveTab();
+    const t=current();
 
-    if(!tab)return;
+    t.url=url;
+    t.title=getTitle(url);
 
-    tab.url=url;
-    tab.title=getTitleFromUrl(url);
+    t.history=t.history.slice(0,t.position+1);
+    t.history.push(url);
+    t.position++;
 
-    tab.history=tab.history.slice(0,tab.historyIndex+1);
-    tab.history.push(url);
-    tab.historyIndex=tab.history.length-1;
-
-    renderTabs();
-    renderPages();
-
-    showWebview(url,false);
+    drawTabs();
+    showWeb(url);
 
 }
 
 
-function updateAddress(value){
+function showWeb(url){
 
-    const input=document.getElementById("address");
+    document.getElementById("address").value=url;
 
-    if(input)
-        input.value=value;
+    const page=document.getElementById("page");
+
+    page.innerHTML=`
+
+        <div class="webview">
+
+            <div class="webviewTop">
+                🌐 ${safe(getTitle(url))}
+            </div>
+
+            <iframe
+                src="${attr(url)}"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+    `;
 
 }
 
 
 /* =========================
-   NAVEGAÇÃO
+   VOLTAR / AVANÇAR
 ========================= */
 
-function goBack(){
+function back(){
 
-    const tab=getActiveTab();
+    const t=current();
 
-    if(!tab)return;
+    if(t.position<=0)return;
 
-    if(tab.historyIndex<=0)return;
+    t.position--;
 
-    tab.historyIndex--;
+    const url=t.history[t.position];
 
-    const url=tab.history[tab.historyIndex];
-
-    tab.url=url;
+    t.url=url;
 
     if(url.startsWith("search:")){
 
-        showDuckResults(url.substring(7),false);
+        showSearch(url.substring(7));
 
     }else{
 
-        showWebview(url,false);
+        showWeb(url);
 
     }
 
 }
 
 
-function goForward(){
+function forward(){
 
-    const tab=getActiveTab();
+    const t=current();
 
-    if(!tab)return;
+    if(t.position>=t.history.length-1)return;
 
-    if(tab.historyIndex>=tab.history.length-1)return;
+    t.position++;
 
-    tab.historyIndex++;
+    const url=t.history[t.position];
 
-    const url=tab.history[tab.historyIndex];
-
-    tab.url=url;
+    t.url=url;
 
     if(url.startsWith("search:")){
 
-        showDuckResults(url.substring(7),false);
+        showSearch(url.substring(7));
 
     }else{
 
-        showWebview(url,false);
+        showWeb(url);
 
     }
 
 }
 
 
-function reloadPage(){
+function reload(){
 
-    const tab=getActiveTab();
+    const t=current();
 
-    if(!tab)return;
+    if(!t.url){
 
-    if(tab.url){
+        home();
 
-        if(tab.url.startsWith("search:"))
-            showDuckResults(tab.url.substring(7),false);
-        else
-            showWebview(tab.url,false);
+        return;
+
+    }
+
+    if(t.url.startsWith("search:")){
+
+        showSearch(t.url.substring(7));
 
     }else{
 
-        goHome();
+        showWeb(t.url);
 
     }
 
@@ -1166,31 +1068,35 @@ function reloadPage(){
    TEMAS
 ========================= */
 
-function toggleCustomization(){
+function toggleThemes(){
 
     document
-        .getElementById("customization")
+        .getElementById("themes")
         .classList.toggle("show");
 
 }
 
 
-function setTheme(theme){
+function theme(name){
 
-    document.body.className=theme;
+    document.body.className=name;
 
-    localStorage.setItem("IternetWorldTheme",theme);
+    localStorage.setItem(
+        "IternetWorldTheme",
+        name
+    );
 
     document
-        .getElementById("customization")
+        .getElementById("themes")
         .classList.remove("show");
 
 }
 
 
-const savedTheme=localStorage.getItem("IternetWorldTheme");
+const savedTheme=
+    localStorage.getItem("IternetWorldTheme");
 
-if(savedTheme!==null){
+if(savedTheme){
 
     document.body.className=savedTheme;
 
@@ -1201,57 +1107,18 @@ if(savedTheme!==null){
    LOGIN OPCIONAL
 ========================= */
 
-let registerMode=false;
-
-
 function openLogin(){
 
-    const current=localStorage.getItem("IternetWorldCurrentUser");
+    document.getElementById("login").classList.add("show");
 
-    if(current){
-
-        showProfile();
-
-    }else{
-
-        registerMode=false;
-
-        document.getElementById("loginTitle").textContent="👤 Iniciar sessão";
-        document.querySelector(".login-main").textContent="Iniciar sessão";
-        document.querySelector(".login-secondary").textContent="Criar uma conta";
-
-        document.getElementById("loginMessage").textContent="";
-
-        document.getElementById("loginModal").classList.add("show");
-
-    }
+    document.getElementById("loginMessage").textContent="";
 
 }
 
 
 function closeLogin(){
 
-    document
-        .getElementById("loginModal")
-        .classList.remove("show");
-
-}
-
-
-function toggleRegister(){
-
-    registerMode=!registerMode;
-
-    document.getElementById("loginTitle").textContent=
-        registerMode ? "📝 Criar conta" : "👤 Iniciar sessão";
-
-    document.querySelector(".login-main").textContent=
-        registerMode ? "Criar conta" : "Iniciar sessão";
-
-    document.querySelector(".login-secondary").textContent=
-        registerMode ? "Já tenho uma conta" : "Criar uma conta";
-
-    document.getElementById("loginMessage").textContent="";
+    document.getElementById("login").classList.remove("show");
 
 }
 
@@ -1283,16 +1150,17 @@ function saveUsers(users){
 }
 
 
-function loginUser(){
+function login(){
 
-    const email=document.getElementById("loginEmail").value.trim();
-    const password=document.getElementById("loginPassword").value;
+    const email=document.getElementById("email").value.trim();
+    const password=document.getElementById("password").value;
 
     const message=document.getElementById("loginMessage");
 
     if(!email || !password){
 
-        message.textContent="Preenche o email e a palavra-passe.";
+        message.textContent=
+            "Preenche o email e a palavra-passe.";
 
         return;
 
@@ -1300,43 +1168,14 @@ function loginUser(){
 
     const users=getUsers();
 
-    if(registerMode){
-
-        if(users.some(u=>u.email===email)){
-
-            message.textContent="Esta conta já existe.";
-
-            return;
-
-        }
-
-        users.push({
-            email:email,
-            password:password
-        });
-
-        saveUsers(users);
-
-        localStorage.setItem(
-            "IternetWorldCurrentUser",
-            email
-        );
-
-        closeLogin();
-
-        updateUserButton();
-
-        return;
-
-    }
-
     const user=users.find(
         u=>u.email===email && u.password===password
     );
 
     if(!user){
 
-        message.textContent="Email ou palavra-passe incorretos.";
+        message.textContent=
+            "Conta não encontrada. Podes criar uma conta.";
 
         return;
 
@@ -1347,82 +1186,58 @@ function loginUser(){
         email
     );
 
-    closeLogin();
+    message.style.color="green";
+    message.textContent="Sessão iniciada!";
 
-    updateUserButton();
-
-}
-
-
-function showProfile(){
-
-    const email=localStorage.getItem(
-        "IternetWorldCurrentUser"
-    );
-
-    if(!email)return;
-
-    const modal=document.getElementById("loginModal");
-
-    modal.classList.add("show");
-
-    document.getElementById("loginTitle").textContent="👤 A tua conta";
-
-    document.getElementById("loginForm").innerHTML=`
-
-        <div class="profile-box">
-
-            <div>Início de sessão ativo</div>
-
-            <strong>${escapeHtml(email)}</strong>
-
-            <button class="logout" onclick="logoutUser()">
-                Terminar sessão
-            </button>
-
-            <br><br>
-
-            <button class="login-close" onclick="closeLogin()">
-                Fechar
-            </button>
-
-        </div>
-
-    `;
+    setTimeout(closeLogin,700);
 
 }
 
 
-function logoutUser(){
+function register(){
 
-    localStorage.removeItem(
-        "IternetWorldCurrentUser"
-    );
+    const email=document.getElementById("email").value.trim();
+    const password=document.getElementById("password").value;
 
-    location.reload();
+    const message=document.getElementById("loginMessage");
 
-}
+    if(!email || !password){
 
+        message.textContent=
+            "Preenche o email e a palavra-passe.";
 
-function updateUserButton(){
-
-    const button=document.getElementById("userButton");
-
-    const current=localStorage.getItem(
-        "IternetWorldCurrentUser"
-    );
-
-    if(current){
-
-        button.textContent="👤";
-        button.title=current;
-
-    }else{
-
-        button.textContent="👤";
-        button.title="Iniciar sessão";
+        return;
 
     }
+
+    const users=getUsers();
+
+    if(users.some(u=>u.email===email)){
+
+        message.textContent=
+            "Esta conta já existe.";
+
+        return;
+
+    }
+
+    users.push({
+        email:email,
+        password:password
+    });
+
+    saveUsers(users);
+
+    localStorage.setItem(
+        "IternetWorldCurrentUser",
+        email
+    );
+
+    message.style.color="green";
+    message.textContent=
+        "Conta criada com sucesso!";
+
+    setTimeout(closeLogin,700);
 
 }
 
@@ -1431,7 +1246,7 @@ function updateUserButton(){
    SEGURANÇA
 ========================= */
 
-function escapeHtml(text){
+function safe(text){
 
     return String(text)
         .replace(/&/g,"&amp;")
@@ -1443,7 +1258,7 @@ function escapeHtml(text){
 }
 
 
-function escapeAttribute(text){
+function attr(text){
 
     return String(text)
         .replace(/&/g,"&amp;")
@@ -1454,18 +1269,17 @@ function escapeAttribute(text){
 }
 
 
-function getTitleFromUrl(url){
+function getTitle(url){
 
     try{
 
-        const host=new URL(url).hostname
+        return new URL(url)
+            .hostname
             .replace(/^www\./,"");
-
-        return host || "Nova aba";
 
     }catch(e){
 
-        return "Nova aba";
+        return "IternetWorld";
 
     }
 
@@ -1473,41 +1287,21 @@ function getTitleFromUrl(url){
 
 
 /* =========================
-   CLIQUES E TECLADO
+   ATALHOS
 ========================= */
 
-document.addEventListener("click",function(event){
-
-    const menu=document.getElementById("customization");
-
-    const button=event.target.closest(".tool-btn");
+document.addEventListener("keydown",function(e){
 
     if(
-        menu &&
-        !menu.contains(event.target) &&
-        !button
+        (e.ctrlKey || e.metaKey) &&
+        e.key.toLowerCase()==="l"
     ){
 
-        menu.classList.remove("show");
+        e.preventDefault();
 
-    }
+        document.getElementById("address").focus();
 
-});
-
-
-document.addEventListener("keydown",function(event){
-
-    if(
-        (event.ctrlKey || event.metaKey) &&
-        event.key.toLowerCase()==="l"
-    ){
-
-        event.preventDefault();
-
-        const address=document.getElementById("address");
-
-        address.focus();
-        address.select();
+        document.getElementById("address").select();
 
     }
 
@@ -1515,12 +1309,10 @@ document.addEventListener("keydown",function(event){
 
 
 /* =========================
-   INICIAR INTERNETWORLD
+   INICIAR
 ========================= */
 
-updateUserButton();
-
-createTab("Nova aba");
+newTab();
 
 </script>
 

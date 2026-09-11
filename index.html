@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>IternetWorld</title>
 
 <style>
@@ -19,31 +17,51 @@ html,body{
     height:100%;
 }
 
+:root{
+    --bg:#0b1120;
+    --bar:#111a2b;
+    --card:#182338;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --line:#2c3a52;
+    --accent:#2563eb;
+}
+
+body.light{
+    --bg:#eef2f7;
+    --bar:#ffffff;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#64748b;
+    --line:#cbd5e1;
+}
+
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#0b1120;
-    color:white;
+    background:var(--bg);
+    color:var(--text);
     overflow:hidden;
 }
 
 /* ABAS */
+
 #tabs{
     height:42px;
-    background:#111a2b;
+    background:var(--bar);
     display:flex;
     align-items:center;
     gap:5px;
     padding:5px 8px 0;
-    border-bottom:1px solid #2c3a52;
+    border-bottom:1px solid var(--line);
 }
 
 .tab{
     height:37px;
     min-width:150px;
     max-width:230px;
-    background:#182338;
-    color:#94a3b8;
-    border:1px solid #2c3a52;
+    background:var(--card);
+    color:var(--muted);
+    border:1px solid var(--line);
     border-bottom:0;
     border-radius:9px 9px 0 0;
     display:flex;
@@ -54,8 +72,8 @@ body{
 }
 
 .tab.active{
-    background:#0b1120;
-    color:white;
+    background:var(--bg);
+    color:var(--text);
 }
 
 .tab-name{
@@ -66,7 +84,6 @@ body{
 
 .tab-close{
     margin-left:12px;
-    cursor:pointer;
 }
 
 .new-tab{
@@ -74,16 +91,17 @@ body{
     height:36px;
     border:0;
     background:transparent;
-    color:white;
+    color:var(--text);
     font-size:24px;
     cursor:pointer;
 }
 
 /* BARRA */
+
 .toolbar{
     height:58px;
-    background:#111a2b;
-    border-bottom:1px solid #2c3a52;
+    background:var(--bar);
+    border-bottom:1px solid var(--line);
     display:flex;
     align-items:center;
     gap:7px;
@@ -96,21 +114,21 @@ body{
     border:0;
     border-radius:8px;
     background:transparent;
-    color:white;
+    color:var(--text);
     font-size:19px;
     cursor:pointer;
 }
 
 .tool:hover{
-    background:#182338;
+    background:var(--card);
 }
 
 .address{
     flex:1;
     height:40px;
     display:flex;
-    background:#182338;
-    border:1px solid #2c3a52;
+    background:var(--card);
+    border:1px solid var(--line);
     border-radius:9px;
     overflow:hidden;
 }
@@ -120,27 +138,29 @@ body{
     border:0;
     outline:0;
     background:transparent;
-    color:white;
+    color:var(--text);
     padding:0 14px;
     font-size:14px;
 }
 
 .address button{
     border:0;
-    background:#2563eb;
+    background:var(--accent);
     color:white;
     padding:0 20px;
     cursor:pointer;
 }
 
 /* PÁGINA */
+
 #page{
     height:calc(100vh - 100px);
-    background:#0b1120;
+    background:var(--bg);
     overflow:auto;
 }
 
 /* PÁGINA INICIAL */
+
 .home{
     min-height:100%;
     display:flex;
@@ -157,11 +177,11 @@ body{
 }
 
 .logo span{
-    color:#2563eb;
+    color:var(--accent);
 }
 
 .subtitle{
-    color:#94a3b8;
+    color:var(--muted);
     margin-top:8px;
     margin-bottom:28px;
 }
@@ -170,8 +190,8 @@ body{
     width:min(700px,90%);
     height:54px;
     display:flex;
-    background:#182338;
-    border:1px solid #2c3a52;
+    background:var(--card);
+    border:1px solid var(--line);
     border-radius:12px;
     overflow:hidden;
 }
@@ -181,14 +201,14 @@ body{
     border:0;
     outline:0;
     background:transparent;
-    color:white;
+    color:var(--text);
     padding:0 18px;
     font-size:16px;
 }
 
 .search button{
     border:0;
-    background:#2563eb;
+    background:var(--accent);
     color:white;
     padding:0 25px;
     cursor:pointer;
@@ -203,25 +223,57 @@ body{
 }
 
 .shortcuts button{
-    border:1px solid #2c3a52;
-    background:#182338;
-    color:white;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--text);
     border-radius:9px;
     padding:11px 17px;
     cursor:pointer;
 }
 
 .shortcuts button:hover{
-    border-color:#2563eb;
+    border-color:var(--accent);
+}
+
+.download-area{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:25px;
+}
+
+.download-button{
+    display:inline-block;
+    background:var(--accent);
+    color:white;
+    text-decoration:none;
+    border-radius:9px;
+    padding:12px 20px;
+    font-weight:bold;
+}
+
+.download-button:hover{
+    filter:brightness(1.12);
+}
+
+.download-secondary{
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--text);
+    border-radius:9px;
+    padding:12px 20px;
+    cursor:pointer;
 }
 
 .info{
-    color:#64748b;
+    color:var(--muted);
     margin-top:28px;
     font-size:13px;
 }
 
-/* SITE */
+/* SITES */
+
 .site{
     width:100%;
     height:100%;
@@ -231,9 +283,9 @@ body{
 
 .site-bar{
     height:40px;
-    background:#182338;
-    border-bottom:1px solid #2c3a52;
-    color:#94a3b8;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    color:var(--muted);
     display:flex;
     align-items:center;
     padding:0 14px;
@@ -247,14 +299,60 @@ body{
     background:white;
 }
 
+/* PESQUISA */
+
+.search-page{
+    padding:30px 20px;
+    max-width:1050px;
+    margin:auto;
+}
+
+.search-result{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+    margin-top:15px;
+}
+
+.search-result h3{
+    color:#60a5fa;
+    margin-bottom:8px;
+}
+
+.search-result p{
+    color:var(--muted);
+    line-height:1.5;
+}
+
+.search-result a{
+    display:inline-block;
+    background:var(--accent);
+    color:white;
+    text-decoration:none;
+    padding:11px 18px;
+    border-radius:8px;
+    margin-top:12px;
+}
+
+.ddg-frame{
+    width:100%;
+    height:560px;
+    border:0;
+    background:white;
+    border-radius:8px;
+    margin-top:15px;
+}
+
 /* MENU */
+
 #menu{
     position:fixed;
     right:12px;
     top:108px;
     width:250px;
-    background:#182338;
-    border:1px solid #2c3a52;
+    background:var(--card);
+    border:1px solid var(--line);
     border-radius:12px;
     padding:8px;
     display:none;
@@ -270,7 +368,7 @@ body{
     width:100%;
     border:0;
     background:transparent;
-    color:white;
+    color:var(--text);
     text-align:left;
     padding:13px;
     border-radius:8px;
@@ -278,10 +376,11 @@ body{
 }
 
 .menu-button:hover{
-    background:#0b1120;
+    background:var(--bg);
 }
 
 /* MODAL */
+
 #modal{
     position:fixed;
     inset:0;
@@ -297,11 +396,11 @@ body{
 }
 
 .modal-box{
-    width:min(500px,90%);
+    width:min(650px,92%);
     max-height:80vh;
     overflow:auto;
-    background:#182338;
-    border:1px solid #2c3a52;
+    background:var(--card);
+    border:1px solid var(--line);
     border-radius:14px;
     padding:22px;
 }
@@ -314,10 +413,12 @@ body{
     float:right;
     border:0;
     background:transparent;
-    color:white;
+    color:var(--text);
     font-size:22px;
     cursor:pointer;
 }
+
+/* MOBILE */
 
 @media(max-width:700px){
 
@@ -338,7 +439,6 @@ body{
     }
 }
 </style>
-
 </head>
 
 <body>
@@ -351,21 +451,34 @@ body{
 
 <div class="toolbar">
 
+    <button class="tool" onclick="back()">←</button>
 
-<button class="tool" onclick="back()">←</button>
-<button class="tool" onclick="forward()">→</button>
-<button class="tool" onclick="reload()">↻</button>
-<button class="tool" onclick="home()">⌂</button>
+    <button class="tool" onclick="forward()">→</button>
 
-<form class="address" onsubmit="navigate(event)">
-    <input id="address"
-           placeholder="Pesquisar ou escrever um endereço">
-    <button type="submit">Ir</button>
-</form>
+    <button class="tool" onclick="reload()">↻</button>
 
-<button class="tool" onclick="favorite()">★</button>
-<button class="tool" onclick="menu()">☰</button>
-```
+    <button class="tool" onclick="home()">⌂</button>
+
+    <form class="address" onsubmit="navigate(event)">
+
+        <input
+            id="address"
+            placeholder="Pesquisar ou escrever um endereço"
+        >
+
+        <button type="submit">
+            Ir
+        </button>
+
+    </form>
+
+    <button class="tool" onclick="favorite()">
+        ★
+    </button>
+
+    <button class="tool" onclick="menu()">
+        ☰
+    </button>
 
 </div>
 
@@ -377,41 +490,46 @@ body{
 
 <div id="menu">
 
-```
-<button class="menu-button" onclick="ai()">
-    🤖 IternetWorld AI
-</button>
+    <button class="menu-button" onclick="ai()">
+        🤖 IternetWorld AI
+    </button>
 
-<button class="menu-button" onclick="favorites()">
-    ⭐ Favoritos
-</button>
+    <button class="menu-button" onclick="favorites()">
+        ⭐ Favoritos
+    </button>
 
-<button class="menu-button" onclick="historyPage()">
-    🕘 Histórico
-</button>
+    <button class="menu-button" onclick="historyPage()">
+        🕘 Histórico
+    </button>
 
-<button class="menu-button" onclick="downloads()">
-    ⬇ Downloads
-</button>
+    <button class="menu-button" onclick="downloads()">
+        ⬇ Downloads
+    </button>
 
-<button class="menu-button" onclick="settings()">
-    ⚙ Configurações
-</button>
+    <button class="menu-button" onclick="settings()">
+        ⚙ Configurações
+    </button>
 
-<button class="menu-button" onclick="theme()">
-    🌙 Modo escuro/claro
-</button>
-```
+    <button class="menu-button" onclick="theme()">
+        🌙 Modo escuro/claro
+    </button>
 
 </div>
 
 <!-- MODAL -->
 
 <div id="modal">
+
     <div class="modal-box">
-        <button class="close" onclick="closeModal()">×</button>
+
+        <button class="close" onclick="closeModal()">
+            ×
+        </button>
+
         <div id="modalContent"></div>
+
     </div>
+
 </div>
 
 <script>
@@ -431,6 +549,24 @@ let visits=JSON.parse(
     localStorage.getItem("iw_history") || "[]"
 );
 
+const DOWNLOAD_URL=
+"https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe";
+
+
+/* =========================
+   SEGURANÇA
+========================= */
+
+function escapeHTML(text){
+
+    return String(text)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
 
 /* =========================
    ABAS
@@ -446,14 +582,15 @@ function createTab(){
     active=tabs.length-1;
 
     drawTabs();
+
     home();
 }
 
 function drawTabs(){
 
-    const tabsBox=document.getElementById("tabs");
+    const box=document.getElementById("tabs");
 
-    tabsBox.innerHTML="";
+    box.innerHTML="";
 
     tabs.forEach((tab,index)=>{
 
@@ -464,69 +601,101 @@ function drawTabs(){
             (index===active ? " active" : "");
 
         div.innerHTML=`
+
             <span class="tab-name">
                 ${escapeHTML(tab.title)}
             </span>
 
-            <span class="tab-close"
-                  onclick="event.stopPropagation();closeTab(${index})">
+            <span
+                class="tab-close"
+                onclick="event.stopPropagation();closeTab(${index})"
+            >
                 ×
             </span>
+
         `;
 
         div.onclick=()=>{
+
             active=index;
+
             drawTabs();
+
             showCurrent();
         };
 
-        tabsBox.appendChild(div);
+        box.appendChild(div);
+
     });
 
     const plus=document.createElement("button");
 
     plus.className="new-tab";
+
     plus.textContent="+";
 
     plus.onclick=createTab;
 
-    tabsBox.appendChild(plus);
+    box.appendChild(plus);
 }
 
 function closeTab(index){
 
     tabs.splice(index,1);
 
-    if(tabs.length===0){
+    if(!tabs.length){
+
         createTab();
+
         return;
     }
 
     if(active>=tabs.length){
+
         active=tabs.length-1;
     }
 
     drawTabs();
+
     showCurrent();
 }
 
 function showCurrent(){
 
-    if(tabs[active].url){
-        openSite(tabs[active].url,false);
+    if(
+        tabs[active].url &&
+        !tabs[active].url.startsWith("search:")
+    ){
+
+        openSite(
+            tabs[active].url,
+            false
+        );
+
+    }else if(
+        tabs[active].url.startsWith("search:")
+    ){
+
+        search(
+            tabs[active].url.slice(7),
+            false
+        );
+
     }else{
+
         home();
     }
 }
 
 
 /* =========================
-   INÍCIO
+   PÁGINA INICIAL
 ========================= */
 
 function home(){
 
     tabs[active].title="Nova aba";
+
     tabs[active].url="";
 
     document.getElementById("address").value="";
@@ -545,12 +714,16 @@ function home(){
                 Pesquisa e navegação num só lugar.
             </div>
 
-            <form class="search"
-                  onsubmit="homeSearch(event)">
+            <form
+                class="search"
+                onsubmit="homeSearch(event)"
+            >
 
-                <input id="homeSearch"
-                       placeholder="Pesquisar ou escrever um endereço"
-                       autocomplete="off">
+                <input
+                    id="homeSearch"
+                    placeholder="Pesquisar ou escrever um endereço"
+                    autocomplete="off"
+                >
 
                 <button>
                     Pesquisar
@@ -560,19 +733,27 @@ function home(){
 
             <div class="shortcuts">
 
-                <button onclick="openSite('https://www.youtube.com/')">
+                <button
+                    onclick="openSite('https://www.youtube.com/')"
+                >
                     ▶ YouTube
                 </button>
 
-                <button onclick="openSite('https://www.google.com/')">
+                <button
+                    onclick="openSite('https://www.google.com/')"
+                >
                     Google
                 </button>
 
-                <button onclick="openSite('https://github.com/')">
+                <button
+                    onclick="openSite('https://github.com/')"
+                >
                     GitHub
                 </button>
 
-                <button onclick="openSite('https://www.minecraft.net/')">
+                <button
+                    onclick="openSite('https://www.minecraft.net/')"
+                >
                     Minecraft
                 </button>
 
@@ -582,14 +763,38 @@ function home(){
 
             </div>
 
+            <div class="download-area">
+
+                <a
+                    class="download-button"
+                    href="${DOWNLOAD_URL}"
+                    download
+                >
+                    ⬇️ Download IternetWorld
+                </a>
+
+                <button
+                    class="download-secondary"
+                    onclick="downloads()"
+                >
+                    📥 Downloads
+                </button>
+
+            </div>
+
             <div class="info">
-                O IternetWorld tem abas, favoritos, histórico,
-                modo escuro e muito mais.
+                O IternetWorld tem abas, favoritos,
+                histórico, modo escuro e muito mais.
             </div>
 
         </div>
     `;
 }
+
+
+/* =========================
+   PESQUISA
+========================= */
 
 function homeSearch(event){
 
@@ -600,15 +805,11 @@ function homeSearch(event){
         .value
         .trim();
 
-    if(!value)return;
+    if(value){
 
-    navigateValue(value);
+        navigateValue(value);
+    }
 }
-
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
 
 function navigate(event){
 
@@ -619,9 +820,10 @@ function navigate(event){
         .value
         .trim();
 
-    if(!value)return;
+    if(value){
 
-    navigateValue(value);
+        navigateValue(value);
+    }
 }
 
 function navigateValue(value){
@@ -632,13 +834,11 @@ function navigateValue(value){
         /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(value)
     ){
 
-        let url=value;
-
-        if(!url.startsWith("http")){
-            url="https://"+url;
-        }
-
-        openSite(url);
+        openSite(
+            value.startsWith("http")
+                ? value
+                : "https://"+value
+        );
 
     }else{
 
@@ -646,28 +846,96 @@ function navigateValue(value){
     }
 }
 
-function search(text){
 
-    const url=
-        "https://www.google.com/search?q="+
-        encodeURIComponent(text);
+/* =========================
+   DUCKDUCKGO
+========================= */
 
-    openSite(url);
+function search(text,record=true){
 
+    tabs[active].title=
+        "Pesquisa: "+text;
+
+    tabs[active].url=
+        "search:"+text;
+
+    document.getElementById("address").value=text;
+
+    drawTabs();
+
+    const q=encodeURIComponent(text);
+
+    document.getElementById("page").innerHTML=`
+
+        <div class="search-page">
+
+            <h2>
+                🔎 Resultados para
+                "${escapeHTML(text)}"
+            </h2>
+
+            <div class="search-result">
+
+                <h3>
+                    DuckDuckGo
+                </h3>
+
+                <p>
+                    Pesquisa na Internet através do DuckDuckGo.
+                </p>
+
+                <a
+                    href="https://duckduckgo.com/?q=${q}"
+                    target="_blank"
+                >
+                    🔎 Abrir DuckDuckGo
+                </a>
+
+                <iframe
+                    class="ddg-frame"
+                    src="https://html.duckduckgo.com/html/?q=${q}"
+                >
+                </iframe>
+
+            </div>
+
+        </div>
+    `;
+
+    if(record){
+
+        visits.unshift({
+
+            title:"Pesquisa: "+text,
+
+            url:
+                "https://duckduckgo.com/?q="+q,
+
+            time:
+                new Date().toLocaleString("pt-PT")
+        });
+
+        visits=visits.slice(0,300);
+
+        localStorage.setItem(
+            "iw_history",
+            JSON.stringify(visits)
+        );
+    }
 }
 
 
 /* =========================
-   ABRIR SITE
+   ABRIR SITES
 ========================= */
 
 function openSite(url,record=true){
 
-    tabs[active].url=url;
-
     try{
 
         const u=new URL(url);
+
+        tabs[active].url=url;
 
         tabs[active].title=
             u.hostname.replace(/^www\./,"");
@@ -677,9 +945,13 @@ function openSite(url,record=true){
         if(record){
 
             visits.unshift({
+
                 title:tabs[active].title,
+
                 url:url,
-                time:new Date().toLocaleString("pt-PT")
+
+                time:
+                    new Date().toLocaleString("pt-PT")
             });
 
             visits=visits.slice(0,300);
@@ -697,12 +969,21 @@ function openSite(url,record=true){
             <div class="site">
 
                 <div class="site-bar">
-                    🌐 ${escapeHTML(tabs[active].title)}
+
+                    🌐
+                    ${escapeHTML(tabs[active].title)}
+
                 </div>
 
                 <iframe
                     src="${escapeHTML(url)}"
-                    allow="fullscreen; autoplay; encrypted-media; picture-in-picture">
+                    allow="
+                        fullscreen;
+                        autoplay;
+                        encrypted-media;
+                        picture-in-picture
+                    "
+                >
                 </iframe>
 
             </div>
@@ -716,40 +997,50 @@ function openSite(url,record=true){
 
 
 /* =========================
-   BOTÕES
+   NAVEGAÇÃO
 ========================= */
 
 function back(){
 
-    const frame=document.querySelector(".site iframe");
+    const frame=
+        document.querySelector(".site iframe");
 
     if(frame){
 
         try{
+
             frame.contentWindow.history.back();
+
         }catch(e){}
     }
 }
 
 function forward(){
 
-    const frame=document.querySelector(".site iframe");
+    const frame=
+        document.querySelector(".site iframe");
 
     if(frame){
 
         try{
+
             frame.contentWindow.history.forward();
+
         }catch(e){}
     }
 }
 
 function reload(){
 
-    const frame=document.querySelector(".site iframe");
+    const frame=
+        document.querySelector(".site iframe");
 
     if(frame){
+
         frame.src=frame.src;
+
     }else{
+
         home();
     }
 }
@@ -763,7 +1054,10 @@ function favorite(){
 
     const tab=tabs[active];
 
-    if(!tab.url){
+    if(
+        !tab.url ||
+        tab.url.startsWith("search:")
+    ){
 
         alert("Abre primeiro um site.");
 
@@ -773,7 +1067,9 @@ function favorite(){
     if(!favs.some(x=>x.url===tab.url)){
 
         favs.push({
+
             title:tab.title,
+
             url:tab.url
         });
 
@@ -782,11 +1078,15 @@ function favorite(){
             JSON.stringify(favs)
         );
 
-        alert("Adicionado aos favoritos!");
+        alert(
+            "Adicionado aos favoritos!"
+        );
 
     }else{
 
-        alert("Este site já está nos favoritos.");
+        alert(
+            "Este site já está nos favoritos."
+        );
     }
 }
 
@@ -809,9 +1109,9 @@ function menu(){
 
 function showModal(content){
 
-    document
-        .getElementById("modalContent")
-        .innerHTML=content;
+    document.getElementById(
+        "modalContent"
+    ).innerHTML=content;
 
     document
         .getElementById("modal")
@@ -838,12 +1138,14 @@ function favorites(){
 
     let html="<h2>⭐ Favoritos</h2>";
 
-    if(favs.length===0){
+    if(!favs.length){
 
         html+=`
-            <p style="color:#94a3b8">
+
+            <p style="color:var(--muted)">
                 Ainda não tens favoritos.
             </p>
+
         `;
 
     }else{
@@ -851,26 +1153,27 @@ function favorites(){
         favs.forEach(item=>{
 
             html+=`
+
                 <p style="
                     padding:12px;
-                    border-bottom:1px solid #2c3a52;
+                    border-bottom:1px solid var(--line);
                 ">
 
-                    <a href="#"
-                       style="color:#60a5fa"
-                       onclick="
-                           event.preventDefault();
-                           closeModal();
-                           openSite('${escapeHTML(item.url)}');
-                       ">
-
+                    <a
+                        href="#"
+                        style="color:#60a5fa"
+                        onclick="
+                            event.preventDefault();
+                            closeModal();
+                            openSite('${escapeHTML(item.url)}');
+                        "
+                    >
                         ${escapeHTML(item.title)}
-
                     </a>
 
                     <br>
 
-                    <small style="color:#94a3b8">
+                    <small style="color:var(--muted)">
                         ${escapeHTML(item.url)}
                     </small>
 
@@ -895,12 +1198,14 @@ function historyPage(){
 
     let html="<h2>🕘 Histórico</h2>";
 
-    if(visits.length===0){
+    if(!visits.length){
 
         html+=`
-            <p style="color:#94a3b8">
+
+            <p style="color:var(--muted)">
                 O histórico está vazio.
             </p>
+
         `;
 
     }else{
@@ -908,16 +1213,19 @@ function historyPage(){
         visits.forEach(item=>{
 
             html+=`
+
                 <p style="
                     padding:12px;
-                    border-bottom:1px solid #2c3a52;
+                    border-bottom:1px solid var(--line);
                 ">
 
-                    <b>${escapeHTML(item.title)}</b>
+                    <b>
+                        ${escapeHTML(item.title)}
+                    </b>
 
                     <br>
 
-                    <small style="color:#94a3b8">
+                    <small style="color:var(--muted)">
                         ${escapeHTML(item.url)}
                     </small>
 
@@ -937,7 +1245,7 @@ function historyPage(){
 
 
 /* =========================
-   DOWNLOAD
+   DOWNLOADS
 ========================= */
 
 function downloads(){
@@ -950,24 +1258,18 @@ function downloads(){
 
         <h2>⬇ Downloads</h2>
 
-        <p style="color:#94a3b8">
+        <p style="color:var(--muted)">
             Descarrega o IternetWorld para Windows.
         </p>
 
         <br>
 
         <a
-            href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
-            style="
-                display:inline-block;
-                padding:13px 20px;
-                background:#2563eb;
-                color:white;
-                text-decoration:none;
-                border-radius:8px;
-            "
+            class="download-button"
+            href="${DOWNLOAD_URL}"
+            download
         >
-            ⬇ Download IternetWorld
+            ⬇️ Download IternetWorld
         </a>
 
     `);
@@ -988,7 +1290,7 @@ function settings(){
 
         <h2>⚙ Configurações</h2>
 
-        <p style="color:#94a3b8">
+        <p style="color:var(--muted)">
             Personalização do IternetWorld.
         </p>
 
@@ -1001,7 +1303,7 @@ function settings(){
                 padding:13px;
                 border:0;
                 border-radius:8px;
-                background:#2563eb;
+                background:var(--accent);
                 color:white;
                 cursor:pointer;
             "
@@ -1021,29 +1323,28 @@ function theme(){
 
     document.body.classList.toggle("light");
 
-    if(document.body.classList.contains("light")){
+    localStorage.setItem(
 
-        document.body.style.background="#eef2f7";
+        "iw_theme",
 
-        localStorage.setItem(
-            "iw_theme",
-            "light"
-        );
+        document.body.classList.contains("light")
+            ? "light"
+            : "dark"
+    );
+}
 
-    }else{
+if(
+    localStorage.getItem("iw_theme")
+    ===
+    "light"
+){
 
-        document.body.style.background="#0b1120";
-
-        localStorage.setItem(
-            "iw_theme",
-            "dark"
-        );
-    }
+    document.body.classList.add("light");
 }
 
 
 /* =========================
-   AI
+   IternetWorld AI
 ========================= */
 
 function ai(){
@@ -1054,9 +1355,11 @@ function ai(){
 
     showModal(`
 
-        <h2>🤖 IternetWorld AI</h2>
+        <h2>
+            🤖 IternetWorld AI
+        </h2>
 
-        <p style="color:#94a3b8">
+        <p style="color:var(--muted)">
             Escreve uma pergunta.
         </p>
 
@@ -1070,9 +1373,9 @@ function ai(){
                 height:44px;
                 padding:10px;
                 border-radius:8px;
-                border:1px solid #2c3a52;
-                background:#0b1120;
-                color:white;
+                border:1px solid var(--line);
+                background:var(--bg);
+                color:var(--text);
             "
             onkeydown="
                 if(event.key==='Enter')askAI()
@@ -1087,7 +1390,7 @@ function ai(){
                 height:42px;
                 border:0;
                 border-radius:8px;
-                background:#2563eb;
+                background:var(--accent);
                 color:white;
                 cursor:pointer;
             "
@@ -1095,11 +1398,13 @@ function ai(){
             Perguntar
         </button>
 
-        <div id="aiAnswer"
-             style="
-                 margin-top:18px;
-                 color:#94a3b8;
-             ">
+        <div
+            id="aiAnswer"
+            style="
+                margin-top:18px;
+                color:var(--muted);
+            "
+        >
         </div>
 
     `);
@@ -1107,30 +1412,27 @@ function ai(){
 
 function askAI(){
 
-    const input=document.getElementById("aiInput");
+    const input=
+        document.getElementById("aiInput");
 
-    if(!input || !input.value.trim())return;
+    if(
+        !input ||
+        !input.value.trim()
+    ){
 
-    document.getElementById("aiAnswer").innerHTML=
+        return;
+    }
+
+    document.getElementById(
+        "aiAnswer"
+    ).innerHTML=
+
         "Pergunta recebida: <b>"+
         escapeHTML(input.value)+
         "</b><br><br>"+
-        "O IternetWorld AI pode ser ligado a uma API de IA.";
-}
-
-
-/* =========================
-   SEGURANÇA HTML
-========================= */
-
-function escapeHTML(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+        "O IternetWorld AI está pronto "+
+        "para ser ligado a um serviço de "+
+        "inteligência artificial.";
 }
 
 

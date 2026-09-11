@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
@@ -14,2249 +15,253 @@
 }
 
 :root{
-    --bg:#0b1120;
-    --bar:#111827;
-    --bar2:#172033;
-    --card:#1b263b;
-    --card2:#22304a;
+    --bg:#07111f;
+    --bg2:#0b1728;
+    --bar:rgba(10,20,35,.92);
+    --card:rgba(20,35,57,.78);
+    --card2:rgba(255,255,255,.06);
     --text:#f8fafc;
-    --muted:#94a3b8;
-    --line:#2c3a52;
-    --accent:#2563eb;
-    --accent2:#3b82f6;
-    --danger:#ef4444;
-    --shadow:0 15px 45px rgba(0,0,0,.35);
+    --muted:#91a4bd;
+    --line:rgba(255,255,255,.09);
+    --accent:#4f8cff;
+    --accent2:#7c5cff;
+    --danger:#ff5364;
+    --shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
 body.light{
-    --bg:#eef2f7;
-    --bar:#ffffff;
-    --bar2:#f8fafc;
-    --card:#ffffff;
-    --card2:#f1f5f9;
+    --bg:#edf3fa;
+    --bg2:#e4edf8;
+    --bar:rgba(255,255,255,.94);
+    --card:rgba(255,255,255,.82);
+    --card2:rgba(0,0,0,.04);
     --text:#172033;
     --muted:#64748b;
-    --line:#d4dbe5;
-    --shadow:0 15px 40px rgba(15,23,42,.12);
+    --line:rgba(15,23,42,.10);
+    --shadow:0 25px 70px rgba(50,70,100,.16);
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:var(--bg);
+    min-height:100vh;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
     color:var(--text);
-    height:100vh;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(79,140,255,.18),transparent 30%),
+        radial-gradient(circle at 85% 15%,rgba(124,92,255,.16),transparent 28%),
+        var(--bg);
     overflow:hidden;
 }
 
-/* =========================
-   ABAS
-========================= */
+/* TOP */
 
-#tabs{
-    height:44px;
-    background:var(--bar);
-    display:flex;
-    align-items:flex-end;
-    padding:0 8px;
-    gap:5px;
-    border-bottom:1px solid var(--line);
-}
-
-.tab{
-    height:36px;
-    min-width:150px;
-    max-width:250px;
+.top{
+    height:58px;
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:0 12px;
-    background:var(--bar2);
-    border-radius:10px 10px 0 0;
-    color:var(--muted);
-    cursor:pointer;
-    user-select:none;
-}
-
-.tab.active{
-    background:var(--bg);
-    color:var(--text);
-}
-
-.tab-icon{
-    font-size:14px;
-}
-
-.tab-title{
-    flex:1;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    font-size:13px;
-}
-
-.tab-close{
-    width:22px;
-    height:22px;
-    border:0;
-    border-radius:50%;
-    background:transparent;
-    color:var(--muted);
-    cursor:pointer;
-}
-
-.tab-close:hover{
-    background:var(--danger);
-    color:white;
-}
-
-.new-tab{
-    width:36px;
-    height:35px;
-    border:0;
-    background:transparent;
-    color:var(--text);
-    font-size:22px;
-    cursor:pointer;
-}
-
-/* =========================
-   BARRA
-========================= */
-
-#toolbar{
-    height:60px;
+    gap:10px;
+    padding:8px 12px;
     background:var(--bar);
     border-bottom:1px solid var(--line);
+    backdrop-filter:blur(20px);
+}
+
+.logo{
     display:flex;
     align-items:center;
-    gap:7px;
-    padding:8px 10px;
-}
-
-.brand{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    padding:0 9px;
-    white-space:nowrap;
-    font-weight:bold;
-}
-
-.brand-icon{
-    width:30px;
-    height:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:9px;
-    background:linear-gradient(135deg,var(--accent),#60a5fa);
-    color:white;
-}
-
-.brand-name{
-    font-size:16px;
-}
-
-.tool{
-    width:37px;
-    height:37px;
-    border:0;
-    border-radius:9px;
-    background:var(--bar2);
-    color:var(--text);
-    cursor:pointer;
-    font-size:17px;
-    transition:.15s;
-}
-
-.tool:hover{
-    background:var(--accent);
-    color:white;
-    transform:translateY(-1px);
-}
-
-#addressForm{
-    flex:1;
-    display:flex;
-    height:38px;
-    min-width:120px;
-}
-
-#address{
-    flex:1;
-    min-width:0;
-    border:1px solid var(--line);
-    border-right:0;
-    border-radius:10px 0 0 10px;
-    background:var(--bg);
-    color:var(--text);
-    outline:none;
-    padding:0 14px;
-    font-size:14px;
-}
-
-#address:focus{
-    border-color:var(--accent);
-}
-
-#goButton{
-    width:50px;
-    border:0;
-    border-radius:0 10px 10px 0;
-    background:var(--accent);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-}
-
-#loginButton{
-    height:37px;
-    padding:0 13px;
-    border:0;
-    border-radius:9px;
-    background:var(--accent);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
+    gap:9px;
+    font-weight:800;
+    font-size:18px;
+    padding:0 10px;
     white-space:nowrap;
 }
 
-/* =========================
-   PÁGINA
-========================= */
+.logoIcon{
+    width:34px;
+    height:34px;
+    border-radius:11px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    box-shadow:0 8px 25px rgba(79,140,255,.3);
+}
 
-#page{
-    height:calc(100vh - 104px);
+.tabs{
+    height:100%;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    flex:1;
     overflow:auto;
 }
 
-/* =========================
-   HOME
-========================= */
+.tab{
+    height:40px;
+    min-width:150px;
+    max-width:230px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:0 10px 0 13px;
+    border-radius:12px;
+    color:var(--muted);
+    background:transparent;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.tab:hover{
+    background:var(--card2);
+    color:var(--text);
+}
+
+.tab.active{
+    color:var(--text);
+    background:var(--card);
+    box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+.tabTitle{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    flex:1;
+}
+
+.closeTab{
+    border:0;
+    background:none;
+    color:var(--muted);
+    cursor:pointer;
+    font-size:17px;
+}
+
+.newTab{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:12px;
+    background:transparent;
+    color:var(--text);
+    font-size:23px;
+    cursor:pointer;
+}
+
+.newTab:hover{
+    background:var(--card2);
+}
+
+/* TOOLBAR */
+
+.toolbar{
+    height:62px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 13px;
+    background:var(--bar);
+    border-bottom:1px solid var(--line);
+}
+
+.tool{
+    width:40px;
+    height:40px;
+    border:0;
+    border-radius:12px;
+    background:transparent;
+    color:var(--muted);
+    font-size:18px;
+    cursor:pointer;
+}
+
+.tool:hover{
+    background:var(--card2);
+    color:var(--text);
+}
+
+.address{
+    flex:1;
+    height:43px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:0 14px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:var(--card2);
+    transition:.2s;
+}
+
+.address:focus-within{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(79,140,255,.12);
+}
+
+.address span{
+    color:var(--muted);
+}
+
+.address input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:var(--text);
+    font-size:14px;
+}
+
+.address button{
+    border:0;
+    border-radius:9px;
+    padding:8px 14px;
+    background:var(--accent);
+    color:white;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.login{
+    height:40px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--card2);
+    color:var(--text);
+    padding:0 14px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.login:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:white;
+}
+
+/* PAGE */
+
+#page{
+    height:calc(100vh - 120px);
+    overflow:auto;
+}
 
 .home{
     min-height:100%;
-    padding:55px 20px 70px;
+    display:flex;
+    justify-content:center;
+    padding:55px 25px 80px;
 }
 
-.home-container{
-    width:min(1050px,100%);
-    margin:auto;
+.homeInner{
+    width:min(1100px,100%);
 }
 
 .hero{
     text-align:center;
-    padding-top:10px;
+    margin-bottom:42px;
 }
 
-.main-logo{
-    font-size:64px;
-    font-weight:800;
-    letter-spacing:-3px;
-    margin-bottom:8px;
-}
-
-.main-logo span{
-    color:var(--accent);
-}
-
-.tagline{
-    color:var(--muted);
-    font-size:17px;
-    margin-bottom:30px;
-}
-
-.main-search{
-    width:min(760px,100%);
-    height:56px;
+.heroIcon{
+    width:82px;
+    height:82px;
     margin:auto;
-    display:flex;
-}
-
-.main-search input{
-    flex:1;
-    min-width:0;
-    border:1px solid var(--line);
-    border-right:0;
-    border-radius:14px 0 0 14px;
-    outline:none;
-    padding:0 20px;
-    background:var(--card);
-    color:var(--text);
-    font-size:16px;
-    box-shadow:var(--shadow);
-}
-
-.main-search input:focus{
-    border-color:var(--accent);
-}
-
-.main-search button{
-    width:105px;
-    border:0;
-    border-radius:0 14px 14px 0;
-    background:var(--accent);
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.main-search button:hover{
-    background:var(--accent2);
-}
-
-/* CARTÕES */
-
-.cards{
-    margin-top:40px;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:12px;
-}
-
-.card{
-    min-height:115px;
-    padding:18px;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:var(--card);
-    cursor:pointer;
-    transition:.18s;
-}
-
-.card:hover{
-    transform:translateY(-3px);
-    border-color:var(--accent);
-    box-shadow:var(--shadow);
-}
-
-.card-icon{
-    font-size:27px;
-    margin-bottom:12px;
-}
-
-.card-title{
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-.card-text{
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.4;
-}
-
-/* DOWNLOAD */
-
-.download-box{
-    margin-top:28px;
-    padding:22px;
-    border:1px solid var(--line);
-    border-radius:17px;
-    background:linear-gradient(
-        135deg,
-        var(--card),
-        var(--card2)
-    );
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-}
-
-.download-left{
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-.download-icon{
-    width:54px;
-    height:54px;
-    border-radius:14px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--accent);
-    color:white;
-    font-size:25px;
-}
-
-.download-title{
-    font-size:18px;
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-.download-description{
-    color:var(--muted);
-    font-size:13px;
-}
-
-.download-button{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:12px 20px;
-    border-radius:10px;
-    background:var(--accent);
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    white-space:nowrap;
-}
-
-.download-button:hover{
-    background:var(--accent2);
-}
-
-/* INFO */
-
-.info-box{
-    margin-top:28px;
-    padding:20px;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:var(--card);
-}
-
-.info-box h3{
-    margin-bottom:8px;
-}
-
-.info-box p{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.6;
-}
-
-/* =========================
-   SITES
-========================= */
-
-.site-page{
-    height:100%;
-    display:flex;
-    flex-direction:column;
-}
-
-.site-header{
-    height:42px;
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    padding:0 15px;
-    background:var(--bar2);
-    border-bottom:1px solid var(--line);
-    color:var(--muted);
-    font-size:13px;
-}
-
-.site-frame{
-    flex:1;
-    width:100%;
-    border:0;
-    background:white;
-}
-
-/* =========================
-   RESULTADOS
-========================= */
-
-.results{
-    width:min(950px,100%);
-    margin:auto;
-    padding:35px 20px;
-}
-
-.results-header{
-    margin-bottom:20px;
-}
-
-.results-header h2{
-    margin-bottom:5px;
-}
-
-.results-header p{
-    color:var(--muted);
-}
-
-.result{
-    padding:18px;
-    margin-bottom:12px;
-    border:1px solid var(--line);
-    border-radius:13px;
-    background:var(--card);
-    cursor:pointer;
-    transition:.15s;
-}
-
-.result:hover{
-    border-color:var(--accent);
-    transform:translateY(-1px);
-}
-
-.result h3{
-    color:var(--accent);
-    margin-bottom:7px;
-}
-
-.result p{
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   MENU
-========================= */
-
-#menu{
-    position:fixed;
-    z-index:80;
-    top:96px;
-    right:10px;
-    width:280px;
-    padding:9px;
-    display:none;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    box-shadow:var(--shadow);
-}
-
-#menu.open{
-    display:block;
-}
-
-.menu-user{
-    padding:14px;
-    margin-bottom:5px;
-    border-bottom:1px solid var(--line);
-}
-
-.menu-user-title{
-    font-weight:bold;
-}
-
-.menu-user-email{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:4px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-.menu-item{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:var(--text);
-    padding:12px;
-    border-radius:9px;
-    text-align:left;
-    cursor:pointer;
-    font-size:14px;
-}
-
-.menu-item:hover{
-    background:var(--bar2);
-}
-
-/* =========================
-   MODAL LOGIN
-========================= */
-
-#overlay{
-    position:fixed;
-    inset:0;
-    z-index:200;
-    background:rgba(0,0,0,.68);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-}
-
-#overlay.show{
-    display:flex;
-}
-
-.login-modal{
-    width:min(420px,100%);
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:18px;
-    padding:28px;
-    box-shadow:0 25px 80px rgba(0,0,0,.5);
-}
-
-.login-logo{
-    text-align:center;
-    font-size:29px;
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-.login-logo span{
-    color:var(--accent);
-}
-
-.login-subtitle{
-    text-align:center;
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:24px;
-}
-
-.login-modal input{
-    width:100%;
-    height:46px;
-    margin-bottom:11px;
-    border:1px solid var(--line);
-    border-radius:9px;
-    outline:none;
-    background:var(--bg);
-    color:var(--text);
-    padding:0 13px;
-}
-
-.login-modal input:focus{
-    border-color:var(--accent);
-}
-
-.login-action{
-    width:100%;
-    height:45px;
-    border:0;
-    border-radius:9px;
-    background:var(--accent);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-    margin-top:5px;
-}
-
-.login-register{
-    background:var(--bar2);
-    color:var(--text);
-}
-
-.login-cancel{
-    width:100%;
-    height:40px;
-    margin-top:8px;
-    border:0;
-    background:transparent;
-    color:var(--muted);
-    cursor:pointer;
-}
-
-.login-message{
-    min-height:20px;
-    margin-top:12px;
-    text-align:center;
-    color:var(--muted);
-    font-size:13px;
-}
-
-/* =========================
-   RESPONSIVO
-========================= */
-
-@media(max-width:900px){
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .brand-name{
-        display:none;
-    }
-
-}
-
-@media(max-width:600px){
-
-    #toolbar{
-        gap:4px;
-    }
-
-    .tool{
-        width:33px;
-    }
-
-    #loginButton{
-        font-size:12px;
-        padding:0 8px;
-    }
-
-    .main-logo{
-        font-size:43px;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .download-box{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .download-button{
-        width:100%;
-    }
-
-    .tab{
-        min-width:105px;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!-- =========================
-     ABAS
-========================= -->
-
-<div id="tabs"></div>
-
-<!-- =========================
-     BARRA
-========================= -->
-
-<div id="toolbar">
-
-    <div class="brand">
-        <div class="brand-icon">🌐</div>
-        <div class="brand-name">IternetWorld</div>
-    </div>
-
-    <button class="tool" onclick="goBack()" title="Voltar">←</button>
-    <button class="tool" onclick="goForward()" title="Avançar">→</button>
-    <button class="tool" onclick="reloadPage()" title="Atualizar">↻</button>
-    <button class="tool" onclick="goHome()" title="Página inicial">⌂</button>
-
-    <form id="addressForm" onsubmit="navigate(event)">
-        <input
-            id="address"
-            placeholder="Pesquisar ou escrever um endereço"
-            autocomplete="off"
-        >
-        <button id="goButton">Ir</button>
-    </form>
-
-    <button
-        class="tool"
-        onclick="addFavorite()"
-        title="Adicionar aos favoritos">
-        ★
-    </button>
-
-    <button id="loginButton" onclick="openLogin()">
-        👤 Entrar
-    </button>
-
-    <button
-        class="tool"
-        onclick="toggleMenu()"
-        title="Menu">
-        ☰
-    </button>
-
-</div>
-
-<!-- =========================
-     PÁGINA
-========================= -->
-
-<div id="page"></div>
-
-<!-- =========================
-     MENU
-========================= -->
-
-<div id="menu">
-
-    <div class="menu-user">
-
-        <div class="menu-user-title">
-            👤 Conta
-        </div>
-
-        <div id="menuUserEmail" class="menu-user-email">
-            Não tens sessão iniciada
-        </div>
-
-    </div>
-
-    <button
-        class="menu-item"
-        onclick="openLogin();toggleMenu()">
-        🔐 Início de sessão
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="showFavorites();toggleMenu()">
-        ⭐ Favoritos
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="showHistory();toggleMenu()">
-        🕘 Histórico
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="showDownloads();toggleMenu()">
-        ⬇️ Downloads
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="openAI();toggleMenu()">
-        🤖 IternetWorld AI
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="toggleTheme();toggleMenu()">
-        🌙 Modo escuro/claro
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="changeAccent();toggleMenu()">
-        🎨 Alterar cor
-    </button>
-
-    <button
-        class="menu-item"
-        onclick="goHome();toggleMenu()">
-        🏠 Página inicial
-    </button>
-
-    <button
-        id="logoutMenu"
-        class="menu-item"
-        onclick="logout();toggleMenu()"
-        style="display:none">
-        🚪 Terminar sessão
-    </button>
-
-</div>
-
-<!-- =========================
-     LOGIN
-========================= -->
-
-<div id="overlay">
-
-    <div class="login-modal">
-
-        <div class="login-logo">
-            Iternet<span>World</span>
-        </div>
-
-        <div class="login-subtitle">
-            Inicia sessão na tua conta
-        </div>
-
-        <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            autocomplete="email"
-        >
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Palavra-passe"
-            autocomplete="current-password"
-        >
-
-        <button
-            class="login-action"
-            onclick="login()">
-            Entrar
-        </button>
-
-        <button
-            class="login-action login-register"
-            onclick="register()">
-            Criar conta
-        </button>
-
-        <button
-            class="login-cancel"
-            onclick="closeLogin()">
-            Cancelar
-        </button>
-
-        <div id="loginMessage" class="login-message"></div>
-
-    </div>
-
-</div>
-
-<script>
-
-/* =========================
-   DADOS
-========================= */
-
-let tabs = [];
-let active = 0;
-
-const FAV_KEY = "iw_favorites";
-const HISTORY_KEY = "iw_history";
-const DOWNLOAD_KEY = "iw_downloads";
-const USERS_KEY = "IternetWorldUsers";
-const CURRENT_USER_KEY = "IternetWorldCurrentUser";
-
-let favorites =
-    JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
-
-let history =
-    JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
-
-let downloads =
-    JSON.parse(localStorage.getItem(DOWNLOAD_KEY) || "[]");
-
-const sites = [
-
-    {
-        name:"YouTube",
-        keys:["youtube","youtube.com"],
-        url:"https://www.youtube.com/"
-    },
-
-    {
-        name:"Google",
-        keys:["google","google.com"],
-        url:"https://www.google.com/"
-    },
-
-    {
-        name:"GitHub",
-        keys:["github","github.com"],
-        url:"https://github.com/"
-    },
-
-    {
-        name:"Facebook",
-        keys:["facebook","facebook.com"],
-        url:"https://www.facebook.com/"
-    },
-
-    {
-        name:"Instagram",
-        keys:["instagram","instagram.com"],
-        url:"https://www.instagram.com/"
-    },
-
-    {
-        name:"TikTok",
-        keys:["tiktok","tiktok.com"],
-        url:"https://www.tiktok.com/"
-    },
-
-    {
-        name:"Wikipedia",
-        keys:["wikipedia","wikipedia.org"],
-        url:"https://pt.wikipedia.org/"
-    },
-
-    {
-        name:"Twitch",
-        keys:["twitch","twitch.tv"],
-        url:"https://www.twitch.tv/"
-    }
-
-];
-
-/* =========================
-   GUARDAR
-========================= */
-
-function save(){
-
-    localStorage.setItem(
-        FAV_KEY,
-        JSON.stringify(favorites)
-    );
-
-    localStorage.setItem(
-        HISTORY_KEY,
-        JSON.stringify(history.slice(0,300))
-    );
-
-    localStorage.setItem(
-        DOWNLOAD_KEY,
-        JSON.stringify(downloads)
-    );
-
-}
-
-/* =========================
-   SEGURANÇA HTML
-========================= */
-
-function esc(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-/* =========================
-   URL
-========================= */
-
-function isURL(value){
-
-    return /^https?:\/\//i.test(value) ||
-           /^[a-z0-9.-]+\.[a-z]{2,}(\/.*)?$/i.test(value);
-
-}
-
-function makeURL(value){
-
-    if(/^https?:\/\//i.test(value)){
-        return value;
-    }
-
-    return "https://" + value;
-
-}
-
-/* =========================
-   ABAS
-========================= */
-
-function createTab(){
-
-    tabs.push({
-        title:"Nova aba",
-        url:""
-    });
-
-    active = tabs.length - 1;
-
-    renderTabs();
-
-    goHome();
-
-}
-
-function renderTabs(){
-
-    const box = document.getElementById("tabs");
-
-    box.innerHTML = "";
-
-    tabs.forEach((tab,index)=>{
-
-        const el =
-            document.createElement("div");
-
-        el.className =
-            "tab" +
-            (index === active ? " active" : "");
-
-        el.onclick =
-            ()=>showTab(index);
-
-        el.innerHTML = `
-
-            <span class="tab-icon">
-                🌐
-            </span>
-
-            <span class="tab-title">
-                ${esc(tab.title)}
-            </span>
-
-            <button
-                class="tab-close"
-                onclick="event.stopPropagation();closeTab(${index})">
-                ×
-            </button>
-
-        `;
-
-        box.appendChild(el);
-
-    });
-
-    const plus =
-        document.createElement("button");
-
-    plus.className = "new-tab";
-    plus.innerText = "+";
-    plus.title = "Nova aba";
-    plus.onclick = createTab;
-
-    box.appendChild(plus);
-
-}
-
-function showTab(index){
-
-    active = index;
-
-    renderTabs();
-
-    const tab = tabs[active];
-
-    if(!tab.url){
-
-        goHome(false);
-        return;
-
-    }
-
-    if(tab.url.startsWith("search:")){
-
-        searchWeb(
-            tab.url.substring(7),
-            false
-        );
-
-        return;
-
-    }
-
-    renderSite(tab.url);
-
-}
-
-function closeTab(index){
-
-    tabs.splice(index,1);
-
-    if(tabs.length === 0){
-
-        createTab();
-        return;
-
-    }
-
-    if(active >= tabs.length){
-
-        active = tabs.length - 1;
-
-    }
-
-    showTab(active);
-
-}
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
-
-function navigate(event){
-
-    event.preventDefault();
-
-    const value =
-        document.getElementById("address")
-        .value
-        .trim();
-
-    if(!value) return;
-
-    if(isURL(value)){
-
-        openSite(makeURL(value));
-
-    }else{
-
-        searchWeb(value);
-
-    }
-
-}
-
-function goHome(){
-
-    if(!tabs.length) return;
-
-    tabs[active].title = "Nova aba";
-    tabs[active].url = "";
-
-    renderTabs();
-
-    document.getElementById("address").value = "";
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="home">
-
-            <div class="home-container">
-
-                <div class="hero">
-
-                    <div class="main-logo">
-                        Iternet<span>World</span>
-                    </div>
-
-                    <div class="tagline">
-                        Pesquisa e navegação num só lugar.
-                    </div>
-
-                    <form
-                        class="main-search"
-                        onsubmit="homeSearch(event)">
-
-                        <input
-                            id="homeInput"
-                            placeholder="Pesquisar ou escrever um endereço"
-                            autocomplete="off"
-                        >
-
-                        <button>
-                            Pesquisar
-                        </button>
-
-                    </form>
-
-                </div>
-
-                <div class="cards">
-
-                    <div
-                        class="card"
-                        onclick="openSite('https://www.youtube.com/')">
-
-                        <div class="card-icon">▶️</div>
-
-                        <div class="card-title">
-                            YouTube
-                        </div>
-
-                        <div class="card-text">
-                            Vídeos, música e entretenimento.
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="card"
-                        onclick="openSite('https://www.google.com/')">
-
-                        <div class="card-icon">🔎</div>
-
-                        <div class="card-title">
-                            Google
-                        </div>
-
-                        <div class="card-text">
-                            Pesquisa rápida na Internet.
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="card"
-                        onclick="openSite('https://github.com/')">
-
-                        <div class="card-icon">💻</div>
-
-                        <div class="card-title">
-                            GitHub
-                        </div>
-
-                        <div class="card-text">
-                            Código e projetos.
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="card"
-                        onclick="openSite('https://www.minecraft.net/')">
-
-                        <div class="card-icon">⛏️</div>
-
-                        <div class="card-title">
-                            Minecraft
-                        </div>
-
-                        <div class="card-text">
-                            Jogos e aventuras.
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="card"
-                        onclick="openAI()">
-
-                        <div class="card-icon">🤖</div>
-
-                        <div class="card-title">
-                            IternetWorld AI
-                        </div>
-
-                        <div class="card-text">
-                            Pesquisa e inteligência artificial.
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="download-box">
-
-                    <div class="download-left">
-
-                        <div class="download-icon">
-                            ⬇️
-                        </div>
-
-                        <div>
-
-                            <div class="download-title">
-                                Download do IternetWorld
-                            </div>
-
-                            <div class="download-description">
-                                Descarrega a versão Windows do IternetWorld.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <a
-                        class="download-button"
-                        href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
-                        target="_blank"
-                        onclick="registerDownload()">
-
-                        ⬇️ Download
-                    </a>
-
-                </div>
-
-                <div class="info-box">
-
-                    <h3>
-                        🌐 Bem-vindo ao IternetWorld
-                    </h3>
-
-                    <p>
-                        O IternetWorld é um navegador criado para
-                        juntar pesquisa, navegação, favoritos,
-                        histórico, abas, downloads, personalização
-                        e inteligência artificial num só lugar.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-function homeSearch(event){
-
-    event.preventDefault();
-
-    const value =
-        document.getElementById("homeInput")
-        .value
-        .trim();
-
-    if(!value) return;
-
-    if(isURL(value)){
-
-        openSite(makeURL(value));
-
-    }else{
-
-        searchWeb(value);
-
-    }
-
-}
-
-/* =========================
-   SITES
-========================= */
-
-function openSite(url,record=true){
-
-    tabs[active].url = url;
-
-    try{
-
-        tabs[active].title =
-            new URL(url)
-            .hostname
-            .replace(/^www\./,"");
-
-    }catch{
-
-        tabs[active].title = "IternetWorld";
-
-    }
-
-    renderTabs();
-
-    document.getElementById("address").value = url;
-
-    if(record){
-
-        history.unshift({
-
-            title:tabs[active].title,
-            url:url,
-            time:new Date().toLocaleString("pt-PT")
-
-        });
-
-        history =
-            history.slice(0,300);
-
-        save();
-
-    }
-
-    renderSite(url);
-
-}
-
-function renderSite(url){
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="site-page">
-
-            <div class="site-header">
-
-                🌐
-
-                <span>
-                    ${esc(tabs[active].title)}
-                </span>
-
-                <span>
-                    •
-                </span>
-
-                <span>
-                    ${esc(url)}
-                </span>
-
-            </div>
-
-            <iframe
-                class="site-frame"
-                src="${esc(url)}"
-                allow="fullscreen; autoplay; encrypted-media; picture-in-picture">
-            </iframe>
-
-        </div>
-
-    `;
-
-}
-
-/* =========================
-   PESQUISA
-========================= */
-
-function searchWeb(query,record=true){
-
-    query = query.trim();
-
-    if(!query) return;
-
-    const known =
-        sites.find(site =>
-            site.keys.some(key =>
-                query.toLowerCase().includes(key)
-            )
-        );
-
-    if(known){
-
-        openSite(known.url,record);
-        return;
-
-    }
-
-    tabs[active].url =
-        "search:" + query;
-
-    tabs[active].title =
-        query;
-
-    renderTabs();
-
-    document.getElementById("address").value =
-        query;
-
-    if(record){
-
-        history.unshift({
-
-            title:"Pesquisa: " + query,
-            url:"search:" + query,
-            time:new Date().toLocaleString("pt-PT")
-
-        });
-
-        save();
-
-    }
-
-    const q =
-        encodeURIComponent(query);
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="results">
-
-            <div class="results-header">
-
-                <h2>
-                    🔎 Resultados da pesquisa
-                </h2>
-
-                <p>
-                    Resultados para:
-                    <b>${esc(query)}</b>
-                </p>
-
-            </div>
-
-            <div
-                class="result"
-                onclick="openSite('https://www.google.com/search?q=${q}')">
-
-                <h3>
-                    🔎 Pesquisar no Google
-                </h3>
-
-                <p>
-                    Abrir a pesquisa no Google.
-                </p>
-
-            </div>
-
-            <div
-                class="result"
-                onclick="openSite('https://www.youtube.com/results?search_query=${q}')">
-
-                <h3>
-                    ▶️ Pesquisar no YouTube
-                </h3>
-
-                <p>
-                    Procurar vídeos sobre "${esc(query)}".
-                </p>
-
-            </div>
-
-            <div
-                class="result"
-                onclick="openSite('https://pt.wikipedia.org/wiki/Especial:Pesquisar?search=${q}')">
-
-                <h3>
-                    📚 Pesquisar na Wikipédia
-                </h3>
-
-                <p>
-                    Procurar informação na Wikipédia.
-                </p>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-/* =========================
-   IA
-========================= */
-
-function openAI(){
-
-    searchWeb("IternetWorld AI");
-
-}
-
-/* =========================
-   FAVORITOS
-========================= */
-
-function addFavorite(){
-
-    const tab = tabs[active];
-
-    if(!tab.url ||
-       tab.url.startsWith("search:")){
-
-        alert(
-            "Abre primeiro um site para o adicionar aos favoritos."
-        );
-
-        return;
-
-    }
-
-    if(
-        favorites.some(
-            f => f.url === tab.url
-        )
-    ){
-
-        alert(
-            "Este site já está nos favoritos."
-        );
-
-        return;
-
-    }
-
-    favorites.unshift({
-
-        title:tab.title,
-        url:tab.url
-
-    });
-
-    save();
-
-    alert(
-        "Adicionado aos favoritos ⭐"
-    );
-
-}
-
-function showFavorites(){
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="results">
-
-            <div class="results-header">
-
-                <h2>⭐ Favoritos</h2>
-
-                <p>
-                    Os teus sites favoritos.
-                </p>
-
-            </div>
-
-            ${
-                favorites.length
-                ?
-                favorites.map(f=>`
-
-                    <div
-                        class="result"
-                        onclick="openSite('${esc(f.url)}')">
-
-                        <h3>
-                            ⭐ ${esc(f.title)}
-                        </h3>
-
-                        <p>
-                            ${esc(f.url)}
-                        </p>
-
-                    </div>
-
-                `).join("")
-                :
-                `
-                <div class="result">
-                    <p>
-                        Ainda não tens favoritos.
-                    </p>
-                </div>
-                `
-            }
-
-        </div>
-
-    `;
-
-}
-
-/* =========================
-   HISTÓRICO
-========================= */
-
-function showHistory(){
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="results">
-
-            <div class="results-header">
-
-                <h2>🕘 Histórico</h2>
-
-                <p>
-                    Sites e pesquisas recentes.
-                </p>
-
-            </div>
-
-            ${
-                history.length
-                ?
-                history.map(h=>`
-
-                    <div
-                        class="result"
-                        onclick="openHistory('${encodeURIComponent(h.url)}')">
-
-                        <h3>
-                            ${esc(h.title)}
-                        </h3>
-
-                        <p>
-                            ${esc(h.time)}
-                        </p>
-
-                    </div>
-
-                `).join("")
-                :
-                `
-                <div class="result">
-                    <p>
-                        O histórico está vazio.
-                    </p>
-                </div>
-                `
-            }
-
-        </div>
-
-    `;
-
-}
-
-function openHistory(value){
-
-    const url =
-        decodeURIComponent(value);
-
-    if(url.startsWith("search:")){
-
-        searchWeb(
-            url.substring(7),
-            false
-        );
-
-    }else{
-
-        openSite(url,false);
-
-    }
-
-}
-
-/* =========================
-   DOWNLOADS
-========================= */
-
-function registerDownload(){
-
-    downloads.unshift({
-
-        name:"IternetWorld Setup",
-        time:new Date().toLocaleString("pt-PT")
-
-    });
-
-    save();
-
-}
-
-function showDownloads(){
-
-    document.getElementById("page").innerHTML = `
-
-        <div class="results">
-
-            <div class="results-header">
-
-                <h2>⬇️ Downloads</h2>
-
-                <p>
-                    Downloads do IternetWorld.
-                </p>
-
-            </div>
-
-            <div class="result">
-
-                <h3>
-                    🪟 IternetWorld para Windows
-                </h3>
-
-                <p>
-                    Descarrega o instalador oficial.
-                </p>
-
-                <br>
-
-                <a
-                    class="download-button"
-                    href="https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe"
-                    target="_blank"
-                    onclick="registerDownload()">
-
-                    ⬇️ Download IternetWorld
-                </a>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-/* =========================
-   MENU
-========================= */
-
-function toggleMenu(){
-
-    document
-        .getElementById("menu")
-        .classList.toggle("open");
-
-}
-
-/* =========================
-   TEMA
-========================= */
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-    localStorage.setItem(
-        "iw_theme",
-        document.body.classList.contains("light")
-        ? "light"
-        : "dark"
-    );
-
-}
-
-if(
-    localStorage.getItem("iw_theme")
-    === "light"
-){
-
-    document.body.classList.add("light");
-
-}
-
-/* =========================
-   COR
-========================= */
-
-function changeAccent(){
-
-    const colors = [
-
-        "#2563eb",
-        "#7c3aed",
-        "#16a34a",
-        "#dc2626",
-        "#ea580c",
-        "#0891b2",
-        "#db2777"
-
-    ];
-
-    const current =
-        getComputedStyle(
-            document.documentElement
-        )
-        .getPropertyValue("--accent")
-        .trim();
-
-    let index =
-        colors.indexOf(current);
-
-    index++;
-
-    if(index >= colors.length){
-        index = 0;
-    }
-
-    document.documentElement
-        .style
-        .setProperty(
-            "--accent",
-            colors[index]
-        );
-
-    localStorage.setItem(
-        "iw_accent",
-        colors[index]
-    );
-
-}
-
-const savedAccent =
-    localStorage.getItem("iw_accent");
-
-if(savedAccent){
-
-    document.documentElement
-        .style
-        .setProperty(
-            "--accent",
-            savedAccent
-        );
-
-}
-
-/* =========================
-   VOLTAR / AVANÇAR
-========================= */
-
-function goBack(){
-
-    const frame =
-        document.querySelector(".site-frame");
-
-    if(frame){
-
-        try{
-
-            frame.contentWindow.history.back();
-            return;
-
-        }catch{}
-
-    }
-
-}
-
-function goForward(){
-
-    const frame =
-        document.querySelector(".site-frame");
-
-    if(frame){
-
-        try{
-
-            frame.contentWindow.history.forward();
-            return;
-
-        }catch{}
-
-    }
-
-}
-
-function reloadPage(){
-
-    const frame =
-        document.querySelector(".site-frame");
-
-    if(frame){
-
-        try{
-
-            frame.contentWindow.location.reload();
-
-        }catch{
-
-            frame.src = frame.src;
-
-        }
-
-    }else{
-
-        showTab(active);
-
-    }
-
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-function getUsers(){
-
-    return JSON.parse(
-        localStorage.getItem(USERS_KEY)
-        || "[]"
-    );
-
-}
-
-function saveUsers(users){
-
-    localStorage.setItem(
-        USERS_KEY,
-        JSON.stringify(users)
-    );
-
-}
-
-function openLogin(){
-
-    document
-        .getElementById("overlay")
-        .classList.add("show");
-
-    document
-        .getElementById("loginMessage")
-        .textContent = "";
-
-}
-
-function closeLogin(){
-
-    document
-        .getElementById("overlay")
-        .classList.remove("show");
-
-}
-
-function login(){
-
-    const email =
-        document
-        .getElementById("email")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-        document
-        .getElementById("password")
-        .value;
-
-    const message =
-        document
-        .getElementById("loginMessage");
-
-    if(!email || !password){
-
-        message.textContent =
-            "Preenche o email e a palavra-passe.";
-
-        return;
-
-    }
-
-    const users = getUsers();
-
-    const user =
-        users.find(
-            u =>
-            u.email === email &&
-            u.password === password
-        );
-
-    if(!user){
-
-        message.textContent =
-            "Email ou palavra-passe incorretos.";
-
-        return;
-
-    }
-
-    localStorage.setItem(
-        CURRENT_USER_KEY,
-        email
-    );
-
-    updateLoginUI();
-
-    message.textContent =
-        "Login efetuado com sucesso!";
-
-    setTimeout(
-        closeLogin,
-        700
-    );
-
-}
-
-function register(){
-
-    const email =
-        document
-        .getElementById("email")
-        .value
-        .trim()
-        .toLowerCase();
-
-    const password =
-        document
-        .getElementById("password")
-        .value;
-
-    const message =
-        document
-        .getElementById("loginMessage");
-
-    if(!email || !password){
-
-        message.textContent =
-            "Preenche o email e a palavra-passe.";
-
-        return;
-
-    }
-
-    if(password.length < 4){
-
-        message.textContent =
-            "A palavra-passe deve ter pelo menos 4 caracteres.";
-
-        return;
-
-    }
-
-    const users = getUsers();
-
-    if(
-        users.some(
-            u => u.email === email
-        )
-    ){
-
-        message.textContent =
-            "Esta conta já existe.";
-
-        return;
-
-    }
-
-    users.push({
-
-        email:email,
-        password:password
-
-    });
-
-    saveUsers(users);
-
-    localStorage.setItem(
-        CURRENT_USER_KEY,
-        email
-    );
-
-    updateLoginUI();
-
-    message.textContent =
-        "Conta criada com sucesso!";
-
-    setTimeout(
-        closeLogin,
-        700
-    );
-
-}
-
-function logout(){
-
-    localStorage.removeItem(
-        CURRENT_USER_KEY
-    );
-
-    updateLoginUI();
-
-}
-
-function updateLoginUI(){
-
-    const button =
-        document.getElementById(
-            "loginButton"
-        );
-
-    const menuEmail =
-        document.getElementById(
-            "menuUserEmail"
-        );
-
-    const logoutButton =
-        document.getElementById(
-            "logoutMenu"
-        );
-
-    const current =
-        localStorage.getItem(
-            CURRENT_USER_KEY
-        );
-
-    if(current){
-
-        button.innerText =
-            "👤 " + current;
-
-        menuEmail.innerText =
-            current;
-
-        logoutButton.style.display =
-            "block";
-
-    }else{
-
-        button.innerText =
-            "👤 Entrar";
-
-        menuEmail.innerText =
-            "Não tens sessão iniciada";
-
-        logoutButton.style.display =
-            "none";
-
-    }
-
-}
-
-/* =========================
-   INICIAR
-========================= */
-
-createTab();
-
-updateLoginUI();
-
-</script>
-
-</body>
-</html>
+    border-radius:
+```

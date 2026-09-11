@@ -2,19 +2,16 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>IternetWorld</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-}
-
-html,body{
-    width:100%;
-    height:100%;
 }
 
 :root{
@@ -40,16 +37,19 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
+    height:100vh;
     overflow:hidden;
 }
 
-/* ABAS */
+/* =========================
+   ABAS
+========================= */
 
 #tabs{
     height:42px;
     background:var(--bar);
     display:flex;
-    align-items:center;
+    align-items:end;
     gap:5px;
     padding:5px 8px 0;
     border-bottom:1px solid var(--line);
@@ -58,16 +58,16 @@ body{
 .tab{
     height:37px;
     min-width:150px;
-    max-width:230px;
+    max-width:240px;
     background:var(--card);
-    color:var(--muted);
     border:1px solid var(--line);
     border-bottom:0;
     border-radius:9px 9px 0 0;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 12px;
+    padding:0 11px;
+    color:var(--muted);
     cursor:pointer;
 }
 
@@ -76,7 +76,7 @@ body{
     color:var(--text);
 }
 
-.tab-name{
+.tab-title{
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
@@ -84,19 +84,22 @@ body{
 
 .tab-close{
     margin-left:12px;
-}
-
-.new-tab{
-    width:36px;
-    height:36px;
-    border:0;
-    background:transparent;
-    color:var(--text);
-    font-size:24px;
     cursor:pointer;
 }
 
-/* BARRA */
+.new-tab{
+    width:38px;
+    height:37px;
+    border:0;
+    background:transparent;
+    color:var(--text);
+    font-size:23px;
+    cursor:pointer;
+}
+
+/* =========================
+   BARRA
+========================= */
 
 .toolbar{
     height:58px;
@@ -135,6 +138,7 @@ body{
 
 .address input{
     flex:1;
+    min-width:0;
     border:0;
     outline:0;
     background:transparent;
@@ -151,15 +155,19 @@ body{
     cursor:pointer;
 }
 
-/* PÁGINA */
+/* =========================
+   PÁGINA
+========================= */
 
 #page{
     height:calc(100vh - 100px);
-    background:var(--bg);
     overflow:auto;
+    background:var(--bg);
 }
 
-/* PÁGINA INICIAL */
+/* =========================
+   HOME
+========================= */
 
 .home{
     min-height:100%;
@@ -167,13 +175,13 @@ body{
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:30px;
+    padding:30px 20px;
 }
 
 .logo{
-    font-size:58px;
-    font-weight:bold;
-    letter-spacing:-3px;
+    font-size:64px;
+    font-weight:800;
+    letter-spacing:-4px;
 }
 
 .logo span{
@@ -182,12 +190,13 @@ body{
 
 .subtitle{
     color:var(--muted);
+    font-size:16px;
     margin-top:8px;
     margin-bottom:28px;
 }
 
 .search{
-    width:min(700px,90%);
+    width:min(720px,90%);
     height:54px;
     display:flex;
     background:var(--card);
@@ -198,6 +207,7 @@ body{
 
 .search input{
     flex:1;
+    min-width:0;
     border:0;
     outline:0;
     background:transparent;
@@ -212,12 +222,13 @@ body{
     color:white;
     padding:0 25px;
     cursor:pointer;
+    font-weight:bold;
 }
 
 .shortcuts{
     display:flex;
-    flex-wrap:wrap;
     justify-content:center;
+    flex-wrap:wrap;
     gap:10px;
     margin-top:25px;
 }
@@ -236,43 +247,45 @@ body{
 }
 
 .download-area{
+    margin-top:28px;
     display:flex;
-    gap:10px;
+    gap:12px;
     flex-wrap:wrap;
     justify-content:center;
-    margin-top:25px;
 }
 
-.download-button{
+.download{
     display:inline-block;
     background:var(--accent);
     color:white;
     text-decoration:none;
+    padding:13px 22px;
     border-radius:9px;
-    padding:12px 20px;
     font-weight:bold;
 }
 
-.download-button:hover{
+.download:hover{
     filter:brightness(1.12);
 }
 
-.download-secondary{
+.downloads-button{
     border:1px solid var(--line);
     background:var(--card);
     color:var(--text);
+    padding:13px 22px;
     border-radius:9px;
-    padding:12px 20px;
     cursor:pointer;
 }
 
 .info{
     color:var(--muted);
-    margin-top:28px;
     font-size:13px;
+    margin-top:28px;
 }
 
-/* SITES */
+/* =========================
+   SITE
+========================= */
 
 .site{
     width:100%;
@@ -283,6 +296,7 @@ body{
 
 .site-bar{
     height:40px;
+    flex-shrink:0;
     background:var(--card);
     border-bottom:1px solid var(--line);
     color:var(--muted);
@@ -293,78 +307,77 @@ body{
 }
 
 .site iframe{
-    flex:1;
     width:100%;
+    flex:1;
     border:0;
     background:white;
 }
 
-/* PESQUISA */
+/* =========================
+   PESQUISA
+========================= */
 
 .search-page{
-    padding:30px 20px;
     max-width:1050px;
     margin:auto;
+    padding:30px 20px;
 }
 
-.search-result{
+.search-page h2{
+    margin-bottom:20px;
+}
+
+.result{
     background:var(--card);
     border:1px solid var(--line);
     border-radius:12px;
     padding:20px;
-    margin-top:15px;
+    margin-bottom:15px;
 }
 
-.search-result h3{
+.result h3{
     color:#60a5fa;
     margin-bottom:8px;
 }
 
-.search-result p{
+.result p{
     color:var(--muted);
     line-height:1.5;
 }
 
-.search-result a{
+.result a{
     display:inline-block;
+    margin-top:13px;
     background:var(--accent);
     color:white;
     text-decoration:none;
-    padding:11px 18px;
+    padding:10px 17px;
     border-radius:8px;
-    margin-top:12px;
 }
 
-.ddg-frame{
-    width:100%;
-    height:560px;
-    border:0;
-    background:white;
-    border-radius:8px;
-    margin-top:15px;
-}
-
-/* MENU */
+/* =========================
+   MENU
+========================= */
 
 #menu{
     position:fixed;
     right:12px;
     top:108px;
-    width:250px;
+    width:255px;
     background:var(--card);
     border:1px solid var(--line);
     border-radius:12px;
     padding:8px;
     display:none;
-    z-index:20;
-    box-shadow:0 15px 40px rgba(0,0,0,.5);
+    z-index:100;
+    box-shadow:0 15px 40px rgba(0,0,0,.45);
 }
 
 #menu.show{
     display:block;
 }
 
-.menu-button{
+.menu-item{
     width:100%;
     border:0;
     background:transparent;
@@ -375,27 +388,29 @@ body{
     cursor:pointer;
 }
 
-.menu-button:hover{
+.menu-item:hover{
     background:var(--bg);
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
-#modal{
+#overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.7);
+    background:rgba(0,0,0,.70);
     display:none;
     align-items:center;
     justify-content:center;
-    z-index:50;
+    z-index:200;
 }
 
-#modal.show{
+#overlay.show{
     display:flex;
 }
 
-.modal-box{
+.modal{
     width:min(650px,92%);
     max-height:80vh;
     overflow:auto;
@@ -405,64 +420,80 @@ body{
     padding:22px;
 }
 
-.modal-box h2{
+.modal h2{
     margin-bottom:15px;
 }
 
-.close{
+.modal-close{
     float:right;
     border:0;
     background:transparent;
     color:var(--text);
-    font-size:22px;
+    font-size:24px;
     cursor:pointer;
 }
 
-/* MOBILE */
+.modal-list{
+    margin-top:15px;
+}
+
+.modal-list div{
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.modal-list a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+.empty{
+    color:var(--muted);
+    margin-top:15px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
 
 @media(max-width:700px){
+
+    .logo{
+        font-size:44px;
+    }
 
     .tab{
         min-width:110px;
     }
 
-    .logo{
-        font-size:42px;
-    }
-
-    .toolbar{
-        gap:3px;
-    }
-
     .tool{
         width:32px;
     }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ABAS -->
-
 <div id="tabs"></div>
-
-<!-- BARRA -->
 
 <div class="toolbar">
 
-    <button class="tool" onclick="back()">←</button>
+    <button class="tool" onclick="goBack()">←</button>
 
-    <button class="tool" onclick="forward()">→</button>
+    <button class="tool" onclick="goForward()">→</button>
 
-    <button class="tool" onclick="reload()">↻</button>
+    <button class="tool" onclick="reloadPage()">↻</button>
 
-    <button class="tool" onclick="home()">⌂</button>
+    <button class="tool" onclick="goHome()">⌂</button>
 
     <form class="address" onsubmit="navigate(event)">
 
         <input
             id="address"
+            autocomplete="off"
             placeholder="Pesquisar ou escrever um endereço"
         >
 
@@ -472,17 +503,15 @@ body{
 
     </form>
 
-    <button class="tool" onclick="favorite()">
+    <button class="tool" onclick="addFavorite()">
         ★
     </button>
 
-    <button class="tool" onclick="menu()">
+    <button class="tool" onclick="toggleMenu()">
         ☰
     </button>
 
 </div>
-
-<!-- PÁGINA -->
 
 <div id="page"></div>
 
@@ -490,39 +519,42 @@ body{
 
 <div id="menu">
 
-    <button class="menu-button" onclick="ai()">
+    <button class="menu-item" onclick="openAI()">
         🤖 IternetWorld AI
     </button>
 
-    <button class="menu-button" onclick="favorites()">
+    <button class="menu-item" onclick="showFavorites()">
         ⭐ Favoritos
     </button>
 
-    <button class="menu-button" onclick="historyPage()">
+    <button class="menu-item" onclick="showHistory()">
         🕘 Histórico
     </button>
 
-    <button class="menu-button" onclick="downloads()">
-        ⬇ Downloads
+    <button class="menu-item" onclick="showDownloads()">
+        ⬇️ Downloads
     </button>
 
-    <button class="menu-button" onclick="settings()">
-        ⚙ Configurações
+    <button class="menu-item" onclick="showSettings()">
+        ⚙️ Configurações
     </button>
 
-    <button class="menu-button" onclick="theme()">
-        🌙 Modo escuro/claro
+    <button class="menu-item" onclick="toggleTheme()">
+        🌙 Modo escuro / claro
     </button>
 
 </div>
 
 <!-- MODAL -->
 
-<div id="modal">
+<div id="overlay">
 
-    <div class="modal-box">
+    <div class="modal">
 
-        <button class="close" onclick="closeModal()">
+        <button
+            class="modal-close"
+            onclick="closeModal()"
+        >
             ×
         </button>
 
@@ -534,32 +566,34 @@ body{
 
 <script>
 
-/* =========================
-   ESTADO
-========================= */
+/* =========================================
+   DADOS
+========================================= */
 
 let tabs=[];
 let active=0;
 
-let favs=JSON.parse(
-    localStorage.getItem("iw_favorites") || "[]"
-);
+let favoritesData=
+    JSON.parse(
+        localStorage.getItem("iw_favorites") || "[]"
+    );
 
-let visits=JSON.parse(
-    localStorage.getItem("iw_history") || "[]"
-);
+let historyData=
+    JSON.parse(
+        localStorage.getItem("iw_history") || "[]"
+    );
 
 const DOWNLOAD_URL=
 "https://github.com/JogosWorld/InternetWorld/releases/download/v1.0.0/IternetWorld.Setup.1.0.0.exe";
 
 
-/* =========================
+/* =========================================
    SEGURANÇA
-========================= */
+========================================= */
 
-function escapeHTML(text){
+function escapeHTML(value){
 
-    return String(text)
+    return String(value)
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
@@ -568,9 +602,9 @@ function escapeHTML(text){
 }
 
 
-/* =========================
+/* =========================================
    ABAS
-========================= */
+========================================= */
 
 function createTab(){
 
@@ -581,69 +615,76 @@ function createTab(){
 
     active=tabs.length-1;
 
-    drawTabs();
+    renderTabs();
 
-    home();
+    goHome();
 }
 
-function drawTabs(){
+function renderTabs(){
 
-    const box=document.getElementById("tabs");
+    const box=
+        document.getElementById("tabs");
 
     box.innerHTML="";
 
     tabs.forEach((tab,index)=>{
 
-        const div=document.createElement("div");
+        const element=
+            document.createElement("div");
 
-        div.className=
+        element.className=
             "tab"+
             (index===active ? " active" : "");
 
-        div.innerHTML=`
+        element.innerHTML=`
 
-            <span class="tab-name">
+            <span class="tab-title">
                 ${escapeHTML(tab.title)}
             </span>
 
             <span
                 class="tab-close"
-                onclick="event.stopPropagation();closeTab(${index})"
+                onclick="
+                    event.stopPropagation();
+                    closeTab(${index})
+                "
             >
                 ×
             </span>
 
         `;
 
-        div.onclick=()=>{
+        element.onclick=function(){
 
             active=index;
 
-            drawTabs();
+            renderTabs();
 
-            showCurrent();
+            showTab();
+
         };
 
-        box.appendChild(div);
+        box.appendChild(element);
 
     });
 
-    const plus=document.createElement("button");
+    const newButton=
+        document.createElement("button");
 
-    plus.className="new-tab";
+    newButton.className="new-tab";
 
-    plus.textContent="+";
+    newButton.textContent="+";
 
-    plus.onclick=createTab;
+    newButton.onclick=createTab;
 
-    box.appendChild(plus);
+    box.appendChild(newButton);
 }
 
 function closeTab(index){
 
     tabs.splice(index,1);
 
-    if(!tabs.length){
+    if(tabs.length===0){
 
         createTab();
 
@@ -655,52 +696,48 @@ function closeTab(index){
         active=tabs.length-1;
     }
 
-    drawTabs();
+    renderTabs();
 
-    showCurrent();
+    showTab();
 }
 
-function showCurrent(){
+function showTab(){
 
-    if(
-        tabs[active].url &&
-        !tabs[active].url.startsWith("search:")
-    ){
+    const tab=tabs[active];
 
-        openSite(
-            tabs[active].url,
-            false
-        );
+    if(!tab.url){
 
-    }else if(
-        tabs[active].url.startsWith("search:")
-    ){
+        goHome();
 
-        search(
-            tabs[active].url.slice(7),
-            false
-        );
-
-    }else{
-
-        home();
+        return;
     }
+
+    if(tab.url.startsWith("search:")){
+
+        searchWeb(
+            tab.url.substring(7),
+            false
+        );
+
+        return;
+    }
+
+    openSite(tab.url,false);
 }
 
 
-/* =========================
-   PÁGINA INICIAL
-========================= */
+/* =========================================
+   HOME
+========================================= */
 
-function home(){
+function goHome(){
 
     tabs[active].title="Nova aba";
-
     tabs[active].url="";
 
     document.getElementById("address").value="";
 
-    drawTabs();
+    renderTabs();
 
     document.getElementById("page").innerHTML=`
 
@@ -720,9 +757,9 @@ function home(){
             >
 
                 <input
-                    id="homeSearch"
-                    placeholder="Pesquisar ou escrever um endereço"
+                    id="homeInput"
                     autocomplete="off"
+                    placeholder="Pesquisar ou escrever um endereço"
                 >
 
                 <button>
@@ -734,30 +771,38 @@ function home(){
             <div class="shortcuts">
 
                 <button
-                    onclick="openSite('https://www.youtube.com/')"
+                    onclick="
+                        openSite('https://www.youtube.com/')
+                    "
                 >
-                    ▶ YouTube
+                    ▶️ YouTube
                 </button>
 
                 <button
-                    onclick="openSite('https://www.google.com/')"
+                    onclick="
+                        openSite('https://www.google.com/')
+                    "
                 >
-                    Google
+                    🔎 Google
                 </button>
 
                 <button
-                    onclick="openSite('https://github.com/')"
+                    onclick="
+                        openSite('https://github.com/')
+                    "
                 >
-                    GitHub
+                    💻 GitHub
                 </button>
 
                 <button
-                    onclick="openSite('https://www.minecraft.net/')"
+                    onclick="
+                        openSite('https://www.minecraft.net/')
+                    "
                 >
-                    Minecraft
+                    ⛏️ Minecraft
                 </button>
 
-                <button onclick="ai()">
+                <button onclick="openAI()">
                     🤖 IternetWorld AI
                 </button>
 
@@ -766,7 +811,7 @@ function home(){
             <div class="download-area">
 
                 <a
-                    class="download-button"
+                    class="download"
                     href="${DOWNLOAD_URL}"
                     download
                 >
@@ -774,8 +819,8 @@ function home(){
                 </a>
 
                 <button
-                    class="download-secondary"
-                    onclick="downloads()"
+                    class="downloads-button"
+                    onclick="showDownloads()"
                 >
                     📥 Downloads
                 </button>
@@ -788,20 +833,16 @@ function home(){
             </div>
 
         </div>
+
     `;
 }
-
-
-/* =========================
-   PESQUISA
-========================= */
 
 function homeSearch(event){
 
     event.preventDefault();
 
     const value=
-        document.getElementById("homeSearch")
+        document.getElementById("homeInput")
         .value
         .trim();
 
@@ -810,6 +851,11 @@ function homeSearch(event){
         navigateValue(value);
     }
 }
+
+
+/* =========================================
+   NAVEGAÇÃO
+========================================= */
 
 function navigate(event){
 
@@ -828,30 +874,35 @@ function navigate(event){
 
 function navigateValue(value){
 
-    if(
-        value.startsWith("http://") ||
-        value.startsWith("https://") ||
-        /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/.test(value)
-    ){
+    const isURL=
+        /^https?:\/\//i.test(value) ||
+        /^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/.*)?$/i.test(value);
 
-        openSite(
-            value.startsWith("http")
-                ? value
-                : "https://"+value
-        );
+    if(isURL){
+
+        const url=
+            /^https?:\/\//i.test(value)
+            ? value
+            : "https://"+value;
+
+        openSite(url);
 
     }else{
 
-        search(value);
+        searchWeb(value);
     }
 }
 
 
-/* =========================
-   DUCKDUCKGO
-========================= */
+/* =========================================
+   PESQUISA DUCKDUCKGO
+========================================= */
 
-function search(text,record=true){
+async function searchWeb(text,record=true){
+
+    text=text.trim();
+
+    if(!text)return;
 
     tabs[active].title=
         "Pesquisa: "+text;
@@ -861,9 +912,179 @@ function search(text,record=true){
 
     document.getElementById("address").value=text;
 
-    drawTabs();
+    renderTabs();
 
-    const q=encodeURIComponent(text);
+    const query=
+        encodeURIComponent(text);
+
+    /*
+       ELECTRON
+       Usa o main.js que já tens.
+    */
+
+    if(
+        typeof window.require==="function"
+    ){
+
+        try{
+
+            const {
+                ipcRenderer
+            }=window.require("electron");
+
+            const results=
+                await ipcRenderer.invoke(
+                    "pesquisar-internet",
+                    text
+                );
+
+            renderElectronResults(
+                text,
+                results
+            );
+
+            saveHistory(
+                "Pesquisa: "+text,
+                "https://duckduckgo.com/?q="+query,
+                record
+            );
+
+            return;
+
+        }catch(error){
+
+            console.log(
+                "Pesquisa Electron:",
+                error
+            );
+        }
+    }
+
+    /*
+       GITHUB PAGES / NAVEGADOR NORMAL
+    */
+
+    renderBrowserSearch(text);
+
+    saveHistory(
+        "Pesquisa: "+text,
+        "https://duckduckgo.com/?q="+query,
+        record
+    );
+}
+
+
+/* =========================================
+   RESULTADOS ELECTRON
+========================================= */
+
+function renderElectronResults(text,results){
+
+    let html=`
+
+        <div class="search-page">
+
+            <h2>
+                🔎 Resultados para
+                "${escapeHTML(text)}"
+            </h2>
+
+    `;
+
+    if(
+        Array.isArray(results) &&
+        results.length
+    ){
+
+        results.forEach(result=>{
+
+            const title=
+                result.title ||
+                "Resultado";
+
+            const url=
+                result.url ||
+                "#";
+
+            const snippet=
+                result.snippet ||
+                "";
+
+            html+=`
+
+                <div class="result">
+
+                    <h3>
+                        ${escapeHTML(title)}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(snippet)}
+                    </p>
+
+                    <a
+                        href="#"
+                        onclick="
+                            event.preventDefault();
+                            openSite(
+                                '${escapeHTML(url)}'
+                            );
+                        "
+                    >
+                        Abrir
+                    </a>
+
+                </div>
+
+            `;
+
+        });
+
+    }else{
+
+        html+=`
+
+            <div class="result">
+
+                <h3>
+                    DuckDuckGo
+                </h3>
+
+                <p>
+                    Não foi possível obter os
+                    resultados diretamente.
+                </p>
+
+                <a
+                    href="https://duckduckgo.com/?q=${encodeURIComponent(text)}"
+                    target="_blank"
+                >
+                    Abrir DuckDuckGo
+                </a>
+
+            </div>
+
+        `;
+    }
+
+    html+=`
+
+        </div>
+
+    `;
+
+    document.getElementById("page").innerHTML=html;
+}
+
+
+/* =========================================
+   PESQUISA NO NAVEGADOR
+========================================= */
+
+function renderBrowserSearch(text){
+
+    const query=
+        encodeURIComponent(text);
 
     document.getElementById("page").innerHTML=`
 
@@ -874,95 +1095,104 @@ function search(text,record=true){
                 "${escapeHTML(text)}"
             </h2>
 
-            <div class="search-result">
+            <div class="result">
 
                 <h3>
-                    DuckDuckGo
+                    🦆 DuckDuckGo
                 </h3>
 
                 <p>
-                    Pesquisa na Internet através do DuckDuckGo.
+                    Pesquisa na Internet através
+                    do DuckDuckGo.
                 </p>
 
                 <a
-                    href="https://duckduckgo.com/?q=${q}"
+                    href="https://duckduckgo.com/?q=${query}"
                     target="_blank"
                 >
-                    🔎 Abrir DuckDuckGo
+                    🔎 Pesquisar no DuckDuckGo
                 </a>
 
-                <iframe
-                    class="ddg-frame"
-                    src="https://html.duckduckgo.com/html/?q=${q}"
-                >
-                </iframe>
+            </div>
+
+            <div class="result">
+
+                <h3>
+                    Pesquisa dentro do IternetWorld
+                </h3>
+
+                <p>
+                    Alguns navegadores impedem que
+                    o DuckDuckGo seja mostrado dentro
+                    de uma iframe.
+                </p>
 
             </div>
 
         </div>
+
     `;
-
-    if(record){
-
-        visits.unshift({
-
-            title:"Pesquisa: "+text,
-
-            url:
-                "https://duckduckgo.com/?q="+q,
-
-            time:
-                new Date().toLocaleString("pt-PT")
-        });
-
-        visits=visits.slice(0,300);
-
-        localStorage.setItem(
-            "iw_history",
-            JSON.stringify(visits)
-        );
-    }
 }
 
 
-/* =========================
-   ABRIR SITES
-========================= */
+/* =========================================
+   HISTÓRICO
+========================================= */
+
+function saveHistory(title,url,save=true){
+
+    if(!save)return;
+
+    historyData.unshift({
+
+        title:title,
+
+        url:url,
+
+        time:
+            new Date()
+            .toLocaleString("pt-PT")
+    });
+
+    historyData=
+        historyData.slice(0,300);
+
+    localStorage.setItem(
+        "iw_history",
+        JSON.stringify(historyData)
+    );
+}
+
+
+/* =========================================
+   ABRIR SITE
+========================================= */
 
 function openSite(url,record=true){
 
     try{
 
-        const u=new URL(url);
+        const parsed=
+            new URL(url);
 
         tabs[active].url=url;
 
         tabs[active].title=
-            u.hostname.replace(/^www\./,"");
+            parsed.hostname
+            .replace(/^www\./,"");
 
         document.getElementById("address").value=url;
 
+        renderTabs();
+
         if(record){
 
-            visits.unshift({
-
-                title:tabs[active].title,
-
-                url:url,
-
-                time:
-                    new Date().toLocaleString("pt-PT")
-            });
-
-            visits=visits.slice(0,300);
-
-            localStorage.setItem(
-                "iw_history",
-                JSON.stringify(visits)
+            saveHistory(
+                tabs[active].title,
+                url,
+                true
             );
         }
-
-        drawTabs();
 
         document.getElementById("page").innerHTML=`
 
@@ -971,7 +1201,9 @@ function openSite(url,record=true){
                 <div class="site-bar">
 
                     🌐
-                    ${escapeHTML(tabs[active].title)}
+                    ${escapeHTML(
+                        parsed.hostname
+                    )}
 
                 </div>
 
@@ -983,74 +1215,72 @@ function openSite(url,record=true){
                         encrypted-media;
                         picture-in-picture
                     "
-                >
-                </iframe>
+                ></iframe>
 
             </div>
+
         `;
 
     }catch(error){
 
-        search(url);
+        searchWeb(url);
     }
 }
 
 
-/* =========================
-   NAVEGAÇÃO
-========================= */
+/* =========================================
+   BOTÕES
+========================================= */
 
-function back(){
+function goBack(){
 
-    const frame=
+    const iframe=
         document.querySelector(".site iframe");
 
-    if(frame){
+    if(iframe){
 
         try{
-
-            frame.contentWindow.history.back();
-
+            iframe.contentWindow.history.back();
         }catch(e){}
+
     }
 }
 
-function forward(){
+function goForward(){
 
-    const frame=
+    const iframe=
         document.querySelector(".site iframe");
 
-    if(frame){
+    if(iframe){
 
         try{
-
-            frame.contentWindow.history.forward();
-
+            iframe.contentWindow.history.forward();
         }catch(e){}
+
     }
 }
 
-function reload(){
+function reloadPage(){
 
-    const frame=
+    const iframe=
         document.querySelector(".site iframe");
 
-    if(frame){
+    if(iframe){
 
-        frame.src=frame.src;
+        iframe.src=iframe.src;
 
     }else{
 
-        home();
+        showTab();
     }
 }
 
 
-/* =========================
+/* =========================================
    FAVORITOS
-========================= */
+========================================= */
 
-function favorite(){
+function addFavorite(){
 
     const tab=tabs[active];
 
@@ -1059,43 +1289,49 @@ function favorite(){
         tab.url.startsWith("search:")
     ){
 
-        alert("Abre primeiro um site.");
+        alert(
+            "Abre primeiro um site para o adicionar aos favoritos."
+        );
 
         return;
     }
 
-    if(!favs.some(x=>x.url===tab.url)){
-
-        favs.push({
-
-            title:tab.title,
-
-            url:tab.url
-        });
-
-        localStorage.setItem(
-            "iw_favorites",
-            JSON.stringify(favs)
-        );
-
-        alert(
-            "Adicionado aos favoritos!"
-        );
-
-    }else{
+    if(
+        favoritesData.some(
+            item=>item.url===tab.url
+        )
+    ){
 
         alert(
             "Este site já está nos favoritos."
         );
+
+        return;
     }
+
+    favoritesData.push({
+
+        title:tab.title,
+
+        url:tab.url
+    });
+
+    localStorage.setItem(
+        "iw_favorites",
+        JSON.stringify(favoritesData)
+    );
+
+    alert(
+        "⭐ Adicionado aos favoritos!"
+    );
 }
 
 
-/* =========================
+/* =========================================
    MENU
-========================= */
+========================================= */
 
-function menu(){
+function toggleMenu(){
 
     document
         .getElementById("menu")
@@ -1103,69 +1339,66 @@ function menu(){
 }
 
 
-/* =========================
+/* =========================================
    MODAL
-========================= */
+========================================= */
 
-function showModal(content){
+function showModal(html){
 
     document.getElementById(
         "modalContent"
-    ).innerHTML=content;
+    ).innerHTML=html;
 
     document
-        .getElementById("modal")
+        .getElementById("overlay")
         .classList.add("show");
 }
 
 function closeModal(){
 
     document
-        .getElementById("modal")
+        .getElementById("overlay")
         .classList.remove("show");
 }
 
 
-/* =========================
+/* =========================================
    FAVORITOS
-========================= */
+========================================= */
 
-function favorites(){
+function showFavorites(){
 
-    document
-        .getElementById("menu")
-        .classList.remove("show");
+    closeMenu();
 
-    let html="<h2>⭐ Favoritos</h2>";
+    let html=`
+        <h2>⭐ Favoritos</h2>
+        <div class="modal-list">
+    `;
 
-    if(!favs.length){
+    if(!favoritesData.length){
 
         html+=`
-
-            <p style="color:var(--muted)">
+            <p class="empty">
                 Ainda não tens favoritos.
             </p>
-
         `;
 
     }else{
 
-        favs.forEach(item=>{
+        favoritesData.forEach((item,index)=>{
 
             html+=`
 
-                <p style="
-                    padding:12px;
-                    border-bottom:1px solid var(--line);
-                ">
+                <div>
 
                     <a
                         href="#"
-                        style="color:#60a5fa"
                         onclick="
                             event.preventDefault();
                             closeModal();
-                            openSite('${escapeHTML(item.url)}');
+                            openSite(
+                                '${escapeHTML(item.url)}'
+                            );
                         "
                     >
                         ${escapeHTML(item.title)}
@@ -1173,51 +1406,51 @@ function favorites(){
 
                     <br>
 
-                    <small style="color:var(--muted)">
+                    <small>
                         ${escapeHTML(item.url)}
                     </small>
 
-                </p>
+                </div>
+
             `;
+
         });
     }
+
+    html+=`</div>`;
 
     showModal(html);
 }
 
 
-/* =========================
+/* =========================================
    HISTÓRICO
-========================= */
+========================================= */
 
-function historyPage(){
+function showHistory(){
 
-    document
-        .getElementById("menu")
-        .classList.remove("show");
+    closeMenu();
 
-    let html="<h2>🕘 Histórico</h2>";
+    let html=`
+        <h2>🕘 Histórico</h2>
+        <div class="modal-list">
+    `;
 
-    if(!visits.length){
+    if(!historyData.length){
 
         html+=`
-
-            <p style="color:var(--muted)">
+            <p class="empty">
                 O histórico está vazio.
             </p>
-
         `;
 
     }else{
 
-        visits.forEach(item=>{
+        historyData.forEach(item=>{
 
             html+=`
 
-                <p style="
-                    padding:12px;
-                    border-bottom:1px solid var(--line);
-                ">
+                <div>
 
                     <b>
                         ${escapeHTML(item.title)}
@@ -1225,47 +1458,52 @@ function historyPage(){
 
                     <br>
 
-                    <small style="color:var(--muted)">
+                    <small>
                         ${escapeHTML(item.url)}
                     </small>
 
                     <br>
 
-                    <small style="color:#64748b">
+                    <small>
                         ${escapeHTML(item.time)}
                     </small>
 
-                </p>
+                </div>
+
             `;
+
         });
     }
+
+    html+=`</div>`;
 
     showModal(html);
 }
 
 
-/* =========================
+/* =========================================
    DOWNLOADS
-========================= */
+========================================= */
 
-function downloads(){
+function showDownloads(){
 
-    document
-        .getElementById("menu")
-        .classList.remove("show");
+    closeMenu();
 
     showModal(`
 
-        <h2>⬇ Downloads</h2>
+        <h2>
+            ⬇️ Downloads
+        </h2>
 
-        <p style="color:var(--muted)">
-            Descarrega o IternetWorld para Windows.
+        <p class="empty">
+            Aqui podes descarregar o IternetWorld
+            para Windows.
         </p>
 
         <br>
 
         <a
-            class="download-button"
+            class="download"
             href="${DOWNLOAD_URL}"
             download
         >
@@ -1276,28 +1514,31 @@ function downloads(){
 }
 
 
-/* =========================
+/* =========================================
    CONFIGURAÇÕES
-========================= */
+========================================= */
 
-function settings(){
+function showSettings(){
 
-    document
-        .getElementById("menu")
-        .classList.remove("show");
+    closeMenu();
 
     showModal(`
 
-        <h2>⚙ Configurações</h2>
+        <h2>
+            ⚙️ Configurações
+        </h2>
 
-        <p style="color:var(--muted)">
-            Personalização do IternetWorld.
+        <p class="empty">
+            Configurações do IternetWorld.
         </p>
 
         <br>
 
         <button
-            onclick="theme();closeModal()"
+            onclick="
+                toggleTheme();
+                closeModal();
+            "
             style="
                 width:100%;
                 padding:13px;
@@ -1315,18 +1556,16 @@ function settings(){
 }
 
 
-/* =========================
+/* =========================================
    TEMA
-========================= */
+========================================= */
 
-function theme(){
+function toggleTheme(){
 
     document.body.classList.toggle("light");
 
     localStorage.setItem(
-
         "iw_theme",
-
         document.body.classList.contains("light")
             ? "light"
             : "dark"
@@ -1343,15 +1582,13 @@ if(
 }
 
 
-/* =========================
-   IternetWorld AI
-========================= */
+/* =========================================
+   AI
+========================================= */
 
-function ai(){
+function openAI(){
 
-    document
-        .getElementById("menu")
-        .classList.remove("show");
+    closeMenu();
 
     showModal(`
 
@@ -1359,26 +1596,24 @@ function ai(){
             🤖 IternetWorld AI
         </h2>
 
-        <p style="color:var(--muted)">
-            Escreve uma pergunta.
+        <p class="empty">
+            Escreve uma pergunta para o IternetWorld AI.
         </p>
 
         <br>
 
         <input
-            id="aiInput"
-            placeholder="Pergunta alguma coisa..."
+            id="aiQuestion"
+            placeholder="Escreve a tua pergunta..."
             style="
                 width:100%;
-                height:44px;
+                height:45px;
                 padding:10px;
                 border-radius:8px;
                 border:1px solid var(--line);
                 background:var(--bg);
                 color:var(--text);
-            "
-            onkeydown="
-                if(event.key==='Enter')askAI()
+                outline:none;
             "
         >
 
@@ -1387,7 +1622,7 @@ function ai(){
             style="
                 width:100%;
                 margin-top:10px;
-                height:42px;
+                height:44px;
                 border:0;
                 border-radius:8px;
                 background:var(--accent);
@@ -1404,8 +1639,7 @@ function ai(){
                 margin-top:18px;
                 color:var(--muted);
             "
-        >
-        </div>
+        ></div>
 
     `);
 }
@@ -1413,32 +1647,53 @@ function ai(){
 function askAI(){
 
     const input=
-        document.getElementById("aiInput");
+        document.getElementById("aiQuestion");
 
-    if(
-        !input ||
-        !input.value.trim()
-    ){
+    const answer=
+        document.getElementById("aiAnswer");
+
+    if(!input.value.trim()){
+
+        answer.innerHTML=
+            "Escreve primeiro uma pergunta.";
 
         return;
     }
 
-    document.getElementById(
-        "aiAnswer"
-    ).innerHTML=
+    answer.innerHTML=`
 
-        "Pergunta recebida: <b>"+
-        escapeHTML(input.value)+
-        "</b><br><br>"+
-        "O IternetWorld AI está pronto "+
-        "para ser ligado a um serviço de "+
-        "inteligência artificial.";
+        <b style="color:var(--text)">
+            Pergunta:
+        </b>
+
+        ${escapeHTML(input.value)}
+
+        <br><br>
+
+        O IternetWorld AI está preparado.
+        Para obter respostas reais de IA,
+        será necessário ligar esta função
+        a um serviço de inteligência artificial.
+
+    `;
 }
 
 
-/* =========================
+/* =========================================
+   FECHAR MENU
+========================================= */
+
+function closeMenu(){
+
+    document
+        .getElementById("menu")
+        .classList.remove("show");
+}
+
+
+/* =========================================
    INICIAR
-========================= */
+========================================= */
 
 createTab();
 
